@@ -6,7 +6,7 @@ about any file format; `@bim-open-viewer/formats` and `@bim-open-viewer/loaders`
 BOS (BIM Open Schema), BFAST, GLB, GLTF, OBJ and STL files to one model.
 
 The viewer was developed inside [BIM Open Toolkit](https://github.com/ara3d/bim-open-toolkit),
-which consumes this repository as a submodule at `submodules/bim-open-viewer`; this
+which consumes this repository through its `deps/` folder, at `deps/bim-open-viewer`; this
 repository keeps that history.
 
 This is an npm workspace with seventeen packages, split so they can be developed
@@ -96,16 +96,22 @@ served fixture, normalized geometry and browser behavior. See the
 
 ## Developing
 
-Gratify, the canvas UI library behind `@bim-open-viewer/ui-gratify`, is a submodule, so
-clone with `--recurse-submodules` (or run `git submodule update --init` afterwards).
+The viewer needs Node.js 22 or later and git. Gratify, the canvas UI library behind
+`@bim-open-viewer/ui-gratify`, is listed in `deps.json`; `node deps.mjs` clones it into
+`deps/gratify` at the pinned commit (or links it, when this repository sits in a folder of
+sibling checkouts marked with a `.deps-root` file). Run it before `npm install`.
 
 ```
-git clone --recurse-submodules https://github.com/ara3d/bim-open-viewer
+git clone https://github.com/ara3d/bim-open-viewer
 cd bim-open-viewer
+node deps.mjs
 npm install
-npm run -w @bim-open-viewer/core build
+npm run build
 npm test -w @bim-open-viewer/core
 ```
+
+`npm run build` builds Gratify first; the type check (`npm run typecheck`) reads Gratify's
+built output, so run the build before it.
 
 Unit tests run under Node with vitest and never require a WebGL context: the
 three.js object-graph logic is kept separate from the `WebGLRenderer` so it is

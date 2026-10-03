@@ -152,3 +152,6 @@ vite.config.ts.timestamp-*
 .npm-cache/
 artifacts/
 dist-demo/
+
+# Dependencies filled by deps.mjs from deps.json
+deps/

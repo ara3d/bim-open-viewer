@@ -1,6 +1,7 @@
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { afterAll, describe, expect, it } from 'vitest';
 import { smallBuilding } from '../../src/fixtures/catalog.js';
 import { fixtureFingerprint } from '../../src/fixtures/scene-fixture.js';
@@ -145,7 +146,7 @@ describe('the page-side collector', () => {
 describe('the artifacts directory', () => {
   it('finds the workspace root above this package and puts output under it', () => {
     const root = findViewerRoot(import.meta.url);
-    expect(root.endsWith('viewer')).toBe(true);
+    expect(root).toBe(resolve(fileURLToPath(new URL('../../../../', import.meta.url))));
     expect(artifactsDir(root, 'browser')).toBe(join(root, 'artifacts', 'testing', 'browser'));
     expect(artifactsFor(import.meta.url)).toBe(join(root, 'artifacts', 'testing'));
   });

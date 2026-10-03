@@ -8,11 +8,15 @@
 import { chapters, demosInChapter, type Demo, type DemoChapter } from './contracts.js';
 import { button, el, link } from './elements.js';
 import { basisLabel } from './fixtures.js';
+import { staticSite } from './hosting.js';
 import { demoRoute, routeHref } from './routes.js';
 import type { Shell } from './shell.js';
 
-// Where a captured thumbnail lives. The smoke run writes here; git keeps what it wrote.
-export const thumbnailHref = (demoId: string): string => `/thumbnails/${demoId}.png`;
+// Where a captured thumbnail lives, relative to the page so the gallery works under any base path.
+// The gallery smoke writes `thumbnails/`, taken on each demo's first fixture; the static site's
+// smoke writes `thumbnails/static/`, taken on the generated models the static site opens instead.
+export const thumbnailHref = (demoId: string): string =>
+  `${staticSite ? 'thumbnails/static' : 'thumbnails'}/${demoId}.png`;
 
 // A neutral stand-in for a demo whose thumbnail has not been captured yet.
 const placeholderThumbnail = (): HTMLElement => {
@@ -68,10 +72,22 @@ const countWord = (count: number): string => {
   return words[count] ?? `${String(count)} questions`;
 };
 
+// What the index says the demos open. The static site has no private model, so it says so.
+const serverLead =
+  'Every demo opens Snowdon Towers - a real model, read from its file - shows one thing the ' +
+  'toolkit can do with it, and says what it does not know. Gaps, conflicts and unverified ' +
+  'connections are shown as such. Each demo also offers a generated building, whose gaps are ' +
+  'deliberate.';
+const staticLead =
+  'Every demo opens a generated building, shows one thing the viewer can do with it, and says what ' +
+  'it does not know. The gaps and conflicts in these buildings are deliberate. A clone of the ' +
+  'repository running npm run gallery also offers Snowdon Towers, a real model that this site ' +
+  'cannot publish.';
+
 // Draws the index into the shell. Returns nothing to dispose: it is only elements.
 export const renderIndexPage = (shell: Shell, demos: readonly Demo[], duplicates: readonly string[]): void => {
   shell.reset();
-  shell.lead.append(el('span', 'wordmark', 'BIM Open Toolkit'), el('span', 'wordmark-note', 'Demo gallery'));
+  shell.lead.append(el('span', 'wordmark', 'BIM Open Viewer'), el('span', 'wordmark-note', 'Demo gallery'));
 
   const page = el('div', 'index-page');
   const rail = el('nav', 'chapter-rail');
@@ -86,15 +102,8 @@ export const renderIndexPage = (shell: Shell, demos: readonly Demo[], duplicates
   // The count is read off what was discovered rather than written down: a gallery that says
   // twenty-one and lists five is worse than one that says five.
   body.append(
-    el('h1', 'index-title', `${countWord(demos.length)} answered on a real building`),
-    el(
-      'p',
-      'index-lead',
-      'Every demo opens Snowdon Towers - a real model, read from its file - shows one thing the ' +
-        'toolkit can do with it, and says what it does not know. Gaps, conflicts and unverified ' +
-        'connections are shown as such. Each demo also offers a generated building, whose gaps are ' +
-        'deliberate.',
-    ),
+    el('h1', 'index-title', `${countWord(demos.length)} answered on ${staticSite ? 'generated buildings' : 'a real building'}`),
+    el('p', 'index-lead', staticSite ? staticLead : serverLead),
   );
 
   for (const chapter of chapters) {

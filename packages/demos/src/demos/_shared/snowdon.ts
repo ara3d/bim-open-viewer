@@ -30,6 +30,7 @@ export const snowdon: DemoFixture = {
   id: 'snowdon',
   title: 'Snowdon Towers',
   basis: 'source-backed',
+  servedLocally: true,
   source: (): Promise<Result<ModelSource>> =>
     Promise.resolve(success({ kind: 'url', id: 'snowdon', url: snowdonUrl })),
 };

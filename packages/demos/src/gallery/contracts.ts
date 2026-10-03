@@ -51,6 +51,10 @@ export type DemoFixture = {
   readonly title: string;
   readonly basis: DataBasis;
   readonly source: () => Promise<Result<ModelSource>>;
+  // True when the model is a private file the gallery's dev server hands out from the machine
+  // (`vite.gallery.config.mjs`, `/fixtures/`). The static site has no such server, so it leaves
+  // these fixtures out of the picker rather than offering a model it cannot open.
+  readonly servedLocally?: boolean | undefined;
 };
 
 // What one frame reports to listeners: when it was drawn and how long the previous one took.

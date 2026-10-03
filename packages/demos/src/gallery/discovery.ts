@@ -8,6 +8,7 @@
 
 import { duplicateDemoIds, type Demo, type DemoModule } from './contracts.js';
 import { demo as placeholder } from '../demos/_shared/placeholder.js';
+import { hostedDemos } from './hosting.js';
 
 // What discovery came to: the demos in a stable order, the ids claimed twice, and whether the only
 // thing found was the placeholder.
@@ -44,6 +45,8 @@ export const discoverDemos = (modules: Readonly<Record<string, unknown>>): Disco
 export const demoById = (demos: readonly Demo[], id: string | null): Demo | undefined =>
   (id === null ? undefined : demos.find((one) => one.id === id)) ?? demos[0];
 
-// Every demo in this build.
-export const discoveredDemos = (): Discovery =>
-  discoverDemos(import.meta.glob('../demos/*/index.ts', { eager: true }));
+// Every demo in this build, with what this host cannot open left out (`hosting.ts`).
+export const discoveredDemos = (): Discovery => {
+  const found = discoverDemos(import.meta.glob('../demos/*/index.ts', { eager: true }));
+  return { ...found, demos: hostedDemos(found.demos) };
+};

@@ -1,0 +1,68 @@
+/* The landing page in the BIM Open family look (bim-open-toolkit docs/BRANDING.md): the viewer's
+   teal accent, the family neutrals, Instrument Sans for the wordmark and headings, Public Sans for
+   text, Fira Code for commands. The gallery keeps its own chrome. */
+
+:root {
+  color-scheme: light;
+  --accent: #0f8a80;
+  --accent-soft: #e2f3f1;
+  --text: #171a1f;
+  --dim: #5a606c;
+  --surface: #ffffff;
+  --background: #f4f5f7;
+  --border: #e3e6ea;
+  --font-brand: "Instrument Sans", "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-ui: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font: 400 15px/1.55 var(--font-ui);
+}
+
+a { color: var(--accent); }
+
+.landing { max-width: 1120px; margin: 0 auto; padding: 28px 16px 48px; }
+
+.lockup { display: flex; align-items: center; gap: 12px; }
+.lockup svg { width: 48px; height: 48px; flex: none; }
+.wordmark { margin: 0; font: 600 28px/1 var(--font-brand); letter-spacing: -0.01em; }
+.wordmark .family { color: var(--dim); }
+.wordmark .product { font-weight: 700; color: var(--text); margin-left: 0.27em; }
+
+.intro { max-width: 70ch; margin: 20px 0 8px; font-size: 16px; }
+
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 28px; padding: 0; list-style: none; font-weight: 500; }
+
+h2 { font: 600 20px/1.2 var(--font-brand); margin: 0 0 12px; }
+
+.stage { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.stage-bar {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px;
+  padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.stage-title { font-weight: 600; margin-right: 8px; }
+.stage-question { color: var(--dim); }
+.stage iframe { display: block; width: 100%; height: min(72vh, 680px); border: 0; background: #1b1d22; }
+
+.demos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+.demo {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+}
+.demo[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.demo h3 { font: 600 15px/1.3 var(--font-brand); margin: 0; }
+.demo p { margin: 0; font-size: 13px; color: var(--dim); flex: 1; }
+.demo-actions { display: flex; gap: 14px; font-size: 13px; font-weight: 500; }
+.demo-actions button {
+  padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline;
+}
+.basis { font: 400 11px/1.4 var(--font-mono); color: var(--dim); }
+
+.footnote { margin-top: 32px; font-size: 13px; color: var(--dim); max-width: 80ch; }
+code { font: 400 12.5px var(--font-mono); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 4px; }

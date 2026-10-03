@@ -24,7 +24,10 @@
     "check": "npm run typecheck && npm run lint",
     "test:v2": "vitest run --config vitest.v2.config.ts",
     "lint:typed": "eslint --config eslint.typed.config.js .",
-    "demo:slice": "vite packages/demos --config packages/demos/vite.slice.config.mjs --host 127.0.0.1 --port 5176 --strictPort"
+    "demo:slice": "vite packages/demos --config packages/demos/vite.slice.config.mjs --host 127.0.0.1 --port 5176 --strictPort",
+    "pages": "vite build --config packages/demos/vite.pages.config.mjs",
+    "pages:preview": "vite preview --config packages/demos/vite.pages.config.mjs --host 127.0.0.1 --port 5191 --strictPort",
+    "pages:smoke": "node packages/demos/scripts/pages-smoke.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",

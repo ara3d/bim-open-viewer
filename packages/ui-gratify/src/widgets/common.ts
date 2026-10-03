@@ -52,7 +52,7 @@ export const fitted = (
 ): string => {
   if (width <= 0) return '';
   if (measure.text(text, size).x <= width) return text;
-  const ellipsis = '…';
+  const ellipsis = '\u2026';
   let kept = text.length;
   while (kept > 0 && measure.text(text.slice(0, kept) + ellipsis, size).x > width) kept--;
   return kept === 0 ? ellipsis : text.slice(0, kept) + ellipsis;

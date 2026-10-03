@@ -39,6 +39,7 @@ const links = (): HTMLElement => {
     [`${repository}#readme`, 'README'],
     ['gallery.html', 'Demo gallery'],
     [family, 'The BIM Open family'],
+    ['https://ara3d.github.io/bim-open-schema/', 'BIM Open Schema, the tables a model is stored as'],
   ];
   for (const [href, text] of targets) {
     const item = el('li', '');

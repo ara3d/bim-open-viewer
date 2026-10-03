@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PerspectiveCamera, Matrix4 as ThreeMatrix4 } from 'three';
-import { cameraPose, viewState } from '@bim-open-toolkit/model';
+import { cameraPose, viewState } from '@bim-open-viewer/model';
 import { applyView, matrixOf, projectToCanvas, rayThroughCanvasPoint, type CanvasSize } from '../../../src/feature-demos/_shared/camera.js';
 
 // The helpers read only a client size, so no canvas is needed in Node.

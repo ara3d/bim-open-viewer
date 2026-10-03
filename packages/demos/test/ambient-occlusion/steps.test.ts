@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
-import { boundsSize } from '@bim-open-toolkit/model';
+import { ViewerScene } from '@bim-open-viewer/core';
+import { boundsSize } from '@bim-open-viewer/model';
 import {
   SceneBinding,
   ambientOcclusionPass,
   defaultAmbientOcclusion,
   occlusionRadiusFor,
   occlusionRadiusShare,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { controls, defaultValues, settingsFromValues, valuesOf, type ControlKey } from '../../src/ambient-occlusion/controls.js';
 import { demoFixture, demoStressOptions, fixtureNames, isFixtureName } from '../../src/ambient-occlusion/fixtures.js';
 import { luminanceOf, luminanceStatistics } from '../../src/ambient-occlusion/pixels.js';

@@ -5,7 +5,7 @@
 // the panel listens on the panel's canvas. Drawing is the page's: this only makes and places the
 // surface and hands back a context sized in CSS pixels with the device ratio applied.
 
-import type { Disposable } from '@bim-open-toolkit/model';
+import type { Disposable } from '@bim-open-viewer/model';
 
 // Which corner of the viewport the panel sits in.
 export type PanelCorner = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';

@@ -1,4 +1,4 @@
-import { bosToBfast } from '@ara3d/viewer-loaders';
+import { bosToBfast } from '@bim-open-viewer/loaders';
 import { readBfastModel, type BfastOptions } from './bfast.js';
 import { fail, formatCode } from './diagnostics.js';
 import { loadedModel, type LoadedModel } from './loaded-model.js';

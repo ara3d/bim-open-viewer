@@ -25,7 +25,7 @@ import {
   type Mesh,
   type ObjectKey,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { intersectMesh, type ObjectHit, type ObjectHitSource, type Ray } from './picking.js';
 
 // A named piece of geometry an object can be drawn as.

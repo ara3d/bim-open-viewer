@@ -10,28 +10,28 @@ is.
 
 ## Running it
 
-From `viewer/`:
+From the repository root:
 
 ```
 npx vite --config packages/demos/vite.slice.config.mjs
 ```
 
-and open <http://localhost:5176/slice.html>. The config resolves `@bim-open-toolkit/*` to package
-source with the same alias rule as `vitest.shared.ts`, and `@ara3d/viewer-core` to its built `dist`,
+and open <http://localhost:5176/slice.html>. The config resolves `@bim-open-viewer/*` to package
+source with the same alias rule as `vitest.shared.ts`, and `@bim-open-viewer/core` to its built `dist`,
 so nothing has to be built first except the alpha packages, which already are.
 
-The checks, from `viewer/`:
+The checks, from the repository root:
 
 ```
 npx tsc --noEmit -p packages/demos/tsconfig.json
 npx eslint packages/demos
 npx eslint --config eslint.typed.config.js packages/demos
-npm test -w @bim-open-toolkit/demos
+npm test -w @bim-open-viewer/demos
 npx vitest run --root packages/demos test/slice/page.test.ts --reporter=verbose
 ```
 
 The last one opens the page in a real browser on software WebGL, reads back what the page reports,
-and writes a screenshot to `viewer/artifacts/slice/slice.png` (git ignores `artifacts/`). It skips
+and writes a screenshot to `artifacts/slice/slice.png` (git ignores `artifacts/`). It skips
 with a printed reason when no chromium channel can be launched, so a machine without one is not a
 failure. The verbose reporter is needed to see what it printed.
 

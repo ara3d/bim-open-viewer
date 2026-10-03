@@ -3,8 +3,8 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { cpus, platform, release } from 'node:os';
 import { performance } from 'node:perf_hooks';
-import { bosToGroups, parseBosGeometry } from '@ara3d/viewer-loaders';
-import { groupBounds, unionBounds } from '@ara3d/viewer-core';
+import { bosToGroups, parseBosGeometry } from '@bim-open-viewer/loaders';
+import { groupBounds, unionBounds } from '@bim-open-viewer/core';
 
 const source = process.argv[2] ?? 'C:/Users/cdigg/Documents/BIM Open Schema/Snowdon Towers Sample Architectural.bos';
 const start = performance.now();

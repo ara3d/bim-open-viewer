@@ -10,7 +10,7 @@
  *
  * A box is six consecutive numbers: min x, y, z then max x, y, z.
  */
-import type { InstancedGroup } from '@ara3d/viewer-core';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 import { TRANSFORM_FLOATS } from './scene.js';
 
 /** Numbers per box. */

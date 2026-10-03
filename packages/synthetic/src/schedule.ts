@@ -14,7 +14,7 @@ import {
   type Evidence,
   type FactValue,
   type Observation,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One column of a table together with the name it is filed under.
 export type NamedColumn = readonly [string, Column];

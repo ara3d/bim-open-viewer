@@ -1,7 +1,7 @@
 // A model carrying recorded properties and source documents, built by hand so the roll-up can be
 // checked against numbers stated here rather than against a private hundred-megabyte file.
 //
-// The tables are the shapes `@bim-open-toolkit/formats` decodes: descriptors whose labels are
+// The tables are the shapes `@bim-open-viewer/formats` decodes: descriptors whose labels are
 // string-pool indices, parameter rows of entity, descriptor and one raw value word, and a document
 // per entity. They go through the package's own `modelPropertiesFrom` and `modelDocumentsFrom`, so
 // what the demo reads here it reads exactly as it reads a real file.
@@ -16,7 +16,7 @@ import {
   modelPropertiesFrom,
   type ModelDocuments,
   type ModelProperties,
-} from '@bim-open-toolkit/formats';
+} from '@bim-open-viewer/formats';
 import {
   emptyInstances,
   emptyObject,
@@ -27,7 +27,7 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { openedModel } from '../../../src/gallery/model-source.js';
 import type { OpenedModel } from '../../../src/gallery/contracts.js';
 

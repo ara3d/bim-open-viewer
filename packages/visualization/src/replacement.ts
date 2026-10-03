@@ -1,4 +1,4 @@
-import { MIN_VISIBLE_ALPHA, validateMeshBuffers, type Bounds3, type MeshBuffers, type SceneObject } from '@ara3d/viewer-core';
+import { MIN_VISIBLE_ALPHA, validateMeshBuffers, type Bounds3, type MeshBuffers, type SceneObject } from '@bim-open-viewer/core';
 import { Box3, BoxGeometry, BufferAttribute, BufferGeometry, Color, Group, Mesh, MeshStandardMaterial, type Raycaster } from 'three';
 import { objectKey, type Matrix4, type ObjectRecord, type ObjectRef } from './contracts.js';
 import { type ObjectHit, RenderBinding } from './render.js';

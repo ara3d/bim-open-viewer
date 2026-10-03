@@ -5,7 +5,7 @@ import {
   type CameraPose,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   defaultOrbitLimits,
   dollyPose,

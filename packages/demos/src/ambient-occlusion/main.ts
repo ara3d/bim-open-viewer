@@ -1,8 +1,8 @@
 // The page entry: find the canvas and the panel, mount the demo, and publish what a browser test
 // reads back and drives.
 
-import type { Result } from '@bim-open-toolkit/model';
-import type { AmbientOcclusionSettings } from '@bim-open-toolkit/render';
+import type { Result } from '@bim-open-viewer/model';
+import type { AmbientOcclusionSettings } from '@bim-open-viewer/render';
 import type { ControlKey } from './controls.js';
 import type { FixtureName } from './fixtures.js';
 import { mountDemo, type DemoReport } from './mount.js';

@@ -1,4 +1,4 @@
-# @bim-open-toolkit/model
+# @bim-open-viewer/model
 
 The data contracts and pure operations the rest of the viewer is built from. It has no runtime
 dependencies at all: no three.js, no renderer, no browser API, no other package in this repository.
@@ -56,14 +56,14 @@ correction:
 | `feature` | one capability as one module, with dependency ordering |
 
 `src/index.ts` re-exports all of them one level deep, so `import { objectKey } from
-'@bim-open-toolkit/model'` works.
+'@bim-open-viewer/model'` works.
 
 ## Using it
 
 Validate something and report where it was wrong:
 
 ```ts
-import { formatPath, integer, object, parse, string } from '@bim-open-toolkit/model';
+import { formatPath, integer, object, parse, string } from '@bim-open-viewer/model';
 
 const door = object({ id: string(), width: integer() });
 const read = parse(door, { id: 'D1', width: 'wide' });
@@ -75,7 +75,7 @@ Compose what the user sees, in the one order that composition happens:
 ```ts
 import {
   deleteObjects, editLayer, resolveStyles, setOf, styleComposition, styleOf, styleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 const keys = ['a', 'b', 'c'];
 const layers = [editLayer('l1', 'Demolition', [deleteObjects(['a'])])];
@@ -95,7 +95,7 @@ detection to keep that cheap.
 Save and reopen a feature's state:
 
 ```ts
-import { emptyDocument, getSlice, integer, object, putSlice, stateSlice } from '@bim-open-toolkit/model';
+import { emptyDocument, getSlice, integer, object, putSlice, stateSlice } from '@bim-open-viewer/model';
 
 const clipping = stateSlice('clipping', 1, object({ planes: integer() }), { planes: 0 });
 const document = putSlice(emptyDocument(), clipping, { planes: 2 });
@@ -110,7 +110,7 @@ import {
   instanceRecords, instanceTable, joinTablesOn, known, objectKey, objectRef, reconcile, resolveStyles,
   rowsInSet, setKeys, setOf, stringColumn, styleComposition, styleOf, styleRule, tableFromRecord, text,
   unknownFacts, withColumn, type InstanceRecord, type ModelRef,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 const model: ModelRef = { id: 'tower', revision: '2026-09' };
 const door = (id: string) => objectRef(model, id);
@@ -169,7 +169,7 @@ joinTablesOn(rows, 'objectKey', schedule, 'objectKey', 'schedule.'); // 3 rows, 
 ## Tests
 
 ```
-npm test -w @bim-open-toolkit/model
+npm test -w @bim-open-viewer/model
 ```
 
 One test file per module, next to no fixtures, and no test touches the filesystem or a browser.

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import {
   defaultAppearance,
   f32Column,
@@ -10,7 +10,7 @@ import {
   table as makeTable,
   u32Column,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { colorOfRow } from '../src/instance-table.js';
 import { SceneBinding, type ModelRaycastHit } from '../src/scene-binding.js';
 import { updateColumns } from '../src/updates.js';

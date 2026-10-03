@@ -1,4 +1,4 @@
-import { InstancedGroup, MeshBuffers } from '@ara3d/viewer-core';
+import { InstancedGroup, MeshBuffers } from '@bim-open-viewer/core';
 
 /** A quad in the XY plane spanning [-1,1]^2 at z=0. */
 export const quad = (): MeshBuffers => ({

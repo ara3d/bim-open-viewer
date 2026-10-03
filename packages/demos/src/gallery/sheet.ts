@@ -6,8 +6,8 @@
 // and a slip in one track cannot stop the other. It is also what the DOM mirror falls back to for
 // the inspector, since it is already reachable by keyboard.
 
-import { cellAt, columnNames, type Table } from '@bim-open-toolkit/model';
-import type { PropertyRow, PropertySheet, PropertyValue, SheetTable } from '@bim-open-toolkit/ui-gratify';
+import { cellAt, columnNames, type Table } from '@bim-open-viewer/model';
+import type { PropertyRow, PropertySheet, PropertyValue, SheetTable } from '@bim-open-viewer/ui-gratify';
 import { valueStateColors } from './analytical.js';
 import { clear, el } from './elements.js';
 

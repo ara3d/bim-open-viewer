@@ -1,4 +1,4 @@
-import { parseBfastModel, readBimTable, type BimData, type RenderModel } from '@ara3d/viewer-loaders';
+import { parseBfastModel, readBimTable, type BimData, type RenderModel } from '@bim-open-viewer/loaders';
 import {
   boundsStride,
   colorStride,
@@ -17,7 +17,7 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   colorWord,
   entityWord,

@@ -3,7 +3,7 @@
 import {
   changeEvent, changedSlices, commandRegistry, diagnostic, disposable, failure, runCommand,
   type Command, type Disposable, type Listener, type Result, type Session, type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 export type FakeSession = Session & {
   readonly values: ReadonlyMap<string, unknown>;

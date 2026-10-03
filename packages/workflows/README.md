@@ -1,10 +1,10 @@
-# @bim-open-toolkit/workflows
+# @bim-open-viewer/workflows
 
 Pure result adapters for the ten review workflows in the product brief. Input tables go in; a typed
 result comes out carrying result tables, an exceptions table, style rules, object sets, overlay data,
 a suggested saved view and a recipe of the commands a demonstration dispatches.
 
-Nothing here renders, fetches or touches a browser. The only dependency is `@bim-open-toolkit/model`.
+Nothing here renders, fetches or touches a browser. The only dependency is `@bim-open-viewer/model`.
 
 ## What it is for
 
@@ -31,8 +31,8 @@ candidates that are still open, and stays visible in the result rather than bein
 ## Using one
 
 ```ts
-import { parse } from '@bim-open-toolkit/model';
-import { doorScheduleInputSchema, runDoorSchedule, exceptionRows, resultRows } from '@bim-open-toolkit/workflows';
+import { parse } from '@bim-open-viewer/model';
+import { doorScheduleInputSchema, runDoorSchedule, exceptionRows, resultRows } from '@bim-open-viewer/workflows';
 
 const input = parse(doorScheduleInputSchema, json);
 if (input.ok) {
@@ -49,7 +49,7 @@ if (input.ok) {
 Every workflow is also in the registry, which is what a generated tool descriptor or a gallery reads:
 
 ```ts
-import { workflows, describeWorkflows, runWorkflow } from '@bim-open-toolkit/workflows';
+import { workflows, describeWorkflows, runWorkflow } from '@bim-open-viewer/workflows';
 
 describeWorkflows(workflows);               // id, title, basis and input JSON schema for each
 runWorkflow(workflows, 'door-schedule', json);  // validates the input, then runs
@@ -76,7 +76,7 @@ say, and whether its demonstration is synthetic, source-backed or mixed.
 
 ## Tested
 
-`npm test -w @bim-open-toolkit/workflows`. Each workflow has a test that runs the adapter on the
+`npm test -w @bim-open-viewer/workflows`. Each workflow has a test that runs the adapter on the
 fixture in `test/expected/` and compares its result rows and exception rows exactly against the
 expected file. Those files were written by hand from the product brief before any adapter existed, so
 they are acceptance tests rather than a record of what the code happens to do; every correction made
@@ -85,7 +85,7 @@ to one is listed in `docs/CHECKPOINT-W.md` with its reason.
 The door schedule is additionally tested against a hand-made sample in the shape of a real
 BuildingModel workflow projection. No private artifact is read by any test.
 
-Several workflows are also run against `@bim-open-toolkit/synthetic`'s generators, which publish
+Several workflows are also run against `@bim-open-viewer/synthetic`'s generators, which publish
 their observations as model facts and their deliberate gaps as model coverage. Those tests assert
 that the exceptions are exactly the gaps the generator documents, so the two packages have to agree
 about what is missing rather than both being checked against the same hand-written numbers.

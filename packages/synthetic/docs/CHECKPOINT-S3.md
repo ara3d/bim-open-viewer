@@ -43,7 +43,7 @@ unchanged. Zero escape hatches.
 |---|---|
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | clean |
 | `npx eslint packages/synthetic` | clean |
-| `npm test -w @bim-open-toolkit/synthetic` | 14 files, 223 tests pass, 1.6 s (212 before, so 11 new) |
+| `npm test -w @bim-open-viewer/synthetic` | 14 files, 223 tests pass, 1.6 s (212 before, so 11 new) |
 | `npx tsc --noEmit -p packages/workflows/tsconfig.json` | clean, read-only |
 | `npx tsc --noEmit -p packages/testing/tsconfig.json` | clean, read-only |
 
@@ -74,7 +74,7 @@ model for "remove the ceilings and roofs to see inside"; hide the categories
 | Check | Runs | Wall time | Real defects caught | Friction | Verdict |
 |---|---|---|---|---|---|
 | `tsc -p packages/synthetic` | 4 | 12 s under load | 0 | none | **neutral** here — a small, typed change, so it confirmed rather than caught |
-| `npm test -w @bim-open-toolkit/synthetic` | 3 | 1.6 s, 223 tests | 0, but it is the check that proves the default output is unchanged, which is the acceptance criterion | none | **helpful** |
+| `npm test -w @bim-open-viewer/synthetic` | 3 | 1.6 s, 223 tests | 0, but it is the check that proves the default output is unchanged, which is the acceptance criterion | none | **helpful** |
 | `eslint packages/synthetic` | 2 | 8 s under load | 0 | costs more wall time than the whole test suite | **neutral** |
 | Fixture snapshots | 2 | under 1 s | 0 | `SYNTHETIC_UPDATE_SNAPSHOTS=1` rewrites all thirteen files, so adding one entry needs `vitest -t <name>` to leave the other twelve alone | **helpful**, with that caveat |
 | `tsc` on `workflows` and `testing` | 1 each | 20 s together | 0 | none | **helpful** — the only evidence the change is additive for callers |

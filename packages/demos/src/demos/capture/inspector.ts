@@ -5,8 +5,8 @@
 // took, so this sheet says so rather than printing a number it did not measure. The request is in
 // CHECKPOINT-D2.md.
 
-import { captureSlice, hudSlice } from '@bim-open-toolkit/features';
-import type { Session } from '@bim-open-toolkit/model';
+import { captureSlice, hudSlice } from '@bim-open-viewer/features';
+import type { Session } from '@bim-open-viewer/model';
 import {
   knownNumber,
   knownValue,
@@ -17,7 +17,7 @@ import {
   type PropertyRow,
   type PropertySheet,
   type PropertyValue,
-} from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/ui-gratify';
 import { openingNote } from './opening.js';
 import { captureSizeTitles, dataUrlBytes, lastCapture, sizeOfRecord } from './request.js';
 

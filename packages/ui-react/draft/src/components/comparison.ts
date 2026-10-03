@@ -6,7 +6,7 @@
 // is passed in as `unresolved` and is reported as such - never quietly resolved into an addition
 // and a removal, which is the mistake the product brief names.
 
-import type { Table } from '@bim-open-toolkit/model';
+import type { Table } from '@bim-open-viewer/model';
 import { cellText, tableColumns } from './table-rows.js';
 
 // What became of one key between the two revisions.

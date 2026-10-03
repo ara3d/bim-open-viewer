@@ -13,7 +13,7 @@ import {
   generateStressScene,
   type BuildingOptions,
   type StressOptions,
-} from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/synthetic';
 import { drawnTriangles, type SceneFixture } from './scene-fixture.js';
 
 // A building fixture from any options: its objects, its geometry and its two schedules.

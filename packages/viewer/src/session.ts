@@ -33,7 +33,7 @@ import {
   type Session,
   type SliceRegistry,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { commandBus, type CommandBus } from './command-bus.js';
 
 // The command name an event carries when a slice was written outside any command.

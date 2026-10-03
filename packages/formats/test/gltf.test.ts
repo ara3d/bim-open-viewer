@@ -1,4 +1,4 @@
-import { instanceTransform } from '@bim-open-toolkit/model';
+import { instanceTransform } from '@bim-open-viewer/model';
 import { describe, expect, it } from 'vitest';
 import { formatCode } from '../src/diagnostics.js';
 import { composeTrs, gltfCoordinates, nodeTransform, readGltfModel } from '../src/gltf.js';

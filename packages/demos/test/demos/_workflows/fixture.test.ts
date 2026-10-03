@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { geometryBounds, hasRepresentation, isEmptyBounds } from '@bim-open-toolkit/model';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { geometryBounds, hasRepresentation, isEmptyBounds } from '@bim-open-viewer/model';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import { emptyGeometry, syntheticFixture, tabularFixture, tabularModel } from '../../../src/demos/_workflows/fixture.js';
 import { boundsOfKeys, objectBounds } from '../../../src/demos/_workflows/bounds.js';
-import { objectKey } from '@bim-open-toolkit/model';
+import { objectKey } from '@bim-open-viewer/model';
 
 describe('the data a workflow demo opens', () => {
   it('opens a catalog fixture that has geometry as data already in memory', async () => {

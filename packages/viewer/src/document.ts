@@ -36,7 +36,7 @@ import {
   type ModelRef,
   type Result,
   type SceneDocument,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { ViewerSession } from './session.js';
 
 // The slice id the document's own model fingerprint is stored under. It belongs to no feature, and

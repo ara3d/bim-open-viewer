@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/formats: every supported file becomes one LoadedModel.
+// Public API of @bim-open-viewer/formats: every supported file becomes one LoadedModel.
 export * from './diagnostics.js';
 export * from './progress.js';
 export * from './properties.js';

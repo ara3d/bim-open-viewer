@@ -1,4 +1,4 @@
-import { type ModelRef, type NamedSet, type SavedView, type StyleRule } from '@bim-open-toolkit/model';
+import { type ModelRef, type NamedSet, type SavedView, type StyleRule } from '@bim-open-viewer/model';
 import { overlayRecord, type Overlay } from './overlay.js';
 import { modelRecord, namedSetRecord, styleRuleRecord } from './records.js';
 import { resultRecord, type ResultRecord, type ResultTable } from './values.js';

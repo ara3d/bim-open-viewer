@@ -2,7 +2,7 @@
  * Two ways to say which rendered instances belong to which model object.
  *
  * The alpha keeps one frozen JavaScript object per rendered instance and three
- * maps over them; see `viewer/packages/visualization/src/render.ts`, where
+ * maps over them; see `packages/visualization/src/render.ts`, where
  * `RenderBinding` holds `models`, `objects` and `instances`. This module
  * reproduces that layout closely enough to measure it, and puts the columnar
  * alternative beside it: object ordinals, a compressed row index, and no
@@ -11,7 +11,7 @@
  * Nothing here is imported by production code. It exists so the two layouts can
  * be built at the same sizes and compared for build time and memory.
  */
-import type { InstancedGroup } from '@ara3d/viewer-core';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 import type { SyntheticScene } from './scene.js';
 
 /** Mirrors the alpha's `ObjectRef`. */

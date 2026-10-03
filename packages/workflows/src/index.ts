@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/workflows: pure result adapters and recipes for the review
+// Public API of @bim-open-viewer/workflows: pure result adapters and recipes for the review
 // workflows. Input tables in, typed results plus rules, sets, overlays and views out. No rendering,
 // no fetching, no browser.
 export * from './values.js';

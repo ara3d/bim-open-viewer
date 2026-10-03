@@ -6,9 +6,9 @@
 // place with no members, so unpinning is one more `sets.define` rather than a removal that fails
 // when there is nothing to remove.
 
-import { findSet, setsSlice } from '@bim-open-toolkit/features';
-import type { ObjectKey, Session } from '@bim-open-toolkit/model';
-import type { ObjectHit } from '@bim-open-toolkit/render';
+import { findSet, setsSlice } from '@bim-open-viewer/features';
+import type { ObjectKey, Session } from '@bim-open-viewer/model';
+import type { ObjectHit } from '@bim-open-viewer/render';
 import { hideWallsRule, hideWallsRuleId, inspectIndex, type CommandCall } from './building.js';
 
 // The set the demo pins the object it is reading into. It holds one member, or none.

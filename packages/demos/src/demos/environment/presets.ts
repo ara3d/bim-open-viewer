@@ -4,8 +4,8 @@
 // is in force by comparing the settings it reads back. A patch alone could not answer that: two
 // different patches can leave the model looking the same, and the slice keeps settings, not patches.
 
-import { withPatch, type EnvironmentPatch } from '@bim-open-toolkit/features';
-import { defaultEnvironment, type EnvironmentSettings } from '@bim-open-toolkit/render';
+import { withPatch, type EnvironmentPatch } from '@bim-open-viewer/features';
+import { defaultEnvironment, type EnvironmentSettings } from '@bim-open-viewer/render';
 
 export type PresetName = 'studio' | 'overcast' | 'night' | 'plan';
 

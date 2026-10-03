@@ -7,8 +7,8 @@
 // The chip is a part defined here because the ui-gratify widget kit has not been published; when
 // `Segmented`, `Toggle` and `Button` land they replace it and the panel keeps its shape.
 
-import { captureSlice, hudSlice } from '@bim-open-toolkit/features';
-import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-toolkit/ui-gratify';
+import { captureSlice, hudSlice } from '@bim-open-viewer/features';
+import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-viewer/ui-gratify';
 import { Label, Press, Row, Stack, part, surface, v, type AppSpec, type Element } from 'gratify';
 import {
   captureRequestFor,

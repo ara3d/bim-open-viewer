@@ -9,7 +9,7 @@ import {
   success,
   type Disposable,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   bindSurfaceInput,
   renderLoop,

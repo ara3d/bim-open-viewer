@@ -8,9 +8,9 @@
 // A headless session has no scene and no views, and `viewerAccess.get` returns undefined there.
 // That is the honest answer, and it is what lets every command in this package be tested in Node.
 
-import type { Bounds, ObjectKey, ObjectSet, Appearance, ViewState } from '@bim-open-toolkit/model';
-import type { NavMode } from '@bim-open-toolkit/interact';
-import type { ObjectHit, Ray, SceneBinding } from '@bim-open-toolkit/render';
+import type { Bounds, ObjectKey, ObjectSet, Appearance, ViewState } from '@bim-open-viewer/model';
+import type { NavMode } from '@bim-open-viewer/interact';
+import type { ObjectHit, Ray, SceneBinding } from '@bim-open-viewer/render';
 import { service } from './services.js';
 
 // The models bound to the renderer.

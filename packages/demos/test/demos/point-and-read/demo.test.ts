@@ -11,11 +11,11 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { Runtime } from 'gratify';
-import { appearanceCommands, appearanceSlice, editsCommands, setsCommands, setsSlice } from '@bim-open-toolkit/features';
-import { loadModel, type ModelProperties } from '@bim-open-toolkit/formats';
-import type { ModelData, ObjectKey, Observation } from '@bim-open-toolkit/model';
-import { sheetCoverage, type PropertySheet } from '@bim-open-toolkit/ui-gratify';
-import type { ObjectHit } from '@bim-open-toolkit/render';
+import { appearanceCommands, appearanceSlice, editsCommands, setsCommands, setsSlice } from '@bim-open-viewer/features';
+import { loadModel, type ModelProperties } from '@bim-open-viewer/formats';
+import type { ModelData, ObjectKey, Observation } from '@bim-open-viewer/model';
+import { sheetCoverage, type PropertySheet } from '@bim-open-viewer/ui-gratify';
+import type { ObjectHit } from '@bim-open-viewer/render';
 import { snowdonFile } from '../../../src/demos/_shared/snowdon.js';
 import {
   documentOf,

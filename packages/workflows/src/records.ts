@@ -9,7 +9,7 @@ import {
   type SavedView,
   type StyleRule,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { resultRecord, type ResultRecord } from './values.js';
 
 // A model revision as a plain record, which is what an open-model command input carries.

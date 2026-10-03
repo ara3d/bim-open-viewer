@@ -11,13 +11,13 @@ import {
   isEmptyBounds,
   type Bounds,
   type CoordinateContext,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   instanceTransformFinite,
   readBFast,
   readRenderModelTables,
   type RenderModelTables,
-} from '@ara3d/viewer-loaders';
+} from '@bim-open-viewer/loaders';
 import { bfastCoordinates } from './bfast.js';
 import { colorWord, flagsWord, hiddenFlag, instanceWords, meshSliceInts, meshWord } from './bfast-layout.js';
 import { fail, formatCode } from './diagnostics.js';

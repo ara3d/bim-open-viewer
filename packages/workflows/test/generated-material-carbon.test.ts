@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultCarbonOptions, generateCarbon, type Carbon } from '@bim-open-toolkit/synthetic';
-import { rowOf, type CellValue, type ModelRef } from '@bim-open-toolkit/model';
+import { defaultCarbonOptions, generateCarbon, type Carbon } from '@bim-open-viewer/synthetic';
+import { rowOf, type CellValue, type ModelRef } from '@bim-open-viewer/model';
 import {
   runMaterialCarbon,
   type CarbonFactor,

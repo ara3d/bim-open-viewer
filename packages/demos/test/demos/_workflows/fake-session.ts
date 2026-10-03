@@ -18,7 +18,7 @@ import {
   type Result,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   animationCommands,
   appearanceCommands,
@@ -26,7 +26,7 @@ import {
   navigationCommands,
   overlayCommands,
   setsCommands,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 
 // One dispatch a demo made: what it ran, what it was given, and whether it was accepted.
 export type Dispatched = { readonly name: string; readonly input: unknown; readonly ok: boolean };

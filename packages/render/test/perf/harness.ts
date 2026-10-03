@@ -6,7 +6,7 @@
 // Assertions are on ratios between cases, never on absolute times, so they hold on a slower
 // machine.
 //
-// This mirrors the protocol of the instance-update study in `@bim-open-toolkit/testing`. It is
+// This mirrors the protocol of the instance-update study in `@bim-open-viewer/testing`. It is
 // copied rather than imported because that package is another track's fence and is not a
 // dependency of this one; the duplication is noted in docs/CHECKPOINT-R.md.
 
@@ -18,7 +18,7 @@ import {
   type Geometry,
   type Mesh,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { buildInstanceTable, type InstanceTable } from '../../src/instance-table.js';
 
 // One measured case: untimed setup, then timed work that returns a number so it cannot be removed.

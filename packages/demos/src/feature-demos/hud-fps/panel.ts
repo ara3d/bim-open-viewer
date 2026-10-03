@@ -2,8 +2,8 @@
 // intervals, both pure functions of a reading the `hud` feature wrote and a run of intervals the
 // page kept. Nothing here reads a clock, a canvas or a session.
 
-import type { Vec2 } from '@bim-open-toolkit/model';
-import { frameBudgetMs, type HudData } from '@bim-open-toolkit/render';
+import type { Vec2 } from '@bim-open-viewer/model';
+import { frameBudgetMs, type HudData } from '@bim-open-viewer/render';
 import {
   boxCorners,
   hudPalette,

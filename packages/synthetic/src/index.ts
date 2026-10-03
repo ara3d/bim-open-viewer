@@ -1,5 +1,5 @@
-// Public API of @bim-open-toolkit/synthetic: deterministic generators for demonstration data.
-// Geometry, object, table and fact types come from @bim-open-toolkit/model and are not re-exported.
+// Public API of @bim-open-viewer/synthetic: deterministic generators for demonstration data.
+// Geometry, object, table and fact types come from @bim-open-viewer/model and are not re-exported.
 
 // Seeded pseudo-random generator: pure functions over an explicit, immutable state value.
 export { float, gaussian, int, next, pick, range, seed, shuffle, type Draw, type Rng } from './prng.js';

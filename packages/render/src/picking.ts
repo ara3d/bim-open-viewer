@@ -9,7 +9,7 @@
 // A hit is reported against an object key, never against a group and slot, because those are this
 // package's bookkeeping and change when a model is rebuilt.
 
-import { MIN_VISIBLE_ALPHA } from '@ara3d/viewer-core';
+import { MIN_VISIBLE_ALPHA } from '@bim-open-viewer/core';
 import {
   colorStride,
   normalizeVec3,
@@ -18,7 +18,7 @@ import {
   type Mesh,
   type ObjectKey,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { isClipped, type ClipPlane } from './clipping.js';
 import { alphaChannel, type InstanceTable } from './instance-table.js';
 

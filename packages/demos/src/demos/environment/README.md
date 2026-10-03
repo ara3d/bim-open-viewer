@@ -2,7 +2,7 @@
 
 **Question.** Make it readable: light, ground, grid.
 
-**Basis.** Synthetic. The model is the `building` fixture from `@bim-open-toolkit/synthetic`, generated
+**Basis.** Synthetic. The model is the `building` fixture from `@bim-open-viewer/synthetic`, generated
 from a fixed seed. Nothing here comes from a real project, and no lighting value claims to match a
 real one; the presets are review settings, not a physical simulation.
 
@@ -19,7 +19,7 @@ axes are drawn, the up axis, and the grid's spacing and emphasis. A grid spacing
 missing with the reason — zero means render chooses the spacing from the size of the model, and
 printing it as the number zero would be a lie about what was configured.
 
-**The up axis.** Every preset states `z`, which is what `@bim-open-toolkit/render` defaults to and
+**The up axis.** Every preset states `z`, which is what `@bim-open-viewer/render` defaults to and
 what the synthetic building is built in. Choosing a preset therefore never leaves the grid lying in
 the plane the previous one used.
 

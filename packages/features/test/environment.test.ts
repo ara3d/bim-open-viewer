@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { emptyBounds, emptyDocument, getSlice, putSlice, type Bounds } from '@bim-open-toolkit/model';
-import { defaultEnvironment, type EnvironmentDrawing, type LineSegment } from '@bim-open-toolkit/render';
+import { emptyBounds, emptyDocument, getSlice, putSlice, type Bounds } from '@bim-open-viewer/model';
+import { defaultEnvironment, type EnvironmentDrawing, type LineSegment } from '@bim-open-viewer/render';
 import {
   boundsLines,
   defaultEnvironmentState,
@@ -10,7 +10,7 @@ import {
   environmentSlice,
   withPatch,
 } from '../src/environment.js';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { fakeSession } from './support/fake-session.js';
 
 const bounds: Bounds = { min: [0, 0, 0], max: [10, 10, 4] };

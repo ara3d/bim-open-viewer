@@ -13,7 +13,7 @@ import {
   translation,
   type Matrix4,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One of the three coordinate axes.
 export type Axis = 'x' | 'y' | 'z';

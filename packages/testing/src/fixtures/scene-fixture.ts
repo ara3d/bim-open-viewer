@@ -12,7 +12,7 @@ import {
   type ModelData,
   type ObjectRecord,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   digestHex,
   emptyDigest,

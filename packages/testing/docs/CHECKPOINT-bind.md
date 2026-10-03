@@ -78,8 +78,8 @@ Run from `viewer/`, 2026-09-07:
 |---|---|
 | `npx tsc --noEmit -p packages/testing/tsconfig.json` | pass, no output |
 | `npx eslint packages/testing` | pass, no output |
-| `npm test -w @bim-open-toolkit/testing` | pass, 5 files, 28 tests, 1.3 s |
-| `npm run perf -w @bim-open-toolkit/testing` | 6 files, 13 tests, 351 s: this track's 2 files and 4 tests passed; 2 tests failed outside the fence (see below) |
+| `npm test -w @bim-open-viewer/testing` | pass, 5 files, 28 tests, 1.3 s |
+| `npm run perf -w @bim-open-viewer/testing` | 6 files, 13 tests, 351 s: this track's 2 files and 4 tests passed; 2 tests failed outside the fence (see below) |
 | `NODE_OPTIONS=--expose-gc npx vitest run --config vitest.perf.config.ts test/perf/bindings` | pass, 2 files, 4 tests; numbers in `docs/normalized-bindings.md` |
 | the same, repeated while three other tracks were running | the 10,000 instance case of the synthetic benchmark failed once at five repetitions; fixed by raising it to 25, and the whole run took 210 s instead of 30 s |
 | the same with `SNOWDON_BFAST_PATH` pointing at a missing file | the reference-model file skips with a printed reason; the synthetic benchmark still runs |
@@ -137,8 +137,8 @@ None.
 
 ## Requests to the supervisor
 
-1. `viewer/packages/testing/package.json` does not declare `@ara3d/viewer-core`, `@ara3d/viewer-loaders`,
-   `@bim-open-toolkit/visualization` or `three`. They resolve through the workspace root, so tests and
+1. `viewer/packages/testing/package.json` does not declare `@bim-open-viewer/core`, `@bim-open-viewer/loaders`,
+   `@bim-open-viewer/visualization` or `three`. They resolve through the workspace root, so tests and
    typecheck pass, but the dependency is implicit. Add them when the package is next edited.
 2. `viewer/packages/testing/src/index.ts` is supervisor-owned and still exports nothing, so
    `src/bindings/index.ts` is reachable only by path. Export it when the shape is accepted, or move the
@@ -146,7 +146,7 @@ None.
 3. `viewer/packages/testing/vitest.perf.config.ts` does not expose a garbage collector, so heap figures
    need `NODE_OPTIONS=--expose-gc` on the command line. Adding `--expose-gc` to the perf pool options
    would make the memory assertions run by default.
-4. Ask the loaders session to export `writeBFast` and `bytesOf` from `@ara3d/viewer-loaders`. They exist
+4. Ask the loaders session to export `writeBFast` and `bytesOf` from `@bim-open-viewer/loaders`. They exist
    in `src/bfast-writer.ts` but are not in the package's exports, so a downstream package cannot build a
    BFAST fixture file. This track worked around it by building `RenderModel` objects directly, which is
    fine for the binding step but not for testing the container reader.

@@ -6,8 +6,8 @@
 // on - the semantics tree, the world point the panel is placed at, and the doc as it stands - and
 // not the `Hosted` a real host returns.
 
-import { diagnostic, failure, type Result, type Session, type Vec3 } from '@bim-open-toolkit/model';
-import type { AnyHudPanel, HudPanel, Hosted } from '@bim-open-toolkit/ui-gratify';
+import { diagnostic, failure, type Result, type Session, type Vec3 } from '@bim-open-viewer/model';
+import type { AnyHudPanel, HudPanel, Hosted } from '@bim-open-viewer/ui-gratify';
 import { Runtime, type SemanticsNode } from 'gratify';
 
 // What a test can see of a running panel.

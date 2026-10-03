@@ -1,16 +1,16 @@
 // The impure half of the page: a stage, a scene binding, the settings panel, navigation, a frame
 // loop and a status line. Everything above this file is a pure function of its input.
 
-import { defaultView, emptyBounds, type Bounds, type Result } from '@bim-open-toolkit/model';
-import { diagnostic, failure, success } from '@bim-open-toolkit/model';
-import { attachNavigation, fitState, navSession, navState, type NavController } from '@bim-open-toolkit/interact';
+import { defaultView, emptyBounds, type Bounds, type Result } from '@bim-open-viewer/model';
+import { diagnostic, failure, success } from '@bim-open-viewer/model';
+import { attachNavigation, fitState, navSession, navState, type NavController } from '@bim-open-viewer/interact';
 import {
   FrameTimer,
   SceneBinding,
   applyAmbientOcclusion,
   type AmbientOcclusionSettings,
   type SceneStatistics,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { defaultValues, settingsFromValues, type ControlKey } from './controls.js';
 import { defaultFixtureName, demoFixture, isFixtureName, fixtureNames, type FixtureName } from './fixtures.js';
 import { buildPanel } from './panel.js';

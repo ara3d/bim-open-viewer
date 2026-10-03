@@ -2,7 +2,7 @@
 // read back as data from a made-up `HudData`. Nothing here touches a canvas.
 
 import { describe, expect, it } from 'vitest';
-import { frameBudgetMs, hudData, type DurationStats, type HudData } from '@bim-open-toolkit/render';
+import { frameBudgetMs, hudData, type DurationStats, type HudData } from '@bim-open-viewer/render';
 import {
   boxCorners,
   hudPalette,

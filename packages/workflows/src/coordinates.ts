@@ -9,7 +9,7 @@ import {
   type Registration,
   type Schema,
   type UpAxis,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { enumeration } from './schema-tools.js';
 
 // Every length unit a frame can report in, including the honest one.

@@ -5,8 +5,8 @@
 // the viewer so a demo's commands exist before anything dispatches one; the fixture is opened next,
 // so `start` can read what was opened; `start` runs last and returns what undoes it.
 
-import { diagnostic, failure, success, type Disposable, type Result } from '@bim-open-toolkit/model';
-import type { PropertyRow } from '@bim-open-toolkit/ui-gratify';
+import { diagnostic, failure, success, type Disposable, type Result } from '@bim-open-viewer/model';
+import type { PropertyRow } from '@bim-open-viewer/ui-gratify';
 import { chapters, type Demo, type DemoFixture, type GalleryViewer } from './contracts.js';
 import { button, clear, el, link } from './elements.js';
 import { basisLabel, chosenFixture, fixtureChoices } from './fixtures.js';

@@ -12,7 +12,7 @@ import {
   type ObjectKey,
   type SavedView,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // The key of one object of a model revision. Workflow inputs carry ids; results carry keys.
 export const keyOf = (model: ModelRef, objectId: string): ObjectKey => objectKey(objectRef(model, objectId));

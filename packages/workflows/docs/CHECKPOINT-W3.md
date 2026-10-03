@@ -25,7 +25,7 @@ always a valid `IsoDate` — but the rule is in place and documented at the call
 From `viewer/`:
 - `npx tsc --noEmit -p packages/workflows/tsconfig.json` — clean.
 - `npx eslint packages/workflows` — clean.
-- `npm test -w @bim-open-toolkit/workflows` — 135 tests, 135 passed (was 134/135 before this fence).
+- `npm test -w @bim-open-viewer/workflows` — 135 tests, 135 passed (was 134/135 before this fence).
 
 No conflict with M5's in-flight edit to `src/observation.ts`; not touched here, no retry needed.
 

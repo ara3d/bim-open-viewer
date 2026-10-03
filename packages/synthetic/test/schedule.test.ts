@@ -1,7 +1,7 @@
 // Observations rendered as columns: every value kind reads, and a gap never reads as a value.
 
 import { describe, expect, it } from 'vitest';
-import { bounds, conflicting, flag, known, missing, quantity, reference, text, type Bounds, type ObjectRef } from '@bim-open-toolkit/model';
+import { bounds, conflicting, flag, known, missing, quantity, reference, text, type Bounds, type ObjectRef } from '@bim-open-viewer/model';
 import {
   conflictOf,
   evidenceOf,

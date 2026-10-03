@@ -8,7 +8,7 @@ import {
   noMesh,
   transformStride,
   type Geometry,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   boundsOfScene,
   colorInScene,

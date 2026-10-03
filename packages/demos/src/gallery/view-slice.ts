@@ -21,7 +21,7 @@ import {
   type StateSlice,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 export const vec3Schema: Schema<Vec3> = tuple(number(), number(), number());
 

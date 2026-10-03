@@ -2,7 +2,7 @@
 // what colour everything is.
 //
 // These are features like any other - an id, a slice, commands, no privileged access - so a host
-// that wants richer ones from `@bim-open-toolkit/features` passes its own list to `createViewer`.
+// that wants richer ones from `@bim-open-viewer/features` passes its own list to `createViewer`.
 // They are here because the beginner path needs them: without a camera command there is nothing to
 // run on line three, and without an appearance slice a saved scene restores nothing worth looking
 // at.
@@ -38,8 +38,8 @@ import {
   type Result,
   type Session,
   type StyleRule,
-} from '@bim-open-toolkit/model';
-import { navModes, type NavMode } from '@bim-open-toolkit/interact';
+} from '@bim-open-viewer/model';
+import { navModes, type NavMode } from '@bim-open-viewer/interact';
 import { viewerAccess, type ViewerAccess } from './access.js';
 import { styleRuleSchema, viewStateSchema } from './schemas.js';
 

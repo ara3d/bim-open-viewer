@@ -5,12 +5,12 @@ import {
   styleRule,
   type ObjectKey,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { createViewer, type Viewer } from '../src/create-viewer.js';
 import { appearanceSlice, modelsSlice, viewSlice } from '../src/core-features.js';
 import { fakeRenderer, testFrames, type FakeRenderer } from './support/fake-renderer.js';
 import { twoObjectModel } from './support/model-fixture.js';
-import { SceneObject } from '@ara3d/viewer-core';
+import { SceneObject } from '@bim-open-viewer/core';
 import type { MeshStandardMaterial } from 'three';
 
 const started = (): {

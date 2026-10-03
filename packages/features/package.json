@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/features",
+  "name": "@bim-open-viewer/features",
   "version": "0.1.0",
   "description": "One Feature module per capability, each owning its commands, state slice, schema and optional render hook.",
   "license": "MIT",
@@ -21,13 +21,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0",
-    "@bim-open-toolkit/render": "0.1.0",
-    "@bim-open-toolkit/interact": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0",
+    "@bim-open-viewer/render": "0.1.0",
+    "@bim-open-viewer/interact": "0.1.0"
   },
   "devDependencies": {
-    "@bim-open-toolkit/viewer": "0.1.0",
-    "@bim-open-toolkit/testing": "0.1.0",
-    "@bim-open-toolkit/synthetic": "0.1.0"
+    "@bim-open-viewer/viewer": "0.1.0",
+    "@bim-open-viewer/testing": "0.1.0",
+    "@bim-open-viewer/synthetic": "0.1.0"
   }
 }

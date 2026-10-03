@@ -11,8 +11,8 @@ import {
   leastResolutionScale,
   mostSamples,
   type AmbientOcclusionSettings,
-} from '@bim-open-toolkit/render';
-import { diagnostic, failure, type Result } from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/render';
+import { diagnostic, failure, type Result } from '@bim-open-viewer/model';
 
 // A setting the panel shows: a switch, a choice between named values, or a number on a slider.
 export type ControlSpec =

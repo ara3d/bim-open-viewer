@@ -1,4 +1,4 @@
-import { diagnostic, note, warning, type Diagnostic, type DiagnosticPath } from '@bim-open-toolkit/model';
+import { diagnostic, note, warning, type Diagnostic, type DiagnosticPath } from '@bim-open-viewer/model';
 
 // Every diagnostic this package reports, so a caller can branch on a code instead of a message.
 export const formatCode = {

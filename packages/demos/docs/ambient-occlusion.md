@@ -1,6 +1,6 @@
 # Ambient occlusion demo
 
-`viewer/packages/demos/ambient-occlusion.html`, served by `vite.ao.config.mjs` on port 5177.
+`packages/demos/ambient-occlusion.html`, served by `vite.ao.config.mjs` on port 5177.
 
 ```
 cd viewer
@@ -63,4 +63,4 @@ reports, the panel round-trips the render package's default and refuses what it 
 statistics come out as expected. `page.test.ts` opens the page in a headless Edge or Chrome with
 software WebGL and measures the drawing buffer: the shaded picture with the pass is darker than
 without it, and the occlusion term has both open and enclosed pixels. It skips with a printed
-reason when no browser launches. Screenshots go to `viewer/artifacts/ambient-occlusion/`.
+reason when no browser launches. Screenshots go to `artifacts/ambient-occlusion/`.

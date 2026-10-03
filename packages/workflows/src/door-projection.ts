@@ -16,7 +16,7 @@ import {
   type ModelRef,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { type DoorScheduleInput, type ScheduleDoor } from './01-door-schedule.js';
 import { type ObservationJson } from './observation.js';
 import { enumeration } from './schema-tools.js';

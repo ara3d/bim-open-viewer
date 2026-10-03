@@ -17,7 +17,7 @@ import {
   type ObjectRecord,
   type UpAxis,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   layoutOffsets,
   levelAt,
@@ -25,7 +25,7 @@ import {
   noLayout,
   placementBounds,
   placementsOf,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 
 // Which arrangement a page is showing.
 export type SeparateLayout =

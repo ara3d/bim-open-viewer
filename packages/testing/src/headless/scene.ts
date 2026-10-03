@@ -12,8 +12,8 @@
 // otherwise, so a model whose loader carries only the columns - BFAST, the default format - builds
 // the same scene as one carrying records.
 
-import { InstancedGroup, ViewerScene, defaultMaterial, sceneBounds, type Bounds3, type MaterialConfig, type MeshBuffers } from '@ara3d/viewer-core';
-import { colorStride, meshAt, meshCount, noMesh, transformStride, type Geometry, type Mesh } from '@bim-open-toolkit/model';
+import { InstancedGroup, ViewerScene, defaultMaterial, sceneBounds, type Bounds3, type MaterialConfig, type MeshBuffers } from '@bim-open-viewer/core';
+import { colorStride, meshAt, meshCount, noMesh, transformStride, type Geometry, type Mesh } from '@bim-open-viewer/model';
 
 // A built scene, and every mapping needed to talk about it in terms of instance rows and objects.
 export type HeadlessScene = {

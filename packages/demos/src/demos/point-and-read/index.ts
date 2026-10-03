@@ -14,7 +14,7 @@ import {
   editsFeature,
   setsFeature,
   setsSlice,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import {
   coverageOf,
   diagnostic,
@@ -26,7 +26,7 @@ import {
   type ObjectKey,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import { snowdonThenSynthetic } from '../_shared/snowdon.js';
 import type { Demo, GalleryViewer } from '../../gallery/contracts.js';
@@ -140,6 +140,6 @@ export const demo: Demo = {
   start,
   ready: pointAndReadReady,
   report: pointAndReadReport,
-  source: 'viewer/packages/demos/src/demos/point-and-read',
+  source: 'packages/demos/src/demos/point-and-read',
   verify: 'npx vitest run --root packages/demos test/demos/point-and-read',
 };

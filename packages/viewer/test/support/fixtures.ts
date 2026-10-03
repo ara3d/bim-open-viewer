@@ -13,7 +13,7 @@ import {
   type Result,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A counter slice: the smallest thing a feature can own.
 export const counterSlice = stateSlice('test.counter', 1, object({ count: integer() }), { count: 0 });

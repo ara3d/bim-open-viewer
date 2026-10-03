@@ -18,8 +18,8 @@ import {
   type ObjectKey,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
-import { appearanceSlice, resolveAppearance, setsSlice } from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/model';
+import { appearanceSlice, resolveAppearance, setsSlice } from '@bim-open-viewer/features';
 
 // What showing a group does to everything else.
 export type ShowMode = 'isolate' | 'ghost' | 'hide';

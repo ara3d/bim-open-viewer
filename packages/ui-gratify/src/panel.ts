@@ -2,8 +2,8 @@
 // transparent canvas sized to what it drew, placed at a corner, an edge, or over a world point the
 // caller projects. Nothing here reaches into the viewer: the caller supplies the projection, which
 // is how the same code serves the gallery, a demo and a test.
-import type { Session, Vec3 } from '@bim-open-toolkit/model';
-import { failure, success, type Result } from '@bim-open-toolkit/model';
+import type { Session, Vec3 } from '@bim-open-viewer/model';
+import { failure, success, type Result } from '@bim-open-viewer/model';
 import type { AppSpec } from 'gratify';
 import type { AnyHudPanel, Hosted, HudPanel, HudPlace, PanelMount } from './contracts.js';
 import { hostSurface } from './host.js';

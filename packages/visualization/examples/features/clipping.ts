@@ -1,4 +1,4 @@
-import { sceneBounds } from '@ara3d/viewer-core';
+import { sceneBounds } from '@bim-open-viewer/core';
 import { applyClipping, createSectionPlanes } from '../../src/clipping.js';
 import type { Vec3 } from '../../src/contracts.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

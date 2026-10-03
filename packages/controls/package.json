@@ -1,5 +1,5 @@
 {
-  "name": "@ara3d/viewer-controls",
+  "name": "@bim-open-viewer/controls",
   "version": "0.1.0",
   "description": "Interaction for the Ara 3D viewer: orbit camera navigation, picking/selection with typed events, and section planes. Owns no scene content.",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "@ara3d/viewer-core": "^0.1.0",
+    "@bim-open-viewer/core": "^0.1.0",
     "three": ">=0.180.0"
   }
 }

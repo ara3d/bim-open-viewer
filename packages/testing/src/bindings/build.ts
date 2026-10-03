@@ -9,8 +9,8 @@
  * - converting the up axis is a bulk pass over the group transform buffers,
  * - filling the representation columns is three integer writes per instance.
  */
-import { InstancedGroup } from '@ara3d/viewer-core';
-import type { BosGroupEntities } from '@ara3d/viewer-loaders';
+import { InstancedGroup } from '@bim-open-viewer/core';
+import type { BosGroupEntities } from '@bim-open-viewer/loaders';
 import { Matrix4 as ThreeMatrix4 } from 'three';
 import { buildObjectTable, type ObjectTable } from './object-table.js';
 import { transformFloats, type ColumnarBinding, type RepresentationTable } from './representation-table.js';

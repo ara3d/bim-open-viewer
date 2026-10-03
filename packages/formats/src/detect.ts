@@ -1,4 +1,4 @@
-import { failure, success, type Result } from '@bim-open-toolkit/model';
+import { failure, success, type Result } from '@bim-open-viewer/model';
 import { formatCode, formatDiagnostic, formatNote } from './diagnostics.js';
 import type { ModelFormat } from './loaded-model.js';
 

@@ -40,7 +40,7 @@ import {
   type Session,
   type StateSlice,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   checkOverlays,
   noOverlays,
@@ -56,7 +56,7 @@ import {
   type OverlayLayer,
   type OverlayState,
   type OverlayStyle,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 
 const vec3Schema: Schema<Vec3> = tuple(number(), number(), number());
 const colorSchema: Schema<Color> = tuple(number(), number(), number());

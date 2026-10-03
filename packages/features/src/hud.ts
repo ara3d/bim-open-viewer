@@ -33,7 +33,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   DurationLog,
   hudData,
@@ -46,7 +46,7 @@ import {
   type HudData,
   type InstanceTable,
   type SceneStatistics,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { navigationSlice } from './navigation-aids.js';
 
 // One sample: render's own HUD data, when it was taken, and the storey the camera was sent to.

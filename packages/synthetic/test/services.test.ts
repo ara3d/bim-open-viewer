@@ -1,7 +1,7 @@
 // The services network: determinism, topology that closes, and the gaps that must survive.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, coverageOf, noMesh, stringAt, type Table } from '@bim-open-toolkit/model';
+import { columnOf, coverageOf, noMesh, stringAt, type Table } from '@bim-open-viewer/model';
 import { defaultServicesOptions, generateServices } from '../src/services.js';
 
 // The strings of one column, or an empty list when the column is not a string column.

@@ -19,7 +19,7 @@ import {
   hudSlice,
   navigationAidsFeature,
   type CaptureRecord,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import {
   disposable,
   failure,
@@ -28,8 +28,8 @@ import {
   type Disposable,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
-import { pngFormat } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { pngFormat } from '@bim-open-viewer/render';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo, GalleryViewer } from '../../gallery/contracts.js';
 import { snowdonThenSynthetic } from '../_shared/snowdon.js';
@@ -138,6 +138,6 @@ export const demo: Demo = {
   start: startCapture,
   ready: captureReady,
   report: captureReport,
-  source: 'viewer/packages/demos/src/demos/capture',
+  source: 'packages/demos/src/demos/capture',
   verify: 'npx vitest run --root packages/demos test/demos/capture',
 };

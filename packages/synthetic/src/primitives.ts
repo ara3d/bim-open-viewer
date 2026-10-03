@@ -6,7 +6,7 @@
 
 import { addFlatQuad, addFlatTriangle, addQuad, build, builder, type MeshBuilder, type ShadedMesh } from './mesh-builder.js';
 import { signedArea, triangulate, type Vec2 } from './triangulate.js';
-import type { Vec3 } from '@bim-open-toolkit/model';
+import type { Vec3 } from '@bim-open-viewer/model';
 
 // Rejects a dimension that would produce a degenerate mesh.
 function positive(name: string, value: number): number {

@@ -2,7 +2,7 @@
 // alpha renderer's object-allocating implementation, or the comparison of the two
 // in transform-updates.perf.ts measures two different computations.
 import { describe, expect, it } from 'vitest';
-import { ViewerScene, sceneBounds, groupBounds } from '@ara3d/viewer-core';
+import { ViewerScene, sceneBounds, groupBounds } from '@bim-open-viewer/core';
 import {
   BOX_NUMBERS, allGroups, emptyBoxes, groupsOfRows, localBoxes, recomputeGroupBoxes, unionBoxes,
 } from '../../src/perf/bounds.js';

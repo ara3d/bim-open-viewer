@@ -33,7 +33,7 @@ import {
   type Session,
   type StateSlice,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   applyClipping,
   boxPlanes,
@@ -42,7 +42,7 @@ import {
   type ClipPlane,
   type ClipRegion,
   type ClippingTarget,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import type { Level } from './navigation-aids.js';
 
 // The section in force and whether it is applied. Clearing keeps the slice and empties the region,

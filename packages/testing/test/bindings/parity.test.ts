@@ -9,7 +9,7 @@
  * differ in the digits no renderer ever reads. The columnar table keeps only
  * the drawn value.
  */
-import { bfastToGroups } from '@ara3d/viewer-loaders';
+import { bfastToGroups } from '@bim-open-viewer/loaders';
 import { describe, expect, it } from 'vitest';
 import { buildAlphaBindings } from '../../src/bindings/alpha-reference.js';
 import { buildColumnarBinding, type SourceUp } from '../../src/bindings/build.js';

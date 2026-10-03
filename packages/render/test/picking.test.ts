@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { identityMatrix, type Matrix4, type Vec3 } from '@bim-open-toolkit/model';
+import { identityMatrix, type Matrix4, type Vec3 } from '@bim-open-viewer/model';
 import { boxPlanes } from '../src/clipping.js';
 import { buildInstanceTable } from '../src/instance-table.js';
 import {

@@ -7,7 +7,7 @@
 // `BfastModel.skippedInstances` lists their indices, and the conversion and load
 // results carry `skippedInstances` as a count, for a status line to show.
 
-import { InstancedGroup, type MeshBuffers } from '@ara3d/viewer-core';
+import { InstancedGroup, type MeshBuffers } from '@bim-open-viewer/core';
 import { readBFast } from './bfast.js';
 import { readRenderModel, instanceCount, meshCount, instanceMeshIndex, instanceEntityIndex, instanceHidden, instanceColor, instanceMatrix, instanceTransformFinite, type RenderModel } from './renderModel.js';
 import type { BosConvertResult } from './bos-geometry.js';
@@ -101,7 +101,7 @@ export function bfastToGroups(model: RenderModel, onGroup?: GroupCallback): BosC
 
 export type BfastLoadResult = BosConvertResult & { readonly bimData: BimData; readonly entityLocalIds: Int32Array | null };
 
-export async function loadBfast(source: LoadSource, scene: import('@ara3d/viewer-core').ViewerScene, options: LoadOptions = {}): Promise<BfastLoadResult> {
+export async function loadBfast(source: LoadSource, scene: import('@bim-open-viewer/core').ViewerScene, options: LoadOptions = {}): Promise<BfastLoadResult> {
   const buffer = await toArrayBuffer(source, options.onProgress);
   options.onProgress?.({ stage: 'parse', loaded: 0, total: 1 });
   const model = parseBfastModel(buffer);

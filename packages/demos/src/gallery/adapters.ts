@@ -16,9 +16,9 @@ import {
   type LightRig,
   type ModelRaycastHit,
   type Ray,
-} from '@bim-open-toolkit/render';
-import type { Color, Vec3 } from '@bim-open-toolkit/model';
-import type { InstancedGroup, SceneObject, Viewer } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/render';
+import type { Color, Vec3 } from '@bim-open-viewer/model';
+import type { InstancedGroup, SceneObject, Viewer } from '@bim-open-viewer/core';
 import {
   BufferGeometry,
   Color as ThreeColor,

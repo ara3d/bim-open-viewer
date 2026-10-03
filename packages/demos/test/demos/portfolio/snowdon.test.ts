@@ -5,7 +5,7 @@
 // checked on generated data in `demo.test.ts` and on hand-built parameter tables in
 // `recorded.test.ts`. The tests here skip themselves, by name, when the file is not on this machine.
 
-import { findProperty, loadModel } from '@bim-open-toolkit/formats';
+import { findProperty, loadModel } from '@bim-open-viewer/formats';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';

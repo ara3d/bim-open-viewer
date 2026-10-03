@@ -1,16 +1,16 @@
-# Decision: `interact` replaces `@ara3d/viewer-controls`
+# Decision: `interact` replaces `@bim-open-viewer/controls`
 
 Date: 2026-09-07. Decided by Track I (V2 plan unresolved decision 3). Status: taken.
 
 ## The choice
 
-`viewer/packages/interact` implements camera state, navigation modes, bindings and camera
-animation itself. It does not depend on `@ara3d/viewer-controls` and does not depend on `three`.
+`packages/interact` implements camera state, navigation modes, bindings and camera
+animation itself. It does not depend on `@bim-open-viewer/controls` and does not depend on `three`.
 The alpha package stays untouched and keeps serving the alpha viewer until the wave 4 cutover.
 
 ## What the alpha package offers
 
-`@ara3d/viewer-controls` 0.1.0 exports seven things. Only two are navigation:
+`@bim-open-viewer/controls` 0.1.0 exports seven things. Only two are navigation:
 
 | Export | Lines | Relevant to `interact` |
 |---|---:|---|
@@ -70,18 +70,18 @@ Replacing wins, though not decisively: this criterion is about degree, not possi
 
 ### 3. Size of the dependency surface
 
-Wrapping adds `@ara3d/viewer-controls` and, through its peer dependencies, `three` and
-`@ara3d/viewer-core`. `interact` computes camera poses and matrices; it never touches a scene, a
+Wrapping adds `@bim-open-viewer/controls` and, through its peer dependencies, `three` and
+`@bim-open-viewer/core`. `interact` computes camera poses and matrices; it never touches a scene, a
 material or a renderer. A camera-math package that cannot be used without a WebGL library is
 harder to reuse and slower to load in a Node test.
 
-Replacing keeps `interact` at exactly one dependency, `@bim-open-toolkit/model`, which is itself
+Replacing keeps `interact` at exactly one dependency, `@bim-open-viewer/model`, which is itself
 dependency-free. Column-major `Matrix4` as a plain 16-number array is already `model`'s contract,
 so a renderer binding is one array copy at the boundary.
 
 ### 4. Parallel-development friendliness
 
-This is what settles it. The V2 plan makes `viewer/packages/{core,controls,loaders,visualization}`
+This is what settles it. The V2 plan makes `packages/{core,controls,loaders,visualization}`
 read-only for every V2 track and removes `visualization` at the wave 4 cutover; the alpha packages
 exist to keep the alpha viewer working while V2 is built. A wrapper would make a V2 package depend
 on a package that no V2 track may change, so every gap found in `OrbitModel` becomes a request to
@@ -93,8 +93,8 @@ Replacing removes that edge entirely: `interact` builds and tests from `model` s
 
 ## Consequence and request
 
-Requested of the supervisor: remove `"@ara3d/viewer-controls": "0.1.0"` from
-`viewer/packages/interact/package.json` dependencies. It is unused. `three` is not requested as a
+Requested of the supervisor: remove `"@bim-open-viewer/controls": "0.1.0"` from
+`packages/interact/package.json` dependencies. It is unused. `three` is not requested as a
 peer dependency and is not needed: the camera math produces column-major `Matrix4` arrays that a
 renderer copies into `Matrix4.fromArray`.
 
@@ -103,7 +103,7 @@ typecheck and lint are unaffected.
 
 ## What is carried over rather than dropped
 
-The alpha behaviors verified in `viewer/packages/controls/test/orbit-model.test.ts` and
+The alpha behaviors verified in `packages/controls/test/orbit-model.test.ts` and
 `orbit-controls.test.ts` are re-tested against the new API: clamped multiplicative dolly, polar
 clamping, pan scaled by orbit distance and moving the target opposite the drag, bounding-sphere
 framing that keeps the viewing angle, framing a degenerate box, pointer capture, ignoring foreign

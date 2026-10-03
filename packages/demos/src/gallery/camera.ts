@@ -5,8 +5,8 @@
 // are here so `viewer.ts` holds no three.js, and so the sixteen `?? 0`s that
 // `noUncheckedIndexedAccess` forces on a matrix conversion are written once rather than per caller.
 
-import { projectToScreen, rayThroughNdc, type Ray } from '@bim-open-toolkit/render';
-import type { Matrix4, Vec2, Vec3, ViewState } from '@bim-open-toolkit/model';
+import { projectToScreen, rayThroughNdc, type Ray } from '@bim-open-viewer/render';
+import type { Matrix4, Vec2, Vec3, ViewState } from '@bim-open-viewer/model';
 import { Matrix4 as ThreeMatrix4, Vector3, type PerspectiveCamera } from 'three';
 
 // A size in CSS pixels. Zero on either axis means the element is not laid out yet.

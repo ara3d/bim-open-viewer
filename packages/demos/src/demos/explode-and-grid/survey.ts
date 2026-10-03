@@ -22,8 +22,8 @@ import {
   type ExplodeBy,
   type Layout,
   type Placement,
-} from '@bim-open-toolkit/features';
-import type { ModelData, ObjectKey, Vec3 } from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/features';
+import type { ModelData, ObjectKey, Vec3 } from '@bim-open-viewer/model';
 
 // What the open model offers a layout. Every field is a count taken off the model.
 export type ExplodeSurvey = {

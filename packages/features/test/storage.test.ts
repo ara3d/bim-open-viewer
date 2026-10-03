@@ -1,5 +1,5 @@
-import { emptyDocument, getSlice, putSlice } from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { emptyDocument, getSlice, putSlice } from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { describe, expect, it } from 'vitest';
 import { annotationCommands, annotationsFeature, annotationsSlice } from '../src/annotations.js';
 import {

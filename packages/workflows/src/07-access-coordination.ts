@@ -22,7 +22,7 @@ import {
   type Result,
   type Schema,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { coordinateContextSchema } from './coordinates.js';
 import { workflowException, type WorkflowException } from './exception.js';
 import { duplicateDiagnostics, keyOf, keysOf, namedObjectSet, suggestedView } from './keys.js';

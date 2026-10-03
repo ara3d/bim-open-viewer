@@ -2,7 +2,7 @@
 // registered, and cells nobody sampled.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, isRegistered, geographicAnchor, type Table } from '@bim-open-toolkit/model';
+import { columnOf, isRegistered, geographicAnchor, type Table } from '@bim-open-viewer/model';
 import { splitIds } from '../src/arrays.js';
 import { defaultCityOptions, generateCity } from '../src/city.js';
 import { cellCount, cellIndex, defaultFieldOptions, generateField } from '../src/field.js';

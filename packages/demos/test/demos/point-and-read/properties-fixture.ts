@@ -13,7 +13,7 @@ import {
   modelPropertiesFrom,
   type ModelDocuments,
   type ModelProperties,
-} from '@bim-open-toolkit/formats';
+} from '@bim-open-viewer/formats';
 
 // The `ParameterType` ordinals, which is what a descriptor's `Type` holds.
 export const kindOrdinal = { int: 0, number: 1, entity: 2, string: 3, point: 4 } as const;

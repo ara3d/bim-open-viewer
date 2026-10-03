@@ -3,7 +3,7 @@
 // browser can be launched, so this file never turns a machine without one into a failure.
 //
 // Software WebGL is asked for the way the slice's page test asks for it. The screenshots go to
-// `viewer/artifacts/ambient-occlusion/`, which git ignores.
+// `artifacts/ambient-occlusion/`, which git ignores.
 
 import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';

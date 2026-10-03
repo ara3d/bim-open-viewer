@@ -35,7 +35,7 @@ import {
   type Observation,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cursor as newCursor, drawChance, drawFloat, drawPick, drawRange, type Cursor } from './cursor.js';
 import type { MeshGroup, ShadedMesh } from './mesh-builder.js';
 import { alignYTo } from './placement.js';

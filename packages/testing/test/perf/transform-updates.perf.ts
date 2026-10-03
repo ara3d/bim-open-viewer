@@ -11,7 +11,7 @@
  * load; minimums did not.
  */
 import { describe, expect, it } from 'vitest';
-import { ViewerScene, sceneBounds } from '@ara3d/viewer-core';
+import { ViewerScene, sceneBounds } from '@bim-open-viewer/core';
 import {
   BOX_NUMBERS, allGroups, emptyBoxes, groupsOfRows, localBoxes, recomputeGroupBoxes, unionBoxes,
 } from '../../src/perf/bounds.js';

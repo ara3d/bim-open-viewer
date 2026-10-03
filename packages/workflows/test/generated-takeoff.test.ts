@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { generateQuantities, defaultQuantityOptions, type Quantities } from '@bim-open-toolkit/synthetic';
-import { indexFacts, knownQuantity, objectRef, observationAt, rowOf, type Observation } from '@bim-open-toolkit/model';
+import { generateQuantities, defaultQuantityOptions, type Quantities } from '@bim-open-viewer/synthetic';
+import { indexFacts, knownQuantity, objectRef, observationAt, rowOf, type Observation } from '@bim-open-viewer/model';
 import { runTakeoff, type TakeoffInput, type TakeoffSurface } from '../src/03-takeoff.js';
 import { observationJson } from '../src/observation.js';
 import { exceptionRows, resultRows } from '../src/result.js';

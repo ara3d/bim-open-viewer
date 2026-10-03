@@ -13,7 +13,7 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { fail, formatCode, formatNote, formatWarning, requireThat } from './diagnostics.js';
 import { defaultModelRef } from './bfast.js';
 import { loadedModel, type LoadedModel } from './loaded-model.js';

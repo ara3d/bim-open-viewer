@@ -23,7 +23,7 @@
  * that survives a busy machine.
  */
 import { afterAll, describe, expect, it } from 'vitest';
-import { SceneObject, ViewerScene } from '@ara3d/viewer-core';
+import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
 import { measureAll, prepare, reportSamples, sampleFor, type Prepared, type Sample } from '../../src/perf/measure.js';
 import {
   createSyntheticScene, scaledShape, selectRows, sortRows, type SyntheticScene,

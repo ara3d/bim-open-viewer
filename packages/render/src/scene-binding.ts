@@ -8,7 +8,7 @@
 //
 // It needs no WebGL context. `ViewerScene` is bookkeeping; the mirror that draws it is the host's.
 
-import { groupBounds, type InstancedGroup, type ViewerScene } from '@ara3d/viewer-core';
+import { groupBounds, type InstancedGroup, type ViewerScene } from '@bim-open-viewer/core';
 import {
   colorStride,
   diagnostic,
@@ -24,7 +24,7 @@ import {
   type ResolvedStyles,
   type Result,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   buildInstanceTable,
   defaultTableOptions,

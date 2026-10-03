@@ -17,7 +17,7 @@ import {
   type Result,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One dispatch as it was made, with what it changed and whether it was accepted.
 export type Dispatched = {

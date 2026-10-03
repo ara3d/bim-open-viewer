@@ -3,7 +3,7 @@
 How much does it cost to change the colour, visibility or position of a large
 number of instances in a big BIM model, and where does that cost actually go?
 This document records measurements, not opinions. Every number came from a test
-in `viewer/packages/testing/test/perf` that can be re-run.
+in `packages/testing/test/perf` that can be re-run.
 
 ## Summary
 
@@ -70,10 +70,10 @@ swapped places under load).
 checkout throughout, so absolute times are pessimistic and vary between runs by
 up to about 40 %. Ratios between cases measured in the same group are stable.
 
-**Reproducing.** From `viewer/`:
+**Reproducing.** From the repository root:
 
 ```
-npm run perf -w @bim-open-toolkit/testing -- --reporter=verbose
+npm run perf -w @bim-open-viewer/testing -- --reporter=verbose
 ```
 
 The `--reporter=verbose` is required: vitest's default reporter hides console
@@ -312,7 +312,7 @@ out.
 
 `test/perf/binding-objects.perf.ts`. The alpha keeps one frozen JavaScript object
 per rendered instance plus three maps over them (`RenderBinding` in
-`viewer/packages/visualization/src/render.ts`). The columnar form keeps object
+`packages/visualization/src/render.ts`). The columnar form keeps object
 ordinals, a compressed row index, and one map from object identity to an integer.
 Both are built from the same assignment of instances to objects, at the
 reference model's ratio of 8.9 instances per object.

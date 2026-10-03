@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cameraPose, metresZUpLocal, perspective, viewDistance, viewState } from '@bim-open-toolkit/model';
+import { cameraPose, metresZUpLocal, perspective, viewDistance, viewState } from '@bim-open-viewer/model';
 import { navState } from '../src/navigation.js';
 import { navSession, startFlight, type NavSession } from '../src/session.js';
 import {

@@ -22,7 +22,7 @@ const published: readonly string[] = [
   'attachNavigation', 'browserFrames',
 ];
 
-describe('@bim-open-toolkit/interact', () => {
+describe('@bim-open-viewer/interact', () => {
   it('publishes exactly the names it says it does', () => {
     expect([...Object.keys(api)].sort()).toEqual([...published].sort());
   });

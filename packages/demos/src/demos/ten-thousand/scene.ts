@@ -9,8 +9,8 @@
 // `Demo` contract passes the opened model from `source` to `start`. This is the same held value the
 // workflow demos keep, and it is why it lives in its own module with the reason written down.
 
-import { objectKey, type ObjectKey } from '@bim-open-toolkit/model';
-import { defaultStressOptions, generateStressScene, type StressScene } from '@bim-open-toolkit/synthetic';
+import { objectKey, type ObjectKey } from '@bim-open-viewer/model';
+import { defaultStressOptions, generateStressScene, type StressScene } from '@bim-open-viewer/synthetic';
 
 // How many instances each choice draws, in the order the gallery lists them.
 export const stressCounts = { 'ten-thousand': 10_000, 'two-thousand': 2000, 'hundred-thousand': 100_000 } as const;

@@ -61,7 +61,7 @@ import {
   type StyleRule,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   documentOfObject,
   noModelProperties,
@@ -73,13 +73,13 @@ import {
   type ModelDocuments,
   type ModelProperties,
   type PropertyReading,
-} from '@bim-open-toolkit/formats';
+} from '@bim-open-viewer/formats';
 import {
   defaultBuildingOptions,
   generateBuilding,
   type Building,
   type BuildingOptions,
-} from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/synthetic';
 
 // The options the generated building is made with. They are the generator's own defaults, which is
 // what `_shared/snowdon.ts` generates the second fixture with; the two must agree, because the facts

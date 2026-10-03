@@ -10,7 +10,7 @@ import {
   type ModelRef,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { workflowException, type WorkflowException } from './exception.js';
 import {
   duplicateDiagnostics,

@@ -12,7 +12,7 @@ import {
   text,
   type Bounds,
   type ObjectRef,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { factScalar, observationCell, observationJson, unitOf } from '../src/observation.js';
 
 const door: ObjectRef = { modelId: 'tower', revision: 'r1', objectId: 'door-1' };

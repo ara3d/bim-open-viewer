@@ -1,6 +1,6 @@
-import { emptyDocument, getSlice, putSlice, type AnyFeature } from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { pngFormat, type CaptureTarget } from '@bim-open-toolkit/render';
+import { emptyDocument, getSlice, putSlice, type AnyFeature } from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { pngFormat, type CaptureTarget } from '@bim-open-viewer/render';
 import { describe, expect, it } from 'vitest';
 import {
   captureCommands,

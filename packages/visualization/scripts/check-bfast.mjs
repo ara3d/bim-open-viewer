@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { parseBfastModel, bfastToGroups, parseBosGeometry, bosToGroups } from '@ara3d/viewer-loaders';
+import { parseBfastModel, bfastToGroups, parseBosGeometry, bosToGroups } from '@bim-open-viewer/loaders';
 
 const [bosPath, bfastPath] = process.argv.slice(2);
 assert.ok(bosPath && bfastPath, 'Usage: node scripts/check-bfast.mjs <source.bos> <converted.bfast>');

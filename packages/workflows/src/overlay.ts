@@ -1,4 +1,4 @@
-import { type ObjectKey, type Vec3 } from '@bim-open-toolkit/model';
+import { type ObjectKey, type Vec3 } from '@bim-open-viewer/model';
 import { type Outcome } from './outcome.js';
 import { resultRecord, type ResultRecord } from './values.js';
 

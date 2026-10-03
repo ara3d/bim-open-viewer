@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [{
     name: 'local-snowdon-fixture',
     configureServer(server) {
-      const modelPath=(bfast=false)=> bfast ? (process.env.SNOWDON_BFAST_PATH ?? path.resolve(server.config.root, '../../../../../ara3d-webgl/docs/snowdon.bfast')) : process.env.SNOWDON_BOS_PATH ?? path.join(process.env.USERPROFILE ?? '', 'Documents', 'BIM Open Schema', 'Snowdon Towers Sample Architectural.bos');
+      const modelPath=(bfast=false)=> bfast ? (process.env.SNOWDON_BFAST_PATH ?? path.resolve(server.config.root, '../../../../../../ara3d-webgl/docs/snowdon.bfast')) : process.env.SNOWDON_BOS_PATH ?? path.join(process.env.USERPROFILE ?? '', 'Documents', 'BIM Open Schema', 'Snowdon Towers Sample Architectural.bos');
       for (const bfast of [false, true]) {
         const stem = bfast ? 'snowdon-bfast' : 'snowdon';
         server.middlewares.use(`/__fixtures/${stem}-info.json`,async (_request,response)=>{
@@ -33,7 +33,7 @@ export default defineConfig({
         });
       }
       server.middlewares.use('/__fixtures/snowdon-workflows.json',async (_request,response)=>{
-        try{const filename=path.resolve(server.config.root,'../../../../artifacts/building-model-workflows/snowdon/projection.json');const info=await stat(filename);response.setHeader('Content-Type','application/json');response.setHeader('Content-Length',info.size);const stream=createReadStream(filename);response.on('close',()=>stream.destroy());stream.on('error',()=>response.destroy());stream.pipe(response);}
+        try{const filename=path.resolve(server.config.root,'../../../../../artifacts/building-model-workflows/snowdon/projection.json');const info=await stat(filename);response.setHeader('Content-Type','application/json');response.setHeader('Content-Length',info.size);const stream=createReadStream(filename);response.on('close',()=>stream.destroy());stream.on('error',()=>response.destroy());stream.pipe(response);}
         catch{response.statusCode=404;response.end('Prepared Snowdon workflow projection is unavailable.');}
       });
     },

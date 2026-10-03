@@ -22,7 +22,7 @@ import {
   type ObjectKey,
   type Schema,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A number that is neither NaN nor an infinity, which is what JSON and a typed array both hold.
 export const finiteNumber = (): Schema<number> =>

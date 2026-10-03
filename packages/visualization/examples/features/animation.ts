@@ -1,4 +1,4 @@
-import { sceneBounds } from '@ara3d/viewer-core';
+import { sceneBounds } from '@bim-open-viewer/core';
 import { advancePlayback, createPlayback, pausePlayback, playPlayback, resetPlayback, sampleCircularTranslation, seekPlayback, setPlaybackRate } from '../../src/animation.js';
 import { objectKey, type Matrix4 } from '../../src/contracts.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

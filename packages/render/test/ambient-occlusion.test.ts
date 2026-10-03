@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { emptyBounds, type Bounds } from '@bim-open-toolkit/model';
+import { emptyBounds, type Bounds } from '@bim-open-viewer/model';
 import {
   ambientOcclusionPass,
   applyAmbientOcclusion,

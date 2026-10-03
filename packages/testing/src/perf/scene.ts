@@ -7,7 +7,7 @@
  * times, which is what makes bulk updates hard. The generator reproduces the
  * shape from a seed; it uses synthetic geometry and never reads model data.
  */
-import { InstancedGroup, defaultMaterial, type MeshBuffers } from '@ara3d/viewer-core';
+import { InstancedGroup, defaultMaterial, type MeshBuffers } from '@bim-open-viewer/core';
 import { createRandom, distinctIntegers } from './prng.js';
 
 /** Floats per instance transform (column-major 4x4). */

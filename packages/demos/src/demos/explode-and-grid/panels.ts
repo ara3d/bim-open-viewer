@@ -13,8 +13,8 @@
 // the model by `survey.ts`. A separator a model cannot be separated by reads as "moves 0 of 25675
 // objects" rather than as a slider that does nothing.
 
-import { layoutsSlice, type ExplodeBy, type Layout } from '@bim-open-toolkit/features';
-import { Button, hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-toolkit/ui-gratify';
+import { layoutsSlice, type ExplodeBy, type Layout } from '@bim-open-viewer/features';
+import { Button, hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-viewer/ui-gratify';
 import { Drag1D, Label, part, Press, rect, Row, Stack, surface, v, type AppSpec, type Element } from 'gratify';
 import { heldSurvey, movedBy, type ExplodeSurvey } from './survey.js';
 

@@ -35,7 +35,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One proposal between the two revisions. `aId` absent means nothing in the first revision was
 // proposed, which is an addition; `bIds` empty means nothing in the second was, which is a

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cameraPose, viewDistance, type CameraPose, type Vec3 } from '@bim-open-toolkit/model';
+import { cameraPose, viewDistance, type CameraPose, type Vec3 } from '@bim-open-viewer/model';
 import {
   cameraBasis,
   defaultOrbitLimits,

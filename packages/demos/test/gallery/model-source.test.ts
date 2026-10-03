@@ -2,8 +2,8 @@
 // need are plain functions of the model, so they are checked here rather than in a browser.
 
 import { describe, expect, it } from 'vitest';
-import { defaultAppearance, objectKey, parse } from '@bim-open-toolkit/model';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { defaultAppearance, objectKey, parse } from '@bim-open-viewer/model';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import { baseAppearancesOf, objectKeysOf, resolveModelSource } from '../../src/gallery/model-source.js';
 import { viewSlice, viewStateSchema } from '../../src/gallery/view-slice.js';
 import type { ModelSource } from '../../src/gallery/contracts.js';

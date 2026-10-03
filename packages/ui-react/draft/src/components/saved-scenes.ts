@@ -8,8 +8,8 @@
 // The clock and the storage stay outside. `savedAt` is given by the caller, so saving is a pure
 // function of its inputs and a test does not have to freeze time.
 
-import type { SceneDocument } from '@bim-open-toolkit/model';
-import type { CaptureImage } from '@bim-open-toolkit/render';
+import type { SceneDocument } from '@bim-open-viewer/model';
+import type { CaptureImage } from '@bim-open-viewer/render';
 
 // One saved scene. `thumbnail` is a data URL, or absent where nothing could be captured - a headless
 // session, or a canvas with no WebGL.

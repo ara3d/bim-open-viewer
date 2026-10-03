@@ -8,9 +8,9 @@
 // The chip and the strip are parts defined here because the ui-gratify widget kit has not been
 // published; when `Button` and `Sparkline` land they replace both and the panel keeps its shape.
 
-import { hudSlice, layoutsSlice } from '@bim-open-toolkit/features';
-import { targetFrameBudgetMs, timingStats } from '@bim-open-toolkit/testing';
-import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-toolkit/ui-gratify';
+import { hudSlice, layoutsSlice } from '@bim-open-viewer/features';
+import { targetFrameBudgetMs, timingStats } from '@bim-open-viewer/testing';
+import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-viewer/ui-gratify';
 import { Label, Press, Row, Stack, part, surface, v, type AppSpec, type Element } from 'gratify';
 import { moveAll, recolourAll } from './bulk.js';
 import { openedKeys } from './scene.js';
@@ -87,7 +87,7 @@ const FrameStrip = part<StripProps>()('ten-thousand-frame-strip', {
 });
 
 // What the strip says underneath itself: the percentiles of the readings it holds, or that it holds
-// none. The statistics are `@bim-open-toolkit/testing`'s, so they are the same ones a benchmark
+// none. The statistics are `@bim-open-viewer/testing`'s, so they are the same ones a benchmark
 // report states.
 export const stripSummary = (samples: readonly number[]): string => {
   if (samples.length === 0) return 'No frame readings yet';

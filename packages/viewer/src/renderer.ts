@@ -8,8 +8,8 @@
 // Everything here is either plain data or a render-package adapter interface, so adding a renderer
 // means implementing six small interfaces and five methods, not learning this package.
 
-import type { InstancedGroup, ViewerScene } from '@ara3d/viewer-core';
-import type { ViewState } from '@bim-open-toolkit/model';
+import type { InstancedGroup, ViewerScene } from '@bim-open-viewer/core';
+import type { ViewState } from '@bim-open-viewer/model';
 import type {
   CaptureTarget,
   ClippingTarget,
@@ -19,7 +19,7 @@ import type {
   ModelRaycastHit,
   OverlayRenderer,
   Ray,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 
 // One renderer drawing one canvas.
 export type ViewRenderer = {

@@ -1,6 +1,6 @@
 # How the viewer package fits together
 
-`@bim-open-toolkit/viewer` is the default composition: the one place that knows a session, a
+`@bim-open-viewer/viewer` is the default composition: the one place that knows a session, a
 command bus, a feature host, a document, a renderer, a canvas and a camera all exist at once. Every
 other V2 package is deliberately ignorant of at least one of those. This one is where they meet, and
 its whole job is that a person should not have to.
@@ -69,7 +69,7 @@ session nobody gave one reads back `undefined`. `viewerAccess` is the one this p
 every command in `core-features.ts` reports `viewer/no-scene` rather than failing quietly when it is
 absent — which is what lets all of them be tested in Node.
 
-**The gap.** `@bim-open-toolkit/features` cannot import this package: the dependency runs the other
+**The gap.** `@bim-open-viewer/features` cannot import this package: the dependency runs the other
 way. So a feature written there cannot name `viewerAccess`, and today a feature that needs live
 access has to be installed by whoever holds the service. The request to the model package is in the
 checkpoint: a `Service<T>` key type in `model`, and an optional lookup on `Session`, so both sides
@@ -125,7 +125,7 @@ loop, which the tests assert directly.
 
 `src/preview.ts` builds `Viewer.preview`'s scene content: `unitCube`, one axis-aligned cube built
 once at module load, and `previewGroups`, which turns a `BoxPreview` from
-`@bim-open-toolkit/formats` into one opaque and one translucent `InstancedGroup` of that cube, each
+`@bim-open-viewer/formats` into one opaque and one translucent `InstancedGroup` of that cube, each
 scaled and translated to a box and omitted when there are none. A box axis is never scaled below
 0.1% of the preview bounds' diagonal, so a flat box (a slab, a panel edge-on to the camera) still
 gets a normal matrix that means something.
@@ -166,7 +166,7 @@ box preview (BOS bytes, GLB, OBJ, STL) never has `onPreview` called at all, so i
 - That `canvas.toBlob` encodes.
 
 `test/browser/smoke.test.ts` covers exactly that much: it bundles `test/browser/page.ts` — the three
-documented lines and nothing else — with vite, writes it to `viewer/artifacts/viewer/browser`, and
+documented lines and nothing else — with vite, writes it to `artifacts/viewer/browser`, and
 runs it through the testing package's playwright runner. It asserts a drawn frame, the red channel in
 the instance buffer, the restored slice list and an empty console. On this machine: msedge
 152.0.4191.66, ANGLE SwiftShader, 1.1 s in the browser and about 10 s including the bundle. Where no

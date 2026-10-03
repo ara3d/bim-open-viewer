@@ -1,5 +1,5 @@
 import { BoxGeometry } from 'three';
-import { InstancedGroup } from '@ara3d/viewer-core';
+import { InstancedGroup } from '@bim-open-viewer/core';
 import { type ModelData, type ObjectRecord, type Matrix4 } from '../../src/contracts.js';
 import type { InstanceBinding } from '../../src/render.js';
 

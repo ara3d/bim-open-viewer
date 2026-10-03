@@ -5,9 +5,9 @@
 // Every box gets its own instance of one shared cube mesh, scaled and translated to the box, so the
 // whole preview costs one draw call per opacity bucket rather than one per box.
 
-import { InstancedGroup, type MeshBuffers } from '@ara3d/viewer-core';
-import { boundsSize, upVector, vec3Length, type CoordinateContext } from '@bim-open-toolkit/model';
-import { previewBoxStride, type BoxPreview } from '@bim-open-toolkit/formats';
+import { InstancedGroup, type MeshBuffers } from '@bim-open-viewer/core';
+import { boundsSize, upVector, vec3Length, type CoordinateContext } from '@bim-open-viewer/model';
+import { previewBoxStride, type BoxPreview } from '@bim-open-viewer/formats';
 import type { View } from './view.js';
 
 // A face of the unit cube: four corners, wound so the two triangles face outward, each corner

@@ -8,7 +8,7 @@
  * nothing has to be copied out of the loader's output before the binding step
  * can read it.
  */
-import type { BosConvertResult, BosGroupEntities, RenderModel } from '@ara3d/viewer-loaders';
+import type { BosConvertResult, BosGroupEntities, RenderModel } from '@bim-open-viewer/loaders';
 
 // A column of integers inside a larger typed array, addressed by offset and stride.
 export type IntColumn = {

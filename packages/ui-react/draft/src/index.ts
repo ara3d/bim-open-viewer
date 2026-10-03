@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/ui-react: React bindings for a V2 viewer, and the components the
+// Public API of @bim-open-viewer/ui-react: React bindings for a V2 viewer, and the components the
 // door schedule review application is built from.
 //
 //   const canvas = useRef<HTMLCanvasElement>(null);

@@ -7,7 +7,7 @@ import {
   putSlice,
   setKeys,
   styleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   effectiveSelection,
   findSet,

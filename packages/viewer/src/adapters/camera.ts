@@ -5,8 +5,8 @@
 // is the one handed to the renderer. That is what lets an overhead orthographic view be shown at
 // all; the alpha and the end-to-end slice could only ever draw perspective.
 
-import type { Matrix4, ViewState } from '@bim-open-toolkit/model';
-import { rayThroughNdc as rayFromMatrix, type Ray } from '@bim-open-toolkit/render';
+import type { Matrix4, ViewState } from '@bim-open-viewer/model';
+import { rayThroughNdc as rayFromMatrix, type Ray } from '@bim-open-viewer/render';
 import { Matrix4 as ThreeMatrix4, OrthographicCamera, PerspectiveCamera, Vector3, type Camera } from 'three';
 
 // A three matrix as the model package's column-major sixteen. `elements[i]` is optional under

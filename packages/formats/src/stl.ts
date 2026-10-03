@@ -9,7 +9,7 @@ import {
   type Geometry,
   type ModelData,
   type ModelRef,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { defaultModelRef } from './bfast.js';
 import { fail, formatCode, formatNote, formatWarning, requireThat } from './diagnostics.js';
 import { loadedModel, type LoadedModel } from './loaded-model.js';

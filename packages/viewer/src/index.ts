@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/viewer: the default composition.
+// Public API of @bim-open-viewer/viewer: the default composition.
 //
 //   const viewer = createViewer(canvas);
 //   await viewer.open('/models/building.bfast');

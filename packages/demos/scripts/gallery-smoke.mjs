@@ -5,7 +5,7 @@
 // takes only itself down, and the report says which. Software WebGL, so a machine with no GPU
 // still draws; the pictures are correct, the frame rates in them are not representative.
 //
-// Run from `viewer/`: npm run gallery:smoke
+// Run from the repository root: npm run gallery:smoke
 
 import { mkdir, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';

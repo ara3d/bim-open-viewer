@@ -40,7 +40,7 @@ import {
   type Session,
   type StateSlice,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   changedReplacements,
   drawnReplacements,
@@ -53,7 +53,7 @@ import {
   type ReplacementState,
   type RepresentationRegistry,
   type RepresentationTarget,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { matrix4Schema, objectKeySchema } from './appearance-schemas.js';
 import { resolveAppearance } from './appearance.js';
 import type { RenderTarget } from './appearance-render.js';

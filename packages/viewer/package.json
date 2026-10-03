@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/viewer",
+  "name": "@bim-open-viewer/viewer",
   "version": "0.1.0",
   "description": "Default composition: createViewer, command bus, feature host, slice persistence and multi-view.",
   "license": "MIT",
@@ -22,10 +22,10 @@
     "perf": "vitest run --config vitest.perf.config.ts"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0",
-    "@bim-open-toolkit/formats": "0.1.0",
-    "@bim-open-toolkit/render": "0.1.0",
-    "@bim-open-toolkit/interact": "0.1.0",
-    "@bim-open-toolkit/features": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0",
+    "@bim-open-viewer/formats": "0.1.0",
+    "@bim-open-viewer/render": "0.1.0",
+    "@bim-open-viewer/interact": "0.1.0",
+    "@bim-open-viewer/features": "0.1.0"
   }
 }

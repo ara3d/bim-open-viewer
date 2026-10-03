@@ -6,7 +6,7 @@
  * shape that makes binding expensive: many groups holding few instances each,
  * several instances per object, plus hidden and geometry-free rows.
  */
-import { bfastToGroups } from '@ara3d/viewer-loaders';
+import { bfastToGroups } from '@bim-open-viewer/loaders';
 import { describe, expect, it } from 'vitest';
 import { buildAlphaBindings } from '../../../src/bindings/alpha-reference.js';
 import { buildColumnarBinding } from '../../../src/bindings/build.js';

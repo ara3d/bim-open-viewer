@@ -1,4 +1,4 @@
-// Performance tests are explicit and long-running: `npm run perf -w @bim-open-toolkit/testing`.
+// Performance tests are explicit and long-running: `npm run perf -w @bim-open-viewer/testing`.
 // They are named *.perf.ts so the default test run never picks them up. Workers get --expose-gc
 // so heap measurements can force a collection between repetitions.
 import { mergeConfig } from 'vitest/config';

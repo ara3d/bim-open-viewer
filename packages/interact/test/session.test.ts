@@ -7,7 +7,7 @@ import {
   viewState,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cameraBasis } from '../src/camera.js';
 import { emptyFrame, type InputFrame, type MouseButton, type PointerSample, type Viewport } from '../src/input.js';
 import { navState, type NavState } from '../src/navigation.js';

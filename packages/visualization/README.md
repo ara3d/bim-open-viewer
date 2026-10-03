@@ -1,10 +1,10 @@
 # BIM Open Toolkit Visualization
 
-`@bim-open-toolkit/visualization` provides composable review state and optional adapters over the Ara viewer. Its root data API has no DOM, Three, Gratify or React imports. Rendering, loading and UI live in explicit subpaths. This is an incremental alpha; [the plan](docs/PLAN.md) distinguishes implemented subsets from the full product brief.
+`@bim-open-viewer/visualization` provides composable review state and optional adapters over the Ara viewer. Its root data API has no DOM, Three, Gratify or React imports. Rendering, loading and UI live in explicit subpaths. This is an incremental alpha; [the plan](docs/PLAN.md) distinguishes implemented subsets from the full product brief.
 
 ## Run the feature gallery
 
-From `viewer/`:
+From the repository root:
 
 ```sh
 npm install
@@ -33,7 +33,7 @@ The browser smoke command uses an isolated installed Edge process with software 
 import {
   SelectionStore, composeEdits, composeAppearance,
   createEditHistory, commitEditHistory, undoEditHistory,
-} from '@bim-open-toolkit/visualization';
+} from '@bim-open-viewer/visualization';
 
 const selection = new SelectionStore();
 const unsubscribe = selection.subscribe(refs => hostTable.select(refs));
@@ -57,8 +57,8 @@ Hosts supply `hostTable`, `baseObjects` and `hostRender`. Model IDs identify rev
 ## Optional rendering and loading
 
 ```ts
-import { RenderBinding } from '@bim-open-toolkit/visualization/render';
-import { loadBosModel } from '@bim-open-toolkit/visualization/loading';
+import { RenderBinding } from '@bim-open-viewer/visualization/render';
+import { loadBosModel } from '@bim-open-viewer/visualization/loading';
 
 const loaded = await loadBosModel(source, modelRef, { sourceUp: 'Z', signal, onProgress });
 if (loaded.ok) {

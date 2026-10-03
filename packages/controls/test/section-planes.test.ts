@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Material, Vector3, Plane } from 'three';
-import { SceneObject, ViewerScene } from '@ara3d/viewer-core';
+import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
 import { SectionPlanes } from '../src/section-planes.js';
 import { quadGroupAt } from './helpers.js';
 

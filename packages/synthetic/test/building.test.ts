@@ -8,7 +8,7 @@ import {
   noMesh,
   type ObjectRecord,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { defaultBuildingOptions, generateBuilding, type Building, type BuildingOptions } from '../src/building.js';
 
 // The strings of a named column, refusing anything else so a renamed column fails loudly.

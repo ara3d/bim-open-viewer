@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import * as api from '../src/index.js';
 
-describe('@bim-open-toolkit/testing', () => {
+describe('@bim-open-viewer/testing', () => {
   it('loads', () => {
     expect(api).toBeDefined();
   });

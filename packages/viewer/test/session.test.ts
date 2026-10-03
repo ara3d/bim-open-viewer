@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { integer, object, stateSlice, type ChangeEvent, type Disposable } from '@bim-open-toolkit/model';
+import { integer, object, stateSlice, type ChangeEvent, type Disposable } from '@bim-open-viewer/model';
 import { createSession, directWrite } from '../src/session.js';
 import { addCommand, counterSlice, noteCommand, noteSlice, readCommand } from './support/fixtures.js';
 

@@ -1,4 +1,4 @@
-import { type ModelRef, type NamedSet, type SavedView, type StyleRule } from '@bim-open-toolkit/model';
+import { type ModelRef, type NamedSet, type SavedView, type StyleRule } from '@bim-open-viewer/model';
 import { exceptionTable, type WorkflowException } from './exception.js';
 import { type Overlay } from './overlay.js';
 import { standardRecipe, type Recipe, type RecipeStep } from './recipe.js';

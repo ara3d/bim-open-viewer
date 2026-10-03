@@ -84,8 +84,8 @@ Run from `viewer/` at the end of the track, all writers in this fence stopped.
 |---|---|---|
 | `npx tsc --noEmit -p packages/render/tsconfig.json` | exit 0, no output | 13 s |
 | `npx eslint packages/render` | exit 0, no output | 12 s |
-| `npm test -w @bim-open-toolkit/render` | 11 files, **214 passed**, 0 failed | 4 s |
-| `npm run perf -w @bim-open-toolkit/render` | 2 files, **14 passed**, 0 failed | 15 s |
+| `npm test -w @bim-open-viewer/render` | 11 files, **214 passed**, 0 failed | 4 s |
+| `npm run perf -w @bim-open-viewer/render` | 2 files, **14 passed**, 0 failed | 15 s |
 
 ## Chunk commits
 
@@ -241,7 +241,7 @@ landed would have cost one message.
 
 ## Requests
 
-**To the supervisor, for `@ara3d/viewer-core` (wave 4 or whenever the alpha reopens):**
+**To the supervisor, for `@bim-open-viewer/core` (wave 4 or whenever the alpha reopens):**
 
 1. `InstancedGroup.markColorsChanged(start, count)` and `markTransformsChanged(start, count)`:
    bump the version counters over a slot range without taking values. A bulk writer already wrote
@@ -258,7 +258,7 @@ consumer that does not know it will write a subtly wrong binding.
 
 **To the supervisor, package files (supervisor-owned, no change needed now):** `package.json`,
 `tsconfig.json`, `tsconfig.build.json`, `vitest.config.ts` and `vitest.perf.config.ts` were all
-correct as delivered. `@bim-open-toolkit/synthetic` was deliberately **not** added as a dependency:
+correct as delivered. `@bim-open-viewer/synthetic` was deliberately **not** added as a dependency:
 its `generateStressScene` would have fitted, but it is Track S2's active fence and would have made
 this package's perf suite depend on an unstable input, so the perf scenes are built in the test.
 

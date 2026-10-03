@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { success } from '@bim-open-toolkit/model';
+import { success } from '@bim-open-viewer/model';
 import { chapters, demosInChapter, duplicateDemoIds, type Demo } from '../../src/gallery/contracts.js';
 
 const stub = (id: string, chapter: Demo['chapter']): Demo => ({
@@ -14,7 +14,7 @@ const stub = (id: string, chapter: Demo['chapter']): Demo => ({
   start: () => Promise.resolve(success({ dispose: () => undefined })),
   ready: () => true,
   report: () => ({}),
-  source: `viewer/packages/demos/src/demos/${id}`,
+  source: `packages/demos/src/demos/${id}`,
   verify: 'npx vitest run --root packages/demos test/gallery',
 });
 

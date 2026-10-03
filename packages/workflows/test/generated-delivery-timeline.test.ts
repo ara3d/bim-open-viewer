@@ -4,8 +4,8 @@ import {
   eventTypes,
   generateDeliverySchedule,
   type DeliverySchedule,
-} from '@bim-open-toolkit/synthetic';
-import { rowOf, type CellValue } from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/synthetic';
+import { rowOf, type CellValue } from '@bim-open-viewer/model';
 import {
   runDeliveryTimeline,
   type DeliveryEventType,

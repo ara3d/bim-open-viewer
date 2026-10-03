@@ -11,7 +11,7 @@ import {
   type Observation,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { workflowException, type WorkflowException } from './exception.js';
 import { duplicateDiagnostics, keyOf, keysOf, namedObjectSet, suggestedView } from './keys.js';
 import { factScalar, observationJsonSchema, toObservation, unitOf, type ObservationJson } from './observation.js';

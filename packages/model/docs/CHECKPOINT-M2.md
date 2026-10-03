@@ -57,7 +57,7 @@ Run from `viewer/` after chunk 6:
 |---|---|
 | `npx tsc --noEmit -p packages/model/tsconfig.json` | pass, no output, 5 s |
 | `npx eslint packages/model` | pass, no output, 14 s |
-| `npm test -w @bim-open-toolkit/model` | pass, 20 files, 224 tests, 1.0 s |
+| `npm test -w @bim-open-viewer/model` | pass, 20 files, 224 tests, 1.0 s |
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | pass, no output (read-only check, nothing in `synthetic` was edited) |
 
 Baseline before any edit: 18 files, 198 tests. All four were run before every chunk commit.

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { objectKey, objectRef, type ModelRef, type StyleRule } from '@bim-open-toolkit/model';
-import { appearanceSlice, navigationSlice, overlaysSlice, setsSlice } from '@bim-open-toolkit/features';
+import { objectKey, objectRef, type ModelRef, type StyleRule } from '@bim-open-viewer/model';
+import { appearanceSlice, navigationSlice, overlaysSlice, setsSlice } from '@bim-open-viewer/features';
 import {
   marker,
   missingException,
@@ -11,7 +11,7 @@ import {
   suggestedView,
   workflowResult,
   type WorkflowResult,
-} from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/workflows';
 import { applyWorkflowResult, selectedSetId } from '../../../src/demos/_workflows/apply-result.js';
 import { focusAction, focusSetId, focusSets } from '../../../src/demos/_workflows/actions.js';
 import { fakeSession } from './fake-session.js';

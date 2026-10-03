@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
-import { parseBosGeometry } from '@ara3d/viewer-loaders';
+import { parseBosGeometry } from '@bim-open-viewer/loaders';
 
 // Required local-server regression: HTTP 200 alone is not successful model loading.
 const filename = process.env.SNOWDON_BOS_PATH ?? `${process.env.USERPROFILE}/Documents/BIM Open Schema/Snowdon Towers Sample Architectural.bos`;

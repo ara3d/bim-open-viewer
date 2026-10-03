@@ -38,7 +38,7 @@ in CONTRACTS-M1.md "M1.3 proposed", and `sameBounds` landed: it is one commit ac
 |---|---|
 | `npx tsc --noEmit -p packages/model/tsconfig.json` | pass, 6 to 8 s |
 | `npx eslint packages/model` | pass, 10 s quiet, 95 s under load |
-| `npm test -w @bim-open-toolkit/model` | pass, 20 files, 260 tests, 1.0 to 7.5 s |
+| `npm test -w @bim-open-viewer/model` | pass, 20 files, 260 tests, 1.0 to 7.5 s |
 | downstream `tsc`: formats, interact, synthetic, workflows, testing, render | pass, 6 to 10 s each, render 59 s |
 
 ## Findings

@@ -38,8 +38,8 @@ It does, and it is about five times faster and twenty-four times smaller.
   collection before and after, with the built value kept reachable. They are
   sampled numbers, not allocation counts.
 - Commands:
-  - `npm test -w @bim-open-toolkit/testing` — parity and edge cases, no model needed.
-  - `NODE_OPTIONS=--expose-gc npm run perf -w @bim-open-toolkit/testing` — the benchmarks.
+  - `npm test -w @bim-open-viewer/testing` — parity and edge cases, no model needed.
+  - `NODE_OPTIONS=--expose-gc npm run perf -w @bim-open-viewer/testing` — the benchmarks.
 
 ## What is compared
 

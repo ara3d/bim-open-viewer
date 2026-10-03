@@ -3,7 +3,7 @@
 The optional `/gratify` adapter imports only Gratify's public API. `mountReviewControls(canvas, commands)` returns `{dispatch(command), dispose()}`; commands are typed `fit`, `clearSelection` and `toggleGhost` callbacks. The adapter contains no BIM selection, camera or appearance logic. The independent `gratifyDemo` maps these callbacks to the existing viewer features and offers equivalent native HTML buttons.
 
 ```ts
-import { mountReviewControls } from '@bim-open-toolkit/visualization/gratify';
+import { mountReviewControls } from '@bim-open-viewer/visualization/gratify';
 
 const controls = mountReviewControls(canvas, {
   fit: () => camera.fit(),

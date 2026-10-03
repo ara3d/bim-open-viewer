@@ -11,8 +11,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { artifactsFor, browserAvailability, runInBrowser } from '@bim-open-toolkit/testing';
-import { array, number, object, optional, parse, string } from '@bim-open-toolkit/model';
+import { artifactsFor, browserAvailability, runInBrowser } from '@bim-open-viewer/testing';
+import { array, number, object, optional, parse, string } from '@bim-open-viewer/model';
 import { build, type Rollup } from 'vite';
 
 const packagesDir = fileURLToPath(new URL('../../../', import.meta.url));
@@ -44,8 +44,8 @@ const bundlePage = async (): Promise<string> => {
     configFile: false,
     resolve: {
       alias: [
-        { find: /^@bim-open-toolkit\/(?!visualization)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` },
-        { find: /^@ara3d\/viewer-core$/, replacement: viewerCore },
+        { find: /^@bim-open-viewer\/(?!(?:visualization|core|controls|loaders)$)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` },
+        { find: /^@bim-open-viewer\/core$/, replacement: viewerCore },
       ],
     },
     build: {

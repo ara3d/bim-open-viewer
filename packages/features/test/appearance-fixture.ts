@@ -5,7 +5,7 @@
 // therefore read the colour and the visibility a feature actually wrote into the group buffers,
 // rather than trusting a double that records calls.
 
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import {
   instanceRecords,
   mesh,
@@ -20,7 +20,7 @@ import {
   type ModelRef,
   type ObjectKey,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   SceneBinding,
   alphaChannel,
@@ -31,13 +31,13 @@ import {
   type InstanceTable,
   type RepresentationRegistry,
   type RepresentationTarget,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { appearanceCommands } from '../src/appearance.js';
 import { sceneRenderTarget, type RenderTarget } from '../src/appearance-render.js';
 import { editsCommands } from '../src/edits.js';
 import { replacementCommands } from '../src/replacement.js';
 import { setsCommands } from '../src/sets.js';
-import { createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-viewer/viewer';
 import { appearanceFeature } from '../src/appearance.js';
 import { editsFeature } from '../src/edits.js';
 import { replacementFeature } from '../src/replacement.js';

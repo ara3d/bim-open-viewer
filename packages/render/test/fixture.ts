@@ -16,7 +16,7 @@ import {
   type Mesh,
   type ModelRef,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // The model every fixture object belongs to.
 export const fixtureModel: ModelRef = modelIdentity({ id: 'fixture', revision: '1' });

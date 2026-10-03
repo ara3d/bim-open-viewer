@@ -22,7 +22,7 @@ import {
   type ObjectKey,
   type Result,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { projectPoint } from './picking.js';
 
 // Where a primitive sits: a fixed world point, or wherever an object is now.

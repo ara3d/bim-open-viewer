@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { namedSet, setOf } from '@bim-open-toolkit/model';
+import { namedSet, setOf } from '@bim-open-viewer/model';
 import { keyOf, suggestedView } from '../src/keys.js';
 import { groupByOutcome, outcomeRules } from '../src/outcome.js';
 import { marker, onObject } from '../src/overlay.js';

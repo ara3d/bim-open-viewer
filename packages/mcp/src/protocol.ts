@@ -18,7 +18,7 @@ import {
   union,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { ToolResponse } from './dispatch.js';
 import { jsonValueSchema, mcpToolSchema, type JsonValue, type McpTool } from './tools.js';
 

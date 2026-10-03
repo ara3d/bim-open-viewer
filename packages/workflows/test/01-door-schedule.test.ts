@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { setKeys } from '@bim-open-toolkit/model';
+import { setKeys } from '@bim-open-viewer/model';
 import { doorScheduleInputSchema, runDoorSchedule } from '../src/01-door-schedule.js';
 import { keyOf } from '../src/keys.js';
 import { exceptionRows, resultRows } from '../src/result.js';

@@ -2,7 +2,7 @@
 
 State: **verified** (all assigned gates pass; see the commands below).
 
-Model revision built against: `@bim-open-toolkit/model` at commit `e2d71de`. `src/view.ts` landed in
+Model revision built against: `@bim-open-viewer/model` at commit `e2d71de`. `src/view.ts` landed in
 `478984c`, so `CameraPose`, `Projection`, `ViewState`, `viewState`, `cameraPose`, `perspective`,
 `orthographic`, `viewDirection`, `viewDistance`, `atDistance`, `panBy`, `fitDistance`,
 `boundsCenter`, `boundsRadius`, `Vec3`, `Matrix4`, `Bounds`, `CoordinateContext`, `upVector` and
@@ -19,7 +19,7 @@ decisions in hand.
 
 ## The decision
 
-`interact` **replaces** `@ara3d/viewer-controls` rather than wrapping it. Full reasoning in
+`interact` **replaces** `@bim-open-viewer/controls` rather than wrapping it. Full reasoning in
 `docs/DECISION-controls.md`, scored against the brief's four criteria in order.
 
 Summary: the wrappable surface is `OrbitModel` and `OrbitControls`, about 325 lines of the alpha
@@ -30,7 +30,7 @@ animation, so most of F04 is new code either way. The deciding criterion is para
 the alpha packages are read-only for every V2 track and are removed at the wave 4 cutover, so a
 wrapper would put a V2 package behind a dependency no V2 track may change and behind alpha `dist`
 that other sessions are rebuilding. Replacing leaves `interact` with one dependency-free
-dependency, `@bim-open-toolkit/model`, and no `three`.
+dependency, `@bim-open-viewer/model`, and no `three`.
 
 The alpha's verified behaviours were carried over as tests against the new API: clamped
 multiplicative dolly, polar clamping at both poles, pan scaled by what the view covers and moving
@@ -141,7 +141,7 @@ Run from `viewer/`, 2026-09-07, after the last chunk:
 |---|---|
 | `npx tsc --noEmit -p packages/interact/tsconfig.json` | pass, no output |
 | `npx eslint packages/interact` | pass, no output |
-| `npm test -w @bim-open-toolkit/interact` | pass, 10 files, 202 tests, 1.12 s |
+| `npm test -w @bim-open-viewer/interact` | pass, 10 files, 202 tests, 1.12 s |
 | escape-hatch scan (`any`, ` as `, `!.`, `@ts-`, `eslint-disable`) | no code hits; every match is the word "as" or "any" in prose |
 
 Not run, and why: `tools/platonic-check.mts` and `npm run test:v2` cover the whole workspace, whose
@@ -167,7 +167,7 @@ None.
 
 ## Requests to the supervisor
 
-1. **Remove `"@ara3d/viewer-controls": "0.1.0"`** from `viewer/packages/interact/package.json`
+1. **Remove `"@bim-open-viewer/controls": "0.1.0"`** from `viewer/packages/interact/package.json`
    dependencies. Nothing in the package imports it. `three` is **not** requested. Until this lands
    the declaration is unused and harmless, so it blocks nothing.
 2. No other manifest, tsconfig or vitest change is needed. The supervisor-owned files were left

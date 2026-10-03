@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { cameraPose, metresZUpLocal, perspective, viewState } from '@bim-open-toolkit/model';
+import { cameraPose, metresZUpLocal, perspective, viewState } from '@bim-open-viewer/model';
 // Imported to prove the clock drives the real animation, not a copy of its shape. The testing
 // package does not depend on interact at run time; this is a test-only import.
-import { advanceFlight, flightView, flyTo, isFlightDone } from '@bim-open-toolkit/interact';
+import { advanceFlight, flightView, flyTo, isFlightDone } from '@bim-open-viewer/interact';
 import { fakeClock } from '../src/clock.js';
 
 describe('the fake clock', () => {

@@ -13,7 +13,7 @@ import {
   type ObjectKey,
   type ResolvedStyles,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { SliceData } from './data.js';
 
 // The colour an unrated door is painted.

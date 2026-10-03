@@ -1,5 +1,5 @@
 import { Vector3 } from 'three';
-import { sceneBounds } from '@ara3d/viewer-core';
+import { sceneBounds } from '@bim-open-viewer/core';
 import { fitPerspectivePose, overheadPose } from '../../src/camera.js';
 import type { CameraState, Vec3 } from '../../src/contracts.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

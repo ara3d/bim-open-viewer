@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { conflicting, quantity, stringOf, type ModelRef } from '@bim-open-toolkit/model';
+import { conflicting, quantity, stringOf, type ModelRef } from '@bim-open-viewer/model';
 import {
   missingException,
   namedObjectSet,
@@ -8,7 +8,7 @@ import {
   workflowException,
   workflowResult,
   type WorkflowResult,
-} from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/workflows';
 import {
   cellText,
   exceptionsFirst,

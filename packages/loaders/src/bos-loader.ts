@@ -6,7 +6,7 @@
 import JSZip from 'jszip';
 import { parquetMetadataAsync, parquetRead } from 'hyparquet';
 import { compressors } from 'hyparquet-compressors';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { LoadOptions, LoadSource } from './progress.js';
 import { toArrayBuffer } from './fetch-buffer.js';
 import { BosConvertResult, BosGeometry, bosToGroups } from './bos-geometry.js';

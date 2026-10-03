@@ -1,4 +1,4 @@
-import type { ViewState } from '@bim-open-toolkit/model';
+import type { ViewState } from '@bim-open-viewer/model';
 import {
   advanceFlight,
   defaultFlightMs,

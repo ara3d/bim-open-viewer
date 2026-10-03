@@ -8,7 +8,7 @@
  * objects. It exists here so the layout can be measured against the alpha's
  * per-instance binding objects.
  */
-import { InstancedGroup } from '@ara3d/viewer-core';
+import { InstancedGroup } from '@bim-open-viewer/core';
 import { COLOR_FLOATS, TRANSFORM_FLOATS } from './scene.js';
 
 /** The two per-instance attributes the group buffers hold. */

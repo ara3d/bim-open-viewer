@@ -8,8 +8,8 @@
 // The counts come from `survey.ts`, which took them off the model the demo opened. A strength of two
 // on a model with no storeys still moves nothing, and this sheet is where that is stated in full.
 
-import { layoutsSlice, type ExplodeBy, type Layout } from '@bim-open-toolkit/features';
-import type { Session } from '@bim-open-toolkit/model';
+import { layoutsSlice, type ExplodeBy, type Layout } from '@bim-open-viewer/features';
+import type { Session } from '@bim-open-viewer/model';
 import {
   knownNumber,
   knownValue,
@@ -19,7 +19,7 @@ import {
   propertySheet,
   type PropertyRow,
   type PropertySheet,
-} from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/ui-gratify';
 import { heldSurvey, layoutCaveat, movedBy, type ExplodeSurvey } from './survey.js';
 
 const byTitles: Readonly<Record<ExplodeBy, string>> = { storey: 'Storey', category: 'Category' };

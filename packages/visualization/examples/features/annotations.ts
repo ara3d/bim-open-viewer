@@ -1,4 +1,4 @@
-import { ndcFromClient } from '@ara3d/viewer-controls';
+import { ndcFromClient } from '@bim-open-viewer/controls';
 import { addAnnotation, updateAnnotation, removeAnnotation, parseAnnotationDocument, serializeAnnotationDocument, diagnoseAnnotationRefs, type AnnotationDocument } from '../../src/annotations.js';
 import { AnnotationOverlay } from '../../src/overlay-renderer.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

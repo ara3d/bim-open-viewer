@@ -1,9 +1,9 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { appearanceSlice, setsSlice } from '@bim-open-toolkit/features';
-import { emptyObject, objectRef } from '@bim-open-toolkit/model';
-import type { AnyHudPanel } from '@bim-open-toolkit/ui-gratify';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
-import { resultRows } from '@bim-open-toolkit/workflows';
+import { appearanceSlice, setsSlice } from '@bim-open-viewer/features';
+import { emptyObject, objectRef } from '@bim-open-viewer/model';
+import type { AnyHudPanel } from '@bim-open-viewer/ui-gratify';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
+import { resultRows } from '@bim-open-viewer/workflows';
 import {
   applyPortfolio,
   demo,

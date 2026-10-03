@@ -1,4 +1,4 @@
-# @bim-open-toolkit/synthetic
+# @bim-open-viewer/synthetic
 
 Seeded generators for demonstration and test data: a pseudo-random generator, mesh primitives,
 twelve generators covering the workflows in the product brief, and a catalog that builds any of
@@ -19,7 +19,7 @@ them by name.
 | `field` | A scalar field sampled on a grid | Heat maps, voxel preview |
 | `stress` | N instances across M meshes inside a triangle budget | Benchmarks |
 
-The package depends on `@bim-open-toolkit/model` and nothing else. It does not touch a browser, a
+The package depends on `@bim-open-viewer/model` and nothing else. It does not touch a browser, a
 renderer or a file. Everything it produces is plain data: typed arrays for numeric columns, frozen
 records for everything else. Every function is pure, and every generator is a function of its
 options record alone.
@@ -39,7 +39,7 @@ reader should test.
 
 ## Table conventions
 
-Every generator publishes `Table`s from `@bim-open-toolkit/model`: one typed array per column, one
+Every generator publishes `Table`s from `@bim-open-viewer/model`: one typed array per column, one
 scalar per cell. Three conventions follow from that and hold everywhere.
 
 **An observed field is several columns.** A column of numbers cannot say "nobody measured this" or
@@ -85,7 +85,7 @@ xoshiro128\*\* seeded by splitmix32, written as pure functions over an immutable
 draw returns `{ rng, value }`; the state passed in is never modified.
 
 ```ts
-import { seed, int, float, pick, shuffle, gaussian } from '@bim-open-toolkit/synthetic';
+import { seed, int, float, pick, shuffle, gaussian } from '@bim-open-viewer/synthetic';
 
 let rng = seed(42);
 const first = int(rng, 0, 10);   // { rng, value }
@@ -113,7 +113,7 @@ handful of corners.
 ## `building` — storeys, rooms, walls, slabs, doors, windows and their schedules
 
 ```ts
-import { generateBuilding, defaultBuildingOptions } from '@bim-open-toolkit/synthetic';
+import { generateBuilding, defaultBuildingOptions } from '@bim-open-viewer/synthetic';
 
 const building = generateBuilding({ ...defaultBuildingOptions, seed: 7, storeys: 10, roomsPerStorey: 24 });
 
@@ -240,7 +240,7 @@ generated in roughly 15 ms on the machine this was written on.
 ## `stress` — many instances inside a triangle budget
 
 ```ts
-import { generateStressScene, defaultStressOptions } from '@bim-open-toolkit/synthetic';
+import { generateStressScene, defaultStressOptions } from '@bim-open-viewer/synthetic';
 
 const scene = generateStressScene(defaultStressOptions);
 ```
@@ -275,7 +275,7 @@ what the "ten thousand independently addressable render instances" target needs.
 ## `services` — pipe runs, valves, equipment and the connections nobody verified
 
 ```ts
-import { generateServices, defaultServicesOptions } from '@bim-open-toolkit/synthetic';
+import { generateServices, defaultServicesOptions } from '@bim-open-viewer/synthetic';
 
 const network = generateServices({ ...defaultServicesOptions, seed: 4, storeys: 6 });
 ```
@@ -305,7 +305,7 @@ first branch, with that branch's isolation valve closed.
 ## `revisions` — two snapshots and the proposals between them
 
 ```ts
-import { generateRevisions, defaultRevisionsOptions } from '@bim-open-toolkit/synthetic';
+import { generateRevisions, defaultRevisionsOptions } from '@bim-open-viewer/synthetic';
 
 const pair = generateRevisions(defaultRevisionsOptions);
 ```
@@ -338,7 +338,7 @@ test, not an input column: a comparison that read the answer would prove nothing
 ## `schedule` — delivery, acceptance and installation
 
 ```ts
-import { generateDeliverySchedule, defaultDeliveryOptions } from '@bim-open-toolkit/synthetic';
+import { generateDeliverySchedule, defaultDeliveryOptions } from '@bim-open-viewer/synthetic';
 
 const record = generateDeliverySchedule({ ...defaultDeliveryOptions, asOfDate: '2026-07-01' });
 ```
@@ -364,7 +364,7 @@ that ranks the three states can be checked against the dates.
 ## `quantities` — roof and finish faces
 
 ```ts
-import { generateQuantities, defaultQuantityOptions } from '@bim-open-toolkit/synthetic';
+import { generateQuantities, defaultQuantityOptions } from '@bim-open-viewer/synthetic';
 
 const takeoff = generateQuantities(defaultQuantityOptions);
 ```
@@ -390,7 +390,7 @@ rule testable.
 ## `costs` — scopes, rates, scenarios
 
 ```ts
-import { generateCosts, defaultCostOptions } from '@bim-open-toolkit/synthetic';
+import { generateCosts, defaultCostOptions } from '@bim-open-viewer/synthetic';
 
 const pricing = generateCosts(defaultCostOptions);
 ```
@@ -419,7 +419,7 @@ set does not cover is a fact about the rate set.
 ## `carbon` — material quantities and factors
 
 ```ts
-import { generateCarbon, defaultCarbonOptions } from '@bim-open-toolkit/synthetic';
+import { generateCarbon, defaultCarbonOptions } from '@bim-open-viewer/synthetic';
 
 const carbon = generateCarbon({ ...defaultCarbonOptions, requestedLifecycleScope: 'A1-A3' });
 ```
@@ -438,7 +438,7 @@ const carbon = generateCarbon({ ...defaultCarbonOptions, requestedLifecycleScope
 ## `assets` — handover and maintenance
 
 ```ts
-import { generateAssets, defaultAssetOptions } from '@bim-open-toolkit/synthetic';
+import { generateAssets, defaultAssetOptions } from '@bim-open-viewer/synthetic';
 
 const handover = generateAssets(defaultAssetOptions);
 ```
@@ -464,7 +464,7 @@ A recorded maintenance event always has a date: the row exists because somebody 
 ## `clearances` — envelopes, penetrations and candidates
 
 ```ts
-import { generateClearances, defaultClearanceOptions } from '@bim-open-toolkit/synthetic';
+import { generateClearances, defaultClearanceOptions } from '@bim-open-viewer/synthetic';
 
 const coordination = generateClearances(defaultClearanceOptions);
 ```
@@ -490,7 +490,7 @@ columns rather than as a `Fact`. See the track checkpoint.
 ## `city` — buildings, anchors and documents
 
 ```ts
-import { generateCity, defaultCityOptions } from '@bim-open-toolkit/synthetic';
+import { generateCity, defaultCityOptions } from '@bim-open-viewer/synthetic';
 
 const portfolio = generateCity({ ...defaultCityOptions, sites: 3 });
 ```
@@ -513,7 +513,7 @@ building in one local site plan, while each building is registered on its own.
 ## `field` — a sampled scalar field
 
 ```ts
-import { generateField, defaultFieldOptions, cellIndex } from '@bim-open-toolkit/synthetic';
+import { generateField, defaultFieldOptions, cellIndex } from '@bim-open-viewer/synthetic';
 
 const field = generateField(defaultFieldOptions);
 const middle = field.values[cellIndex(field.dimensions, 12, 8, 3)];
@@ -536,7 +536,7 @@ bit-identical on every engine, which a field built out of sines would not be.
 ## The catalog
 
 ```ts
-import { fixture, fixtureNames, summaryOf } from '@bim-open-toolkit/synthetic';
+import { fixture, fixtureNames, summaryOf } from '@bim-open-viewer/synthetic';
 
 const services = fixture('services');
 const rows = summaryOf('city').tables;
@@ -563,7 +563,7 @@ exist to catch.
 To accept a deliberate change:
 
 ```
-SYNTHETIC_UPDATE_SNAPSHOTS=1 npm test -w @bim-open-toolkit/synthetic
+SYNTHETIC_UPDATE_SNAPSHOTS=1 npm test -w @bim-open-viewer/synthetic
 ```
 
 then read the diff before committing it.

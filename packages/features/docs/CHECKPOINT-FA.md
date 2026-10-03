@@ -36,7 +36,7 @@ export * from './replacement.js';          // geometry replacement that keeps id
 ## Requests
 
 1. `src/index.ts`: the six lines above.
-2. `package.json`: `@bim-open-toolkit/viewer` as a **devDependency** — the real-session tests import `createSession` and `featureHost`. It resolves today through the workspace symlink and tsconfig `paths`, and `tsconfig.build.json` (src only) never sees it.
+2. `package.json`: `@bim-open-viewer/viewer` as a **devDependency** — the real-session tests import `createSession` and `featureHost`. It resolves today through the workspace symlink and tsconfig `paths`, and `tsconfig.build.json` (src only) never sees it.
 3. **Track V persistence: honour `ephemeralSlices`** from `replacement.ts`. The replacement slice must not be saved (alpha decision, `visualization/docs/replacement.md`); its schema round-trips faithfully because a session reads a slice back through it, so the exclusion belongs at save time.
 4. A home for `test/appearance-fixture.ts`, shared by all four FA tests and named `appearance*` only because of my fence. `test/support/fixture.ts` is the honest place.
 5. **Naming to settle.** `workflows/src/recipe.ts` names `style.addRule`, `sets.create`, `selection.setFromSet`, `sets.isolate`; I used the brief's names and only `sets.isolate` matches. Either `workflowCommands` changes or wave 3 adds aliases — I added none, two names being two public APIs.

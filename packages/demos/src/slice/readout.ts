@@ -3,7 +3,7 @@
 // A missing or disputed fire rating is reported as what it is - the reason nobody recorded one, or
 // the values that disagree - and never as a blank or a plausible default.
 
-import { objectKey, type Coverage, type FactValue, type Observation, type ObjectKey } from '@bim-open-toolkit/model';
+import { objectKey, type Coverage, type FactValue, type Observation, type ObjectKey } from '@bim-open-viewer/model';
 import type { SliceData } from './data.js';
 
 // What the page shows about one picked object.

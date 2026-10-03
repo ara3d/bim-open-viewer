@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { emptyDocument, getSlice, putSlice } from '@bim-open-toolkit/model';
-import { isClipped, planesOf, type ClipPlane } from '@bim-open-toolkit/render';
+import { emptyDocument, getSlice, putSlice } from '@bim-open-viewer/model';
+import { isClipped, planesOf, type ClipPlane } from '@bim-open-viewer/render';
 import {
   clippingCommands,
   clippingFeature,
@@ -12,7 +12,7 @@ import {
 } from '../src/clipping.js';
 import { levelsOf } from '../src/navigation-aids.js';
 import { building } from './navigation-aids-fixture.js';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { fakeSession } from './support/fake-session.js';
 
 const session = () => fakeSession(clippingCommands);

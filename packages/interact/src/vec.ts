@@ -1,4 +1,4 @@
-import { addVec3, normalizeVec3, scaleVec3, subVec3, type Vec3 } from '@bim-open-toolkit/model';
+import { addVec3, normalizeVec3, scaleVec3, subVec3, type Vec3 } from '@bim-open-viewer/model';
 import { clamp } from './numbers.js';
 
 // Scalar product of two vectors.

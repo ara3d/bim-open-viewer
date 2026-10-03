@@ -28,7 +28,7 @@ import {
   type Result,
   type Vec2,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   attachNavigation,
   fitState,
@@ -37,7 +37,7 @@ import {
   startFlight,
   type NavController,
   type NavState,
-} from '@bim-open-toolkit/interact';
+} from '@bim-open-viewer/interact';
 import {
   FrameTimer,
   SceneBinding,
@@ -51,10 +51,10 @@ import {
   type ObjectHit,
   type SceneStatistics,
   type UpdateReport,
-} from '@bim-open-toolkit/render';
-import { captureFeatureWith, layoutPlacements, placementsOf, type Placement } from '@bim-open-toolkit/features';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { Viewer, defaultMaterial } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/render';
+import { captureFeatureWith, layoutPlacements, placementsOf, type Placement } from '@bim-open-viewer/features';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
 import { captureTarget, clippingTarget, environmentTarget, gpuFrameTimer, raycastSource } from './adapters.js';
 import { applyView, projectPointOnto, rayThroughClientPoint } from './camera.js';
 import { resolveModelSource } from './model-source.js';

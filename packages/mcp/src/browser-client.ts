@@ -9,7 +9,7 @@
 // before any command name is formed. That is the same rule the alpha's review tools had: only
 // registered operations, inputs checked by the operation, and no way to say anything else.
 
-import type { Result } from '@bim-open-toolkit/model';
+import type { Result } from '@bim-open-viewer/model';
 import { callToolAsCommand, type ToolResponse } from './dispatch.js';
 import type { CommandSession } from './headless-host.js';
 import { bridgeProtocol, readMessage, writeMessage, type BridgeMessage } from './protocol.js';

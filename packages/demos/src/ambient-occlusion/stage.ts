@@ -6,15 +6,15 @@
 // `WebGLRenderer` private and draws with `renderer.render` directly, which leaves no place for a
 // pass between the scene and the screen. The checkpoint records that as a request.
 
-import { SceneObject, ViewerScene } from '@ara3d/viewer-core';
-import type { Bounds, ViewState } from '@bim-open-toolkit/model';
-import { isEmptyBounds } from '@bim-open-toolkit/model';
+import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
+import type { Bounds, ViewState } from '@bim-open-viewer/model';
+import { isEmptyBounds } from '@bim-open-viewer/model';
 import {
   occlusionBufferSize,
   type AmbientOcclusionPass,
   type AmbientOcclusionTarget,
   type PixelSize,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import {
   Box3,
   Color,

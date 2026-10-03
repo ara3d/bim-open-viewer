@@ -55,7 +55,7 @@ From `viewer/`:
 - `npx eslint packages/workflows` — clean.
 
 From `viewer/packages/workflows/`:
-- `npm test -w @bim-open-toolkit/workflows` — 135 tests, 134 passed, 1 failed:
+- `npm test -w @bim-open-viewer/workflows` — 135 tests, 134 passed, 1 failed:
   `test/02-revision-comparison.test.ts > ... > reads the two revisions at two revisions of one model
   identity`, the literal-`'views.link'` assertion above. Every other test, including the new
   `test/recipe-names.test.ts` (10 cases, one per workflow, run for real against its fixture and

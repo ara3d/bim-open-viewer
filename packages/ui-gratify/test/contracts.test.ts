@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { diagnostic, failure } from '@bim-open-toolkit/model';
+import { diagnostic, failure } from '@bim-open-viewer/model';
 import { Label } from 'gratify';
 import {
   conflictingValue,

@@ -10,8 +10,8 @@ import {
   type CommandDescriptor,
   type CommandRegistry,
   type Result,
-} from '@bim-open-toolkit/model';
-import type { ViewerSession } from '@bim-open-toolkit/viewer';
+} from '@bim-open-viewer/model';
+import type { ViewerSession } from '@bim-open-viewer/viewer';
 import { useViewerSession } from './connection.js';
 
 // One command, ready to run. `known` is false when nothing on the bus answers to that name, which

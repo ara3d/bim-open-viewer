@@ -9,7 +9,7 @@
  * mesh, an empty mesh, several instances per object, and entity rows no
  * instance refers to.
  */
-import type { RenderModel } from '@ara3d/viewer-loaders';
+import type { RenderModel } from '@bim-open-viewer/loaders';
 import { createRandom } from '../perf/prng.js';
 
 /** Ints per mesh slice: base vertex, vertex count, first index, index count. */

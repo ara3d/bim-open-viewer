@@ -18,7 +18,7 @@ import {
   type Disposable,
   type Result,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A half-space. Points where `dot(normal, point) + constant` is negative are removed.
 export type ClipPlane = {

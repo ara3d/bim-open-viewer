@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { InstancedGroup, ViewerScene } from '@ara3d/viewer-core';
+import { InstancedGroup, ViewerScene } from '@bim-open-viewer/core';
 import { ModelRegistry, SelectionStore, composeEdits, composeAppearance, identityMatrix, createEditHistory, commitEditHistory, undoEditHistory, serializeSceneDocument, parseSceneDocument, restoreSceneDocument, type ObjectRecord, type SceneDocument } from '../src/index.js';
 import { RenderBinding } from '../src/render.js';
 

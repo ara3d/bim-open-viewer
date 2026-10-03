@@ -1,4 +1,4 @@
-# @bim-open-toolkit/interact
+# @bim-open-viewer/interact
 
 Camera state and navigation for a 3D view: where the camera is, how input moves it, and how it
 flies from one view to another.
@@ -8,7 +8,7 @@ table and camera animation are plain functions over plain data, so they are test
 a browser, a canvas or a renderer. `src/dom.ts` is the only module that touches a DOM, and it does
 one job: turn element events into the normalised input record and step the pure reducers with it.
 
-The only dependency is `@bim-open-toolkit/model`, which has no dependencies of its own. There is no
+The only dependency is `@bim-open-viewer/model`, which has no dependencies of its own. There is no
 `three`, no WebGL and no scene graph. Matrices come out as plain 16-number arrays in column-major
 order, which is the layout `Matrix4.fromArray` and `gl.uniformMatrix4fv` already expect.
 
@@ -48,8 +48,8 @@ undo the orthographic projection: what the user can see is what they asked for, 
 `interact` never draws. A renderer reads two matrices out of the state each frame:
 
 ```ts
-import { attachNavigation, navSession, navState, viewMatrix, projectionMatrix, aspectOf } from '@bim-open-toolkit/interact';
-import { defaultView } from '@bim-open-toolkit/model';
+import { attachNavigation, navSession, navState, viewMatrix, projectionMatrix, aspectOf } from '@bim-open-viewer/interact';
+import { defaultView } from '@bim-open-viewer/model';
 
 const controller = attachNavigation(canvas, {
   session: navSession(navState(defaultView, 'orbit')),
@@ -115,17 +115,17 @@ button can differ from the left button alone.
 
 ## What is not here
 
-- **Picking, selection and clipping.** Those belong to `@bim-open-toolkit/render`. This package
+- **Picking, selection and clipping.** Those belong to `@bim-open-viewer/render`. This package
   never asks what is under the pointer.
 - **Rendering of any kind**, including navigation aids, a compass or a view cube. Those are
   features built on top.
 - **Collision, gravity and walking on floors.** First-person navigation flies; making it walk needs
   geometry queries this package has no access to.
 - **Commands, events and persistence.** `NavState` is plain data that a scene document can hold,
-  but the command bus and the slice that stores it live in `@bim-open-toolkit/viewer`.
+  but the command bus and the slice that stores it live in `@bim-open-viewer/viewer`.
 - **Multiple views.** One `NavState` is one view. Linking two of them is composition above here.
 
 ## Decisions
 
 `docs/DECISION-controls.md` records why this package implements navigation itself rather than
-wrapping `@ara3d/viewer-controls`. `docs/CHECKPOINT-I.md` records what is verified and how.
+wrapping `@bim-open-viewer/controls`. `docs/CHECKPOINT-I.md` records what is verified and how.

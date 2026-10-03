@@ -11,7 +11,7 @@
  * Keep it faithful. A parity test checks it against the real `loadBosModel`
  * whenever the private benchmark model is present.
  */
-import type { InstancedGroup } from '@ara3d/viewer-core';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 import { Matrix4 as ThreeMatrix4 } from 'three';
 import { withOpaqueMaterials, type SourceUp } from './build.js';
 import { noSourceId, type ObjectIdentity } from './object-table.js';

@@ -43,7 +43,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   appearanceChangeSchema,
   matrix4Schema,

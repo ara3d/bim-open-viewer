@@ -8,7 +8,7 @@ import {
   transformColumnNames,
   transformStride,
   u32Column,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { buildInstanceTable, colorOfRow, transformOfRow } from '../src/instance-table.js';
 import {
   DirtyRanges,

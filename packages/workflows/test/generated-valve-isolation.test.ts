@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultServicesOptions, generateServices, type Services } from '@bim-open-toolkit/synthetic';
-import { rowOf } from '@bim-open-toolkit/model';
+import { defaultServicesOptions, generateServices, type Services } from '@bim-open-viewer/synthetic';
+import { rowOf } from '@bim-open-viewer/model';
 import {
   runValveIsolation,
   type IsolationNode,

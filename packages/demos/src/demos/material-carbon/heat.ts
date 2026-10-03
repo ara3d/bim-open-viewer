@@ -11,7 +11,7 @@
 // change what a colour means. A ramp published by `workflows` beside `outcomeAppearance` would let
 // this file state nothing at all; that is a request in CHECKPOINT-D4.md.
 
-import { numericStyling, type Legend, type NumericScale, type Styling } from '@bim-open-toolkit/features';
+import { numericStyling, type Legend, type NumericScale, type Styling } from '@bim-open-viewer/features';
 import {
   f64Column,
   stringColumn,
@@ -20,8 +20,8 @@ import {
   type Result,
   type Session,
   type Table,
-} from '@bim-open-toolkit/model';
-import { outcomeAppearance, resultRows, type ResultRow, type WorkflowResult } from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/model';
+import { outcomeAppearance, resultRows, type ResultRow, type WorkflowResult } from '@bim-open-viewer/workflows';
 import { carbonKey } from './carbon.js';
 
 // The low end of the carbon ramp: the least carbon on the fixed scale.

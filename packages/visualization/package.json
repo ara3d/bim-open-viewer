@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/visualization",
+  "name": "@bim-open-viewer/visualization",
   "version": "0.1.0",
   "description": "Composable BIM review state and adapters for the Ara viewer",
   "license": "MIT",
@@ -67,8 +67,8 @@
     "test": "vitest run --maxWorkers=2"
   },
   "peerDependencies": {
-    "@ara3d/viewer-core": "^0.1.0",
-    "@ara3d/viewer-loaders": "^0.1.0",
+    "@bim-open-viewer/core": "^0.1.0",
+    "@bim-open-viewer/loaders": "^0.1.0",
     "three": ">=0.180.0",
     "gratify": "^0.2.0"
   },

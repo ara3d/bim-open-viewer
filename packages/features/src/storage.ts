@@ -41,7 +41,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A store of strings by key, inside one versioned namespace.
 //

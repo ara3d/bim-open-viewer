@@ -15,7 +15,7 @@ import {
   type MeshTable,
   type ModelData,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { formatCode, formatDiagnostic } from './diagnostics.js';
 import type { ModelDocuments, ModelProperties } from './properties.js';
 

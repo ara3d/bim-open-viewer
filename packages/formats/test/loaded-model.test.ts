@@ -9,7 +9,7 @@ import {
   type Geometry,
   type ModelData,
   type ModelRef,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { describe, expect, it } from 'vitest';
 import { formatCode } from '../src/diagnostics.js';
 import { checkedModel, loadedModel, modelStatistics, validateLoadedModel } from '../src/loaded-model.js';

@@ -6,9 +6,9 @@ import {
   hudSlice,
   navigationAidsFeature,
   pendingCapture,
-} from '@bim-open-toolkit/features';
-import { diagnostic, failure, success, type Result } from '@bim-open-toolkit/model';
-import { pngFormat, type CaptureTarget } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/features';
+import { diagnostic, failure, success, type Result } from '@bim-open-viewer/model';
+import { pngFormat, type CaptureTarget } from '@bim-open-viewer/render';
 import { describe, expect, it } from 'vitest';
 import { captureReady, captureReport, demo, startCapture, type CapturingViewer } from '../../../src/demos/capture/index.js';
 import { captureSheet } from '../../../src/demos/capture/inspector.js';

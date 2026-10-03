@@ -2,7 +2,7 @@
 // model whose room has lost its storey link, which is the case the generator makes on purpose.
 
 import { describe, expect, it } from 'vitest';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import {
   metresZUpLocal,
   modelIdentity,
@@ -12,7 +12,7 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   findGroup,
   groupsOf,

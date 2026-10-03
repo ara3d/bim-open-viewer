@@ -1,5 +1,5 @@
-import { Viewer, sceneBounds } from '@ara3d/viewer-core';
-import { OrbitControls, ndcFromClient } from '@ara3d/viewer-controls';
+import { Viewer, sceneBounds } from '@bim-open-viewer/core';
+import { OrbitControls, ndcFromClient } from '@bim-open-viewer/controls';
 import { RenderBinding } from '../../src/render.js';
 import { SelectionStore } from '../../src/selection.js';
 import { objectKey } from '../../src/contracts.js';

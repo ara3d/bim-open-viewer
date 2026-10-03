@@ -4,12 +4,12 @@
 
 This is the durable implementation plan for the September 7, 2026 visualization product brief. It retains the original scope and delivery sequence. The delivered prioritized alpha does not satisfy every P0 release requirement.
 
-- [Original product brief](../../../../docs/plans/visualization/PRODUCT-BRIEF.md): exact source copy, including all benefits, F01–F27 stages, priorities, dependencies and acceptance outcomes. This remains the requirements baseline.
+- [Original product brief](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/PRODUCT-BRIEF.md): exact source copy, including all benefits, F01–F27 stages, priorities, dependencies and acceptance outcomes. This remains the requirements baseline.
 - [Current implementation status](STATUS.md): delivered increments, current constraints and qualification gaps.
 - [Verification evidence](FINDINGS.md): actual checks, browser observations and limits; a demo route alone does not establish feature completion.
-- [Planning history and decisions](../../../../docs/plans/visualization/README.md): exact committed plans, provenance and the explanation of the September 7 repair.
-- [V2 rewrite plan](../../../../docs/plans/visualization/V2-PLAN.md): proposed 2026-09-07 successor to this delivery approach; this document remains the alpha record.
-- [Parallel scheduling improvements](../../../../docs/plans/visualization/PARALLEL-WAVE-IMPROVEMENTS.md): concrete guidance for future authorized waves.
+- [Planning history and decisions](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/README.md): exact committed plans, provenance and the explanation of the September 7 repair.
+- [V2 rewrite plan](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/V2-PLAN.md): proposed 2026-09-07 successor to this delivery approach; this document remains the alpha record.
+- [Parallel scheduling improvements](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/PARALLEL-WAVE-IMPROVEMENTS.md): concrete guidance for future authorized waves.
 
 The repository-root PLAN.md concerns initial repository population and is a separate plan. This document was reconstructed on September 7 from the intact product brief and committed plans; it is not a claim to recover every uncommitted intermediate wave note.
 
@@ -57,7 +57,7 @@ P1 and P2 features are not required to make a P0 module reusable. Their future r
 
 ## Original feature index
 
-The IDs and priorities below are retained verbatim from the brief. Read each full feature section in the [requirements baseline](../../../../docs/plans/visualization/PRODUCT-BRIEF.md) before dispatch; this index does not replace its acceptance cases. Map results back to these IDs in STATUS.md and per-feature evidence.
+The IDs and priorities below are retained verbatim from the brief. Read each full feature section in the [requirements baseline](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/PRODUCT-BRIEF.md) before dispatch; this index does not replace its acceptance cases. Map results back to these IDs in STATUS.md and per-feature evidence.
 
 - F01. Model identity and scene foundation — P0
 - F02. File loading and fast opening — P0
@@ -89,7 +89,7 @@ The IDs and priorities below are retained verbatim from the brief. Read each ful
 
 ## Contracts and dependency graph
 
-The current typed contracts and adapter limitations are recorded in [STATUS.md](STATUS.md). The original foundation decisions are preserved in [PLAN-82d7f41.md](../../../../docs/plans/visualization/history/PLAN-82d7f41.md). Do not infer a new contract revision from a progress summary.
+The current typed contracts and adapter limitations are recorded in [STATUS.md](STATUS.md). The original foundation decisions are preserved in [PLAN-82d7f41.md](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/history/PLAN-82d7f41.md). Do not infer a new contract revision from a progress summary.
 
 ```mermaid
 flowchart TD
@@ -124,7 +124,7 @@ Keep Snowdon browser/GPU checks centrally scheduled until measured resource capa
 
 ## Acceptance and benchmarks
 
-Feature completion follows section 10 of the [brief](../../../../docs/plans/visualization/PRODUCT-BRIEF.md): public API behavior, meaningful smallest-fixture cases, standalone UI demo where relevant, correct combinations and cleanup, applicable browser checks, measured or explicitly inapplicable performance cost, current documentation/reference, and combined verification against stable inputs.
+Feature completion follows section 10 of the [brief](https://github.com/ara3d/bim-open-toolkit/blob/main/docs/plans/visualization/PRODUCT-BRIEF.md): public API behavior, meaningful smallest-fixture cases, standalone UI demo where relevant, correct combinations and cleanup, applicable browser checks, measured or explicitly inapplicable performance cost, current documentation/reference, and combined verification against stable inputs.
 
 Use Snowdon as the primary integration and performance model without committing private model data. Check the real HTTP response, MIME, ZIP signature, exact source hash, metadata consistency and nonempty decoded geometry before accepting model loading. Keep negative fixtures for HTML fallback, truncation and cancellation. Record browser/runtime failures and limitations explicitly; an HTTP 200 or data-only test does not prove rendered success.
 

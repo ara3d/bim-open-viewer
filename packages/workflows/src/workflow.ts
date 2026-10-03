@@ -6,7 +6,7 @@ import {
   type JsonSchema,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { type WorkflowResult } from './result.js';
 
 // Whether a workflow's demonstration runs on generated data, on a real source, or on both.

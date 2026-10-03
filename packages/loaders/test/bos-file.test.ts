@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it, vi } from 'vitest';
 import JSZip from 'jszip';
 import * as parquet from 'hyparquet';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { parseBosGeometry, loadBos } from '../src/bos-loader.js';
 import { bosToBfast } from '../src/bos-to-bfast.js';
 import { bosTransformFinite } from '../src/bos-geometry.js';
@@ -19,7 +19,7 @@ vi.mock('hyparquet', async importOriginal => {
 });
 
 const bosPath = fileURLToPath(
-  new URL('../../../../data/duplex.bos', import.meta.url),
+  new URL('../../../../../data/duplex.bos', import.meta.url),
 );
 
 describe('BOS column chunks', () => {

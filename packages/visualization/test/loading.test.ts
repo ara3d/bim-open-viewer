@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { parseBosGeometry } from '@ara3d/viewer-loaders';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { parseBosGeometry } from '@bim-open-viewer/loaders';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { sampleBosGeometry } from '../../loaders/test/helpers.js';
 import { loadBosModel } from '../src/loading.js';
 import { RenderBinding } from '../src/render.js';
 import { identityMatrix, type Matrix4 } from '../src/contracts.js';
 
-vi.mock('@ara3d/viewer-loaders', async importOriginal => ({ ...await importOriginal<object>(), parseBosGeometry: vi.fn() }));
+vi.mock('@bim-open-viewer/loaders', async importOriginal => ({ ...await importOriginal<object>(), parseBosGeometry: vi.fn() }));
 const parse = vi.mocked(parseBosGeometry);
 const ref = { id: 'snowdon', revision: 'test' };
 beforeEach(() => { parse.mockReset(); });
@@ -61,7 +61,7 @@ describe('BOS model loading', () => {
   });
 
   it('returns diagnostics for malformed archives', async () => {
-    const actual = await vi.importActual<typeof import('@ara3d/viewer-loaders')>('@ara3d/viewer-loaders');
+    const actual = await vi.importActual<typeof import('@bim-open-viewer/loaders')>('@bim-open-viewer/loaders');
     parse.mockImplementation(actual.parseBosGeometry);
     expect(await loadBosModel(new ArrayBuffer(8), ref)).toMatchObject({ ok: false, diagnostics: [{ code: 'load-failed' }] });
   });

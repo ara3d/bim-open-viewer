@@ -18,7 +18,7 @@ import {
   type Diagnostic,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A registry that changes: features add their commands when they install and take them away when
 // they are disposed.

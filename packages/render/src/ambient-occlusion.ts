@@ -19,7 +19,7 @@ import {
   type Bounds,
   type Disposable,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // What the pass shows: the shaded picture darkened where it is enclosed, or the occlusion term on
 // its own, white where a surface is open and black where it is enclosed, which is how the effect

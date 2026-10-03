@@ -12,7 +12,7 @@
  * or colour has been changed away from what its group holds. A column is
  * allocated only once some row needs it.
  */
-import type { InstancedGroup } from '@ara3d/viewer-core';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 
 /** Floats per instance transform (column-major 4x4). */
 export const transformFloats = 16;

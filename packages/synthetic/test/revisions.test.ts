@@ -2,7 +2,7 @@
 // stay unresolved.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, type Table } from '@bim-open-toolkit/model';
+import { columnOf, type Table } from '@bim-open-viewer/model';
 import { splitIds } from '../src/arrays.js';
 import { defaultBuildingOptions, generateBuilding } from '../src/building.js';
 import { defaultRevisionsOptions, generateRevisions } from '../src/revisions.js';

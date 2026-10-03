@@ -17,7 +17,7 @@ import {
   type Result,
   type Schema,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { workflowException, type WorkflowException } from './exception.js';
 import { duplicateDiagnostics, keyOf, keysOf, namedObjectSet, suggestedView, unknownReferenceDiagnostic } from './keys.js';
 import { enumeration } from './schema-tools.js';

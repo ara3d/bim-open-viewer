@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { metresZUpLocal, unknownCoordinates } from '@bim-open-toolkit/model';
+import { metresZUpLocal, unknownCoordinates } from '@bim-open-viewer/model';
 import { accessCoordinationInputSchema, runAccessCoordination } from '../src/07-access-coordination.js';
 import { exceptionRows, resultRows } from '../src/result.js';
 import { fixtureInput, fixtureModel, loadFixture, valueOfResult } from './fixtures.js';

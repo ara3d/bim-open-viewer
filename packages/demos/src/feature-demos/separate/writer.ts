@@ -6,13 +6,13 @@
 // thing local about it is where the offsets come from. It goes when the layouts feature gains a
 // `row` layout kind and the page can dispatch `layouts.row` instead.
 
-import type { Disposable, ObjectKey, Vec3 } from '@bim-open-toolkit/model';
+import type { Disposable, ObjectKey, Vec3 } from '@bim-open-viewer/model';
 import {
   captureTranslations,
   layoutTranslations,
   writeLayout,
   type LayoutHost,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 
 // Applies offsets to the rows and says how many moved. Disposing puts the model back where it was.
 export type LayoutWriter = Disposable & {

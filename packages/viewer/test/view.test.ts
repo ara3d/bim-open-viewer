@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { defaultView, orthographic, viewState, cameraPose } from '@bim-open-toolkit/model';
-import { defaultEnvironment } from '@bim-open-toolkit/render';
-import { InstancedGroup } from '@ara3d/viewer-core';
+import { defaultView, orthographic, viewState, cameraPose } from '@bim-open-viewer/model';
+import { defaultEnvironment } from '@bim-open-viewer/render';
+import { InstancedGroup } from '@bim-open-viewer/core';
 import { createView } from '../src/view.js';
 import { fakeRenderer, testFrames } from './support/fake-renderer.js';
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultRevisionsOptions, generateRevisions, splitIds, type Revisions } from '@bim-open-toolkit/synthetic';
-import { rowOf, type Table } from '@bim-open-toolkit/model';
+import { defaultRevisionsOptions, generateRevisions, splitIds, type Revisions } from '@bim-open-viewer/synthetic';
+import { rowOf, type Table } from '@bim-open-viewer/model';
 import {
   runRevisionComparison,
   type Correspondence,

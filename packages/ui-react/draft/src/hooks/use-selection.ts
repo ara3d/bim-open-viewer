@@ -6,8 +6,8 @@
 // from React indistinguishable from one made by a script or by an assistant.
 
 import { useCallback, useMemo } from 'react';
-import { setOf, type ObjectKey, type ObjectSet, type Result } from '@bim-open-toolkit/model';
-import { appearanceSlice } from '@bim-open-toolkit/viewer';
+import { setOf, type ObjectKey, type ObjectSet, type Result } from '@bim-open-viewer/model';
+import { appearanceSlice } from '@bim-open-viewer/viewer';
 import { useSlice } from './use-slice.js';
 import { useCommand } from './use-command.js';
 

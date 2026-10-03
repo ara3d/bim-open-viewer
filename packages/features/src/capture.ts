@@ -35,7 +35,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   captureImage,
   pngFormat,
@@ -44,7 +44,7 @@ import {
   type CaptureImage,
   type CaptureOptions,
   type CaptureTarget,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 
 const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 

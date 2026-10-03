@@ -6,7 +6,7 @@
 // for (NaN, which is most of what these fixtures are about), and a digest for the few columns too
 // long to read, so a change is still visible even where the values are not.
 
-import type { Column, Table } from '@bim-open-toolkit/model';
+import type { Column, Table } from '@bim-open-viewer/model';
 import type { FixtureSummary } from '../src/fixtures.js';
 
 // The most rows a snapshot writes out in full. Beyond this a column is reduced to a digest, so the

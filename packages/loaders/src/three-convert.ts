@@ -13,7 +13,7 @@ import {
   MaterialConfig,
   MeshBuffers,
   defaultMaterial,
-} from '@ara3d/viewer-core';
+} from '@bim-open-viewer/core';
 import { ConvertResult, GroupCallback } from './groups.js';
 
 type Attribute = BufferAttribute | InterleavedBufferAttribute;

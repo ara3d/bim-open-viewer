@@ -18,8 +18,8 @@ import {
   type ModelRef,
   type ObjectRecord,
   type Result,
-} from '@bim-open-toolkit/model';
-import { fixture, type Fixture, type FixtureName } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/model';
+import { fixture, type Fixture, type FixtureName } from '@bim-open-viewer/synthetic';
 import type { DataBasis, DemoFixture, ModelSource } from '../../gallery/contracts.js';
 
 // A geometry with no meshes and no instances: what a fixture that states no shapes draws.

@@ -1,7 +1,7 @@
 // `CaptureTarget` and `GpuFrameTimer`: the drawing buffer, and what the GPU can say about itself.
 
-import type { Viewer } from '@ara3d/viewer-core';
-import { noGpuTimer, type CaptureTarget, type GpuFrameTimer } from '@bim-open-toolkit/render';
+import type { Viewer } from '@bim-open-viewer/core';
+import { noGpuTimer, type CaptureTarget, type GpuFrameTimer } from '@bim-open-viewer/render';
 
 // The canvas as something `captureImage` can size, draw and encode. Sizes are device pixels, so the
 // ratio is one: the capture is exactly as big as it was asked for, whatever the display does.

@@ -8,8 +8,8 @@ import {
   putSlice,
   storedSliceIds,
   translation,
-} from '@bim-open-toolkit/model';
-import { representationRegistry } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { representationRegistry } from '@bim-open-viewer/render';
 import {
   ephemeralSlices,
   noReplacementsState,

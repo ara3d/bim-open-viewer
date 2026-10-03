@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PerspectiveCamera } from 'three';
-import { SceneObject, ViewerScene } from '@ara3d/viewer-core';
+import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
 import { Picker } from '../src/pick.js';
 import { SectionPlanes } from '../src/section-planes.js';
 import { quadGroupAt, translation, white } from './helpers.js';

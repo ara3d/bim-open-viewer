@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/features: one Feature per capability, each with its slice, schema and commands.
+// Public API of @bim-open-viewer/features: one Feature per capability, each with its slice, schema and commands.
 export * from './appearance.js';
 export * from './appearance-schemas.js';
 export * from './appearance-render.js';

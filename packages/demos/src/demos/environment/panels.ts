@@ -5,8 +5,8 @@
 // no state of its own beyond the chosen preset: `sync` reads the choice back out of the environment
 // slice each change, so a preset set by any other route shows here too.
 
-import { environmentSlice } from '@bim-open-toolkit/features';
-import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-toolkit/ui-gratify';
+import { environmentSlice } from '@bim-open-viewer/features';
+import { hudPanel, type AnyHudPanel, type HudPanel } from '@bim-open-viewer/ui-gratify';
 import { Press, Row, part, surface, v, type AppSpec, type Element } from 'gratify';
 import { presetNames, presetOf, presetTitles, presets, type PresetChoice, type PresetName } from './presets.js';
 

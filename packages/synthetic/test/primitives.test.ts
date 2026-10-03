@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { triangleCount, vertexCount, type Vec3 } from '@bim-open-toolkit/model';
+import { triangleCount, vertexCount, type Vec3 } from '@bim-open-viewer/model';
 import type { ShadedMesh } from '../src/mesh-builder.js';
 import { box, cylinder, extrude, plane, wedge } from '../src/primitives.js';
 import { signedArea, triangulate, type Vec2 } from '../src/triangulate.js';

@@ -1,10 +1,10 @@
 import { observeResize } from './observe-resize.js';
 import './style.css';
 import { BoxGeometry, Vector3 } from 'three';
-import { Viewer, InstancedGroup, sceneBounds } from '@ara3d/viewer-core';
-import { OrbitControls, ndcFromClient } from '@ara3d/viewer-controls';
-import { ModelRegistry, SelectionStore, objectKey, composeAppearance, composeEdits, createEditHistory, commitEditHistory, undoEditHistory, redoEditHistory, createNumericColorMap, serializeSceneDocument, parseSceneDocument, restoreSceneDocument, type ObjectRecord, type EditOperation, type ModelData, type SceneDocument, type Matrix4 } from '@bim-open-toolkit/visualization';
-import { RenderBinding } from '@bim-open-toolkit/visualization/render';
+import { Viewer, InstancedGroup, sceneBounds } from '@bim-open-viewer/core';
+import { OrbitControls, ndcFromClient } from '@bim-open-viewer/controls';
+import { ModelRegistry, SelectionStore, objectKey, composeAppearance, composeEdits, createEditHistory, commitEditHistory, undoEditHistory, redoEditHistory, createNumericColorMap, serializeSceneDocument, parseSceneDocument, restoreSceneDocument, type ObjectRecord, type EditOperation, type ModelData, type SceneDocument, type Matrix4 } from '@bim-open-viewer/visualization';
+import { RenderBinding } from '@bim-open-viewer/visualization/render';
 
 const element = <T extends HTMLElement>(id: string): T => {
   const value = document.getElementById(id);

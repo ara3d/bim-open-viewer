@@ -1,9 +1,9 @@
-# @ara3d/viewer-core
+# @bim-open-viewer/core
 
 The renderer core of the Ara 3D viewer: scene management, instanced drawing,
 materials, per-instance color, and the frame loop. No file formats and no input
-handling — it draws what it is handed. Loading lives in `@ara3d/viewer-loaders`,
-interaction in `@ara3d/viewer-controls`.
+handling — it draws what it is handed. Loading lives in `@bim-open-viewer/loaders`,
+interaction in `@bim-open-viewer/controls`.
 
 `three` is a peer dependency: the host application chooses the version.
 All numeric parameters are plain floats. BIM-free; part of a workspace that is
@@ -12,7 +12,7 @@ a candidate to move to its own repository once stable.
 ## Usage
 
 ```ts
-import { Viewer, InstancedGroup } from '@ara3d/viewer-core';
+import { Viewer, InstancedGroup } from '@bim-open-viewer/core';
 
 const viewer = new Viewer();
 viewer.attach(canvas);

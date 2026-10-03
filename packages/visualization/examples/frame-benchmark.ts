@@ -1,6 +1,6 @@
 // Diagnostic harness, deliberately separate from the gallery and production API.
 import { WebGLRenderer, WebGLRenderTarget, PerspectiveCamera, HemisphereLight, DirectionalLight, Vector3, MeshBasicMaterial, BatchedMesh, Mesh, Plane, Matrix4 } from 'three';
-import { ViewerScene, SceneObject, sceneBounds } from '@ara3d/viewer-core';
+import { ViewerScene, SceneObject, sceneBounds } from '@bim-open-viewer/core';
 import { loadBosModel } from '../src/loading.js';
 import { RenderBinding } from '../src/render.js';
 import { objectKey, type ObjectRecord } from '../src/contracts.js';

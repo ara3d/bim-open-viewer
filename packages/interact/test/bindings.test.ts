@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { hasErrors, type Result } from '@bim-open-toolkit/model';
+import { hasErrors, type Result } from '@bim-open-viewer/model';
 import {
   emptyFrame,
   type InputFrame,

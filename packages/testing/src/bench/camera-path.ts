@@ -24,7 +24,7 @@ import {
   type Projection,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One view of a path and the time it was reached, in milliseconds from the start.
 export type CameraKey = {

@@ -5,7 +5,7 @@
 // which writes a translation for every instance row. Neither is a special path for this demo, which
 // is the point: what the demo measures is what an ordinary command costs at this size.
 
-import type { Color, ObjectKey, Result, Session, StyleRule } from '@bim-open-toolkit/model';
+import type { Color, ObjectKey, Result, Session, StyleRule } from '@bim-open-viewer/model';
 
 // The id the demo's colouring is held under. One id, replaced each press, so the rule list does not
 // grow with every button press.

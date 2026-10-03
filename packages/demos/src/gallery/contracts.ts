@@ -16,11 +16,11 @@ import type {
   Session,
   Vec2,
   Vec3,
-} from '@bim-open-toolkit/model';
-import type { LoadedModel, ModelDocuments, ModelProperties } from '@bim-open-toolkit/formats';
-import type { Placement } from '@bim-open-toolkit/features';
-import type { CaptureOptions, ObjectHit, SceneStatistics, UpdateReport } from '@bim-open-toolkit/render';
-import type { AnyHudPanel, PropertySheet } from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/model';
+import type { LoadedModel, ModelDocuments, ModelProperties } from '@bim-open-viewer/formats';
+import type { Placement } from '@bim-open-viewer/features';
+import type { CaptureOptions, ObjectHit, SceneStatistics, UpdateReport } from '@bim-open-viewer/render';
+import type { AnyHudPanel, PropertySheet } from '@bim-open-viewer/ui-gratify';
 import type { DemoReport } from '../feature-demos/_shared/protocol.js';
 
 export type DemoChapter = 'inspect' | 'cut-and-arrange' | 'workflows' | 'scale-and-proof';

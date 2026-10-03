@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { parseBfastModel, bfastToGroups, loadBfast } from '../src/bfast-loader.js';
 import { loadBos } from '../src/bos-loader.js';
 import { bfastFixture } from './bfast-fixture.js';

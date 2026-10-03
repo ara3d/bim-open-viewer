@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Matrix4, Vec3 } from '@bim-open-toolkit/model';
+import type { Matrix4, Vec3 } from '@bim-open-viewer/model';
 import {
   checkOverlays,
   clickAction,

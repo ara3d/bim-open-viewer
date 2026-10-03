@@ -4,7 +4,7 @@
 // stored record has to say how big the picture is and the viewport's size is not something this
 // demo is told. A capture the demo cannot describe is not one it offers.
 
-import { thumbnailOf, type CaptureRecord, type CaptureState } from '@bim-open-toolkit/features';
+import { thumbnailOf, type CaptureRecord, type CaptureState } from '@bim-open-viewer/features';
 
 export type CaptureSizeName = 'report' | 'slide' | 'thumbnail';
 

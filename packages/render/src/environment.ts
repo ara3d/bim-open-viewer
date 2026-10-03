@@ -19,7 +19,7 @@ import {
   type Disposable,
   type Result,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A straight line to draw, in world coordinates.
 export type LineSegment = {

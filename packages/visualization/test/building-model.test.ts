@@ -74,7 +74,7 @@ describe('BuildingModel door schedule adapter', () => {
   });
 });
 
-const localProjection = new URL('../../../../artifacts/building-model-workflows/snowdon/projection.json', import.meta.url);
+const localProjection = new URL('../../../../../artifacts/building-model-workflows/snowdon/projection.json', import.meta.url);
 it.skipIf(!existsSync(localProjection))('adapts the private actual Snowdon projection with 142 mapped doors', () => {
   const projection = JSON.parse(readFileSync(localProjection, 'utf8'));
   const result = adaptDoorSchedule(projection, { modelId: 'snowdon', contentFingerprint: 'sha256:FC31C4463D9EB958AE8DE3D853CFC8224B9469477B419857FBC929956C9CC51D' });

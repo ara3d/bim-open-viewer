@@ -21,7 +21,7 @@ import {
   overlaysFeature,
   setsFeature,
   setsSlice,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import {
   disposable,
   failure,
@@ -32,8 +32,8 @@ import {
   type Disposable,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
-import { outcomeRules, resultRows } from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/model';
+import { outcomeRules, resultRows } from '@bim-open-viewer/workflows';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo, DemoFixture, GalleryViewer } from '../../gallery/contracts.js';
 import { applyWorkflowResult, type Applied } from '../_workflows/apply-result.js';
@@ -249,6 +249,6 @@ export const demo: Demo = {
   start,
   ready: portfolioReady,
   report: portfolioReport,
-  source: 'viewer/packages/demos/src/demos/portfolio',
+  source: 'packages/demos/src/demos/portfolio',
   verify: 'npx vitest run --root packages/demos test/demos/portfolio',
 };

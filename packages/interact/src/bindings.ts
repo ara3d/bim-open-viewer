@@ -1,4 +1,4 @@
-import { diagnostic, resultOf, warning, type Diagnostic, type Result } from '@bim-open-toolkit/model';
+import { diagnostic, resultOf, warning, type Diagnostic, type Result } from '@bim-open-viewer/model';
 import {
   hasModifiers,
   heldButton,

@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/mcp",
+  "name": "@bim-open-viewer/mcp",
   "version": "0.1.0",
   "description": "Node bridge exposing viewer commands as MCP tools over a WebSocket to a browser session.",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/viewer": "0.1.0",
+    "@bim-open-viewer/viewer": "0.1.0",
     "@modelcontextprotocol/sdk": "^1.12.0",
     "ws": "^8.18.0"
   },

@@ -1,4 +1,4 @@
-// Performance tests are explicit and long-running: `npm run perf -w @bim-open-toolkit/viewer`.
+// Performance tests are explicit and long-running: `npm run perf -w @bim-open-viewer/viewer`.
 // They are named *.perf.ts so the default test run never picks them up.
 import { mergeConfig } from 'vitest/config';
 import shared from '../../vitest.shared.js';

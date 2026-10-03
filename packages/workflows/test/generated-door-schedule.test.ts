@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { generateBuilding, defaultBuildingOptions, type Building } from '@bim-open-toolkit/synthetic';
-import { hasRepresentation, indexFacts, observationAt, type ObjectRecord } from '@bim-open-toolkit/model';
+import { generateBuilding, defaultBuildingOptions, type Building } from '@bim-open-viewer/synthetic';
+import { hasRepresentation, indexFacts, observationAt, type ObjectRecord } from '@bim-open-viewer/model';
 import { runDoorSchedule, type DoorScheduleInput, type ScheduleDoor } from '../src/01-door-schedule.js';
 import { observationJson } from '../src/observation.js';
 import { exceptionRows, resultRows } from '../src/result.js';

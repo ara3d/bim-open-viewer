@@ -7,9 +7,9 @@
 // features package's fixed analytical palette, never a theme token, so changing theme or text size
 // does not change what a colour means.
 
-import { outcomeColor, setsSlice } from '@bim-open-toolkit/features';
-import { isEmptyBounds, type Color, type ObjectKey, type Session, type Vec3 } from '@bim-open-toolkit/model';
-import { hudPanel, type AnyHudPanel } from '@bim-open-toolkit/ui-gratify';
+import { outcomeColor, setsSlice } from '@bim-open-viewer/features';
+import { isEmptyBounds, type Color, type ObjectKey, type Session, type Vec3 } from '@bim-open-viewer/model';
+import { hudPanel, type AnyHudPanel } from '@bim-open-viewer/ui-gratify';
 import {
   Focusable,
   Label,

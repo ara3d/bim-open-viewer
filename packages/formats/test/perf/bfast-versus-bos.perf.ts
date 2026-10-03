@@ -8,7 +8,8 @@
  * Private data is never committed. When the models are absent the test prints why and passes.
  */
 import { existsSync, readFileSync, statSync } from 'node:fs';
-import { parseBfastModel } from '@ara3d/viewer-loaders';
+import { fileURLToPath } from 'node:url';
+import { parseBfastModel } from '@bim-open-viewer/loaders';
 import { describe, expect, it } from 'vitest';
 import {
   bfastEntityRows,
@@ -24,7 +25,7 @@ import { once, repeat, report, reportValues, writeReport, type Measurement } fro
 
 const bfastPath =
   process.env['SNOWDON_BFAST_PATH'] ??
-  'C:/Users/cdigg/git/bim-open-toolkit/viewer/packages/visualization/artifacts/bfast/snowdon-bim.bfast';
+  fileURLToPath(new URL('../../../visualization/artifacts/bfast/snowdon-bim.bfast', import.meta.url));
 const bosPath =
   process.env['SNOWDON_BOS_PATH'] ?? 'C:/Users/cdigg/Documents/BIM Open Schema/Snowdon Towers Sample Architectural.bos';
 

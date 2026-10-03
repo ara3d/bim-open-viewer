@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/interact: camera state, navigation modes, input bindings and
+// Public API of @bim-open-viewer/interact: camera state, navigation modes, input bindings and
 // camera animation. Pure except for `dom.ts`, and free of any renderer or DOM types elsewhere.
 
 // Vector arithmetic model does not carry: scalar and vector products.

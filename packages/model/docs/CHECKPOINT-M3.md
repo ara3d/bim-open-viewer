@@ -38,7 +38,7 @@ and with nowhere to put them the loader drops them. What a renderer decides for 
 |---|---|
 | `npx tsc --noEmit -p packages/model/tsconfig.json` | pass, no output, 6 s |
 | `npx eslint packages/model` | pass, no output, 10 s |
-| `npm test -w @bim-open-toolkit/model` | pass, 20 files, 239 tests, 1.0 to 1.3 s |
+| `npm test -w @bim-open-viewer/model` | pass, 20 files, 239 tests, 1.0 to 1.3 s |
 | `npx tsc --noEmit -p packages/formats/tsconfig.json` | pass, read-only, 6 s |
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | pass, read-only, 5 s |
 

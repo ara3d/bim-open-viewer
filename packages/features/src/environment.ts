@@ -33,7 +33,7 @@ import {
   type Session,
   type StateSlice,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   applyEnvironment,
   checkEnvironment,
@@ -41,7 +41,7 @@ import {
   type EnvironmentSettings,
   type EnvironmentTarget,
   type LineSegment,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 
 // The environment settings plus whether the model's bounding box is drawn.
 export type EnvironmentState = {

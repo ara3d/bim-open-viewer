@@ -2,9 +2,9 @@
 // itself through the session its feature owns.
 
 import { describe, expect, it } from 'vitest';
-import { objectKey } from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { objectKey } from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import {
   demo,
   enclosureKeys,

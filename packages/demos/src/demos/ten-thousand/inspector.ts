@@ -7,8 +7,8 @@
 // publishing them cost — are measured by the render hooks and then discarded, so they are reported
 // as missing with that reason. The requests are in CHECKPOINT-D2.md.
 
-import { appearanceSlice, hudSlice, layoutsSlice } from '@bim-open-toolkit/features';
-import type { Session } from '@bim-open-toolkit/model';
+import { appearanceSlice, hudSlice, layoutsSlice } from '@bim-open-viewer/features';
+import type { Session } from '@bim-open-viewer/model';
 import {
   knownNumber,
   knownValue,
@@ -18,7 +18,7 @@ import {
   propertySheet,
   type PropertyRow,
   type PropertySheet,
-} from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/ui-gratify';
 import { recolourRuleId } from './bulk.js';
 import { openedChoice, stressCounts, stressTitles } from './scene.js';
 

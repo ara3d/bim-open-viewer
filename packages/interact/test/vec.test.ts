@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Vec3 } from '@bim-open-toolkit/model';
+import type { Vec3 } from '@bim-open-viewer/model';
 import { cross, dot, lerpVec3, perpendicularTo, unitSlerp } from '../src/vec.js';
 
 const closeToVec = (actual: Vec3, expected: Vec3, digits = 10): void => {

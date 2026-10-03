@@ -1,4 +1,4 @@
-import { meshBounds, transformBounds, unionBounds, type Bounds3, type MeshBuffers } from '@ara3d/viewer-core';
+import { meshBounds, transformBounds, unionBounds, type Bounds3, type MeshBuffers } from '@bim-open-viewer/core';
 import { identityMatrix, objectKey } from '../../src/contracts.js';
 import { boxReplacementMesh, ReplacementLayer } from '../../src/replacement.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

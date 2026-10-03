@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/model: pure data contracts and operations, no runtime dependencies.
+// Public API of @bim-open-viewer/model: pure data contracts and operations, no runtime dependencies.
 export * from './result.js';
 export * from './math.js';
 export * from './identity.js';

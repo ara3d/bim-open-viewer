@@ -1,5 +1,5 @@
 import { Vector3 } from 'three';
-import type { Bounds3 } from '@ara3d/viewer-core';
+import type { Bounds3 } from '@bim-open-viewer/core';
 
 /** Float parameters of the orbit camera model. All mutable at runtime. */
 export interface OrbitParams {

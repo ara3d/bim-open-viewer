@@ -1,4 +1,4 @@
-import { sceneBounds } from '@ara3d/viewer-core';
+import { sceneBounds } from '@bim-open-viewer/core';
 import { OrthographicCamera } from 'three';
 import { fitOrthographicView, type OrthographicView } from '../../src/projection.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

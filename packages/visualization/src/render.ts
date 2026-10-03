@@ -1,4 +1,4 @@
-import { type InstancedGroup, type ViewerScene, type SceneObject } from '@ara3d/viewer-core';
+import { type InstancedGroup, type ViewerScene, type SceneObject } from '@bim-open-viewer/core';
 import { type Camera, Matrix4 as ThreeMatrix4, Raycaster, Vector2 } from 'three';
 import { identityMatrix, objectKey, type Matrix4, type ObjectRef, type ObjectRecord, type Result, type Vec3 } from './contracts.js';
 

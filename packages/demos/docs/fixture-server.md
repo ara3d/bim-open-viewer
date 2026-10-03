@@ -35,7 +35,7 @@ use the command above.
 
 Default directories:
 
-- `C:/Users/cdigg/git/bim-open-toolkit/viewer/packages/visualization/artifacts/bfast`
+- `C:/Users/cdigg/git/bim-open-toolkit/packages/visualization/artifacts/bfast`
 - `C:/Users/cdigg/git/bim-open-toolkit/viewer/artifacts`
 
 They are absolute and machine-specific on purpose: the private models already live there and are not
@@ -90,7 +90,7 @@ Concurrent requests share one read. A read that fails is not cached.
 
 Verified against the real Snowdon file: `snowdon-bim.bfast`, 111,630,208 bytes, SHA-256
 `313c247e01a9aeee10d373b8d8ddfb9c13fc5ebb709945e75defcd763f33465b`, which matches the value
-independently recorded in `viewer/packages/visualization/docs/bfast-loading.md`.
+independently recorded in `packages/visualization/docs/bfast-loading.md`.
 
 ### Errors
 

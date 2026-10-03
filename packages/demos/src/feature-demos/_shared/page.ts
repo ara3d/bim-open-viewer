@@ -7,7 +7,7 @@
 import type { DemoReport } from './protocol.js';
 import { demoFailed, describeCause } from './protocol.js';
 import { createDemoHost, type DemoHost } from './host.js';
-import type { Result } from '@bim-open-toolkit/model';
+import type { Result } from '@bim-open-viewer/model';
 
 // The elements a demo draws into and reads from.
 export type PageElements = {

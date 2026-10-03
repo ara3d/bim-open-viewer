@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/ui-react",
+  "name": "@bim-open-viewer/ui-react",
   "version": "0.1.0",
   "description": "React bindings (useViewer, useSelection, useSlice) and the review application.",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/viewer": "0.1.0"
+    "@bim-open-viewer/viewer": "0.1.0"
   },
   "peerDependencies": {
     "react": "^18.3.1"

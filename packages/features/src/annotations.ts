@@ -32,7 +32,7 @@ import {
   type Session,
   type StateSlice,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // A world point, as three finite numbers.
 const vec3Schema: Schema<Vec3> = tuple(number(), number(), number());

@@ -7,7 +7,7 @@ import {
   objectRef,
   putSlice,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   defaultNavigation,
   levelAt,
@@ -21,7 +21,7 @@ import {
   type Level,
 } from '../src/navigation-aids.js';
 import { building, fixtureModel } from './navigation-aids-fixture.js';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { fakeSession } from './support/fake-session.js';
 
 const levels = (): readonly Level[] => levelsOf(building());

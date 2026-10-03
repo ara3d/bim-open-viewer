@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { bosToBfast, instanceTransformFinite, readBFast, readRenderModelTables } from '@ara3d/viewer-loaders';
+import { bosToBfast, instanceTransformFinite, readBFast, readRenderModelTables } from '@bim-open-viewer/loaders';
 import { describe, expect, it } from 'vitest';
 import { colorWord, flagsWord, hiddenFlag, instanceWords, meshSliceInts, meshWord } from '../src/bfast-layout.js';
 import { formatCode, FormatError } from '../src/diagnostics.js';
@@ -69,7 +69,7 @@ describe('readBoxPreview', () => {
 
 // The private Duplex sample. Never used to validate anything but the box preview here, and skipped
 // by name when the checkout does not carry `samples/`.
-const duplexPath = fileURLToPath(new URL('../../../../samples/nrc/duplex-enriched.bos', import.meta.url));
+const duplexPath = fileURLToPath(new URL('../../../../../samples/nrc/duplex-enriched.bos', import.meta.url));
 
 describe.skipIf(!existsSync(duplexPath))(
   'Duplex (skipped: samples/nrc/duplex-enriched.bos is not on this machine)',

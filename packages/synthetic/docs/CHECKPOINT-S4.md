@@ -46,7 +46,7 @@ assumed, to be the same 150 objects with the same geometry. Zero escape hatches.
 |---|---|
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | clean |
 | `npx eslint packages/synthetic` | clean |
-| `npm test -w @bim-open-toolkit/synthetic` | 15 files, 236 tests pass, 1.9 s (223 before, so 13 new: 8 mine, 5 from another writer's `test/schedule.test.ts`) |
+| `npm test -w @bim-open-viewer/synthetic` | 15 files, 236 tests pass, 1.9 s (223 before, so 13 new: 8 mine, 5 from another writer's `test/schedule.test.ts`) |
 | `npx tsc --noEmit -p packages/workflows/tsconfig.json` | clean, read-only |
 | `npx tsc --noEmit -p packages/demos/tsconfig.json` | clean, read-only |
 
@@ -74,7 +74,7 @@ a set rather than four booleans; noted, not done.
 | Check | Runs | Wall time | Real defects caught | Friction | Verdict |
 |---|---|---|---|---|---|
 | `tsc -p packages/synthetic` | 2 | 25 s under load | 0 | none | **neutral** — confirmed a small typed change |
-| `npm test -w @bim-open-toolkit/synthetic` | 2 | 1.9 s, 236 tests | 0, but it is the check that proves the default building is untouched, which is the acceptance criterion | none | **helpful** |
+| `npm test -w @bim-open-viewer/synthetic` | 2 | 1.9 s, 236 tests | 0, but it is the check that proves the default building is untouched, which is the acceptance criterion | none | **helpful** |
 | `eslint packages/synthetic` | 1 | 30 s under load | 0 | fifteen times the cost of the whole test suite | **neutral**, same verdict as S3 |
 | Fixture snapshots | 1 | under 1 s | 0 | none this time, because no fixture changed; S3's warning about the update variable did not have to be tested | **helpful** |
 | `tsc` on `workflows` and `demos` | 1 each | 40 s together | 0 | none | **helpful** — the only evidence the change is additive for callers |

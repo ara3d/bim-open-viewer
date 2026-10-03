@@ -36,15 +36,15 @@ import {
   type Geometry,
   type ModelData,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   propertyRowEnd,
   propertyRowStart,
   readProperty,
   type ModelDocuments,
   type ModelProperties,
-} from '@bim-open-toolkit/formats';
-import type { Outcome } from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/formats';
+import type { Outcome } from '@bim-open-viewer/workflows';
 import type { OpenedModel } from '../../gallery/contracts.js';
 
 // The quantity the roll-up adds up, and the ones it reports beside it without adding.

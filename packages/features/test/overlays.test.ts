@@ -1,6 +1,6 @@
-import { command, emptyDocument, getSlice, object, putSlice, string, success, type AnyFeature, type Command } from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { objectAnchor, overlayLayer, worldAnchor, type OverlayItem, type OverlayState } from '@bim-open-toolkit/render';
+import { command, emptyDocument, getSlice, object, putSlice, string, success, type AnyFeature, type Command } from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { objectAnchor, overlayLayer, worldAnchor, type OverlayItem, type OverlayState } from '@bim-open-viewer/render';
 import { describe, expect, it } from 'vitest';
 import {
   clickOverlay,

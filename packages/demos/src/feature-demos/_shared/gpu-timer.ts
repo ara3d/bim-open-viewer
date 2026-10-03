@@ -11,7 +11,7 @@
 // example under power management) invalidates every pending query, which are then dropped rather
 // than reported.
 
-import { noGpuTimer, type GpuFrameTimer } from '@bim-open-toolkit/render';
+import { noGpuTimer, type GpuFrameTimer } from '@bim-open-viewer/render';
 
 // `TIME_ELAPSED_EXT` and `GPU_DISJOINT_EXT` as the specification numbers them.
 export const timeElapsedExt = 0x88bf;

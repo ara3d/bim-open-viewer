@@ -10,12 +10,12 @@ geometry."
 Every workflow in this set shares one identity convention: an `objectId` is a
 plain string, unique within one implied model/revision (there is no separate
 `modelId`/`revision` pair in these fixtures — see the CHECKPOINT note on
-identity). A real adapter reads `viewer/packages/model/src/identity.ts`
+identity). A real adapter reads `packages/model/src/identity.ts`
 `ObjectRef` instead; these fixtures stand in for the `objectId` part of it.
 
 Fact-like fields (a value that can be known, missing or conflicting) are
 written as a small object, not a bare scalar, so the shape lines up with
-`viewer/packages/model/src/facts.ts`:
+`packages/model/src/facts.ts`:
 
 ```
 { "kind": "known", "value": <number|string|boolean>, "unit"?: <string> }

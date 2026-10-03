@@ -17,7 +17,7 @@ import {
   type Projection,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cameraBasis } from './camera.js';
 import { clamp } from './numbers.js';
 

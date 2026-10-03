@@ -2,8 +2,8 @@
 // the properties that make refinement flash-free (Section "How does refinement swap in without a
 // flash").
 
-import { InstancedGroup } from '@ara3d/viewer-core';
-import { bfastCoordinates, type BoxPreview } from '@bim-open-toolkit/formats';
+import { InstancedGroup } from '@bim-open-viewer/core';
+import { bfastCoordinates, type BoxPreview } from '@bim-open-viewer/formats';
 import { describe, expect, it } from 'vitest';
 import { createViewer, type Viewer } from '../src/create-viewer.js';
 import { fakeRenderer, testFrames, type FakeRenderer } from './support/fake-renderer.js';

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { identityMatrix, instanceRecords, mesh, noMesh, type Geometry } from '@bim-open-toolkit/model';
+import { identityMatrix, instanceRecords, mesh, noMesh, type Geometry } from '@bim-open-viewer/model';
 import { headlessScene } from '../../src/headless/scene.js';
 import { headlessMirror, rayThrough } from '../../src/headless/picking.js';
 import { smallBuilding } from '../../src/fixtures/catalog.js';

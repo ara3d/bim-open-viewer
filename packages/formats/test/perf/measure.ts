@@ -68,7 +68,7 @@ export function reportValues(title: string, values: Readonly<Record<string, numb
   return `${lines.join('\n')}\n`;
 }
 
-// Where a written report lands: `viewer/packages/formats/docs/<name>`.
+// Where a written report lands: `packages/formats/docs/<name>`.
 const docsDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs');
 
 // Prints a report and writes it beside the package docs, so the numbers survive the run.

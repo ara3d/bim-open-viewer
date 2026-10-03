@@ -2,7 +2,7 @@
 // Skipped with a printed reason when no browser launches.
 
 import { describe, expect, it } from 'vitest';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import { reportedNumber, reportedString, runDemoPage } from '../_shared/browser.js';
 
 describe('the host smoke page', () => {

@@ -12,7 +12,7 @@ import {
   type Projection,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { viewMatrix } from '../src/camera.js';
 import {
   defaultFieldOfViewDegrees,

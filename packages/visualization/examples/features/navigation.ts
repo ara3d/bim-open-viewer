@@ -1,4 +1,4 @@
-import { sceneBounds } from '@ara3d/viewer-core';
+import { sceneBounds } from '@bim-open-viewer/core';
 import { addNavigationAids } from '../../src/navigation-aids.js';
 import type { FeatureDemo } from '../gallery/contracts.js';
 export const navigationDemo: FeatureDemo={

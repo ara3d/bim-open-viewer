@@ -6,7 +6,7 @@
 // draws what it is handed, in order. `hud-minimap` and `hud-gumball` import this file. It lives
 // here rather than in `_shared`, which the supervisor owns.
 
-import type { Vec2 } from '@bim-open-toolkit/model';
+import type { Vec2 } from '@bim-open-viewer/model';
 
 // A colour written the way CSS writes it, which is what a 2D context takes.
 export type Paint = string;

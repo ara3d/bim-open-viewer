@@ -10,7 +10,7 @@
 // copied. That is cheap but not free, so a binding resolves a mesh once per group and never once per
 // instance; `geometryMeshTriangles` exists so counting triangles needs no `Mesh` at all.
 
-import { meshAt, meshCount, type Geometry, type Mesh } from '@bim-open-toolkit/model';
+import { meshAt, meshCount, type Geometry, type Mesh } from '@bim-open-viewer/model';
 
 // Meshes the geometry holds, in either form. Zero when it holds neither.
 export const geometryMeshCount = (geometry: Geometry): number =>

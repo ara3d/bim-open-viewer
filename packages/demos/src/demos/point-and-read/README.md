@@ -23,7 +23,7 @@ on average. The demo shows them in the groups the file puts them in - `Dimension
 Picking the wall `bos:1165` gives 44 properties in 9 groups: `Area` reads `465.619 SQUARE_FEET` and
 `Volume` reads `525.759 CUBIC_FEET`, both in the unit the exporter wrote and neither converted.
 
-**Synthetic building.** From `@bim-open-toolkit/synthetic`, generated with the generator's own
+**Synthetic building.** From `@bim-open-viewer/synthetic`, generated with the generator's own
 default options: seed 1, three storeys of eight rooms, the mixed door-width policy, and the
 documented rates at which a value is missing or disputed. 150 objects: 3 storeys, 3 slabs, 66 walls,
 24 rooms, 29 doors and 25 windows. Five of them carry no recorded name. It records no properties and
@@ -123,7 +123,7 @@ model's derivations so the page does not keep a hundred megabytes alive behind a
 
 ## Verification
 
-From `viewer/`:
+From the repository root:
 
 ```
 npx vitest run --root packages/demos test/demos/point-and-read
@@ -133,7 +133,7 @@ The block that reads the real file is skipped when the file is not on the machin
 runs on the generated building, with the parameter tables built by hand through the loader's own
 decoder in `test/demos/point-and-read/properties-fixture.ts`.
 
-In the browser, from `viewer/`:
+In the browser, from the repository root:
 
 ```
 node packages/demos/scripts/.check.mjs point-and-read out.png

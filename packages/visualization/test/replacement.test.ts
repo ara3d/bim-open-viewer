@@ -1,5 +1,5 @@
 import { expect, it, vi } from 'vitest';
-import { InstancedGroup, SceneObject, ViewerScene } from '@ara3d/viewer-core';
+import { InstancedGroup, SceneObject, ViewerScene } from '@bim-open-viewer/core';
 import { Mesh, PerspectiveCamera, Plane, Vector3 } from 'three';
 import { boxReplacementMesh, ReplacementLayer } from '../src/replacement.js';
 import { RenderBinding } from '../src/render.js';

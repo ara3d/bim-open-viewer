@@ -27,7 +27,7 @@ import {
   type StyleRule,
   type UpAxis,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // Three numbers, which is a point, a direction and a colour.
 export const vec3Schema: Schema<Vec3> = tuple(number(), number(), number());

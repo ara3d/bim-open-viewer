@@ -10,11 +10,11 @@
 // given the service reads back `undefined`, which is the honest answer for a headless session with
 // no renderer.
 //
-// A feature in `@bim-open-toolkit/features` cannot import this package (the dependency runs the
+// A feature in `@bim-open-viewer/features` cannot import this package (the dependency runs the
 // other way), so a feature needing live access today has to be installed by whoever holds the
 // service. `docs/viewer.md` records the request to the model package that would close that gap.
 
-import { disposable, type Disposable, type Session } from '@bim-open-toolkit/model';
+import { disposable, type Disposable, type Session } from '@bim-open-viewer/model';
 
 // A named capability a session may carry.
 export type Service<T> = {

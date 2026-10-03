@@ -5,7 +5,7 @@
 // documents that report figures about them, and the figures themselves, and none of the three could
 // be read out of the file: an `ObjectRecord` carried no quantity and no document, so opening
 // Snowdon showed what the file held and said the roll-up could not be run. The loader has since
-// been extended - `@bim-open-toolkit/formats` decodes the BOS parameter tables and the document
+// been extended - `@bim-open-viewer/formats` decodes the BOS parameter tables and the document
 // each object came from, and the gallery asks for both - so that is no longer true and this fixture
 // now runs a real roll-up over real figures. `recorded.ts` states exactly which question it answers
 // and why that is not the estate's question.
@@ -22,8 +22,8 @@
 // be no parameter table to roll up. The title differs from the shared fixture's because here it is
 // a second entry beside the estate and has to say which of the two it is.
 
-import type { ObjectRecord } from '@bim-open-toolkit/model';
-import { success, type Result } from '@bim-open-toolkit/model';
+import type { ObjectRecord } from '@bim-open-viewer/model';
+import { success, type Result } from '@bim-open-viewer/model';
 import type { DemoFixture, ModelSource, OpenedModel } from '../../gallery/contracts.js';
 import { snowdonFile, snowdonUrl } from '../_shared/snowdon.js';
 import { rollupOf, type RecordedRollup } from './recorded.js';

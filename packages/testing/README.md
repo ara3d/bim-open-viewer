@@ -1,11 +1,11 @@
-# @bim-open-toolkit/testing
+# @bim-open-viewer/testing
 
 The things every other package needs in order to be tested: named scenes to test against, a clock a
 test winds by hand, a viewer-core scene built without a browser, a browser runner, and the benchmark
 protocol the product brief's performance section asks for.
 
 Nothing here is used by shipped code. It depends on `model`, `synthetic`, `render` and
-`@ara3d/viewer-core`, and on `playwright-core` and `three` only where it says so.
+`@bim-open-viewer/core`, and on `playwright-core` and `three` only where it says so.
 
 | Area | Import | What it is |
 |---|---|---|
@@ -21,7 +21,7 @@ Nothing here is used by shipped code. It depends on `model`, `synthetic`, `rende
 ## Fixtures
 
 ```ts
-import { sceneFixture, fixtureFingerprint } from '@bim-open-toolkit/testing';
+import { sceneFixture, fixtureFingerprint } from '@bim-open-viewer/testing';
 
 const fixture = sceneFixture('small-building');
 fixture.model.objects.length;   // 150
@@ -91,7 +91,7 @@ const result = await runInBrowser({
 reason rather than failing on a machine that has none. One browser process per call, closed in a
 `finally`. Software WebGL is on by default: correct pictures, not representative frame rates.
 
-Output goes under `viewer/artifacts/testing`, which git ignores; `artifactsFor(import.meta.url)`
+Output goes under `artifacts/testing`, which git ignores; `artifactsFor(import.meta.url)`
 finds it from anywhere in the package.
 
 ## Benchmark protocol
@@ -120,6 +120,6 @@ substitute.
 ## Running
 
 ```
-npm test -w @bim-open-toolkit/testing      # everything here, no browser except the runner's own test
-npm run perf -w @bim-open-toolkit/testing  # the PERF and BIND studies; slow, run on a quiet machine
+npm test -w @bim-open-viewer/testing      # everything here, no browser except the runner's own test
+npm run perf -w @bim-open-viewer/testing  # the PERF and BIND studies; slow, run on a quiet machine
 ```

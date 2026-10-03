@@ -4,8 +4,8 @@
 // building should be coloured. Deriving any of that a second time here would be a second opinion
 // nobody asked for, so every reading below reads the result's own tables, sets and rules.
 
-import type { ObjectKey } from '@bim-open-toolkit/model';
-import { resultRows, type Outcome, type ResultRow, type WorkflowResult } from '@bim-open-toolkit/workflows';
+import type { ObjectKey } from '@bim-open-viewer/model';
+import { resultRows, type Outcome, type ResultRow, type WorkflowResult } from '@bim-open-viewer/workflows';
 import { buildingKey, type PortfolioIndex } from './city.js';
 
 // The five outcomes a workflow colours by, in the order `outcomeRules` writes them.

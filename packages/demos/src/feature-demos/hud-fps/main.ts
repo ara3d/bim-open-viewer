@@ -15,8 +15,8 @@ import {
   table,
   upVector,
   type Result,
-} from '@bim-open-toolkit/model';
-import { FrameTimer, updateColumns } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { FrameTimer, updateColumns } from '@bim-open-viewer/render';
 import {
   hudFeature,
   hudHook,
@@ -24,9 +24,9 @@ import {
   navigationAidsFeature,
   navigationHook,
   type HudSampler,
-} from '@bim-open-toolkit/features';
-import { orbitPose } from '@bim-open-toolkit/interact';
-import { defaultBuildingOptions, defaultStressOptions, generateBuilding, generateStressScene } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/features';
+import { orbitPose } from '@bim-open-viewer/interact';
+import { defaultBuildingOptions, defaultStressOptions, generateBuilding, generateStressScene } from '@bim-open-viewer/synthetic';
 import { addButton, addCheckbox, addSelect, addStatus } from '../_shared/controls.js';
 import type { OpenedModel } from '../_shared/host.js';
 import { overlayPanel } from '../_shared/overlay.js';

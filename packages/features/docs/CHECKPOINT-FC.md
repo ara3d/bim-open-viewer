@@ -27,11 +27,11 @@ no name collides, the order is free.
 - `b9a8d0c` the six modules and their tests; `bdd5e2b` a test per feature through V's session.
 - `npx tsc --noEmit -p packages/features/tsconfig.json` — clean, ~13 s.
 - `npx eslint packages/features` — clean, ~3 s.
-- `npm test -w @bim-open-toolkit/features -- <six files>` — 116 passed, 1.3 s.
-- `npm test -w @bim-open-toolkit/features` — 16 files, 291 passed, 4.2 s (FA and FB included).
+- `npm test -w @bim-open-viewer/features -- <six files>` — 116 passed, 1.3 s.
+- `npm test -w @bim-open-viewer/features` — 16 files, 291 passed, 4.2 s (FA and FB included).
 
 ## Requests
-- Supervisor: add the six index lines, and `@bim-open-toolkit/{synthetic,testing}` as
+- Supervisor: add the six index lines, and `@bim-open-viewer/{synthetic,testing}` as
   devDependencies of `features` (tests use the `revisions` and `schedule` fixtures and the fake
   clock; both already resolve through tsconfig paths and the vitest alias, so nothing is broken).
 - Track W: `recipe.ts`'s `timeline.setDate` is `animation.seek` over milliseconds here, and its

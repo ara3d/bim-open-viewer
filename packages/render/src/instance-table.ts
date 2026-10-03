@@ -4,7 +4,7 @@
 // and a group's buffer is a straight slice of the row space. Everything a caller addresses -
 // object keys, object ordinals, groups, slots - is reached through typed-array index columns, so
 // no per-instance JavaScript object is ever created. The instance-update study
-// (`viewer/packages/testing/docs/instance-updates.md`) measured contiguous rows at a tenth of the
+// (`packages/testing/docs/instance-updates.md`) measured contiguous rows at a tenth of the
 // cost of scattered ones, which is why the row order is part of this structure rather than a
 // caller's problem.
 //
@@ -16,7 +16,7 @@ import {
   defaultMaterial,
   type MaterialConfig,
   type MeshBuffers,
-} from '@ara3d/viewer-core';
+} from '@bim-open-viewer/core';
 import {
   colorStride,
   diagnostic,
@@ -29,7 +29,7 @@ import {
   type Mesh,
   type ObjectKey,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { geometryMeshAt, geometryMeshCount, geometryMeshTriangles } from './geometry-meshes.js';
 
 // Offset of the alpha channel inside an RGBA instance colour.

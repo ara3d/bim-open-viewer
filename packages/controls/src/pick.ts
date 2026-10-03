@@ -1,5 +1,5 @@
 import { Camera, Group, InstancedMesh, Raycaster, Vector2, Vector3, type Object3D } from 'three';
-import { InstancedGroup, ViewerScene } from '@ara3d/viewer-core';
+import { InstancedGroup, ViewerScene } from '@bim-open-viewer/core';
 
 /**
  * The mirrored three.js objects of a viewer scene — structurally satisfied by

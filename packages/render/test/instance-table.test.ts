@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { groupBounds } from '@ara3d/viewer-core';
-import { colorStride, emptyInstances, instanceRecords, meshTableFrom, transformStride } from '@bim-open-toolkit/model';
+import { groupBounds } from '@bim-open-viewer/core';
+import { colorStride, emptyInstances, instanceRecords, meshTableFrom, transformStride } from '@bim-open-viewer/model';
 import {
   geometryMeshAt,
   geometryMeshCount,

@@ -15,7 +15,7 @@ import {
   type Result,
   type Schema,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { workflowException, type WorkflowException } from './exception.js';
 import { duplicateDiagnostics, keyOf, namedObjectSet, suggestedView } from './keys.js';
 import { marker, onObject, type Overlay } from './overlay.js';

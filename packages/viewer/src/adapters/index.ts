@@ -1,6 +1,6 @@
 // The renderer adapters: the whole WebGL surface of this package.
 //
-// Six interfaces from `@bim-open-toolkit/render` and two camera helpers, over `@ara3d/viewer-core`
+// Six interfaces from `@bim-open-viewer/render` and two camera helpers, over `@bim-open-viewer/core`
 // and three. Nothing outside this directory imports three.
 
 export { matrixOf, applyPerspective, applyOrthographic, rayThroughCamera, ndcOf } from './camera.js';

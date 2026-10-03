@@ -9,7 +9,7 @@
 // library is, how many facts it records and which tables it publishes. That is what a gallery lists
 // and what the snapshot test compares, and it is why a new generator needs no change anywhere else.
 
-import type { Fact, ModelData, Table } from '@bim-open-toolkit/model';
+import type { Fact, ModelData, Table } from '@bim-open-viewer/model';
 import { defaultAssetOptions, generateAssets } from './assets.js';
 import { defaultBuildingOptions, generateBuilding, type Building } from './building.js';
 import { defaultCarbonOptions, generateCarbon } from './carbon.js';

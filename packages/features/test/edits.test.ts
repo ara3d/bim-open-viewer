@@ -11,7 +11,7 @@ import {
   putSlice,
   translation,
   type EditState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   editEffect,
   editLayers,

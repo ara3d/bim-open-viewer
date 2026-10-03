@@ -4,7 +4,7 @@ A page per demo, an index that lists them, and one model behind all of it.
 
 ## Running it
 
-From `viewer/`:
+From the repository root:
 
 ```
 npm run gallery
@@ -19,7 +19,7 @@ query string, so the back button works and a link can be pasted into a bug repor
 The demos open Snowdon Towers, a real building: 25,675 objects, 471,462 instances, 6.25 million
 triangles. The file is private and about a hundred megabytes, so it is never committed and never
 bundled. The dev server hands it out at `/fixtures/snowdon.bfast` from the first directory that has
-it — by default `viewer/packages/visualization/artifacts/bfast/`, or the semicolon-separated list in
+it — by default `packages/visualization/artifacts/bfast/`, or the semicolon-separated list in
 `V2_FIXTURES_DIRS`, which is the same variable the fixture server reads.
 
 A machine without the file gets a 404 and a demo that says it could not open the model. The second
@@ -39,7 +39,7 @@ inspector and nothing anybody can see.
 
 ## Thumbnails and the browser smoke
 
-From `viewer/`:
+From the repository root:
 
 ```
 npm run gallery:smoke

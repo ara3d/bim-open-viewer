@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { emptyDocument, getSlice, putSlice, type Vec3 } from '@bim-open-toolkit/model';
+import { emptyDocument, getSlice, putSlice, type Vec3 } from '@bim-open-viewer/model';
 import type { Placement } from '../src/layouts.js';
-import { transformOfRow, type InstanceTable } from '@bim-open-toolkit/render';
+import { transformOfRow, type InstanceTable } from '@bim-open-viewer/render';
 import {
   captureTranslations,
   categoryExplodeOffsets,
@@ -28,7 +28,7 @@ import {
   keyOf,
   rowPlacedBuilding,
 } from './navigation-aids-fixture.js';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { fakeSession } from './support/fake-session.js';
 
 const model = building();

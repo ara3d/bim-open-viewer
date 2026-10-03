@@ -10,6 +10,6 @@ const packagesDir = fileURLToPath(new URL('./packages/', import.meta.url));
 
 export default defineConfig({
   resolve: {
-    alias: [{ find: /^@bim-open-toolkit\/(?!visualization)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` }],
+    alias: [{ find: /^@bim-open-viewer\/(?!(?:visualization|core|controls|loaders)$)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` }],
   },
 });

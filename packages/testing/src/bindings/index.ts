@@ -2,7 +2,7 @@
  * Columnar instance binding: the study of what the alpha loader's normalized
  * binding step costs and what replaces it.
  *
- * `viewer/packages/testing/docs/normalized-bindings.md` records the numbers and
+ * `packages/testing/docs/normalized-bindings.md` records the numbers and
  * the recommendation. The package's own `src/index.ts` is supervisor-owned, so
  * these exports are reached by path until the shape moves into `render`.
  */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { geometryBounds, isEmptyBounds, isGeometryFree, triangleCount } from '@bim-open-toolkit/model';
+import { geometryBounds, isEmptyBounds, isGeometryFree, triangleCount } from '@bim-open-viewer/model';
 import {
   defaultStressOptions,
   generateStressScene,

@@ -1,5 +1,5 @@
 {
-  "name": "@ara3d/viewer-core",
+  "name": "@bim-open-viewer/core",
   "version": "0.1.0",
   "description": "General-purpose WebGL renderer core: scene management, instanced drawing, materials, per-instance color, frame loop.",
   "license": "MIT",

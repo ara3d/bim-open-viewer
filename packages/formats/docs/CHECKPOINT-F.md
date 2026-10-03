@@ -155,7 +155,7 @@ To the supervisor, for the model contract (none block this track):
 
 To the supervisor, for this package's manifest:
 
-5. Nothing needed. `@bim-open-toolkit/model` and `@ara3d/viewer-loaders` are declared and are the only
+5. Nothing needed. `@bim-open-viewer/model` and `@bim-open-viewer/loaders` are declared and are the only
    imports. No `three` import, type-only or otherwise, was added.
 
 To the loaders session, through the supervisor:
@@ -187,8 +187,8 @@ and documentation and changed nothing the performance suite exercises.
 |---|---|
 | `npx tsc --noEmit -p packages/formats/tsconfig.json` | pass, no output |
 | `npx eslint packages/formats` | pass, no output |
-| `npm test -w @bim-open-toolkit/formats` | pass, 11 files, 149 tests, 1.2 s |
-| `npm run perf -w @bim-open-toolkit/formats` | pass, 2 tests, twice, see the tables above |
+| `npm test -w @bim-open-viewer/formats` | pass, 11 files, 149 tests, 1.2 s |
+| `npm run perf -w @bim-open-viewer/formats` | pass, 2 tests, twice, see the tables above |
 | escape-hatch scan over `src` and `test` | 0 `any`, 0 `as` casts, 0 non-null assertions, 0 directives |
 
 ### Limits of this verification

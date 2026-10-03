@@ -4,8 +4,8 @@
 // The document is a function of the session, so `sync` brings it in; the one thing the tag does on
 // its own is drop the pin when it is pressed, which `onCommit` turns back into a command.
 
-import type { Session, Vec3 } from '@bim-open-toolkit/model';
-import { hudPanel, Tag, type AnyHudPanel, type HudPanel } from '@bim-open-toolkit/ui-gratify';
+import type { Session, Vec3 } from '@bim-open-viewer/model';
+import { hudPanel, Tag, type AnyHudPanel, type HudPanel } from '@bim-open-viewer/ui-gratify';
 import { Stack, type AppSpec, type Element } from 'gratify';
 import { centreOf, inspectIndex, runCalls, storeyNameOf } from './building.js';
 import { isPinned, shownKey, unpinCalls } from './pinning.js';

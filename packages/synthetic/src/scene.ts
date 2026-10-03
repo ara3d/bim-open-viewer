@@ -22,7 +22,7 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt } from './arrays.js';
 import type { MeshGroup, ShadedMesh } from './mesh-builder.js';
 

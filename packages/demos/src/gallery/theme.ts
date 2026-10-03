@@ -5,7 +5,7 @@
 // `ThemeApplier` `ui-gratify` publishes; until that lands the applier is simply absent, and the
 // canvas panels keep Gratify's own theme. Nothing else in the gallery reads either setting.
 
-import type { GalleryTheme, ThemeApplier } from '@bim-open-toolkit/ui-gratify';
+import type { GalleryTheme, ThemeApplier } from '@bim-open-viewer/ui-gratify';
 import { analyticalColors } from './analytical.js';
 
 // How the chrome looks. `big` multiplies the whole type scale by `bigTextScale`.
@@ -16,7 +16,7 @@ export const defaultChrome: ChromeSettings = { theme: 'light', big: false };
 // What big-text mode multiplies the root size by. `styles/tokens.css` holds the same number.
 export const bigTextScale = 1.25;
 
-const storageKey = 'bim-open-toolkit/gallery/chrome';
+const storageKey = 'bim-open-viewer/gallery/chrome';
 
 // The theme the machine asks for, when nobody has chosen one.
 export const preferredTheme = (): GalleryTheme =>

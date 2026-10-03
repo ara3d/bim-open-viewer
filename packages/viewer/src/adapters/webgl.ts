@@ -1,12 +1,12 @@
 // The default renderer: viewer-core and three behind the `ViewRenderer` seam.
 //
-// This file and its neighbours in `src/adapters` are the only place in `@bim-open-toolkit/viewer`
+// This file and its neighbours in `src/adapters` are the only place in `@bim-open-viewer/viewer`
 // that imports three. Everything above them - the session, the document, the views, the command bus
 // - runs in Node. Replacing the renderer means writing another file of this shape.
 
-import { Viewer, defaultMaterial, type MaterialConfig } from '@ara3d/viewer-core';
-import { upVector, type Vec3 } from '@bim-open-toolkit/model';
-import { defaultEnvironment } from '@bim-open-toolkit/render';
+import { Viewer, defaultMaterial, type MaterialConfig } from '@bim-open-viewer/core';
+import { upVector, type Vec3 } from '@bim-open-viewer/model';
+import { defaultEnvironment } from '@bim-open-viewer/render';
 import { OrthographicCamera } from 'three';
 import type { ViewRenderer } from '../renderer.js';
 import { applyOrthographic, applyPerspective, rayThroughCamera } from './camera.js';

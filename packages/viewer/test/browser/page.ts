@@ -3,7 +3,7 @@
 // It is deliberately the documented path and nothing else. What the test reads back is what a
 // beginner would get: a model on the screen, a rule applied, a frame drawn, and the counts.
 
-import { styleRule, objectKey } from '@bim-open-toolkit/model';
+import { styleRule, objectKey } from '@bim-open-viewer/model';
 import { createViewer } from '../../src/create-viewer.js';
 import { twoObjectModel } from '../support/model-fixture.js';
 

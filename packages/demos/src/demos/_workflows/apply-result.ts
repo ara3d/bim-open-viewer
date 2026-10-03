@@ -14,13 +14,13 @@ import {
   type Diagnostic,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
-import { overlayFromWorkflow, overlaysSlice, workflowLayerId } from '@bim-open-toolkit/features';
-import type { WorkflowOverlayAnchor, WorkflowOverlayRecord } from '@bim-open-toolkit/features';
-import { putLayer } from '@bim-open-toolkit/render';
-import type { OverlayAction, OverlayItem, OverlayLayer } from '@bim-open-toolkit/render';
-import { workflowCommands } from '@bim-open-toolkit/workflows';
-import type { Overlay, OverlayAnchor, WorkflowResult } from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/model';
+import { overlayFromWorkflow, overlaysSlice, workflowLayerId } from '@bim-open-viewer/features';
+import type { WorkflowOverlayAnchor, WorkflowOverlayRecord } from '@bim-open-viewer/features';
+import { putLayer } from '@bim-open-viewer/render';
+import type { OverlayAction, OverlayItem, OverlayLayer } from '@bim-open-viewer/render';
+import { workflowCommands } from '@bim-open-viewer/workflows';
+import type { Overlay, OverlayAnchor, WorkflowResult } from '@bim-open-viewer/workflows';
 
 // The feature command each part of a workflow result is dispatched as.
 export const applyCommands = {

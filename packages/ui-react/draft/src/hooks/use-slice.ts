@@ -10,8 +10,8 @@
 // no change where there was none.
 
 import { useCallback, useSyncExternalStore } from 'react';
-import { didChange, type StateSlice } from '@bim-open-toolkit/model';
-import type { ViewerSession } from '@bim-open-toolkit/viewer';
+import { didChange, type StateSlice } from '@bim-open-viewer/model';
+import type { ViewerSession } from '@bim-open-viewer/viewer';
 import { useViewerSession } from './connection.js';
 
 // Subscribes to the commits that touched one slice, and returns the way to stop.

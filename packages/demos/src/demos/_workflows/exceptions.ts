@@ -4,11 +4,11 @@
 // decide and why. So it is built here once, with the columns in reading order, and every workflow
 // demo shows the same shape rather than each inventing one.
 
-import { stringColumn, table, type Table } from '@bim-open-toolkit/model';
-import type { SheetTable } from '@bim-open-toolkit/ui-gratify';
-import type { OverlayAction } from '@bim-open-toolkit/render';
-import { exceptionRows } from '@bim-open-toolkit/workflows';
-import type { ResultRow, ResultValue, WorkflowResult } from '@bim-open-toolkit/workflows';
+import { stringColumn, table, type Table } from '@bim-open-viewer/model';
+import type { SheetTable } from '@bim-open-viewer/ui-gratify';
+import type { OverlayAction } from '@bim-open-viewer/render';
+import { exceptionRows } from '@bim-open-viewer/workflows';
+import type { ResultRow, ResultValue, WorkflowResult } from '@bim-open-viewer/workflows';
 
 // The columns of an exceptions table, in the order a reader reads them. A column a workflow does
 // not write is left out; a column this list does not name follows in the order the rows use it.

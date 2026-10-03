@@ -37,8 +37,8 @@ import {
   type Result,
   type Session,
   type Vec3,
-} from '@bim-open-toolkit/model';
-import { defaultBuildingOptions, generateBuilding, type Building } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/model';
+import { defaultBuildingOptions, generateBuilding, type Building } from '@bim-open-viewer/synthetic';
 import type { Demo, DemoFixture, GalleryViewer, ModelSource } from '../../gallery/contracts.js';
 
 // The name the building generator records a door's fire rating under.
@@ -230,6 +230,6 @@ export const demo: Demo = {
       taggedDoor: state.taggedDoor,
     };
   },
-  source: 'viewer/packages/demos/src/demos/_shared/placeholder.ts',
+  source: 'packages/demos/src/demos/_shared/placeholder.ts',
   verify: 'npx vitest run --root packages/demos test/gallery',
 };

@@ -2,8 +2,8 @@
 // report counts, frame timing and the GPU timer's state. Every feature demo page is this plus
 // features.
 
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
-import { failure, diagnostic, success } from '@bim-open-toolkit/model';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
+import { failure, diagnostic, success } from '@bim-open-viewer/model';
 import { addButton, addStatus } from '../_shared/controls.js';
 import { mountFeatureDemo } from '../_shared/page.js';
 

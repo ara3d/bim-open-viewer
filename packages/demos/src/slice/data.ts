@@ -13,13 +13,13 @@ import {
   type Fact,
   type ModelData,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   defaultBuildingOptions,
   generateBuilding,
   type Building,
   type BuildingOptions,
-} from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/synthetic';
 
 // The name the building generator records a door's fire rating under.
 export const fireRatingName = 'fireRating';

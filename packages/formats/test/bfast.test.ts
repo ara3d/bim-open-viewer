@@ -1,4 +1,4 @@
-import { parseBfastModel } from '@ara3d/viewer-loaders';
+import { parseBfastModel } from '@bim-open-viewer/loaders';
 import {
   defaultMetallic,
   defaultRoughness,
@@ -9,7 +9,7 @@ import {
   meshAt,
   meshCount,
   noMesh,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { describe, expect, it } from 'vitest';
 import {
   bfastCoordinates,

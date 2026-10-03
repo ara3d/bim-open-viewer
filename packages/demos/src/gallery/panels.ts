@@ -10,8 +10,8 @@
 // presses the control on the canvas through `activate`, which is the same path a pointer takes.
 // This is the mirror the plan asks for (F09), built once here rather than by hand in each demo.
 
-import type { Disposable, Session, Vec3 } from '@bim-open-toolkit/model';
-import { hostAnyPanel, type AnyHudPanel, type Hosted } from '@bim-open-toolkit/ui-gratify';
+import type { Disposable, Session, Vec3 } from '@bim-open-viewer/model';
+import { hostAnyPanel, type AnyHudPanel, type Hosted } from '@bim-open-viewer/ui-gratify';
 import { button, clear, el } from './elements.js';
 import type { GalleryViewer } from './contracts.js';
 

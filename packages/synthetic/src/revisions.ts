@@ -28,7 +28,7 @@ import {
   type ObjectRecord,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt, joinIds } from './arrays.js';
 import { cursor as newCursor, drawChance, drawInt, drawPick, drawRange, type Cursor } from './cursor.js';
 import { defaultBuildingOptions, generateBuilding, type Building, type BuildingOptions } from './building.js';

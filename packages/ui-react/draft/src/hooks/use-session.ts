@@ -10,14 +10,14 @@
 // rendered to a string at all.
 
 import { useEffect, useRef, useState } from 'react';
-import type { AnyFeature, Diagnostic } from '@bim-open-toolkit/model';
+import type { AnyFeature, Diagnostic } from '@bim-open-viewer/model';
 import {
   createSession,
   defaultFeatures,
   featureHost,
   type FeatureHost,
   type ViewerSession,
-} from '@bim-open-toolkit/viewer';
+} from '@bim-open-viewer/viewer';
 
 // A session with its features installed, and whatever installing them reported.
 export type SessionHandle = {

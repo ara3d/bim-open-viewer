@@ -30,7 +30,7 @@ import {
   type Observation,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cursor as newCursor, drawChance, drawFloat, drawInt, drawPick, type Cursor } from './cursor.js';
 import { addDays, type IsoDate } from './dates.js';
 import type { MeshGroup, ShadedMesh } from './mesh-builder.js';

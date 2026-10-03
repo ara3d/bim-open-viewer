@@ -18,7 +18,7 @@ import {
   parse,
   type Infer,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { CameraPath } from './camera-path.js';
 
 // How the probe runs.

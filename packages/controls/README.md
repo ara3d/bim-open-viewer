@@ -1,7 +1,7 @@
-# @ara3d/viewer-controls
+# @bim-open-viewer/controls
 
 Interaction for the Ara 3D viewer: camera navigation, picking/selection, and
-section planes. Owns no scene content — it reads the `@ara3d/viewer-core`
+section planes. Owns no scene content — it reads the `@bim-open-viewer/core`
 scene and mutates only the camera, the selection, and material clipping state.
 
 ## Pieces
@@ -25,8 +25,8 @@ scene and mutates only the camera, the selection, and material clipping state.
 ## Usage
 
 ```ts
-import { Viewer, SceneObject } from '@ara3d/viewer-core';
-import { OrbitControls, Picker, Selection, PickControls } from '@ara3d/viewer-controls';
+import { Viewer, SceneObject } from '@bim-open-viewer/core';
+import { OrbitControls, Picker, Selection, PickControls } from '@bim-open-viewer/controls';
 
 const viewer = new Viewer();
 viewer.attach(canvas);

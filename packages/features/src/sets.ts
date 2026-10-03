@@ -41,7 +41,7 @@ import {
   type Schema,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { noInput, objectKeysSchema } from './appearance-schemas.js';
 import { editEffectOf } from './edits.js';
 

@@ -15,8 +15,8 @@ import {
   type ModelData,
   type ObjectKey,
   type Result,
-} from '@bim-open-toolkit/model';
-import { detectFormat, loadModel, type ModelDocuments, type ModelProperties } from '@bim-open-toolkit/formats';
+} from '@bim-open-viewer/model';
+import { detectFormat, loadModel, type ModelDocuments, type ModelProperties } from '@bim-open-viewer/formats';
 import type { ModelSource, OpenedModel } from './contracts.js';
 
 // The object key of each object ordinal, in the order `Geometry.instances.objectIndex` counts.

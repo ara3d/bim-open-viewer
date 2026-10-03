@@ -5,9 +5,9 @@
 // a counter. Every accounting test - frames drawn, groups added, adapters torn down - is written
 // against this.
 
-import { ViewerScene } from '@ara3d/viewer-core';
-import { noGpuTimer, type ModelRaycastHit } from '@bim-open-toolkit/render';
-import type { ViewState } from '@bim-open-toolkit/model';
+import { ViewerScene } from '@bim-open-viewer/core';
+import { noGpuTimer, type ModelRaycastHit } from '@bim-open-viewer/render';
+import type { ViewState } from '@bim-open-viewer/model';
 import type { ViewRenderer } from '../../src/renderer.js';
 
 // What the fake recorded.

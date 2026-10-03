@@ -5,8 +5,8 @@
 // `SceneBinding` satisfies it, so the adapter below is the only place the two packages meet and a
 // test substitutes either the binding over a headless viewer-core scene or a recording double.
 
-import type { ObjectKey, ResolvedStyles, Result, Table } from '@bim-open-toolkit/model';
-import type { SceneBinding } from '@bim-open-toolkit/render';
+import type { ObjectKey, ResolvedStyles, Result, Table } from '@bim-open-viewer/model';
+import type { SceneBinding } from '@bim-open-viewer/render';
 
 // One model a feature styles: its id, and the object keys `resolveStyles` has to be given.
 export type StyledModel = { readonly modelId: string; readonly keys: readonly ObjectKey[] };

@@ -1,10 +1,10 @@
-# @bim-open-toolkit/formats
+# @bim-open-viewer/formats
 
 Every supported model file becomes one `LoadedModel`, through one entry point that reports its
 failures instead of raising them.
 
 ```ts
-import { loadModel } from '@bim-open-toolkit/formats';
+import { loadModel } from '@bim-open-viewer/formats';
 
 const result = await loadModel('https://example.org/tower.bfast', {
   onProgress: ({ phase, loaded, total }) => report(phase, loaded, total),
@@ -17,7 +17,7 @@ const { data, geometry, coordinates } = result.value;
 
 `result.value` is a `LoadedModel`:
 
-- **`data`** is `ModelData` from `@bim-open-toolkit/model`: the model's identity and one
+- **`data`** is `ModelData` from `@bim-open-viewer/model`: the model's identity and one
   `ObjectRecord` per object, with its name, category, source id and parent where the format carries
   them. An object with no geometry is a normal object, which is what a model with property-only rows
   needs.
@@ -47,7 +47,7 @@ A document that names a file it does not contain, such as a `.gltf` and its `.bi
 a document asked for it.
 
 ```ts
-import { loadModel, mapResolver } from '@bim-open-toolkit/formats';
+import { loadModel, mapResolver } from '@bim-open-viewer/formats';
 
 await loadModel(gltfBytes, { resolver: mapResolver([['scene.bin', binBytes]]) });
 ```
@@ -65,7 +65,7 @@ the full parse. It is awaited, so a host can draw the preview and let the browse
 before the parse holds the thread:
 
 ```ts
-import { loadModel, readBoxPreview } from '@bim-open-toolkit/formats';
+import { loadModel, readBoxPreview } from '@bim-open-viewer/formats';
 
 await loadModel(bfastBytes, {
   onPreview: (preview) => drawBoxes(preview.boxes, preview.colors, preview.count),
@@ -93,8 +93,8 @@ you do not trust.
 ```
 npx tsc --noEmit -p packages/formats/tsconfig.json   # from viewer/
 npx eslint packages/formats
-npm test -w @bim-open-toolkit/formats
-npm run perf -w @bim-open-toolkit/formats            # needs a real model; skips with a reason
+npm test -w @bim-open-viewer/formats
+npm run perf -w @bim-open-viewer/formats            # needs a real model; skips with a reason
 ```
 
 The performance suite measures BFAST against BOS on the columnar path and writes its numbers to

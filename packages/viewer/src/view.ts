@@ -17,7 +17,7 @@ import {
   type EnvironmentSettings,
   type Ray,
   type DurationStats,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import {
   attachNavigation,
   browserFrames,
@@ -32,15 +32,15 @@ import {
   type NavElement,
   type NavMode,
   type NavSession,
-} from '@bim-open-toolkit/interact';
+} from '@bim-open-viewer/interact';
 import {
   defaultView,
   disposable,
   type Bounds,
   type Disposable,
   type ViewState,
-} from '@bim-open-toolkit/model';
-import type { InstancedGroup } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/model';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 import type { ViewRenderer } from './renderer.js';
 import { ndcOf } from './adapters/camera.js';
 

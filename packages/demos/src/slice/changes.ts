@@ -19,8 +19,8 @@ import {
   type ObjectKey,
   type ResolvedStyles,
   type Table,
-} from '@bim-open-toolkit/model';
-import { updateColumns } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { updateColumns } from '@bim-open-viewer/render';
 
 // The objects whose appearance differs between two resolutions, as a change table addressed by
 // object key. An empty result still carries its columns, so applying it is valid and writes nothing.

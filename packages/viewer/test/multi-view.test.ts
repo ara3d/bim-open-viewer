@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cameraPose, defaultView } from '@bim-open-toolkit/model';
+import { cameraPose, defaultView } from '@bim-open-viewer/model';
 import { createViewer, type Viewer } from '../src/create-viewer.js';
 import { viewSlice } from '../src/core-features.js';
 import { fakeRenderer, testFrames, type FakeRenderer } from './support/fake-renderer.js';

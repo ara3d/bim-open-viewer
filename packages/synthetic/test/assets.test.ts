@@ -1,7 +1,7 @@
 // Assets and clearances: the cases a handover and an access review have to tell apart.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, isRegistered, type Table } from '@bim-open-toolkit/model';
+import { columnOf, isRegistered, type Table } from '@bim-open-viewer/model';
 import { defaultAssetOptions, generateAssets } from '../src/assets.js';
 import { boxesOverlap, defaultClearanceOptions, generateClearances } from '../src/clearances.js';
 

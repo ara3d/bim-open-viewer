@@ -123,7 +123,7 @@ Run from `viewer/`. All results below are from after `@types/node` landed.
 
 | Command | Result |
 |---|---|
-| `npm test -w @bim-open-toolkit/demos` | **pass** — 6 files, 62 tests, 724 ms |
+| `npm test -w @bim-open-viewer/demos` | **pass** — 6 files, 62 tests, 724 ms |
 | `npx tsc --noEmit -p packages/demos/tsconfig.json` | **pass** — 0 errors, 4.4 s |
 | `npx eslint packages/demos` | **pass** — 17 files, 0 errors, 0 warnings, 4.5 s |
 | `npx eslint --config eslint.typed.config.js packages/demos` | **pass** — 0 errors, 7.4 s |
@@ -248,7 +248,7 @@ excluded.
 | `eslint packages/demos` (untyped) | 5 | 4.5–4.9 s | 0 | 0 | **neutral** — cheap, but found nothing here that tsc did not |
 | `eslint --config eslint.typed.config.js packages/demos` | 4 | 7.4–8.7 s | 1 real: `require-await` on an async test with no `await`; fixing it turned a tautological assertion into a real empty-catalog test | 0 | **helpful** — 3 s more than the untyped run for one genuine finding in an I/O package |
 | escape-hatch grep (`any`, `as`, `!`, `@ts-`, disables) | 2 | under 1 s | 0 | 5 false hits, all English words in comments (`any transport`, `as lower-case hex`); a word-boundary grep cannot tell prose from code | **helpful, but the pattern should skip comments** |
-| `vitest run` (`npm test -w @bim-open-toolkit/demos`) | 6 | 0.67–1.5 s | 0 after the first green run; the value was in writing the tests, where the range edge cases (`bytes=-0`, empty file, `bytes=19-10`, `bytes=95-1000`) got settled | 0 | **helpful** — fast enough to run on every edit |
+| `vitest run` (`npm test -w @bim-open-viewer/demos`) | 6 | 0.67–1.5 s | 0 after the first green run; the value was in writing the tests, where the range edge cases (`bytes=-0`, empty file, `bytes=19-10`, `bytes=95-1000`) got settled | 0 | **helpful** — fast enough to run on every edit |
 | Manual smoke against the real model | 1 | about 30 s including the 111 MB download | 0, and it confirmed the SHA-256 against an independently recorded value | 0. It is the only check that can prove the default directories and a 111 MB file work | **helpful, and not replaceable by a unit test** |
 
 Notes for the ledger:

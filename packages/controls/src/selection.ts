@@ -1,4 +1,4 @@
-import { InstancedGroup } from '@ara3d/viewer-core';
+import { InstancedGroup } from '@bim-open-viewer/core';
 import { Emitter } from './emitter.js';
 
 /** One selected instance; null selection means "nothing selected". */

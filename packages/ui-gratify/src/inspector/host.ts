@@ -2,8 +2,8 @@
 // that fills its container. What it shows is a `PropertySheet` the demo derives from its session;
 // the host re-derives it after every change event and drops the new one when it would draw the
 // same thing, so the scroll position and the open rows survive a change elsewhere in the viewer.
-import { failure, success, type Result, type Session } from '@bim-open-toolkit/model';
-import type { OverlayAction } from '@bim-open-toolkit/render';
+import { failure, success, type Result, type Session } from '@bim-open-viewer/model';
+import type { OverlayAction } from '@bim-open-viewer/render';
 import { at, v, type AppSpec, type Element } from 'gratify';
 import type { Hosted, PropertySheet } from '../contracts.js';
 import { sheetCoverage } from '../contracts.js';

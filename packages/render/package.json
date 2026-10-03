@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/render",
+  "name": "@bim-open-viewer/render",
   "version": "0.1.0",
   "description": "Instance table bound to viewer-core groups, representation registry, picking, clipping, environment, overlay primitives, capture and frame timing.",
   "license": "MIT",
@@ -22,8 +22,8 @@
     "perf": "vitest run --config vitest.perf.config.ts"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0",
-    "@ara3d/viewer-core": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0",
+    "@bim-open-viewer/core": "0.1.0"
   },
   "peerDependencies": {
     "three": ">=0.180.0"

@@ -8,8 +8,8 @@
 // are linked, the camera that moved is copied to the others, once, with the copy guarded so that
 // two linked views do not chase each other around the loop.
 
-import { diagnostic, failure, success, type Result, type ViewState } from '@bim-open-toolkit/model';
-import type { InstancedGroup } from '@ara3d/viewer-core';
+import { diagnostic, failure, success, type Result, type ViewState } from '@bim-open-viewer/model';
+import type { InstancedGroup } from '@bim-open-viewer/core';
 import type { View } from './view.js';
 
 // The views of one session.

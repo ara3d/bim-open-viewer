@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/synthetic",
+  "name": "@bim-open-viewer/synthetic",
   "version": "0.1.0",
   "description": "Seeded generators for buildings, networks, schedules, revisions, facts with gaps, stress scenes and mesh primitives.",
   "license": "MIT",
@@ -21,6 +21,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0"
   }
 }

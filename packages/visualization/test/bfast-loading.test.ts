@@ -4,11 +4,11 @@ import { loadBosModel } from '../src/loading.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import JSZip from 'jszip';
-import { parseBosGeometry, readBimTable } from '@ara3d/viewer-loaders';
+import { parseBosGeometry, readBimTable } from '@bim-open-viewer/loaders';
 
 afterEach(() => vi.unstubAllGlobals());
 const ref = { id: 'model', revision: 'bfast' };
-const duplex = fileURLToPath(new URL('../../../../data/duplex.bos', import.meta.url));
+const duplex = fileURLToPath(new URL('../../../../../data/duplex.bos', import.meta.url));
 it.skipIf(!existsSync(duplex))('restores all entity rows/source IDs and exposes lazy BIM data', async () => {
   const file = readFileSync(duplex), source = file.buffer.slice(file.byteOffset, file.byteOffset + file.byteLength);
   const zip = await JSZip.loadAsync(source), bos = await parseBosGeometry(source);

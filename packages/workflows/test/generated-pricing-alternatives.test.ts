@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultCostOptions, generateCosts, type Costs } from '@bim-open-toolkit/synthetic';
-import { rowOf, type CellValue, type MissingReason, type ModelRef } from '@bim-open-toolkit/model';
+import { defaultCostOptions, generateCosts, type Costs } from '@bim-open-viewer/synthetic';
+import { rowOf, type CellValue, type MissingReason, type ModelRef } from '@bim-open-viewer/model';
 import {
   runPricingAlternatives,
   type PricingAlternativesInput,

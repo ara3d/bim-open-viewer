@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultCityOptions, generateCity, splitIds, type City } from '@bim-open-toolkit/synthetic';
-import { rowOf, type CellValue } from '@bim-open-toolkit/model';
+import { defaultCityOptions, generateCity, splitIds, type City } from '@bim-open-viewer/synthetic';
+import { rowOf, type CellValue } from '@bim-open-viewer/model';
 import {
   runPortfolioDrillThrough,
   type PortfolioBuilding,

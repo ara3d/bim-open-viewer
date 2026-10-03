@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defaultAppearance, identityMatrix, translation, type Matrix4 } from '@bim-open-toolkit/model';
+import { defaultAppearance, identityMatrix, translation, type Matrix4 } from '@bim-open-viewer/model';
 import {
   boxMesh,
   boxRepresentation,

@@ -26,7 +26,7 @@ it before starting `npm run demo`; the model is served locally and never bundled
 See [BFAST verification](bfast-loading.md) for exact-fixture parity and measurements.
 Create the combined file with
 `node packages/loaders/scripts/bos-to-bfast.mjs input.bos output.bfast` from
-`viewer/` after building the packages. Every original Parquet entry is preserved,
+the repository root after building the packages. Every original Parquet entry is preserved,
 including geometry tables; its internal compression is unchanged.
 
 ```ts

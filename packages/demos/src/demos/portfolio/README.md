@@ -8,12 +8,12 @@ Which building in the estate is the outlier, and can I drill in?
 
 Two fixtures, each stating what it is.
 
-**Synthetic estate (default).** The estate comes from `@bim-open-toolkit/synthetic`'s `generateCity`
+**Synthetic estate (default).** The estate comes from `@bim-open-viewer/synthetic`'s `generateCity`
 at its default options: two sites of three buildings, each with a geographic anchor except one that
 nobody surveyed, plus the documents that report figures about them. Nothing here is read from a real
 project, and no figure is derived from geometry.
 
-The result comes from `@bim-open-toolkit/workflows`' `runPortfolioDrillThrough`. That adapter's one
+The result comes from `@bim-open-viewer/workflows`' `runPortfolioDrillThrough`. That adapter's one
 rule is that a source document is not a building: a figure is attributed to a building only through
 a document that names exactly one. The demo does not second-guess it. Every colour, set, label and
 count on the page is read back off the result rather than derived again here.

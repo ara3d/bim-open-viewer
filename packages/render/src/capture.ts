@@ -7,7 +7,7 @@
 // does not disturb what the user is looking at; and report a failure as a diagnostic rather than
 // returning an image nobody can explain.
 
-import { diagnostic, failure, success, type Result } from '@bim-open-toolkit/model';
+import { diagnostic, failure, success, type Result } from '@bim-open-viewer/model';
 
 // What an image is encoded as. PNG only for now: it is lossless, which a report needs.
 export type CaptureFormat = 'image/png';

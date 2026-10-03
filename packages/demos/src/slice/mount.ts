@@ -4,14 +4,14 @@
 // to write by hand today to see any of it, which is why every step is one line with a name: the
 // list is the finding, and `docs/slice.md` counts it.
 
-import { defaultView, upVector, type ObjectKey, type ResolvedStyles } from '@bim-open-toolkit/model';
+import { defaultView, upVector, type ObjectKey, type ResolvedStyles } from '@bim-open-viewer/model';
 import {
   attachNavigation,
   fitState,
   navSession,
   navState,
   type NavController,
-} from '@bim-open-toolkit/interact';
+} from '@bim-open-viewer/interact';
 import {
   SceneBinding,
   applyClipping,
@@ -20,8 +20,8 @@ import {
   defaultEnvironment,
   noClipping,
   FrameTimer,
-} from '@bim-open-toolkit/render';
-import { Viewer, defaultMaterial } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/render';
+import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
 import { captureTarget, clippingTarget, environmentTarget, gpuFrameTimer, raycastSource } from './adapters.js';
 import { applyView, rayThroughPoint } from './camera.js';
 import { styleChanges } from './changes.js';

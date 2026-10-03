@@ -8,19 +8,19 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "paths": {
-      "@bim-open-toolkit/model": ["./packages/model/src/index.ts"],
-      "@bim-open-toolkit/synthetic": ["./packages/synthetic/src/index.ts"],
-      "@bim-open-toolkit/formats": ["./packages/formats/src/index.ts"],
-      "@bim-open-toolkit/render": ["./packages/render/src/index.ts"],
-      "@bim-open-toolkit/interact": ["./packages/interact/src/index.ts"],
-      "@bim-open-toolkit/features": ["./packages/features/src/index.ts"],
-      "@bim-open-toolkit/workflows": ["./packages/workflows/src/index.ts"],
-      "@bim-open-toolkit/viewer": ["./packages/viewer/src/index.ts"],
-      "@bim-open-toolkit/ui-gratify": ["./packages/ui-gratify/src/index.ts"],
-      "@bim-open-toolkit/ui-react": ["./packages/ui-react/src/index.ts"],
-      "@bim-open-toolkit/mcp": ["./packages/mcp/src/index.ts"],
-      "@bim-open-toolkit/testing": ["./packages/testing/src/index.ts"],
-      "@bim-open-toolkit/demos": ["./packages/demos/src/index.ts"]
+      "@bim-open-viewer/model": ["./packages/model/src/index.ts"],
+      "@bim-open-viewer/synthetic": ["./packages/synthetic/src/index.ts"],
+      "@bim-open-viewer/formats": ["./packages/formats/src/index.ts"],
+      "@bim-open-viewer/render": ["./packages/render/src/index.ts"],
+      "@bim-open-viewer/interact": ["./packages/interact/src/index.ts"],
+      "@bim-open-viewer/features": ["./packages/features/src/index.ts"],
+      "@bim-open-viewer/workflows": ["./packages/workflows/src/index.ts"],
+      "@bim-open-viewer/viewer": ["./packages/viewer/src/index.ts"],
+      "@bim-open-viewer/ui-gratify": ["./packages/ui-gratify/src/index.ts"],
+      "@bim-open-viewer/ui-react": ["./packages/ui-react/src/index.ts"],
+      "@bim-open-viewer/mcp": ["./packages/mcp/src/index.ts"],
+      "@bim-open-viewer/testing": ["./packages/testing/src/index.ts"],
+      "@bim-open-viewer/demos": ["./packages/demos/src/index.ts"]
     }
   },
   "include": [

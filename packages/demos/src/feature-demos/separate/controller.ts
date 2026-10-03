@@ -17,8 +17,8 @@ import {
   type Session,
   type StyleRule,
   type Vec3,
-} from '@bim-open-toolkit/model';
-import { levelsOf, resolveAppearance, type Level, type SectionAxis } from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/model';
+import { levelsOf, resolveAppearance, type Level, type SectionAxis } from '@bim-open-viewer/features';
 import { layoutKindOf, lidKeys, separateOffsets, type LayoutKind, type SeparateLayout } from './layout.js';
 
 // Everything the page is showing, and everything a report says about it.

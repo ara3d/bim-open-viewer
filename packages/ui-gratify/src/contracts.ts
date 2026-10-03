@@ -2,8 +2,8 @@
 // layer, a panel drawn in the canvas or a property sheet for the sidebar, and what the layer hands
 // back, a hosted canvas with disposal and a semantics tree the DOM mirror reads. Track UG implements
 // the hosts; the demo tracks build against these types and never against the implementation.
-import type { Disposable, Result, Session, Table, Vec3 } from '@bim-open-toolkit/model';
-import type { OverlayAction } from '@bim-open-toolkit/render';
+import type { Disposable, Result, Session, Table, Vec3 } from '@bim-open-viewer/model';
+import type { OverlayAction } from '@bim-open-viewer/render';
 import type { AppSpec, SemanticsNode } from 'gratify';
 
 export type HudCorner = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';

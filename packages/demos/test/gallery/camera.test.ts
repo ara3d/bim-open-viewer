@@ -3,7 +3,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { PerspectiveCamera } from 'three';
-import { cameraPose, viewState } from '@bim-open-toolkit/model';
+import { cameraPose, viewState } from '@bim-open-viewer/model';
 import { applyView, matrix4From, projectPointOnto } from '../../src/gallery/camera.js';
 
 // A camera ten metres up the x axis looking at the origin, z up, as a z-up model is viewed.

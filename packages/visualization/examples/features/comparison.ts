@@ -1,5 +1,5 @@
-import { Viewer, sceneBounds } from '@ara3d/viewer-core';
-import { OrbitControls } from '@ara3d/viewer-controls';
+import { Viewer, sceneBounds } from '@bim-open-viewer/core';
+import { OrbitControls } from '@bim-open-viewer/controls';
 import { Vector3 } from 'three';
 import { observeResize } from '../observe-resize.js';
 import { fitPerspectivePose } from '../../src/camera.js';

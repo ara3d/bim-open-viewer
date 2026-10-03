@@ -54,7 +54,7 @@ export const modelPathVariable = 'SNOWDON_BFAST_PATH';
 
 /** Where the loader session writes the prepared model, when the variable is unset. */
 export const defaultModelPath =
-  'C:/Users/cdigg/git/bim-open-toolkit/viewer/packages/visualization/artifacts/bfast/snowdon-bim.bfast';
+  'C:/Users/cdigg/git/bim-open-toolkit/packages/visualization/artifacts/bfast/snowdon-bim.bfast';
 
 /** The path the benchmark would read. */
 export const modelPath = (): string => nodeProcess()?.env[modelPathVariable] ?? defaultModelPath;

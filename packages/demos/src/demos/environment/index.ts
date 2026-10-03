@@ -4,8 +4,8 @@
 // canvas; `start` is the contract's wrapper around it. Nothing here draws: the environment feature's
 // own hook puts the settings on a renderer, and this demo only chooses which settings.
 
-import { environmentFeature, environmentSlice } from '@bim-open-toolkit/features';
-import { disposable, failure, success, type Disposable, type Result, type Session } from '@bim-open-toolkit/model';
+import { environmentFeature, environmentSlice } from '@bim-open-viewer/features';
+import { disposable, failure, success, type Disposable, type Result, type Session } from '@bim-open-viewer/model';
 import { snowdonThenSynthetic } from '../_shared/snowdon.js';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo } from '../../gallery/contracts.js';
@@ -57,6 +57,6 @@ export const demo: Demo = {
   start: (viewer) => Promise.resolve(startEnvironment(viewer)),
   ready: environmentReady,
   report: environmentReport,
-  source: 'viewer/packages/demos/src/demos/environment',
+  source: 'packages/demos/src/demos/environment',
   verify: 'npx vitest run --root packages/demos test/demos/environment',
 };

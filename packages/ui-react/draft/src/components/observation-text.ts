@@ -4,7 +4,7 @@
 // model package's `Observation` into text that names the state first: a reader sees "missing
 // (not-measured)" or "conflicting: EI90 vs EI60", never a number that was not observed.
 
-import type { Color, Coverage, Evidence, FactValue, Observation } from '@bim-open-toolkit/model';
+import type { Color, Coverage, Evidence, FactValue, Observation } from '@bim-open-viewer/model';
 
 // One value as text. A quantity keeps its unit, because a number without one says nothing.
 export const factValueText = (value: FactValue): string => {

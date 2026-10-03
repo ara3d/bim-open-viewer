@@ -1,4 +1,4 @@
-import { missing, type MissingReason, type Observation } from '@bim-open-toolkit/model';
+import { missing, type MissingReason, type Observation } from '@bim-open-viewer/model';
 import { observationCell } from './observation.js';
 import { listOrNothing, resultRecord, resultTable, textOrNothing, type ResultRow, type ResultTable } from './values.js';
 

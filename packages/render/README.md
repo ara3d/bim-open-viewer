@@ -1,4 +1,4 @@
-# @bim-open-toolkit/render
+# @bim-open-viewer/render
 
 Binds a model's geometry to a viewer-core scene and applies bulk changes to it.
 
@@ -13,8 +13,8 @@ peer dependency; nothing in `src` imports it.
 ## The shape of it
 
 ```ts
-import { ViewerScene } from '@ara3d/viewer-core';
-import { SceneBinding, applyUpdates, dirtySets, publishDirty } from '@bim-open-toolkit/render';
+import { ViewerScene } from '@bim-open-viewer/core';
+import { SceneBinding, applyUpdates, dirtySets, publishDirty } from '@bim-open-viewer/render';
 
 const scene = new ViewerScene();
 const binding = new SceneBinding(scene, () => viewer.requestRender());
@@ -30,7 +30,7 @@ binding.applyChanges('snowdon', changes);
 binding.applyStyles('snowdon', resolveStyles(composition, keys));
 ```
 
-A `Geometry` is `@bim-open-toolkit/model`'s mesh library plus columnar instance records. Binding it
+A `Geometry` is `@bim-open-viewer/model`'s mesh library plus columnar instance records. Binding it
 produces one row per rendered instance and one `InstancedGroup` per mesh, with the rows of a group
 contiguous. No per-instance JavaScript object is created at any point: object keys reach rows
 through typed-array index columns.
@@ -38,7 +38,7 @@ through typed-array index columns.
 Under the composition are the pieces on their own, which is what a feature module uses:
 
 ```ts
-import { buildInstanceTable, writeColors, writeVisibility, everyRow } from '@bim-open-toolkit/render';
+import { buildInstanceTable, writeColors, writeVisibility, everyRow } from '@bim-open-viewer/render';
 
 const table = buildInstanceTable(geometry, keys);          // Result<InstanceTable>
 const dirty = dirtySets(table.value);
@@ -61,13 +61,13 @@ publishDirty(table.value, dirty);                                   // one publi
 
 ## Checks
 
-From `viewer/`:
+From the repository root:
 
 ```
 npx tsc --noEmit -p packages/render/tsconfig.json
 npx eslint packages/render
-npm test -w @bim-open-toolkit/render
-npm run perf -w @bim-open-toolkit/render -- --reporter=verbose
+npm test -w @bim-open-viewer/render
+npm run perf -w @bim-open-viewer/render -- --reporter=verbose
 ```
 
 The performance suite is never part of `npm test`. It needs the verbose reporter, because the

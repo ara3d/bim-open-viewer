@@ -9,7 +9,7 @@
 // the page's own writer is the single thing that moves rows, because two writers over one set of
 // group buffers would each undo the other. See `writer.ts` and the checkpoint's request to FB.
 
-import { boundsSize, failure, success } from '@bim-open-toolkit/model';
+import { boundsSize, failure, success } from '@bim-open-viewer/model';
 import {
   appearanceFeatureFor,
   clippingFeature,
@@ -18,8 +18,8 @@ import {
   layoutsFeature,
   sceneRenderTarget,
   setsFeature,
-} from '@bim-open-toolkit/features';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/features';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import { addButton, addCheckbox, addSelect, addSlider, setChoices } from '../_shared/controls.js';
 import { mountFeatureDemo } from '../_shared/page.js';
 import { defaultSpacing, separateDemo } from './controller.js';

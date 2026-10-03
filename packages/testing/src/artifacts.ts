@@ -1,6 +1,6 @@
 // Where screenshots and benchmark reports go.
 //
-// The wave plan puts the testing package's output under `viewer/artifacts/testing`, which git
+// The wave plan puts the testing package's output under `artifacts/testing`, which git
 // ignores. A test cannot hard-code that path without assuming where it was started from, and
 // cannot derive it from `import.meta.url` with a fixed number of steps up, because a module sits
 // three directories deep under `src` and two under the built `dist`. So the workspace root is

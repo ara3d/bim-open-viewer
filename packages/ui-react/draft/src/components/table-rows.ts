@@ -8,7 +8,7 @@
 // Sorting it as if it were zero would put "nobody measured this" in among the small values, which
 // is exactly the reading mistake the model contract exists to prevent.
 
-import { cellAt, isNumericColumn, type CellValue, type Table } from '@bim-open-toolkit/model';
+import { cellAt, isNumericColumn, type CellValue, type Table } from '@bim-open-viewer/model';
 
 // Which way a column is ordered.
 export type SortDirection = 'ascending' | 'descending';

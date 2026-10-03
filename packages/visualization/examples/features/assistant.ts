@@ -1,4 +1,4 @@
-import { meshBounds, transformBounds, unionBounds, type Bounds3 } from '@ara3d/viewer-core';
+import { meshBounds, transformBounds, unionBounds, type Bounds3 } from '@bim-open-viewer/core';
 import { composeAppearance } from '../../src/appearance.js';
 import { objectKey, type Appearance } from '../../src/contracts.js';
 import { createReviewTools } from '../../src/review-tools.js';

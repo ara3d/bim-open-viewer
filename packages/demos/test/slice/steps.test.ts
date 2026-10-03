@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import {
   conflicting,
   known,
@@ -15,8 +15,8 @@ import {
   numericColumnOf,
   text,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
-import { SceneBinding, updateColumns } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { SceneBinding, updateColumns } from '@bim-open-viewer/render';
 import { styleChanges } from '../../src/slice/changes.js';
 import { fireRatingName, sliceData } from '../../src/slice/data.js';
 import { describeObservation, readoutOf, statusLine } from '../../src/slice/readout.js';

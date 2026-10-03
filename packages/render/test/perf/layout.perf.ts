@@ -7,10 +7,10 @@
 // number rather than an opinion, and measures how much of the gap disappears simply by grouping
 // instances by mesh, which is what `InstanceTable` does.
 //
-// Run with `npm run perf -w @bim-open-toolkit/render -- --reporter=verbose`.
+// Run with `npm run perf -w @bim-open-viewer/render -- --reporter=verbose`.
 
 import { describe, expect, it } from 'vitest';
-import { colorStride } from '@bim-open-toolkit/model';
+import { colorStride } from '@bim-open-viewer/model';
 import { everyRow, writeColors } from '../../src/updates.js';
 import {
   measureAll,

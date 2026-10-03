@@ -1,7 +1,7 @@
-# @ara3d/viewer-loaders
+# @bim-open-viewer/loaders
 
 File-format ingestion for the Ara 3D viewer. Loads GLB and BOS (BIM Open
-Schema) models into `@ara3d/viewer-core` scene structures. All format
+Schema) models into `@bim-open-viewer/core` scene structures. All format
 knowledge lives here — viewer-core knows nothing about files.
 
 ## What it does
@@ -34,8 +34,8 @@ knowledge lives here — viewer-core knows nothing about files.
 ## Usage
 
 ```ts
-import { Viewer } from '@ara3d/viewer-core';
-import { loadGlb, loadBos } from '@ara3d/viewer-loaders';
+import { Viewer } from '@bim-open-viewer/core';
+import { loadGlb, loadBos } from '@bim-open-viewer/loaders';
 
 const viewer = new Viewer();
 await loadGlb('model.glb', viewer.scene, {
@@ -72,7 +72,7 @@ rejected before writing. The converter derives both payloads from one BOS;
 do not pair prepared geometry with tables from another model or revision.
 
 ```ts
-import { loadBfast, readBimTable } from '@ara3d/viewer-loaders';
+import { loadBfast, readBimTable } from '@bim-open-viewer/loaders';
 const loaded = await loadBfast('model.bfast', viewer.scene);
 const rows = await readBimTable(loaded.bimData, 'Parameters.parquet');
 ```

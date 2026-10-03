@@ -50,7 +50,7 @@ import {
   type Observation,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt as at } from './arrays.js';
 import { cursor as newCursor, drawFloat, drawInt, drawPick, drawRange, type Cursor } from './cursor.js';
 import type { MeshGroup, ShadedMesh } from './mesh-builder.js';

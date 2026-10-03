@@ -10,7 +10,7 @@
 // the inspector and the report all say how many objects moved and why that number is zero, rather
 // than showing a slider that appears to do nothing.
 
-import { layoutsFeature, layoutsSlice, type Placement } from '@bim-open-toolkit/features';
+import { layoutsFeature, layoutsSlice, type Placement } from '@bim-open-viewer/features';
 import {
   diagnostic,
   disposable,
@@ -20,7 +20,7 @@ import {
   type ModelData,
   type Result,
   type Session,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo } from '../../gallery/contracts.js';
 import { snowdonThenSynthetic } from '../_shared/snowdon.js';
@@ -92,6 +92,6 @@ export const demo: Demo = {
   start: (viewer) => Promise.resolve(startExplode(viewer, viewer.opened()[0]?.data, viewer.placements())),
   ready: explodeReady,
   report: explodeReport,
-  source: 'viewer/packages/demos/src/demos/explode-and-grid',
+  source: 'packages/demos/src/demos/explode-and-grid',
   verify: 'npx vitest run --root packages/demos test/demos/explode-and-grid',
 };

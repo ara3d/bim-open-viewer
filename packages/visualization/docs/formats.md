@@ -3,7 +3,7 @@
 `loadAssetModel(source, format, modelRef, options)` returns `Promise<Result<LoadedBosModel>>`, using the same geometry-independent records and instance bindings as BOS loading. `format` is `glb`, `gltf`, `obj` or `stl`. Source is a URL explicitly supplied by the host, an ArrayBuffer, or a Blob. Options accept AbortSignal, explicit Y/Z source-up, and an asynchronous resource resolver.
 
 ```ts
-import { loadAssetModel } from '@bim-open-toolkit/visualization/assets';
+import { loadAssetModel } from '@bim-open-viewer/visualization/assets';
 
 const result = await loadAssetModel(file, 'gltf', {
   id: 'imported-model', revision: contentHash,

@@ -1,12 +1,13 @@
 // Configuration parsing for the fixture server. Pure: the values themselves are read in main.ts.
 
-// Directories searched when V2_FIXTURES_DIRS is not set. These are machine-specific on purpose:
-// private models are never copied into the repository, so the default points at where they already
-// are. A directory that does not exist contributes nothing.
-// TODO: derive these from a repository root once the demos package resolves one.
+import { fileURLToPath } from 'node:url';
+
+// Directories searched when V2_FIXTURES_DIRS is not set: the repository's ignored artifact folders.
+// Private models are never committed, so they are copied or generated there. A directory that does
+// not exist contributes nothing.
 export const DEFAULT_FIXTURE_DIRS: readonly string[] = [
-  'C:/Users/cdigg/git/bim-open-toolkit/viewer/packages/visualization/artifacts/bfast',
-  'C:/Users/cdigg/git/bim-open-toolkit/viewer/artifacts',
+  fileURLToPath(new URL('../../../visualization/artifacts/bfast', import.meta.url)),
+  fileURLToPath(new URL('../../../../artifacts', import.meta.url)),
 ];
 
 // Splits a semicolon-separated directory list. Blank entries are dropped, and an empty or unset

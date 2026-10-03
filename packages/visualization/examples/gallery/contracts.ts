@@ -1,5 +1,5 @@
-import type { Viewer } from '@ara3d/viewer-core';
-import type { OrbitControls } from '@ara3d/viewer-controls';
+import type { Viewer } from '@bim-open-viewer/core';
+import type { OrbitControls } from '@bim-open-viewer/controls';
 import type { ObjectRecord, ModelData } from '../../src/contracts.js';
 import type { SelectionStore } from '../../src/selection.js';
 import type { RenderBinding } from '../../src/render.js';

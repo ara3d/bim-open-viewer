@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cameraPose, metresZUpLocal, perspective, viewState, type Bounds } from '@bim-open-toolkit/model';
+import { cameraPose, metresZUpLocal, perspective, viewState, type Bounds } from '@bim-open-viewer/model';
 import {
   cameraPath,
   defaultOrbitPathOptions,

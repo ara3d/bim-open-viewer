@@ -1,7 +1,7 @@
 {
-  "name": "@ara3d/viewer-loaders",
+  "name": "@bim-open-viewer/loaders",
   "version": "0.1.0",
-  "description": "File-format ingestion for the Ara 3D viewer: GLB and BOS (BIM Open Schema) loading into @ara3d/viewer-core scene structures, with incremental progress reporting.",
+  "description": "File-format ingestion for the Ara 3D viewer: GLB and BOS (BIM Open Schema) loading into @bim-open-viewer/core scene structures, with incremental progress reporting.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -25,7 +25,7 @@
     "jszip": "^3.10.1"
   },
   "peerDependencies": {
-    "@ara3d/viewer-core": "^0.1.0",
+    "@bim-open-viewer/core": "^0.1.0",
     "three": ">=0.180.0"
   }
 }

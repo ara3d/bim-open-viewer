@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { noMesh } from '@bim-open-toolkit/model';
+import { noMesh } from '@bim-open-viewer/model';
 import {
   buildingFixture,
   sceneFixture,

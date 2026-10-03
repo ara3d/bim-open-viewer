@@ -1,6 +1,6 @@
 # Model contracts, revision M1.4
 
-Package `@bim-open-toolkit/model`. Revision M1 of the contracts the visualization V2 plan
+Package `@bim-open-viewer/model`. Revision M1 of the contracts the visualization V2 plan
 (revision P0, `docs/plans/visualization/V2-PLAN.md`) assigns to this package, plus the additive
 sections M1.1, M1.2 and M1.3, plus M1.4. M1.4 is the first revision that is **not** additive: it
 widens `FactValue`, which costs one line in every reader that ends a chain of kind tests. The

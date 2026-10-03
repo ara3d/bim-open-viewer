@@ -40,15 +40,15 @@ Details in `README.md` and `docs/viewer.md`.
 | `npx tsc --noEmit -p packages/viewer/tsconfig.json` | clean |
 | `npx eslint packages/viewer` | clean |
 | `npx eslint --config eslint.typed.config.js packages/viewer` | clean |
-| `npm test -w @bim-open-toolkit/viewer` | 9 files, 95 tests passed, 5.5 s |
+| `npm test -w @bim-open-viewer/viewer` | 9 files, 95 tests passed, 5.5 s |
 
 Browser run: msedge 152.0.4191.66, ANGLE SwiftShader, 1.1 s in the browser; skips with a printed
 reason where no chromium channel launches.
 
 ## Requests
 
-- **Supervisor (manifest).** Declare `three` and `@ara3d/viewer-core` as dependencies of
-  `@bim-open-toolkit/viewer`, and `@bim-open-toolkit/testing` and `vite` as dev dependencies. All
+- **Supervisor (manifest).** Declare `three` and `@bim-open-viewer/core` as dependencies of
+  `@bim-open-viewer/viewer`, and `@bim-open-viewer/testing` and `vite` as dev dependencies. All
   four resolve from the workspace today, so nothing is blocked.
 - **Model (additive).** (a) A `Service<T>` key type and an optional service lookup on `Session`: a
   feature in `features` cannot name the capability the viewer holds, because the dependency runs the

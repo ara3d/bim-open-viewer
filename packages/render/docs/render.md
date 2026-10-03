@@ -1,6 +1,6 @@
 # How the render package fits together
 
-`@bim-open-toolkit/render` turns a model's geometry into something a viewer-core scene draws, and
+`@bim-open-viewer/render` turns a model's geometry into something a viewer-core scene draws, and
 turns bulk changes into writes against that scene. It has one rule that shapes everything else:
 **anything that does not need a WebGL context is pure or data-structure level and is tested in
 Node; anything that does is a small interface a test can substitute.**
@@ -210,7 +210,7 @@ adapter the mapping from a group object to its model and ordinal.
 
 ## Performance
 
-`npm run perf -w @bim-open-toolkit/render -- --reporter=verbose`. The verbose reporter is required:
+`npm run perf -w @bim-open-viewer/render -- --reporter=verbose`. The verbose reporter is required:
 the default one hides console output from passing tests, which is the evidence these tests print.
 
 Machine: Intel Core Ultra 7 155H, 22 logical cores, 64 GB, Windows 11 (10.0.26200), Node v22.13.1,

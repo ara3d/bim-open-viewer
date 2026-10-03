@@ -4,8 +4,8 @@
 // model as well, because ordinals are per model. `groupIndex()` is the mapping, and a group the
 // mapping does not name belongs to nothing this binding owns, so its hit is dropped.
 
-import type { InstancedGroup, SceneObject } from '@ara3d/viewer-core';
-import type { GroupLocation, ModelRaycastHit, Ray } from '@bim-open-toolkit/render';
+import type { InstancedGroup, SceneObject } from '@bim-open-viewer/core';
+import type { GroupLocation, ModelRaycastHit, Ray } from '@bim-open-viewer/render';
 import { Raycaster, Vector3 } from 'three';
 
 // Hits from the mirror, named by model. One `Raycaster` is kept, because building one per pick

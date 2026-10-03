@@ -74,14 +74,14 @@ Run from `viewer/`, all after the last chunk:
 |---|---|
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | clean |
 | `npx eslint packages/synthetic` | clean |
-| `npm test -w @bim-open-toolkit/synthetic` | 14 files, 212 tests, all pass, 1.6 s |
+| `npm test -w @bim-open-viewer/synthetic` | 14 files, 212 tests, all pass, 1.6 s |
 | Every default fixture builds in under 500 ms | asserted in `fixtures.test.ts`; the whole catalog builds in about 300 ms, of which the stress scene is most |
 
 Limits of that verification:
 
 - `npx tsc --noEmit -p packages/synthetic/tsconfig.build.json` fails, on the
   files that existed before this track as well as the new ones, because the
-  build config resolves `@bim-open-toolkit/model` through `dist` and no V2
+  build config resolves `@bim-open-viewer/model` through `dist` and no V2
   package has been built in this checkout. It is a missing build step, not a
   regression; `build:v2` in dependency order is the supervisor's gate.
 - No generator has been rendered. Geometry is asserted structurally — one
@@ -226,7 +226,7 @@ Per check, over about four hours of work in this track.
 | Check | Runs | Wall time | Real defects caught | Friction | Verdict |
 |---|---|---|---|---|---|
 | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | 11 | 6 to 9 s | 3 — a generic `indexOf` against a literal tuple, an unused binding in a test, a mesh-group field that did not exist on `StressScene` (a real bug in the catalog, caught before any test ran) | none | **helpful** |
-| `npm test -w @bim-open-toolkit/synthetic` | 12 | 1.2 to 2.7 s for 212 tests | 3 — two probabilistic assertions that were false for the default seed and exposed a real weakness in the design (see the structural-gaps finding), one date window too narrow to produce a future-dated event | none; the suite is fast enough to run on every change | **helpful** |
+| `npm test -w @bim-open-viewer/synthetic` | 12 | 1.2 to 2.7 s for 212 tests | 3 — two probabilistic assertions that were false for the default seed and exposed a real weakness in the design (see the structural-gaps finding), one date window too narrow to produce a future-dated event | none; the suite is fast enough to run on every change | **helpful** |
 | `npx eslint packages/synthetic` | 7 | 2 to 4 s | 0 | none | **neutral** — it has caught nothing `tsc` did not in this track, but it costs almost nothing and it is the gate that would catch a `no-explicit-any` if one were ever written |
 | Snapshot regeneration and comparison | 3 | under 1 s | 0 so far, by construction — it exists to make the next change visible | none once the text comparison replaced the parsed comparison; parsing back would have needed a cast, which the no-escape-hatch rule forbids | **helpful**, on the evidence of what it makes reviewable rather than what it has caught |
 | `npx tsc -p tsconfig.build.json` | 1 | 8 s | 0 | it fails for everyone until `build:v2` has run, so it is not usable as a per-track gate | **hindrance as a track check**; correct as an integration gate |

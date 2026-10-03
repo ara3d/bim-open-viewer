@@ -14,7 +14,7 @@ import {
   type CoordinateContext,
   type Vec3,
   metresZUpLocal,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cursor as newCursor, drawChance, drawRange, type Cursor } from './cursor.js';
 
 // The number of cells along each axis.

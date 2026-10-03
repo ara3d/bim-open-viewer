@@ -6,7 +6,7 @@
 
 import { button, clear, el } from './elements.js';
 import { applyChrome, readChrome, storeChrome, withBigText, withTheme, type ChromeSettings } from './theme.js';
-import type { ThemeApplier } from '@bim-open-toolkit/ui-gratify';
+import type { ThemeApplier } from '@bim-open-viewer/ui-gratify';
 
 // The frame: where a page puts its own chrome, where it draws, and what the person chose.
 export type Shell = {

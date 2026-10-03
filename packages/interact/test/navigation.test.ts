@@ -8,7 +8,7 @@ import {
   type Bounds,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { cameraBasis, orbitAngles, screenHeading } from '../src/camera.js';
 import { frameHeightAt } from '../src/projection.js';
 import { defaultBindings } from '../src/bindings.js';

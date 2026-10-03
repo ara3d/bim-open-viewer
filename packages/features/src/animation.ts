@@ -39,7 +39,7 @@ import {
   type Session,
   type StateSlice,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // The states an object passes through, in the order they rank. `pending` is what an object with no
 // recorded event is in; it is an absence of evidence, not a delivery that failed.

@@ -2,7 +2,7 @@
 // show.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, type Table } from '@bim-open-toolkit/model';
+import { columnOf, type Table } from '@bim-open-viewer/model';
 import { defaultDeliveryOptions, eventTypes, generateDeliverySchedule } from '../src/deliveries.js';
 
 // The three states in rank order, as plain strings, so a row's event type can be looked up.

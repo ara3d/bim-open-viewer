@@ -1,4 +1,4 @@
-import { environmentSlice } from '@bim-open-toolkit/features';
+import { environmentSlice } from '@bim-open-viewer/features';
 import { describe, expect, it } from 'vitest';
 import {
   demo,

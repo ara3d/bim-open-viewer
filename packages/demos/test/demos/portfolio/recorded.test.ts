@@ -5,9 +5,9 @@
 // the same code against the real file, and skips itself when the file is not on the machine.
 
 import { describe, expect, it } from 'vitest';
-import { appearanceSlice, setsSlice } from '@bim-open-toolkit/features';
-import { isEmptyBounds } from '@bim-open-toolkit/model';
-import { generateBuilding, defaultBuildingOptions } from '@bim-open-toolkit/synthetic';
+import { appearanceSlice, setsSlice } from '@bim-open-viewer/features';
+import { isEmptyBounds } from '@bim-open-viewer/model';
+import { generateBuilding, defaultBuildingOptions } from '@bim-open-viewer/synthetic';
 import { applyRecordedRollup, portfolioFeatures, portfolioReady, portfolioReport } from '../../../src/demos/portfolio/index.js';
 import { portfolioIndex } from '../../../src/demos/portfolio/city.js';
 import { portfolioSheet, sourceSheet } from '../../../src/demos/portfolio/inspector.js';

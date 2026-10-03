@@ -12,8 +12,8 @@ export const snowdonSha256 = 'fc31c4463d9eb958ae8de3d853cfc8224b9469477b419857fb
 export async function checkNormalizedSnowdon(fixture) {
   assert.ok(fixture, 'Supply an explicit Snowdon fixture path');
   const { loadBosModel } = await import('../dist/loading.js');
-  const { parseBosGeometry } = await import('@ara3d/viewer-loaders');
-  const { groupBounds, unionBounds } = await import('@ara3d/viewer-core');
+  const { parseBosGeometry } = await import('@bim-open-viewer/loaders');
+  const { groupBounds, unionBounds } = await import('@bim-open-viewer/core');
   const started = performance.now();
   const bytes = await readFile(fixture), hash = createHash('sha256').update(bytes).digest('hex');
   assert.equal(hash, snowdonSha256, 'Fixture revision differs from the pinned Snowdon baseline');

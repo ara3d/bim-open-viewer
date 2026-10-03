@@ -1,4 +1,4 @@
-import { valueOr } from '@bim-open-toolkit/model';
+import { valueOr } from '@bim-open-viewer/model';
 import { doorScheduleWorkflow } from './01-door-schedule.js';
 import { revisionComparisonWorkflow } from './02-revision-comparison.js';
 import { takeoffWorkflow } from './03-takeoff.js';

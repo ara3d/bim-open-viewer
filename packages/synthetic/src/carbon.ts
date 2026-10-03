@@ -23,7 +23,7 @@ import {
   type Evidence,
   type Observation,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt } from './arrays.js';
 import { cursor as newCursor, drawRange, type Cursor } from './cursor.js';
 import { quantityColumns, type NamedColumn } from './schedule.js';

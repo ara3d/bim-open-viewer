@@ -16,7 +16,7 @@ State: **verified** against the gates below. Contract revision: M1 with M1.1 and
 |---|---|---|
 | `npx tsc --noEmit -p packages/render/tsconfig.json` | exit 0 | 8 s |
 | `npx eslint packages/render` | exit 0 | 37 s |
-| `npm test -w @bim-open-toolkit/render` | 12 files, 243 passed | 2 s |
+| `npm test -w @bim-open-viewer/render` | 12 files, 243 passed | 2 s |
 | `npx tsc --noEmit -p packages/demos/tsconfig.json` | exit 0 | 46 s |
 | `npx eslint packages/demos/src/ambient-occlusion packages/demos/test/ambient-occlusion` | exit 0 | 13 s |
 | `npx vitest run test/ambient-occlusion/steps.test.ts` (in `packages/demos`) | 15 passed | 7 s |

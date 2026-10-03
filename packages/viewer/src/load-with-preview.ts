@@ -5,8 +5,8 @@
 // It never calls `viewer.show`: that stays the caller's job, exactly as with `loadModel`, so a host
 // that wants to transform the model before showing it still can.
 
-import type { Result } from '@bim-open-toolkit/model';
-import { loadModel, type BoxPreview, type LoadedModel, type LoadOptions, type ModelSource } from '@bim-open-toolkit/formats';
+import type { Result } from '@bim-open-viewer/model';
+import { loadModel, type BoxPreview, type LoadedModel, type LoadOptions, type ModelSource } from '@bim-open-viewer/formats';
 import type { Viewer } from './create-viewer.js';
 
 export type LoadWithPreviewOptions = Omit<LoadOptions, 'onPreview'> & {

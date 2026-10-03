@@ -1,7 +1,7 @@
 // A property sheet flattened into fixed-height lines. The inspector scrolls by virtualization, so
 // everything it can show has to be countable and addressable by index before anything is drawn.
-import { cellAt, columnNames, type Table } from '@bim-open-toolkit/model';
-import type { OverlayAction } from '@bim-open-toolkit/render';
+import { cellAt, columnNames, type Table } from '@bim-open-viewer/model';
+import type { OverlayAction } from '@bim-open-viewer/render';
 import type { PropertyRow, PropertySheet, PropertyValue, SheetTable } from '../contracts.js';
 
 // One line of the inspector. Every kind is one row high, which is what makes the scroll arithmetic

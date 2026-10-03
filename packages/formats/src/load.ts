@@ -1,4 +1,4 @@
-import { success, type CoordinateContext, type Diagnostic, type ModelRef, type Result } from '@bim-open-toolkit/model';
+import { success, type CoordinateContext, type Diagnostic, type ModelRef, type Result } from '@bim-open-viewer/model';
 import { defaultModelRef, readBfastModel, type MetadataLevel } from './bfast.js';
 import { readBosModel, type BosConverter } from './bos.js';
 import { detectFormat } from './detect.js';

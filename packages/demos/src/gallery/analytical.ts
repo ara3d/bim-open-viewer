@@ -8,7 +8,7 @@
 // The names are the model package's own vocabulary, so a legend built from a `Coverage` or a
 // `ChangeEvent` never has to translate.
 
-import type { ValueState } from '@bim-open-toolkit/ui-gratify';
+import type { ValueState } from '@bim-open-viewer/ui-gratify';
 
 // What a value's state looks like: known, nobody recorded it, or the sources disagree.
 export const valueStateColors: Readonly<Record<ValueState, string>> = {

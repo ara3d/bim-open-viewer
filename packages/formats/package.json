@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/formats",
+  "name": "@bim-open-viewer/formats",
   "version": "0.1.0",
   "description": "BOS, BFAST, GLB, GLTF, OBJ and STL adapters producing one normalized LoadedModel with a columnar representation table.",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "perf": "vitest run --config vitest.perf.config.ts"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0",
-    "@ara3d/viewer-loaders": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0",
+    "@bim-open-viewer/loaders": "0.1.0"
   }
 }

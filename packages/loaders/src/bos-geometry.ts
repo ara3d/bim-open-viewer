@@ -3,7 +3,7 @@
 // src/loader/bimGeometry.ts, recovered from the package's published source map).
 // Source repo: https://github.com/ara3d/ara3d-webgl
 
-import { InstancedGroup, MeshBuffers } from '@ara3d/viewer-core';
+import { InstancedGroup, MeshBuffers } from '@bim-open-viewer/core';
 import { ConvertResult, GroupCallback } from './groups.js';
 
 type IntColumn = Int32Array | Uint32Array;

@@ -10,8 +10,8 @@
 // "unassigned" group and shown as such; dropping them would let the pickers claim fewer objects
 // than the model holds.
 
-import { objectKey, type ModelData, type ObjectKey, type ObjectRecord } from '@bim-open-toolkit/model';
-import { levelsOf, type Level } from '@bim-open-toolkit/features';
+import { objectKey, type ModelData, type ObjectKey, type ObjectRecord } from '@bim-open-viewer/model';
+import { levelsOf, type Level } from '@bim-open-viewer/features';
 
 // What an object can be shown by.
 export type GroupKind = 'storey' | 'room' | 'category';

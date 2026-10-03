@@ -23,8 +23,8 @@ import {
   type ObjectKey,
   type ObjectRecord,
   type Result,
-} from '@bim-open-toolkit/model';
-import { rowOf } from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
+import { rowOf } from '@bim-open-viewer/model';
 import {
   add,
   box,
@@ -35,7 +35,7 @@ import {
   sceneBuilder,
   type Carbon,
   type CarbonOptions,
-} from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/synthetic';
 import {
   missingReasons,
   runMaterialCarbon,
@@ -44,7 +44,7 @@ import {
   type MaterialQuantity,
   type ObservationJson,
   type WorkflowResult,
-} from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/workflows';
 import type { DemoFixture, ModelSource } from '../../gallery/contracts.js';
 
 // The data set the demo opens: the generator's own default, eighteen objects across six materials,

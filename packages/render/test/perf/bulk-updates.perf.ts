@@ -1,6 +1,6 @@
 // What a bulk colour, visibility or transform update through an `InstanceTable` costs.
 //
-// Run with `npm run perf -w @bim-open-toolkit/render -- --reporter=verbose`. The verbose reporter
+// Run with `npm run perf -w @bim-open-viewer/render -- --reporter=verbose`. The verbose reporter
 // is required: the default one hides console output from passing tests, which is the evidence
 // these tests exist to print.
 //
@@ -14,7 +14,7 @@
 // leaving the dirty ranges empty when nothing moved.
 
 import { describe, expect, it } from 'vitest';
-import { transformStride } from '@bim-open-toolkit/model';
+import { transformStride } from '@bim-open-viewer/model';
 import {
   dirtySets,
   everyRow,

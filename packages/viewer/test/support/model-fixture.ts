@@ -1,6 +1,6 @@
 // The smallest thing that is a model: two objects, one triangle each, a metre apart.
 //
-// Deliberately hand-built rather than taken from `@bim-open-toolkit/synthetic`, so a failure here is
+// Deliberately hand-built rather than taken from `@bim-open-viewer/synthetic`, so a failure here is
 // a failure of this package and the tests need no generator.
 
 import {
@@ -15,8 +15,8 @@ import {
   type ModelData,
   type ModelRef,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
-import type { LoadedModel } from '@bim-open-toolkit/formats';
+} from '@bim-open-viewer/model';
+import type { LoadedModel } from '@bim-open-viewer/formats';
 
 // One triangle in the xy plane, a metre on a side.
 const triangle = mesh(Float32Array.of(0, 0, 0, 1, 0, 0, 0, 1, 0), Uint32Array.of(0, 1, 2));

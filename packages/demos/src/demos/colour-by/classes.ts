@@ -3,8 +3,8 @@
 // A class row is one legend swatch paired with the rule that painted it, so its count is the number
 // of objects that rule actually named. Counting any other way could disagree with the picture.
 
-import { appearanceSlice, type Legend } from '@bim-open-toolkit/features';
-import type { Color, Session, StyleRule } from '@bim-open-toolkit/model';
+import { appearanceSlice, type Legend } from '@bim-open-viewer/features';
+import type { Color, Session, StyleRule } from '@bim-open-viewer/model';
 import { colourColumns, conflictingLegendId, legendIdOf, type ColourColumnId } from './colouring.js';
 
 // Whether a swatch stands for a recorded value, for no value, or for sources that disagree.

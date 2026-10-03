@@ -12,8 +12,8 @@
 // for which question that is and why it is not this one - and, when the file carries no parameter
 // table at all, a statement that it does not rather than a roll-up of nothing.
 
-import { setsSlice } from '@bim-open-toolkit/features';
-import { stringColumn, table, type Session } from '@bim-open-toolkit/model';
+import { setsSlice } from '@bim-open-viewer/features';
+import { stringColumn, table, type Session } from '@bim-open-viewer/model';
 import {
   conflictingValue,
   knownNumber,
@@ -26,8 +26,8 @@ import {
   type PropertyRow,
   type PropertySheet,
   type SheetTable,
-} from '@bim-open-toolkit/ui-gratify';
-import { resultRows, type WorkflowResult } from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/ui-gratify';
+import { resultRows, type WorkflowResult } from '@bim-open-viewer/workflows';
 import { exceptionsSheet, textTable } from '../_workflows/exceptions.js';
 import { type EstateDocument, type PortfolioIndex } from './city.js';
 import { buildingReadings, drilledBuildingId, rollupsOf, type BuildingReading } from './readings.js';

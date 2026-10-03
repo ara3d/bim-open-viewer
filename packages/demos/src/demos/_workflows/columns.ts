@@ -5,8 +5,8 @@
 // is the one to read. Turning those six columns back into one observation is the same code for
 // every workflow, so it lives here rather than in each demo.
 
-import { rowOf, type CellValue, type MissingReason, type Table } from '@bim-open-toolkit/model';
-import { missingReasons, type ObservationJson } from '@bim-open-toolkit/workflows';
+import { rowOf, type CellValue, type MissingReason, type Table } from '@bim-open-viewer/model';
+import { missingReasons, type ObservationJson } from '@bim-open-viewer/workflows';
 
 // The cells of one row, addressed by column name.
 export type Cells = Readonly<Record<string, CellValue>>;

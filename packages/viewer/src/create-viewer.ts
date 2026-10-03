@@ -41,15 +41,15 @@ import {
   type SceneDocument,
   type StyleRule,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   loadModel,
   type BoxPreview,
   type LoadOptions as FormatOptions,
   type LoadedModel,
   type ModelSource,
-} from '@bim-open-toolkit/formats';
-import { ViewerScene, type InstancedGroup } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/formats';
+import { ViewerScene, type InstancedGroup } from '@bim-open-viewer/core';
 import {
   DurationLog,
   SceneBinding,
@@ -70,8 +70,8 @@ import {
   type ObjectHit,
   type Ray,
   type SceneStatistics,
-} from '@bim-open-toolkit/render';
-import type { FrameScheduler, NavElement, NavMode } from '@bim-open-toolkit/interact';
+} from '@bim-open-viewer/render';
+import type { FrameScheduler, NavElement, NavMode } from '@bim-open-viewer/interact';
 import { viewerAccess, type SceneAccess, type ViewerAccess, type ViewsAccess } from './access.js';
 import { blendableMaterial, webglRenderer } from './adapters/index.js';
 import { appearanceSlice, defaultFeatures, modelsSlice, viewSlice } from './core-features.js';
@@ -139,7 +139,7 @@ export type Viewer = {
   readonly views: ViewSet;
   readonly binding: SceneBinding;
 
-  // Loads a model from anywhere `@bim-open-toolkit/formats` reads, binds it and shows it.
+  // Loads a model from anywhere `@bim-open-viewer/formats` reads, binds it and shows it.
   readonly open: (source: ModelSource, options?: FormatOptions) => Promise<Result<OpenedModel>>;
   // Binds a model already in memory, which is what a synthetic fixture needs.
   readonly show: (loaded: LoadedModel) => Result<OpenedModel>;

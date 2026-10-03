@@ -30,7 +30,7 @@ git-ignored); `CaptureTarget` encoded 69,392 PNG bytes.
 | `npx eslint packages/demos` | clean, 14 s |
 | `npx eslint --config eslint.typed.config.js packages/demos` | clean, 28 s |
 | `npx vitest run --root packages/demos test/slice` | 2 files, 17 tests passed, 5.3 s |
-| `npm test -w @bim-open-toolkit/demos` | 10 files, 95 tests, 94 passed, **1 failed**, 94 s |
+| `npm test -w @bim-open-viewer/demos` | 10 files, 95 tests, 94 passed, **1 failed**, 94 s |
 | `npx vite --config packages/demos/vite.slice.config.mjs` | served `/slice.html` 200 on 5176; port released, no process left |
 
 ## Blockers and notes for the supervisor
@@ -38,7 +38,7 @@ git-ignored); `CaptureTarget` encoded 69,392 PNG bytes.
 - **`packages/demos` has two writers.** An ambient-occlusion track landed `src/ambient-occlusion`,
   `test/ambient-occlusion`, `ambient-occlusion.html`, `vite.ao.config.mjs` and a doc while this
   track ran. Fences did not collide, but its browser test is the one failure above (`expected 150 to
-  be greater than 150`), so `npm test -w @bim-open-toolkit/demos` is red for reasons outside this
+  be greater than 150`), so `npm test -w @bim-open-viewer/demos` is red for reasons outside this
   fence. Nothing under `test/slice` fails.
 - **A contract change landed and was withdrawn mid-track.** For about ten minutes `FactValue`
   carried a fifth kind, `bounds`, breaking this track's exhaustive switch and
@@ -47,7 +47,7 @@ git-ignored); `CaptureTarget` encoded 69,392 PNG bytes.
   additions to running tracks.
 - **Requests.** A root script `demo:slice` running
   `vite packages/demos/vite.slice.config.mjs --host 127.0.0.1 --port 5176 --strictPort`; and
-  `@ara3d/viewer-core` and `three` in `packages/demos/package.json`, since both resolve today only
+  `@bim-open-viewer/core` and `three` in `packages/demos/package.json`, since both resolve today only
   because npm hoists them.
 
 ## Findings

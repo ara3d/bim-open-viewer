@@ -21,7 +21,7 @@ import {
   type Diagnostic,
   type Disposable,
   type Result,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import type { ViewerSession } from './session.js';
 
 // What one installed feature holds, so disposal can undo exactly what installation did.

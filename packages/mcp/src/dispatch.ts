@@ -6,7 +6,7 @@
 // file system, no command name taken from the caller - and the command validates its own input
 // before it runs, so an argument that does not fit comes back as diagnostics rather than an effect.
 
-import { formatPath, type Diagnostic, type Result } from '@bim-open-toolkit/model';
+import { formatPath, type Diagnostic, type Result } from '@bim-open-viewer/model';
 import { toolNamed, type JsonValue, type McpTool } from './tools.js';
 
 // One block of a tool response. Text only: a viewer command's result is data, not an image.

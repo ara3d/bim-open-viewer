@@ -3,14 +3,14 @@
 // Every count asserted here is the number the page reports, read from the same composition.
 
 import { beforeEach, describe, expect, it } from 'vitest';
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
 import {
   defaultAppearance,
   objectKey,
   styleOf,
   type Appearance,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   appearanceFeatureFor,
   appearanceSlice,
@@ -19,8 +19,8 @@ import {
   resolveAppearance,
   setsFeature,
   setsSlice,
-} from '@bim-open-toolkit/features';
-import { createSession, featureHost, type ViewerSession } from '@bim-open-toolkit/viewer';
+} from '@bim-open-viewer/features';
+import { createSession, featureHost, type ViewerSession } from '@bim-open-viewer/viewer';
 import { findGroup, groupsOf, type ObjectGroup } from '../../../src/feature-demos/show-by/groups.js';
 import {
   applyShow,

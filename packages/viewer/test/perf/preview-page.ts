@@ -12,7 +12,7 @@
 // frame, so the same screenshot taken then is the full frame. Two runs, two frames, no code path here
 // that a headless canvas readback could stall on.
 
-import type { BoxPreview } from '@bim-open-toolkit/formats';
+import type { BoxPreview } from '@bim-open-viewer/formats';
 import { createViewer } from '../../src/create-viewer.js';
 import { loadWithPreview } from '../../src/load-with-preview.js';
 

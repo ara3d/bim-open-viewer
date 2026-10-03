@@ -55,7 +55,7 @@ Chunk 2 inspector (virtualized list, badges, tables, row actions); chunk 3 the r
 From `viewer/`, at chunk 1:
 
 - `npx tsc --noEmit -p packages/ui-gratify/tsconfig.json` — clean, about 12 s.
-- `npm test -w @bim-open-toolkit/ui-gratify` — 5 files, 18 tests, passed in 1.15 s.
+- `npm test -w @bim-open-viewer/ui-gratify` — 5 files, 18 tests, passed in 1.15 s.
 
 ## Chunk commits
 

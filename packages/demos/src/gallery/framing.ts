@@ -9,9 +9,9 @@
 // the status strip; the opening camera simply frames the bulk of the model instead of its extremes,
 // and says how many pieces it left outside the frame so a demo can report it.
 
-import { emptyBounds, isEmptyBounds, unionBounds, type Bounds } from '@bim-open-toolkit/model';
-import { groupBounds } from '@ara3d/viewer-core';
-import type { SceneBinding } from '@bim-open-toolkit/render';
+import { emptyBounds, isEmptyBounds, unionBounds, type Bounds } from '@bim-open-viewer/model';
+import { groupBounds } from '@bim-open-viewer/core';
+import type { SceneBinding } from '@bim-open-viewer/render';
 
 // A frame: what to look at, and what it does not cover.
 export type Framing = {

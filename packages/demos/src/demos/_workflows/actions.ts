@@ -9,8 +9,8 @@
 // way the synthetic tables already carry a list in one cell. When it lands, `focusAction` becomes
 // one command and `focusSets` goes away.
 
-import { namedSet, objectKey, objectRef, type ModelRef, type NamedSet } from '@bim-open-toolkit/model';
-import type { OverlayAction } from '@bim-open-toolkit/render';
+import { namedSet, objectKey, objectRef, type ModelRef, type NamedSet } from '@bim-open-viewer/model';
+import type { OverlayAction } from '@bim-open-viewer/render';
 
 // The id of the one-member set that stands for one object of one demo.
 export const focusSetId = (prefix: string, objectId: string): string => `${prefix}/focus/${objectId}`;

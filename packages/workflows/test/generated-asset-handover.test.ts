@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultAssetOptions, generateAssets, type Assets } from '@bim-open-toolkit/synthetic';
-import { indexFacts, objectRef, observationAt, rowOf } from '@bim-open-toolkit/model';
+import { defaultAssetOptions, generateAssets, type Assets } from '@bim-open-viewer/synthetic';
+import { indexFacts, objectRef, observationAt, rowOf } from '@bim-open-viewer/model';
 import {
   runAssetHandover,
   type AssetHandoverInput,

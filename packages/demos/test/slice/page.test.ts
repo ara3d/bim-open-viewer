@@ -3,7 +3,7 @@
 // this file never turns a machine without one into a failure.
 //
 // Software WebGL is asked for the way the alpha's `browser-smoke.mjs` asks for it. The screenshot
-// goes to `viewer/artifacts/slice/`, which git ignores.
+// goes to `artifacts/slice/`, which git ignores.
 
 import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';

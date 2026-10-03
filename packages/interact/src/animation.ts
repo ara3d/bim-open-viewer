@@ -8,7 +8,7 @@ import {
   type Projection,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { isDragging, type InputFrame } from './input.js';
 import { clamp, finite } from './numbers.js';
 import { lerpVec3, unitSlerp } from './vec.js';

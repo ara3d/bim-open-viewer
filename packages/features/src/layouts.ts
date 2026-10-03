@@ -54,14 +54,14 @@ import {
   type StateSlice,
   type UpAxis,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   everyRow,
   translationStride,
   writeTranslations,
   type DirtySets,
   type InstanceTable,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import { levelAt, levelsOf } from './navigation-aids.js';
 
 // What an explode separates: the storeys of a building, or the categories of its objects.

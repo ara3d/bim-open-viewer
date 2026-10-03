@@ -1,9 +1,9 @@
 // The whole WebGL surface of this page: the render package's adapter interfaces implemented over
 // the alpha viewer-core renderer and three. Nothing else in `src/slice` imports three.
 
-import { noGpuTimer, type CaptureTarget, type ClippingTarget, type EnvironmentTarget, type GpuFrameTimer, type GroupLocation, type ModelRaycastHit, type Ray } from '@bim-open-toolkit/render';
-import type { Color, Vec3 } from '@bim-open-toolkit/model';
-import type { InstancedGroup, SceneObject, Viewer } from '@ara3d/viewer-core';
+import { noGpuTimer, type CaptureTarget, type ClippingTarget, type EnvironmentTarget, type GpuFrameTimer, type GroupLocation, type ModelRaycastHit, type Ray } from '@bim-open-viewer/render';
+import type { Color, Vec3 } from '@bim-open-viewer/model';
+import type { InstancedGroup, SceneObject, Viewer } from '@bim-open-viewer/core';
 import {
   BufferGeometry,
   Color as ThreeColor,

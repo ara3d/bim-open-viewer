@@ -1,7 +1,7 @@
-import { emptyDocument, getSlice, putSlice, stringOf, type AnyFeature, type StyleRule } from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { defaultDeliveryOptions, generateDeliverySchedule } from '@bim-open-toolkit/synthetic';
-import { fakeClock } from '@bim-open-toolkit/testing';
+import { emptyDocument, getSlice, putSlice, stringOf, type AnyFeature, type StyleRule } from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { defaultDeliveryOptions, generateDeliverySchedule } from '@bim-open-viewer/synthetic';
+import { fakeClock } from '@bim-open-viewer/testing';
 import { describe, expect, it } from 'vitest';
 import {
   animationCommands,

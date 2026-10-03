@@ -1,8 +1,8 @@
 // Where three.js and the pure packages meet for the camera: an interact view written onto the
 // viewer's camera, a pointer turned into a ray, and a world point turned into canvas pixels.
 
-import { projectToScreen, rayThroughNdc, type Ray, type ScreenPoint } from '@bim-open-toolkit/render';
-import type { Matrix4, Vec3, ViewState } from '@bim-open-toolkit/model';
+import { projectToScreen, rayThroughNdc, type Ray, type ScreenPoint } from '@bim-open-viewer/render';
+import type { Matrix4, Vec3, ViewState } from '@bim-open-viewer/model';
 import { Matrix4 as ThreeMatrix4, Vector3, type PerspectiveCamera } from 'three';
 
 // A three matrix as the model package's column-major sixteen.

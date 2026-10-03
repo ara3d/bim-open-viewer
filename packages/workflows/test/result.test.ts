@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { conflicting, known, missing, parse, quantity, text } from '@bim-open-toolkit/model';
+import { conflicting, known, missing, parse, quantity, text } from '@bim-open-viewer/model';
 import { exceptionRow, exceptionTable, missingException, workflowException } from '../src/exception.js';
 import { keyOf, suggestedView } from '../src/keys.js';
 import { observationCell, observationJsonSchema, observationOf, toObservation } from '../src/observation.js';

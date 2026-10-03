@@ -12,7 +12,7 @@ import {
   u32Column,
   type Geometry,
   type ModelData,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   digestHex,
   emptyDigest,

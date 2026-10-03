@@ -3,7 +3,7 @@
  * one: an instance that is not drawn, an instance with no mesh, an entity no
  * instance refers to, and an instance naming an entity the table does not have.
  */
-import { bfastToGroups } from '@ara3d/viewer-loaders';
+import { bfastToGroups } from '@bim-open-viewer/loaders';
 import { describe, expect, it } from 'vitest';
 import { buildAlphaBindings } from '../../src/bindings/alpha-reference.js';
 import { buildColumnarBinding } from '../../src/bindings/build.js';

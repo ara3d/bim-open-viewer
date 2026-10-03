@@ -1,4 +1,4 @@
-import { InstancedGroup } from '@ara3d/viewer-core';
+import { InstancedGroup } from '@bim-open-viewer/core';
 
 /** Outcome of converting a source model into viewer-core groups. */
 export interface ConvertResult {

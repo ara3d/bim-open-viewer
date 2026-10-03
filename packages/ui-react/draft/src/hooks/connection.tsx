@@ -6,7 +6,7 @@
 // session that is not there yet and no component has to be written twice.
 
 import { createContext, useContext, useMemo, type ReactElement, type ReactNode } from 'react';
-import type { Viewer, ViewerSession } from '@bim-open-toolkit/viewer';
+import type { Viewer, ViewerSession } from '@bim-open-viewer/viewer';
 
 // The session a tree reads and writes, and the viewer that composed it when one did.
 export type ViewerConnection = {

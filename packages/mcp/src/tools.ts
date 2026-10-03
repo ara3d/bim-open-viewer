@@ -30,7 +30,7 @@ import {
   type JsonSchema,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // JSON as it travels: what a tool's input schema is made of and what a tool call carries.
 export type JsonValue =

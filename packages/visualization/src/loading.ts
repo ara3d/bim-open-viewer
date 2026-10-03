@@ -1,5 +1,5 @@
-import { InstancedGroup } from '@ara3d/viewer-core';
-import { bosToGroups, parseBosGeometry, isBFast, parseBfastModel, bfastToGroups, bimEntityLocalIds, type BimData, type LoadProgress, type LoadSource } from '@ara3d/viewer-loaders';
+import { InstancedGroup } from '@bim-open-viewer/core';
+import { bosToGroups, parseBosGeometry, isBFast, parseBfastModel, bfastToGroups, bimEntityLocalIds, type BimData, type LoadProgress, type LoadSource } from '@bim-open-viewer/loaders';
 import { Matrix4 as ThreeMatrix4 } from 'three';
 import { identityMatrix, type Matrix4, type ModelData, type ModelRef, type ObjectRecord, type Result } from './contracts.js';
 import type { InstanceBinding } from './render.js';

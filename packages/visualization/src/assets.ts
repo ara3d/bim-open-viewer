@@ -1,5 +1,5 @@
-import { InstancedGroup } from '@ara3d/viewer-core';
-import { convertObject, type LoadSource } from '@ara3d/viewer-loaders';
+import { InstancedGroup } from '@bim-open-viewer/core';
+import { convertObject, type LoadSource } from '@bim-open-viewer/loaders';
 import { LoadingManager, Matrix4 as ThreeMatrix4, Mesh, MeshStandardMaterial, type Object3D, type Texture } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';

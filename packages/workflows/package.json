@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/workflows",
+  "name": "@bim-open-viewer/workflows",
   "version": "0.1.0",
   "description": "Pure result adapters and recipes for the review workflows: input tables in, typed results, rules, sets, overlays and views out.",
   "license": "MIT",
@@ -21,9 +21,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0"
   },
   "devDependencies": {
-    "@bim-open-toolkit/synthetic": "0.1.0"
+    "@bim-open-viewer/synthetic": "0.1.0"
   }
 }

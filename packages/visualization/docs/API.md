@@ -2,7 +2,7 @@
 
 Generated from the compiled TypeScript declarations. Run `npm run docs:api` after building. Optional subpaths keep renderer, DOM and UI dependencies outside the root data API.
 
-## @bim-open-toolkit/visualization
+## @bim-open-viewer/visualization
 
 ```ts
 // contracts
@@ -517,10 +517,10 @@ export declare function createReviewTools(host: ReviewToolHost, options?: {
 };
 ```
 
-## @bim-open-toolkit/visualization/render
+## @bim-open-viewer/visualization/render
 
 ```ts
-import { type InstancedGroup, type ViewerScene, type SceneObject } from '@ara3d/viewer-core';
+import { type InstancedGroup, type ViewerScene, type SceneObject } from '@bim-open-viewer/core';
 import { type Camera, Raycaster } from 'three';
 import { type Matrix4, type ObjectRef, type ObjectRecord, type Result, type Vec3 } from './contracts.js';
 export type InstanceBinding = {
@@ -564,10 +564,10 @@ export declare class RenderBinding {
 }
 ```
 
-## @bim-open-toolkit/visualization/loading
+## @bim-open-viewer/visualization/loading
 
 ```ts
-import { type BimData, type LoadProgress, type LoadSource } from '@ara3d/viewer-loaders';
+import { type BimData, type LoadProgress, type LoadSource } from '@bim-open-viewer/loaders';
 import { type ModelData, type ModelRef, type Result } from './contracts.js';
 import type { InstanceBinding } from './render.js';
 export type BosModelOptions = {
@@ -585,7 +585,7 @@ export type LoadedBosModel = {
 export declare function loadBosModel(source: LoadSource, modelRef: ModelRef, options?: BosModelOptions): Promise<Result<LoadedBosModel>>;
 ```
 
-## @bim-open-toolkit/visualization/camera
+## @bim-open-viewer/visualization/camera
 
 ```ts
 import type { CameraState, Vec3 } from './contracts.js';
@@ -607,10 +607,10 @@ export declare function fitPerspectivePose(bounds: CameraBounds, options: Perspe
 export declare function overheadPose(target: Vec3, distance: number): CameraState;
 ```
 
-## @bim-open-toolkit/visualization/assets
+## @bim-open-viewer/visualization/assets
 
 ```ts
-import { type LoadSource } from '@ara3d/viewer-loaders';
+import { type LoadSource } from '@bim-open-viewer/loaders';
 import { type ModelRef, type Result } from './contracts.js';
 import type { LoadedBosModel } from './loading.js';
 export type AssetFormat = 'glb' | 'gltf' | 'obj' | 'stl';
@@ -623,7 +623,7 @@ export type AssetOptions = {
 export declare function loadAssetModel(source: LoadSource, format: AssetFormat, modelRef: ModelRef, options?: AssetOptions): Promise<Result<LoadedBosModel>>;
 ```
 
-## @bim-open-toolkit/visualization/clipping
+## @bim-open-viewer/visualization/clipping
 
 ```ts
 import { Object3D, Plane } from 'three';
@@ -646,7 +646,7 @@ export declare function createSectionPlanes(section: Section): Plane[];
 export declare function applyClipping(root: Object3D, planes: readonly Plane[]): () => void;
 ```
 
-## @bim-open-toolkit/visualization/environment
+## @bim-open-viewer/visualization/environment
 
 ```ts
 import { Scene } from 'three';
@@ -659,11 +659,11 @@ export type EnvironmentSettings = {
 export declare function applyEnvironment(scene: Scene, settings: EnvironmentSettings): () => void;
 ```
 
-## @bim-open-toolkit/visualization/navigation-aids
+## @bim-open-viewer/visualization/navigation-aids
 
 ```ts
 import { Group, type Scene } from 'three';
-import type { Bounds3 } from '@ara3d/viewer-core';
+import type { Bounds3 } from '@bim-open-viewer/core';
 /** Helpers have no object identity and never participate in the toolkit's model picking. */
 export declare function addNavigationAids(scene: Scene, bounds: Bounds3): {
     readonly root: Group;
@@ -671,7 +671,7 @@ export declare function addNavigationAids(scene: Scene, bounds: Bounds3): {
 };
 ```
 
-## @bim-open-toolkit/visualization/overlay-renderer
+## @bim-open-viewer/visualization/overlay-renderer
 
 ```ts
 import { type Camera } from 'three';
@@ -689,7 +689,7 @@ export declare class AnnotationOverlay {
 }
 ```
 
-## @bim-open-toolkit/visualization/capture
+## @bim-open-viewer/visualization/capture
 
 ```ts
 export type CaptureErrorCode = 'invalid-size' | 'render-failed' | 'encode-failed';
@@ -706,10 +706,10 @@ export type CaptureCanvas = {
 export declare function captureCanvas(canvas: CaptureCanvas, renderFrame: () => void): Promise<Blob>;
 ```
 
-## @bim-open-toolkit/visualization/replacement
+## @bim-open-viewer/visualization/replacement
 
 ```ts
-import { type Bounds3, type MeshBuffers, type SceneObject } from '@ara3d/viewer-core';
+import { type Bounds3, type MeshBuffers, type SceneObject } from '@bim-open-viewer/core';
 import { Group, type Raycaster } from 'three';
 import { type Matrix4, type ObjectRecord, type ObjectRef } from './contracts.js';
 import { type ObjectHit, RenderBinding } from './render.js';
@@ -736,7 +736,7 @@ export declare class ReplacementLayer {
 }
 ```
 
-## @bim-open-toolkit/visualization/gratify
+## @bim-open-viewer/visualization/gratify
 
 ```ts
 import { type AppSpec } from 'gratify';

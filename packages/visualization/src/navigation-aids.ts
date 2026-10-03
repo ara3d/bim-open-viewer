@@ -1,5 +1,5 @@
 import { AxesHelper, Box3, Box3Helper, GridHelper, Group, Vector3, type Scene, type Material } from 'three';
-import type { Bounds3 } from '@ara3d/viewer-core';
+import type { Bounds3 } from '@bim-open-viewer/core';
 
 /** Helpers have no object identity and never participate in the toolkit's model picking. */
 export function addNavigationAids(scene: Scene,bounds: Bounds3): { readonly root: Group; dispose(): void } {

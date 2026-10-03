@@ -28,7 +28,7 @@ import {
   type Vec2,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   FrameTimer,
   SceneBinding,
@@ -44,7 +44,7 @@ import {
   type InstanceTable,
   type ObjectHit,
   type PublishReport,
-} from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/render';
 import {
   attachNavigation,
   fitState,
@@ -52,9 +52,9 @@ import {
   navState,
   startFlight,
   type NavController,
-} from '@bim-open-toolkit/interact';
-import { createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-toolkit/viewer';
-import { Viewer, defaultMaterial } from '@ara3d/viewer-core';
+} from '@bim-open-viewer/interact';
+import { createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-viewer/viewer';
+import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
 import { captureTarget, clippingTarget, environmentTarget, packedColor, raycastSource } from './adapters.js';
 import { applyView, pointInCanvas, projectToCanvas, rayThroughCanvasPoint } from './camera.js';
 import { gpuFrameTimer } from './gpu-timer.js';

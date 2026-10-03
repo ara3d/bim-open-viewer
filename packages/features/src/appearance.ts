@@ -51,7 +51,7 @@ import {
   type StyleComposition,
   type StyleRule,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   colorSchema,
   finiteNumber,

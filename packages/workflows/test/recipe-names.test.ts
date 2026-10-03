@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { metresZUpLocal } from '@bim-open-toolkit/model';
+import { metresZUpLocal } from '@bim-open-viewer/model';
 import { doorScheduleInputSchema, runDoorSchedule } from '../src/01-door-schedule.js';
 import { revisionComparisonInputSchema, runRevisionComparison } from '../src/02-revision-comparison.js';
 import { runTakeoff, takeoffInputSchema } from '../src/03-takeoff.js';

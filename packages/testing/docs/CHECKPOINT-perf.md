@@ -93,8 +93,8 @@ Run from `viewer/`. Times are on a machine shared with other agents.
 |---|---|---|
 | `npx tsc --noEmit -p packages/testing/tsconfig.json` | passes | 15 s |
 | `npx eslint packages/testing` | passes, no output | 14 s |
-| `npm test -w @bim-open-toolkit/testing` | 6 files, 34 tests passed (includes Track BIND's) | 1.2 s |
-| `npm run perf -w @bim-open-toolkit/testing -- <this track's six files>` | 12 tests passed, three consecutive runs | 30 s each |
+| `npm test -w @bim-open-viewer/testing` | 6 files, 34 tests passed (includes Track BIND's) | 1.2 s |
+| `npm run perf -w @bim-open-viewer/testing -- <this track's six files>` | 12 tests passed, three consecutive runs | 30 s each |
 
 Note that `npm test` and `npm run perf` without a filter also run Track BIND's
 files under `test/perf/bindings/`. This track's runs were filtered to its own six
@@ -117,12 +117,12 @@ None.
 ## Requests to the supervisor
 
 1. **Make the perf script show its tables.** `npm run perf -w
-   @bim-open-toolkit/testing` hides every printed table: vitest 4's default
+   @bim-open-viewer/testing` hides every printed table: vitest 4's default
    reporter only forwards `stdout` for failing tests, so the measurement tables a
    perf run exists to produce are invisible. Please change the `perf` script in
    `packages/testing/package.json` to `vitest run --config vitest.perf.config.ts
    --reporter=verbose`; that file is outside this track's fence. Until then the
-   documented command is `npm run perf -w @bim-open-toolkit/testing --
+   documented command is `npm run perf -w @bim-open-viewer/testing --
    --reporter=verbose`.
 
 2. **No `--expose-gc` is needed.** An earlier version of this checkpoint asked

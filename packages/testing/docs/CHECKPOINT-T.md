@@ -23,7 +23,7 @@ From `viewer/`, after every chunk and again at the end:
 
 - `npx tsc --noEmit -p packages/testing/tsconfig.json` — clean.
 - `npx eslint packages/testing` — clean. Zero `any`, `as`, non-null assertions or directives added.
-- `npm test -w @bim-open-toolkit/testing` — 15 files, 133 tests, all passed, 6.8 s on a quiet
+- `npm test -w @bim-open-viewer/testing` — 15 files, 133 tests, all passed, 6.8 s on a quiet
   machine (the browser cases are 2 of those tests and about 4 s of it).
 - Browser run really happened: `viewer/artifacts/testing/browser/runner.png`, msedge 152.0.4191.66,
   software WebGL, twelve measured frames turned into frame statistics.
@@ -53,9 +53,9 @@ fail under load. The PERF and BIND areas were not touched.
   export * from './artifacts.js';
   ```
   No name collides with `bindings`. Until this lands, other tracks must import from
-  `@bim-open-toolkit/testing/src/...` paths, which is why it matters.
+  `@bim-open-viewer/testing/src/...` paths, which is why it matters.
 - `package.json` (supervisor-owned) needs two `devDependencies`: `playwright-core` (imported by
-  `src/browser/runner.ts`) and `@bim-open-toolkit/interact` (imported by `test/clock.test.ts`,
+  `src/browser/runner.ts`) and `@bim-open-viewer/interact` (imported by `test/clock.test.ts`,
   which drives a real `CameraFlight`). Both resolve today only through workspace-root hoisting and
   the tsconfig path map.
 

@@ -55,7 +55,7 @@ import {
   type UpAxis,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One storey of a building: where its floor sits and how far up the next floor is.
 // `height` is absent for the topmost storey, where the model says nothing about what is above it.

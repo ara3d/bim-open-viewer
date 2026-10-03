@@ -5,9 +5,9 @@
 // is a mirrored group, so each has to reach into the three scene beside it and take its own things
 // away again on disposal.
 
-import type { Viewer } from '@ara3d/viewer-core';
-import type { Color, Vec3 } from '@bim-open-toolkit/model';
-import type { ClippingTarget, EnvironmentTarget, OverlayRenderer, ProjectedOverlay } from '@bim-open-toolkit/render';
+import type { Viewer } from '@bim-open-viewer/core';
+import type { Color, Vec3 } from '@bim-open-viewer/model';
+import type { ClippingTarget, EnvironmentTarget, OverlayRenderer, ProjectedOverlay } from '@bim-open-viewer/render';
 import {
   BufferGeometry,
   Color as ThreeColor,

@@ -15,8 +15,8 @@
 // The sheet is re-derived after every change event, so it reads one object's own property rows
 // through the index and never walks the parameter table.
 
-import type { Evidence, FactValue, ObjectRecord, Observation, ObjectKey, Session, Vec3 } from '@bim-open-toolkit/model';
-import type { PropertyReading } from '@bim-open-toolkit/formats';
+import type { Evidence, FactValue, ObjectRecord, Observation, ObjectKey, Session, Vec3 } from '@bim-open-viewer/model';
+import type { PropertyReading } from '@bim-open-viewer/formats';
 import {
   conflictingValue,
   knownNumber,
@@ -29,7 +29,7 @@ import {
   type PropertyRow,
   type PropertySheet,
   type PropertyValue,
-} from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/ui-gratify';
 import {
   documentOf,
   factsOf,

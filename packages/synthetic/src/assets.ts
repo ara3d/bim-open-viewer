@@ -32,7 +32,7 @@ import {
   type Observation,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt } from './arrays.js';
 import { cursor as newCursor, drawInt, drawRange, type Cursor } from './cursor.js';
 import { addDays, type IsoDate } from './dates.js';

@@ -3,7 +3,7 @@
 **Question.** Pull it apart so I can see every part.
 
 **Basis.** Mixed. The default fixture is Snowdon Towers, read from `snowdon.bfast` by the dev server;
-the second is the `building` fixture from `@bim-open-toolkit/synthetic`, generated from a fixed seed:
+the second is the `building` fixture from `@bim-open-viewer/synthetic`, generated from a fixed seed:
 three storeys of rooms, walls, doors and windows, with enough storeys and categories for both kinds
 of explode to have something to separate.
 

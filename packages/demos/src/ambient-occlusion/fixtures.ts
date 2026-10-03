@@ -5,7 +5,7 @@
 // models of different sizes. The stress scene is cut down from the generator's default so that a
 // software renderer can draw it inside a test's patience.
 
-import { objectKey, type Geometry, type ModelData, type ObjectKey } from '@bim-open-toolkit/model';
+import { objectKey, type Geometry, type ModelData, type ObjectKey } from '@bim-open-viewer/model';
 import {
   defaultBuildingOptions,
   defaultCityOptions,
@@ -13,7 +13,7 @@ import {
   generateBuilding,
   generateCity,
   generateStressScene,
-} from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/synthetic';
 
 // The names the fixture picker offers, in the order it lists them. The first is the default.
 export const fixtureNames = ['building', 'city', 'stress'] as const;

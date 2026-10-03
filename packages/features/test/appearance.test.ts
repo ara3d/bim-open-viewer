@@ -10,7 +10,7 @@ import {
   styleRule,
   table,
   type StyleRule,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   appearanceFeature,
   appearanceFeatureFor,

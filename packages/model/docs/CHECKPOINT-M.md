@@ -52,7 +52,7 @@ Run from `viewer/` after chunk 11, 2026-09-07:
 |---|---|
 | `npx tsc --noEmit -p packages/model/tsconfig.json` | pass, no output, 5.4 s |
 | `npx eslint packages/model` | pass, no output, 13.4 s |
-| `npm test -w @bim-open-toolkit/model` | pass, 18 files, 198 tests, 1.6 s |
+| `npm test -w @bim-open-viewer/model` | pass, 18 files, 198 tests, 1.6 s |
 
 All three were run before every chunk commit. The combined gate
 (`tools/platonic-check.mts`) is the supervisor's to run.

@@ -5,8 +5,8 @@
 // page never shows two answers at once, and the count in the status line is composed from the sets
 // and appearance slices rather than read off the renderer.
 
-import { defaultBuildingOptions, generateBuilding } from '@bim-open-toolkit/synthetic';
-import { failure, success } from '@bim-open-toolkit/model';
+import { defaultBuildingOptions, generateBuilding } from '@bim-open-viewer/synthetic';
+import { failure, success } from '@bim-open-viewer/model';
 import {
   appearanceFeatureFor,
   editsFeature,
@@ -15,7 +15,7 @@ import {
   navigationHook,
   sceneRenderTarget,
   setsFeature,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import { addButton, addSelect, addStatus, type Choice } from '../_shared/controls.js';
 import { mountFeatureDemo } from '../_shared/page.js';
 import {

@@ -4,8 +4,8 @@
 // a test builds one from a known state without a canvas. Grid spacing of zero is reported as
 // missing rather than as the number zero, because zero means "render chooses it from the model".
 
-import { environmentSlice } from '@bim-open-toolkit/features';
-import type { Session, Vec3 } from '@bim-open-toolkit/model';
+import { environmentSlice } from '@bim-open-viewer/features';
+import type { Session, Vec3 } from '@bim-open-viewer/model';
 import {
   knownNumber,
   knownValue,
@@ -15,7 +15,7 @@ import {
   propertySheet,
   type PropertySheet,
   type PropertyValue,
-} from '@bim-open-toolkit/ui-gratify';
+} from '@bim-open-viewer/ui-gratify';
 import { presetDescriptions, presetOf, presetTitles } from './presets.js';
 
 // A flag as a value, until the Gratify layer publishes one.

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultClearanceOptions, generateClearances, type Clearances } from '@bim-open-toolkit/synthetic';
-import { rowOf, type CellValue, type Table } from '@bim-open-toolkit/model';
+import { defaultClearanceOptions, generateClearances, type Clearances } from '@bim-open-viewer/synthetic';
+import { rowOf, type CellValue, type Table } from '@bim-open-viewer/model';
 import {
   runAccessCoordination,
   type AccessCoordinationInput,

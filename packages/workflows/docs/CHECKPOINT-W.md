@@ -15,7 +15,7 @@ against the working tree at each check recorded below.
 verified. All ten adapters, the shared shapes, the recipes, the Snowdon
 projection input, one exact test per workflow against its hand-written expected
 file, and one test per workflow against Track S2's generated fixtures.
-`tsc`, `eslint` and `npm test -w @bim-open-toolkit/workflows` are all clean at
+`tsc`, `eslint` and `npm test -w @bim-open-viewer/workflows` are all clean at
 commit `029fd37`: 24 test files, 121 tests.
 
 ## Chunk commits
@@ -166,7 +166,7 @@ From `viewer/`:
 
 From `viewer/packages/workflows/`:
 
-- `npm test -w @bim-open-toolkit/workflows` — 24 files, 121 tests passed, at
+- `npm test -w @bim-open-viewer/workflows` — 24 files, 121 tests passed, at
   commit `029fd37`. Runs while a nested worker was writing in this package were
   per-file, so its unfinished files could not fail a check of mine.
 
@@ -177,7 +177,7 @@ None.
 ## Requests to the supervisor
 
 1. `viewer/packages/workflows/package.json` needs
-   `@bim-open-toolkit/synthetic` as a dev dependency. The generated-fixture
+   `@bim-open-viewer/synthetic` as a dev dependency. The generated-fixture
    tests import it; it resolves today through the workspace tsconfig paths and
    the shared vitest aliases, so both the typecheck and the tests pass, but the
    manifest does not declare it and this package is published.

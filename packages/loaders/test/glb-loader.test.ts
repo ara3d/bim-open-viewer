@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { loadGlb } from '../src/glb-loader.js';
 import { LoadProgress } from '../src/progress.js';
 import { twoNodeTriangleGlb } from './helpers.js';

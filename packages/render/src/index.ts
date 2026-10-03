@@ -1,4 +1,4 @@
-// Public API of @bim-open-toolkit/render.
+// Public API of @bim-open-viewer/render.
 //
 // Everything that does not need a WebGL context is a pure function or a typed-array data
 // structure, tested in Node. Everything that does need one is reached through a small interface a

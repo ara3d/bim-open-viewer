@@ -1,4 +1,4 @@
-import { meshBounds, sceneBounds, transformBounds, unionBounds, type Bounds3 } from '@ara3d/viewer-core';
+import { meshBounds, sceneBounds, transformBounds, unionBounds, type Bounds3 } from '@bim-open-viewer/core';
 import { objectKey, type Vec3 } from '../../src/contracts.js';
 import { explodeLayout, gridLayout } from '../../src/layouts.js';
 import type { FeatureDemo } from '../gallery/contracts.js';

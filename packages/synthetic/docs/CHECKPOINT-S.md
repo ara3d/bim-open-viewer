@@ -9,7 +9,7 @@ stress generator, README and public surface.
 **Model revision built against:** `M1-stub`, Track M commit `325e9d1`. Verified against the model
 tree at `e91d856`, which adds `schema.ts`, `sets.ts`, `edits.ts`, `view.ts` and extends `style.ts`
 and `math.ts` additively; nothing this package uses changed. The names taken from
-`@bim-open-toolkit/model` are:
+`@bim-open-viewer/model` are:
 
 `Vec3`, `Bounds`, `Matrix4`, `Color`, `identityMatrix`, `translation`, `scaling`, `multiplyMatrix`;
 `Mesh`, `boundsOfPositions`, `triangleCount`, `vertexCount`, `noMesh`, `Geometry`,
@@ -154,7 +154,7 @@ declaration site, checked mechanically across `src/*.ts`.
 
 Run from `viewer/`.
 
-| Chunk | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | `npx eslint packages/synthetic` | `npm test -w @bim-open-toolkit/synthetic` |
+| Chunk | `npx tsc --noEmit -p packages/synthetic/tsconfig.json` | `npx eslint packages/synthetic` | `npm test -w @bim-open-viewer/synthetic` |
 |---|---|---|---|
 | 1 | passed, no output | passed, no output | 2 files, 14 tests, 929 ms |
 | 2 | passed, no output | passed, no output | 3 files, 24 tests, 1.18 s |

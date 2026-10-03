@@ -2,9 +2,9 @@
 // committed. So everything that can be checked without it is checked on the generated building, and
 // the one test that needs the file skips itself, by name, when the file is not on this machine.
 
-import { layoutsSlice } from '@bim-open-toolkit/features';
-import { loadModel } from '@bim-open-toolkit/formats';
-import { identityMatrix, objectRef, type ModelData, type ModelRef } from '@bim-open-toolkit/model';
+import { layoutsSlice } from '@bim-open-viewer/features';
+import { loadModel } from '@bim-open-viewer/formats';
+import { identityMatrix, objectRef, type ModelData, type ModelRef } from '@bim-open-viewer/model';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { afterEach, describe, expect, it } from 'vitest';

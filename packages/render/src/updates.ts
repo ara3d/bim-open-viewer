@@ -3,7 +3,7 @@
 // Every writer takes a row selection and a typed array of values, either one value broadcast to
 // every selected row or one value per row, and returns how many rows it actually changed. The
 // design follows the measured recommendations in
-// `viewer/packages/testing/docs/instance-updates.md`:
+// `packages/testing/docs/instance-updates.md`:
 //
 //  1. No per-group version bump per change: publishing that way cost 3.25 times the write it
 //     published. `publishDirty` publishes once per touched group at the end instead.
@@ -47,7 +47,7 @@ import {
   type ObjectKey,
   type Result,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   alphaChannel,
   translationOffset,

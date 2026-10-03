@@ -1,6 +1,6 @@
 // What the page says in words: the status line under the picture. Pure.
 
-import type { AmbientOcclusionPass } from '@bim-open-toolkit/render';
+import type { AmbientOcclusionPass } from '@bim-open-viewer/render';
 
 // The counts the status line reports, the last frame interval, and what the pass came to.
 export type DemoCounts = {

@@ -1,5 +1,5 @@
 import { Material, Plane, Vector3, Mesh } from 'three';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { SceneObjects } from './pick.js';
 
 export type Axis = 'x' | 'y' | 'z';

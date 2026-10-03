@@ -8,7 +8,7 @@ import {
   unknownValue,
   type Result,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One hand-written expected-result file: the inputs a workflow is given and what it must produce.
 // The files were written from the product brief before any adapter existed; they are the acceptance

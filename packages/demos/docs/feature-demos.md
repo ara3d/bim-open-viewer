@@ -2,10 +2,10 @@
 
 One page per request from the user, built on the wave 2 features and a thin shared host. Plan and
 status: `docs/plans/visualization/FEATURE-DEMOS-PLAN.md`. Pages live at
-`viewer/packages/demos/feature-demos/<id>.html`, code at `src/feature-demos/<id>/`, tests at
+`packages/demos/feature-demos/<id>.html`, code at `src/feature-demos/<id>/`, tests at
 `test/feature-demos/<id>/`.
 
-Run a page from `viewer/`:
+Run a page from the repository root:
 
 ```
 npx vite --config packages/demos/vite.feature-demos.config.mjs
@@ -30,7 +30,7 @@ smallest complete example: open the building, add a control, report, test in a b
 
 ## Installing features with their hooks
 
-A feature from `@bim-open-toolkit/features` is plain data; its render hook is bound to what the
+A feature from `@bim-open-viewer/features` is plain data; its render hook is bound to what the
 host has open, in the order the hooks' dependencies need:
 
 ```ts
@@ -60,10 +60,10 @@ in each feature module (`sets.isolate`, `sets.showAll`, `appearance.addRule`, `l
 ## Tests
 
 - Pure logic (derived sets, offsets, drawings) in Node, through `createSession` and `featureHost`
-  from `@bim-open-toolkit/viewer` with `noRenderTarget` where a render target is needed, never
+  from `@bim-open-viewer/viewer` with `noRenderTarget` where a render target is needed, never
   through a canvas.
 - One browser test per page through `runDemoPage`, asserting on `window.demo.report()`; it skips
-  with a printed reason when no browser launches. Screenshots land in `viewer/artifacts/feature-demos/`.
+  with a printed reason when no browser launches. Screenshots land in `artifacts/feature-demos/`.
 
 ## Rules
 

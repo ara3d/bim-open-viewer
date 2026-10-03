@@ -16,7 +16,7 @@ import {
   type Legend,
   type LegendEntry,
   type NumericScale,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import {
   diagnostic,
   failure,
@@ -30,7 +30,7 @@ import {
   type Result,
   type StyleRule,
   type Table,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import {
   hideWallsRule,
   objectTable,

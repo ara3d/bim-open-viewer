@@ -7,9 +7,9 @@ import {
   stringOf,
   type ModelRef,
   type AnyFeature,
-} from '@bim-open-toolkit/model';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
-import { defaultRevisionsOptions, generateRevisions } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/model';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { defaultRevisionsOptions, generateRevisions } from '@bim-open-viewer/synthetic';
 import { describe, expect, it } from 'vitest';
 import {
   comparisonCommands,

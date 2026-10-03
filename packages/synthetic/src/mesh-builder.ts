@@ -4,7 +4,7 @@
 // keeps flat faces flat and lets a curved surface supply per-corner normals instead. Vertex count
 // is not minimal; correctness and simplicity are worth more here than a few kilobytes.
 
-import { boundsOfPositions, type Mesh, type Vec3 } from '@bim-open-toolkit/model';
+import { boundsOfPositions, type Mesh, type Vec3 } from '@bim-open-viewer/model';
 
 // A mesh that carries per-vertex normals. `Mesh.normals` is optional; every mesh built here has one.
 export type ShadedMesh = Mesh & { readonly normals: Float32Array };

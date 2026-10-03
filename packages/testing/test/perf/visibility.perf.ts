@@ -12,7 +12,7 @@
  * load; minimums did not.
  */
 import { describe, expect, it } from 'vitest';
-import { SceneObject, ViewerScene } from '@ara3d/viewer-core';
+import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
 import { createSharedColumns, writeChannel } from '../../src/perf/columns.js';
 import { measureAll, prepare, reportSamples, sampleFor, type Prepared } from '../../src/perf/measure.js';
 import { COLOR_FLOATS, TRANSFORM_FLOATS, createSyntheticScene, referenceShape, selectRows, sortRows } from '../../src/perf/scene.js';

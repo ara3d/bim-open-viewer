@@ -22,7 +22,7 @@ import {
   type Result,
   type Session,
   type StateSlice,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // One dispatch as it happened, so a test can say what a demo asked for and in what order.
 export type Dispatched = { readonly name: string; readonly input: unknown; readonly ok: boolean };

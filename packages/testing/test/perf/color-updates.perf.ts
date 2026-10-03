@@ -13,7 +13,7 @@
  * load; minimums did not.
  */
 import { describe, expect, it } from 'vitest';
-import { ViewerScene } from '@ara3d/viewer-core';
+import { ViewerScene } from '@bim-open-viewer/core';
 import { DirtyRanges, createInstanceColumns, createSharedColumns, writeRows } from '../../src/perf/columns.js';
 import { measureAll, prepare, reportSamples, sampleFor, type Prepared } from '../../src/perf/measure.js';
 import { distinctIntegers } from '../../src/perf/prng.js';

@@ -21,7 +21,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build, type Rollup } from 'vite';
 import { describe, expect, it } from 'vitest';
-import { artifactsFor, browserAvailability, runInBrowser } from '@bim-open-toolkit/testing';
+import { artifactsFor, browserAvailability, runInBrowser } from '@bim-open-viewer/testing';
 
 const packagesDir = fileURLToPath(new URL('../../../', import.meta.url));
 const viewerCore = fileURLToPath(new URL('../../../core/dist/index.js', import.meta.url));
@@ -29,7 +29,7 @@ const entry = fileURLToPath(new URL('./preview-page.ts', import.meta.url));
 
 const modelPath =
   process.env['SNOWDON_BFAST_PATH'] ??
-  'C:/Users/cdigg/git/bim-open-toolkit/viz/packages/visualization/artifacts/bfast/snowdon-bim.bfast';
+  'C:/Users/cdigg/git/bim-open-toolkit/packages/visualization/artifacts/bfast/snowdon-bim.bfast';
 
 const timeout = 300_000;
 const killCriterionMs = 700;
@@ -63,15 +63,15 @@ const readPerfResult = (value: unknown): PerfResult => {
 };
 
 // The page as one bundled script: the same alias rules the viewer's own smoke test uses, so
-// `@bim-open-toolkit/*` sibling packages resolve to source and `@ara3d/viewer-core` to its built dist.
+// `@bim-open-viewer/*` sibling packages resolve to source and `@bim-open-viewer/core` to its built dist.
 const bundlePage = async (): Promise<string> => {
   const built = await build({
     logLevel: 'silent',
     configFile: false,
     resolve: {
       alias: [
-        { find: /^@bim-open-toolkit\/(?!visualization)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` },
-        { find: /^@ara3d\/viewer-core$/, replacement: viewerCore },
+        { find: /^@bim-open-viewer\/(?!(?:visualization|core|controls|loaders)$)([^/]+)$/, replacement: `${packagesDir}$1/src/index.ts` },
+        { find: /^@bim-open-viewer\/core$/, replacement: viewerCore },
       ],
     },
     build: {

@@ -6,8 +6,8 @@ import {
   getSlice,
   installOrder,
   putSlice,
-} from '@bim-open-toolkit/model';
-import { FrameTimer, type GpuFrameTimer } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { FrameTimer, type GpuFrameTimer } from '@bim-open-viewer/render';
 import {
   defaultHud,
   hudCommands,
@@ -22,7 +22,7 @@ import { environmentFeature } from '../src/environment.js';
 import { layoutsFeature } from '../src/layouts.js';
 import { navigationAidsFeature, navigationCommands } from '../src/navigation-aids.js';
 import { building, buildingGeometry, buildingTable } from './navigation-aids-fixture.js';
-import { createSession, featureHost } from '@bim-open-toolkit/viewer';
+import { createSession, featureHost } from '@bim-open-viewer/viewer';
 import { fakeSession } from './support/fake-session.js';
 
 const model = building();

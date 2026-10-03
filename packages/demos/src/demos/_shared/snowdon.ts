@@ -10,8 +10,8 @@
 // because a generated model has deliberate gaps and conflicts a real one does not, and some demos
 // exist to show exactly those.
 
-import { success, type Result } from '@bim-open-toolkit/model';
-import { defaultBuildingOptions, generateBuilding, type BuildingOptions } from '@bim-open-toolkit/synthetic';
+import { success, type Result } from '@bim-open-viewer/model';
+import { defaultBuildingOptions, generateBuilding, type BuildingOptions } from '@bim-open-viewer/synthetic';
 import type { DemoFixture, ModelSource } from '../../gallery/contracts.js';
 
 // The file the dev server looks for.

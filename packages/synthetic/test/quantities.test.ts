@@ -2,7 +2,7 @@
 // subtotal has to leave out.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, triangleCount, type Table } from '@bim-open-toolkit/model';
+import { columnOf, triangleCount, type Table } from '@bim-open-viewer/model';
 import { defaultQuantityOptions, generateQuantities } from '../src/quantities.js';
 
 const strings = (source: Table, name: string): readonly string[] => {

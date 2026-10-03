@@ -9,8 +9,8 @@
 // models and the selection on every parent render.
 
 import { useEffect, useMemo, useState, type RefObject } from 'react';
-import type { Diagnostic } from '@bim-open-toolkit/model';
-import { createViewer, type Viewer, type ViewerOptions } from '@bim-open-toolkit/viewer';
+import type { Diagnostic } from '@bim-open-viewer/model';
+import { createViewer, type Viewer, type ViewerOptions } from '@bim-open-viewer/viewer';
 
 // The viewer once there is one, and what making it reported. A canvas that could not give a WebGL
 // context still yields a viewer: it has no view, and `diagnostics` says why.

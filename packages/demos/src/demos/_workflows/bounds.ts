@@ -19,7 +19,7 @@ import {
   type Geometry,
   type ModelData,
   type ObjectKey,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 
 // The box of the mesh an instance names, from the mesh list or, when the geometry carries only the
 // table, from the table. Model keeps this private; asking for it to be exported is a request to M.

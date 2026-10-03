@@ -20,8 +20,8 @@ import {
   type ModelRef,
   type ObjectKey,
   type ObjectRecord,
-} from '@bim-open-toolkit/model';
-import { buildInstanceTable, type InstanceTable } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import { buildInstanceTable, type InstanceTable } from '@bim-open-viewer/render';
 
 // The model every fixture object belongs to.
 export const fixtureModel: ModelRef = modelIdentity({ id: 'features-fb', revision: '1' });

@@ -2,7 +2,7 @@
 // every run rather than on some seeds.
 
 import { describe, expect, it } from 'vitest';
-import { columnOf, type Table } from '@bim-open-toolkit/model';
+import { columnOf, type Table } from '@bim-open-viewer/model';
 import { defaultCarbonOptions, generateCarbon } from '../src/carbon.js';
 import { defaultCostOptions, generateCosts } from '../src/costs.js';
 

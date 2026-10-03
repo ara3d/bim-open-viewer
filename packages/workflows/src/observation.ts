@@ -19,7 +19,7 @@ import {
   type MissingReason,
   type Observation,
   type Schema,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { enumeration } from './schema-tools.js';
 import { listOrNothing, resultRecord, type ResultRecord, type ResultValue } from './values.js';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@bim-open-toolkit/ui-gratify",
+  "name": "@bim-open-viewer/ui-gratify",
   "version": "0.1.0",
   "description": "Gratify layer of the V2 gallery: in-canvas panels, the sidebar property inspector, widget kit, theme bridge and semantics mirror.",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bim-open-toolkit/model": "0.1.0",
-    "@bim-open-toolkit/render": "0.1.0"
+    "@bim-open-viewer/model": "0.1.0",
+    "@bim-open-viewer/render": "0.1.0"
   },
   "peerDependencies": {
     "gratify": "^0.2.0"

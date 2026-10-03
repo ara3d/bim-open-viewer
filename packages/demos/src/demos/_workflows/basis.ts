@@ -4,8 +4,8 @@
 // both, and never fabricates BIM meaning. That sentence is written once here so all ten workflow
 // demos carry the same one and a reader can compare them.
 
-import { knownValue, propertyGroup, propertyRow, type PropertyGroup } from '@bim-open-toolkit/ui-gratify';
-import type { WorkflowResult } from '@bim-open-toolkit/workflows';
+import { knownValue, propertyGroup, propertyRow, type PropertyGroup } from '@bim-open-viewer/ui-gratify';
+import type { WorkflowResult } from '@bim-open-viewer/workflows';
 import type { DataBasis } from '../../gallery/contracts.js';
 
 // The sentence every workflow demo carries about what it shows.

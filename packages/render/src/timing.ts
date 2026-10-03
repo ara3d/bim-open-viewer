@@ -9,9 +9,9 @@
 // The measurements a HUD needs are percentiles, not averages: brief section 8 asks for the median
 // and the 95th percentile of frame time against a 33.3 ms budget.
 
-import type { ObjectKey } from '@bim-open-toolkit/model';
+import type { ObjectKey } from '@bim-open-viewer/model';
 import { renderedTriangles, visibleRows, type InstanceTable } from './instance-table.js';
-import type { Geometry } from '@bim-open-toolkit/model';
+import type { Geometry } from '@bim-open-viewer/model';
 
 // What a run of durations came to. Times are milliseconds.
 export type DurationStats = {

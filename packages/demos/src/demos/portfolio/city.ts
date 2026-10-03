@@ -29,8 +29,8 @@ import {
   type ObjectRecord,
   type Result,
   type Vec3,
-} from '@bim-open-toolkit/model';
-import { defaultCityOptions, generateCity, splitIds, type City, type CityOptions } from '@bim-open-toolkit/synthetic';
+} from '@bim-open-viewer/model';
+import { defaultCityOptions, generateCity, splitIds, type City, type CityOptions } from '@bim-open-viewer/synthetic';
 import {
   missingReasons,
   runPortfolioDrillThrough,
@@ -40,7 +40,7 @@ import {
   type PortfolioInput,
   type PortfolioMetric,
   type WorkflowResult,
-} from '@bim-open-toolkit/workflows';
+} from '@bim-open-viewer/workflows';
 import type { DemoFixture, ModelSource } from '../../gallery/contracts.js';
 
 // The estate the demo opens: the generator's own default, two sites of three buildings, with the

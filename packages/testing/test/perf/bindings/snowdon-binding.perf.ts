@@ -15,8 +15,8 @@ import {
   parseBfastModel,
   type BfastModel,
   type BosConvertResult,
-} from '@ara3d/viewer-loaders';
-import { loadBosModel } from '@bim-open-toolkit/visualization/loading';
+} from '@bim-open-viewer/loaders';
+import { loadBosModel } from '@bim-open-viewer/visualization/loading';
 import { describe, expect, it } from 'vitest';
 import { buildAlphaBindings } from '../../../src/bindings/alpha-reference.js';
 import {

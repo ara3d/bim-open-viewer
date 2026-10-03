@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { InstancedGroup, ViewerScene, SceneObject } from '@ara3d/viewer-core';
+import { InstancedGroup, ViewerScene, SceneObject } from '@bim-open-viewer/core';
 import { PerspectiveCamera, Plane, Vector3 } from 'three';
 import { RenderBinding } from '../src/render.js';
 import { identityMatrix, type ObjectRecord } from '../src/contracts.js';

@@ -1,9 +1,9 @@
-# @bim-open-toolkit/viewer
+# @bim-open-viewer/viewer
 
 Three lines.
 
 ```ts
-import { createViewer } from '@bim-open-toolkit/viewer';
+import { createViewer } from '@bim-open-viewer/viewer';
 
 const viewer = createViewer(canvas);
 await viewer.open('/models/building.bfast');
@@ -17,7 +17,7 @@ that leaves nothing behind.
 Colouring objects is the same door — a command:
 
 ```ts
-import { styleRule } from '@bim-open-toolkit/model';
+import { styleRule } from '@bim-open-viewer/model';
 
 viewer.apply(styleRule('unrated', 'Unrated doors', unratedDoorKeys, { color: [1, 0, 0] }));
 ```
@@ -30,7 +30,7 @@ viewer.load(document);                // refused if it was saved against a diffe
 ```
 
 A host that already has a cheap box preview of the file — `readBoxPreview` in
-`@bim-open-toolkit/formats`, for a prepared BFAST — can draw it before the full model is parsed:
+`@bim-open-viewer/formats`, for a prepared BFAST — can draw it before the full model is parsed:
 
 ```ts
 const handle = viewer.preview(boxPreview);   // one frame submitted before this call returns
@@ -49,7 +49,7 @@ and no frame is ever drawn with neither the preview nor the model.
 | `commandBus` | M1's immutable `CommandRegistry`, rebuilt as features add and remove commands |
 | `featureHost` | Install in dependency order, all or nothing, and disposal that undoes exactly what installing did |
 | `saveScene` / `loadScene` | The scene document: the composition of the installed slices, each migrated on its own, with a fingerprint of the models |
-| `src/adapters` | The render package's six interfaces over `@ara3d/viewer-core` and three. The only place here that imports three |
+| `src/adapters` | The render package's six interfaces over `@bim-open-viewer/core` and three. The only place here that imports three |
 | `createView` | One canvas: a camera, the interact DOM adapter, the frame loop, the size, disposal |
 | `viewSet` | Several canvases over one session, sharing one set of instanced groups, with independent or linked cameras |
 | `viewer.preview` / `src/preview.ts` | A coarse box preview drawn as instanced cubes, until the next `show` replaces it in the same call |
@@ -79,7 +79,7 @@ A command that needs the renderer or the camera — not plain data, so not a sli
 viewer's live access:
 
 ```ts
-import { viewerAccess } from '@bim-open-toolkit/viewer';
+import { viewerAccess } from '@bim-open-viewer/viewer';
 
 const reach = viewerAccess.get(session);   // undefined in a headless session, which is the honest answer
 reach?.views.setCamera('main', savedView.view, 600);
@@ -101,27 +101,27 @@ command, and the renderer redraws once.
 - **Any user interface.** No panels, no toolbar, no HUD. `viewer.hud()` returns the data one would
   read; drawing it belongs to `ui-gratify` and `ui-react`.
 - **Any capability beyond the three above.** Clipping, sections, edit layers, overlays, annotations,
-  comparison and animation are features in `@bim-open-toolkit/features`.
+  comparison and animation are features in `@bim-open-viewer/features`.
 - **Its own renderer.** `ViewRenderer` is five methods and six adapters; the default is viewer-core
   and three, and another one is another file of that shape.
 - **A file dialogue, a server, or a fetch policy.** `open` takes whatever
-  `@bim-open-toolkit/formats` reads, and a document that names a file it does not contain reaches a
+  `@bim-open-viewer/formats` reads, and a document that names a file it does not contain reaches a
   resolver the host supplies.
 - **Undo.** `History<S>` is in the model package and belongs to the feature that owns the state.
 
 ## Checks
 
-From `viewer/`:
+From the repository root:
 
 ```
 npx tsc --noEmit -p packages/viewer/tsconfig.json
 npx eslint packages/viewer
 npx eslint --config eslint.typed.config.js packages/viewer
-npm test -w @bim-open-toolkit/viewer
+npm test -w @bim-open-viewer/viewer
 ```
 
 The suite is 103 tests. All but one run in Node against a renderer that counts what it was asked to
-do; one opens a real browser through `@bim-open-toolkit/testing`, runs the three lines on a real
+do; one opens a real browser through `@bim-open-viewer/testing`, runs the three lines on a real
 canvas and asserts a drawn frame and an empty console. It skips, printing the reason, where no
 chromium channel can be launched.
 

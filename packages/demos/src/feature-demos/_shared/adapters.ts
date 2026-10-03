@@ -4,9 +4,9 @@
 // Debt, recorded in FEATURE-DEMOS-PLAN.md: Track V's `createViewer` (chunk 3) will carry its own
 // adapters; when it lands, `host.ts` switches to it and this file goes.
 
-import type { CaptureTarget, ClippingTarget, EnvironmentTarget, GroupLocation, ModelRaycastHit, Ray } from '@bim-open-toolkit/render';
-import type { Color, Vec3 } from '@bim-open-toolkit/model';
-import type { InstancedGroup, SceneObject, Viewer } from '@ara3d/viewer-core';
+import type { CaptureTarget, ClippingTarget, EnvironmentTarget, GroupLocation, ModelRaycastHit, Ray } from '@bim-open-viewer/render';
+import type { Color, Vec3 } from '@bim-open-viewer/model';
+import type { InstancedGroup, SceneObject, Viewer } from '@bim-open-viewer/core';
 import {
   BufferGeometry,
   Color as ThreeColor,

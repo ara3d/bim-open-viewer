@@ -11,7 +11,7 @@ import {
   type CameraPose,
   type Matrix4,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { clamp } from './numbers.js';
 import { cross, dot, perpendicularTo } from './vec.js';
 

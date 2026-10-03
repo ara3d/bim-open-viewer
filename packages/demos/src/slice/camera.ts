@@ -1,8 +1,8 @@
 // The only place three.js and the interact package meet: an interact view written onto the
 // viewer's camera, and a pointer position turned into the ray the render package picks with.
 
-import { rayThroughNdc, type Ray } from '@bim-open-toolkit/render';
-import type { Matrix4, ViewState } from '@bim-open-toolkit/model';
+import { rayThroughNdc, type Ray } from '@bim-open-viewer/render';
+import type { Matrix4, ViewState } from '@bim-open-viewer/model';
 import { Matrix4 as ThreeMatrix4, Vector3, type PerspectiveCamera } from 'three';
 
 // A three matrix as the model package's column-major sixteen. Indexing `elements` is checked, so

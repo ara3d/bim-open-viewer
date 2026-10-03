@@ -6,7 +6,7 @@
 // Nothing here is a DOM type: a real canvas has all of these members, and a test supplies a
 // stand-in of the same shape, so the whole lifecycle is checked without a browser.
 import { CanvasPainter, v, type Vec } from 'gratify';
-import { disposable, type Disposable } from '@bim-open-toolkit/model';
+import { disposable, type Disposable } from '@bim-open-viewer/model';
 
 // The fields read off a browser event. A real `PointerEvent`, `WheelEvent` or `KeyboardEvent` has
 // all of them and more; nothing else is read.

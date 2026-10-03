@@ -1,4 +1,4 @@
-import { styleRule, type AppearanceChange, type ObjectKey, type StyleRule } from '@bim-open-toolkit/model';
+import { styleRule, type AppearanceChange, type ObjectKey, type StyleRule } from '@bim-open-viewer/model';
 
 // What a workflow was able to say about an object. Every workflow colours by these five states.
 export type Outcome = 'resolved' | 'missing' | 'conflicting' | 'candidate' | 'excluded';

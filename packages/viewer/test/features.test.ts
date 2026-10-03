@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { feature, integer, object, stateSlice } from '@bim-open-toolkit/model';
+import { feature, integer, object, stateSlice } from '@bim-open-viewer/model';
 import { featureHost } from '../src/features.js';
 import { createSession, type ViewerSession } from '../src/session.js';
 import { brokenFeature, counterFeature, counterSlice, noteFeature, noteSlice } from './support/fixtures.js';

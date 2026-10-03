@@ -19,7 +19,7 @@ import {
   layoutsHook,
   navigationHook,
   sceneRenderTarget,
-} from '@bim-open-toolkit/features';
+} from '@bim-open-viewer/features';
 import {
   disposable,
   upVector,
@@ -29,8 +29,8 @@ import {
   type Session,
   type Vec3,
   type ViewState,
-} from '@bim-open-toolkit/model';
-import type { ClippingTarget, EnvironmentTarget, SceneBinding } from '@bim-open-toolkit/render';
+} from '@bim-open-viewer/model';
+import type { ClippingTarget, EnvironmentTarget, SceneBinding } from '@bim-open-viewer/render';
 import type { OpenedModel } from './contracts.js';
 
 // What the hooks need from the viewer that they cannot get from the session.

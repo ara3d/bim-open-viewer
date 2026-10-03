@@ -5,12 +5,12 @@
 // page's report plus every console and page error. When no browser launches here the run says so
 // instead of failing, so a machine without Edge or Chrome never turns this into a red test.
 //
-// Screenshots go to `viewer/artifacts/feature-demos/`, which git ignores.
+// Screenshots go to `artifacts/feature-demos/`, which git ignores.
 
 import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
-import { browserAvailability, runInBrowser } from '@bim-open-toolkit/testing';
+import { browserAvailability, runInBrowser } from '@bim-open-viewer/testing';
 import { demoReadyExpression, demoReportExpression } from '../../../src/feature-demos/_shared/protocol.js';
 
 const configFile = fileURLToPath(new URL('../../../vite.feature-demos.config.mjs', import.meta.url));

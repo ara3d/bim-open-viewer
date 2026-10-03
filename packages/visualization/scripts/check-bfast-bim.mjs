@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import JSZip from 'jszip';
-import { parseBfastModel, parseBosGeometry, readBimTable } from '@ara3d/viewer-loaders';
+import { parseBfastModel, parseBosGeometry, readBimTable } from '@bim-open-viewer/loaders';
 import { loadBosModel } from '../dist/loading.js';
 
 const [bosPath, bfastPath] = process.argv.slice(2);

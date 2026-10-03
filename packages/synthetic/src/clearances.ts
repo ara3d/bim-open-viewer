@@ -23,7 +23,7 @@ import {
   type ModelRef,
   type Table,
   type Vec3,
-} from '@bim-open-toolkit/model';
+} from '@bim-open-viewer/model';
 import { elementAt } from './arrays.js';
 import { cursor as newCursor, drawRange, type Cursor } from './cursor.js';
 import type { MeshGroup, ShadedMesh } from './mesh-builder.js';

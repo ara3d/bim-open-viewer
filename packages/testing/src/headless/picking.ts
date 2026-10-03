@@ -5,8 +5,8 @@
 // which is the input picking takes, and get back instance rows and object indices rather than
 // renderer internals.
 
-import { InstancedGroup, SceneObject } from '@ara3d/viewer-core';
-import type { Geometry, Vec3 } from '@bim-open-toolkit/model';
+import { InstancedGroup, SceneObject } from '@bim-open-viewer/core';
+import type { Geometry, Vec3 } from '@bim-open-viewer/model';
 import { Raycaster, Vector3 } from 'three';
 import { objectOfRow, rowOfInstance, type HeadlessScene } from './scene.js';
 

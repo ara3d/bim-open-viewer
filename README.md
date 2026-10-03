@@ -1,9 +1,18 @@
-# BIM Open Viewer
+<p><img src="docs/brand/viewer-lockup.svg" alt="BIM Open Viewer" height="48"></p>
 
-A WebGL viewer for large AEC and BIM models, built on [three.js](https://threejs.org/).
-Successor to `@ara3d/ara3d-webgl`. The renderer, navigation and features know nothing
-about any file format; `@bim-open-viewer/formats` and `@bim-open-viewer/loaders` adapt
-BOS (BIM Open Schema), BFAST, GLB, GLTF, OBJ and STL files to one model.
+**Try it in the browser: <https://ara3d.github.io/bim-open-viewer/>**
+
+BIM Open Viewer is a library for drawing building models in a web page. It is written in
+TypeScript on [three.js](https://threejs.org/) and WebGL, reads BOS (BIM Open Schema), BFAST,
+GLB, GLTF, OBJ and STL files into one model, and draws hundreds of thousands of instances with
+per-object colour, sections, exploded layouts and picking. It is for developers who embed a
+building model in a web application, and for the reviewers and analysts who then inspect the
+model there. It is the successor to `@ara3d/ara3d-webgl`, and the 3D viewer of the
+[BIM Open family](https://github.com/ara3d/bim-open-toolkit). The renderer, navigation and
+features know nothing about any file format; `@bim-open-viewer/formats` and
+`@bim-open-viewer/loaders` adapt each format to the model.
+
+![The landing page, with the explode-and-grid demo running on a generated building](docs/images/landing.png)
 
 The viewer was developed inside [BIM Open Toolkit](https://github.com/ara3d/bim-open-toolkit),
 which consumes this repository through its `deps/` folder, at `deps/bim-open-viewer`; this
@@ -86,13 +95,32 @@ Design requirements carried over from the previous viewer's lessons:
 - Scene structures support incremental population, so loaders can stream
   geometry in and report progress.
 
-This workspace is a candidate to move to its own repository once stable.
-
 The visualization alpha includes 23 independent feature demos, primarily using the local
 Snowdon fixture. After installing and running `npm run build`, use `npm run demo`.
 `npm run demo:snowdon`, `npm run demo:normalized` and `npm run demo:browser` check the
 served fixture, normalized geometry and browser behavior. See the
 [package README](packages/visualization/README.md) for setup, evidence and remaining scope.
+
+## The static site
+
+The live page is the demo gallery built as plain files, with every demo that needs the private
+Snowdon model left out; each remaining demo opens a generated building from
+`@bim-open-viewer/synthetic`. `.github/workflows/pages.yml` builds and publishes it on every push
+to `main`. GitHub Pages has to be switched on once by a repository owner: Settings, Pages,
+Source: GitHub Actions. Until then the workflow's deploy step fails.
+
+To build and check it locally, after `npm run build`:
+
+```
+npm run pages          # builds dist-pages/ (landing page index.html and gallery.html)
+npm run pages:preview  # serves dist-pages/ at http://127.0.0.1:5191/
+npm run pages:smoke    # opens every page headless and fails on a demo that does not draw or any page error
+```
+
+`pages:smoke` serves the built files, opens the landing page and every demo it lists in Edge with
+software WebGL, and also rewrites `docs/images/landing.png` and the static gallery's thumbnails in
+`packages/demos/public/thumbnails/static/`. The landing page is `packages/demos/index.html`;
+which fixtures a static build drops is decided in `packages/demos/src/gallery/hosting.ts`.
 
 ## Developing
 

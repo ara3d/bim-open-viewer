@@ -19,7 +19,9 @@ export {
   bosTransform,
   bosTransformFinite,
   bosToGroups,
+  zUpToYUp,
 } from './bos-geometry.js';
+export type { BosConvertOptions } from './bos-geometry.js';
 export { parseBosGeometry, loadBos } from './bos-loader.js';
 export { isBFast, readBFast } from './bfast.js';
 export { parseBfastModel, bfastToGroups, loadBfast } from './bfast-loader.js';

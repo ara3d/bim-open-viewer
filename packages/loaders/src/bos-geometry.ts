@@ -15,6 +15,7 @@ export interface BosGeometry {
   readonly InstanceMaterialIndex: IntColumn;
   readonly InstanceMeshIndex: IntColumn;
   readonly InstanceTransformIndex: IntColumn;
+  /** Absent from some archives; `parseBosGeometry` then supplies zeros (nothing hidden). */
   readonly InstanceFlags: ByteColumn;
   readonly VertexX: IntColumn;
   readonly VertexY: IntColumn;
@@ -44,6 +45,25 @@ export interface BosGeometry {
    * Entities table; 0 or negative where the entity has no source id.
    */
   readonly EntityLocalId?: IntColumn | null;
+}
+
+export interface BosConvertOptions {
+  /**
+   * The up axis of the source model. BOS models come from Revit and IFC and are z-up, while the
+   * viewer core's camera and lights are y-up. 'Z' rotates every instance by (x, y, z) -> (x, z, -y)
+   * so the model stands upright; 'Y' (the default) leaves transforms as stored, which is what
+   * callers that convert themselves, such as `loadBosModel`, rely on.
+   */
+  readonly sourceUp?: 'Y' | 'Z';
+}
+
+/** Left-multiplies each column-major 4x4 in `transforms` by the z-up to y-up rotation, in place. */
+export function zUpToYUp(transforms: Float32Array): void {
+  for (let column = 0; column < transforms.length; column += 4) {
+    const y = transforms[column + 1];
+    transforms[column + 1] = transforms[column + 2];
+    transforms[column + 2] = -y;
+  }
 }
 
 /** BOS stores vertex coordinates as integers at this fixed-point scale. */
@@ -160,10 +180,10 @@ export interface BosConvertResult extends ConvertResult {
  * a mesh and material parameters merge into one group, with the material color
  * carried per instance. Hidden instances (flags & 0x1) are skipped, as are
  * instances placed by a non-finite transform row, which the result counts.
- * Groups are emitted through `onGroup` as each one is finished.
+ * Groups are emitted through `onGroup` as each one is finished. `options.sourceUp: 'Z'` stands a z-up model upright.
  */
 // TODO: honor per-instance visibility as a group split instead of dropping hidden instances.
-export function bosToGroups(bos: BosGeometry, onGroup?: GroupCallback): BosConvertResult {
+export function bosToGroups(bos: BosGeometry, onGroup?: GroupCallback, options: BosConvertOptions = {}): BosConvertResult {
   const meshCache = new Map<number, MeshBuffers | null>();
   const buckets = new Map<string, Bucket>();
   let instanceCount = 0;
@@ -224,7 +244,9 @@ export function bosToGroups(bos: BosGeometry, onGroup?: GroupCallback): BosConve
       { metalness: b.metalness, roughness: b.roughness, opacity: b.opacity },
       Math.max(1, count),
     );
-    group.append(Float32Array.from(b.transforms), Float32Array.from(b.colors));
+    const transforms = Float32Array.from(b.transforms);
+    if (options.sourceUp === 'Z') zUpToYUp(transforms);
+    group.append(transforms, Float32Array.from(b.colors));
     groups.push(group);
     groupEntities.push({ group, entities: b.entities });
     onGroup?.(group, i, flat.length);

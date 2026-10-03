@@ -40,6 +40,38 @@ describe('BOS column chunks', () => {
   });
 });
 
+describe('BOS without an InstanceFlags column', () => {
+  it('reads as no flags set, so nothing is hidden', async () => {
+    const zip = new JSZip();
+    for (const table of ['Instances', 'VertexBuffer', 'IndexBuffer', 'Meshes', 'Materials', 'Transforms']) zip.file(`${table}.parquet`, new Uint8Array([1]));
+    const metadata = vi.spyOn(parquet, 'parquetMetadataAsync').mockResolvedValue({ num_rows: 3n, schema: [{ name: 'InstanceMeshIndex', type: 1 }] } as unknown as Awaited<ReturnType<typeof parquet.parquetMetadataAsync>>);
+    const read = vi.spyOn(parquet, 'parquetRead').mockImplementation(async options => {
+      options.onChunk?.({ columnName: 'InstanceMeshIndex', rowStart: 0, rowEnd: 3, columnData: [0, 1, 2] });
+    });
+    try {
+      const bos = await parseBosGeometry(await zip.generateAsync({ type: 'arraybuffer' }));
+      expect(Array.from(bos.InstanceFlags)).toEqual([0, 0, 0]);
+    } finally { read.mockRestore(); metadata.mockRestore(); }
+  });
+});
+
+const sampleBosPath = fileURLToPath(
+  new URL('../../../../bim-open-schema/examples/rac_basic_sample_project-2025.bos', import.meta.url),
+);
+
+describe.skipIf(!existsSync(sampleBosPath))('the specification sample (rac_basic_sample_project-2025.bos)', () => {
+  it('has no InstanceFlags column and still loads, drawing every instance with a mesh', async () => {
+    const b = readFileSync(sampleBosPath);
+    const buffer = b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength) as ArrayBuffer;
+    const bos = await parseBosGeometry(buffer);
+    expect(bos.InstanceFlags.length).toBe(bos.InstanceMeshIndex.length);
+    expect(bos.InstanceFlags.every(flag => flag === 0)).toBe(true);
+    const scene = new ViewerScene();
+    const result = await loadBos(buffer, scene);
+    expect(result.instanceCount).toBeGreaterThan(0);
+  });
+});
+
 describe.skipIf(!existsSync(bosPath))('BOS container (duplex.bos)', () => {
   const buffer = (): ArrayBuffer => {
     const b = readFileSync(bosPath);

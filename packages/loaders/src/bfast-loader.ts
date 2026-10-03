@@ -10,7 +10,7 @@
 import { InstancedGroup, type MeshBuffers } from '@bim-open-viewer/core';
 import { readBFast } from './bfast.js';
 import { readRenderModel, instanceCount, meshCount, instanceMeshIndex, instanceEntityIndex, instanceHidden, instanceColor, instanceMatrix, instanceTransformFinite, type RenderModel } from './renderModel.js';
-import type { BosConvertResult } from './bos-geometry.js';
+import { zUpToYUp, type BosConvertOptions, type BosConvertResult } from './bos-geometry.js';
 import type { GroupCallback } from './groups.js';
 import type { LoadOptions, LoadSource } from './progress.js';
 import { toArrayBuffer } from './fetch-buffer.js';
@@ -56,7 +56,7 @@ export function parseBfastModel(buffer: ArrayBuffer): BfastModel {
  * Instances with a non-finite transform are dropped and counted in the result's
  * `skippedInstances`; the same instances that `parseBfastModel` lists.
  */
-export function bfastToGroups(model: RenderModel, onGroup?: GroupCallback): BosConvertResult {
+export function bfastToGroups(model: RenderModel, onGroup?: GroupCallback, options: BosConvertOptions = {}): BosConvertResult {
   const meshes = new Map<number, MeshBuffers>();
   const buckets = new Map<string, { meshIndex: number; packed: number; alpha: number; instances: number[] }>();
   let skippedInstances = 0;
@@ -92,6 +92,7 @@ export function bfastToGroups(model: RenderModel, onGroup?: GroupCallback): BosC
       entities.push(instanceEntityIndex(model, source));
     });
     const group = new InstancedGroup(mesh, { roughness: (packed & 255) / 255, metalness: (packed >>> 8) / 255, opacity: alpha / 255 }, instances.length);
+    if (options.sourceUp === 'Z') zUpToYUp(transforms);
     group.append(transforms, colors);
     groups.push(group); groupEntities.push({ group, entities }); count += instances.length;
     onGroup?.(group, groups.length - 1, buckets.size);
@@ -101,7 +102,7 @@ export function bfastToGroups(model: RenderModel, onGroup?: GroupCallback): BosC
 
 export type BfastLoadResult = BosConvertResult & { readonly bimData: BimData; readonly entityLocalIds: Int32Array | null };
 
-export async function loadBfast(source: LoadSource, scene: import('@bim-open-viewer/core').ViewerScene, options: LoadOptions = {}): Promise<BfastLoadResult> {
+export async function loadBfast(source: LoadSource, scene: import('@bim-open-viewer/core').ViewerScene, options: LoadOptions & BosConvertOptions = {}): Promise<BfastLoadResult> {
   const buffer = await toArrayBuffer(source, options.onProgress);
   options.onProgress?.({ stage: 'parse', loaded: 0, total: 1 });
   const model = parseBfastModel(buffer);
@@ -112,7 +113,7 @@ export async function loadBfast(source: LoadSource, scene: import('@bim-open-vie
   const converted = bfastToGroups(model, (group, index, total) => {
     scene.addGroup(group);
     options.onProgress?.({ stage: 'convert', loaded: index + 1, total });
-  });
+  }, options);
   // Match loadBos's source-ID convention; bfastToGroups remains row-based.
   const groupEntities = converted.groupEntities.map(entry => ({ ...entry, entities: entry.entities.map(row =>
     entityLocalIds && entityLocalIds[row] > 0 ? entityLocalIds[row] : row) }));

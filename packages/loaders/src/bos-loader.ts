@@ -9,7 +9,7 @@ import { compressors } from 'hyparquet-compressors';
 import { ViewerScene } from '@bim-open-viewer/core';
 import { LoadOptions, LoadSource } from './progress.js';
 import { toArrayBuffer } from './fetch-buffer.js';
-import { BosConvertResult, BosGeometry, bosToGroups } from './bos-geometry.js';
+import { BosConvertResult, BosConvertOptions, BosGeometry, bosToGroups } from './bos-geometry.js';
 import { readEntityLocalIds } from './bim-data.js';
 import { isBFast } from './bfast.js';
 import { loadBfast } from './bfast-loader.js';
@@ -67,6 +67,9 @@ export async function parseBosGeometry(buffer: ArrayBuffer): Promise<BosGeometry
 export async function parseBosGeometryFromZip(zip: JSZip): Promise<BosGeometry> {
   const bg: Record<string, unknown> = {};
   await readTable(zip, 'Instances', bg, Int32Array);
+  // InstanceFlags is optional: the schema's reader treats a missing column as empty, so a missing
+  // column here means no flags are set (nothing hidden), as in rac_basic_sample_project-2025.bos.
+  bg.InstanceFlags ??= new Uint8Array((bg.InstanceMeshIndex as ArrayLike<number> | undefined)?.length ?? 0);
   await readTable(zip, 'VertexBuffer', bg, Int32Array);
   await readTable(zip, 'IndexBuffer', bg, Uint32Array);
   await readTable(zip, 'Meshes', bg, Int32Array);
@@ -89,7 +92,7 @@ export async function parseBosGeometryFromZip(zip: JSZip): Promise<BosGeometry> 
 export async function loadBos(
   source: LoadSource,
   scene: ViewerScene,
-  options: LoadOptions = {},
+  options: LoadOptions & BosConvertOptions = {},
 ): Promise<BosConvertResult> {
   const onProgress = options.onProgress;
   const buffer = await toArrayBuffer(source, onProgress);
@@ -100,5 +103,5 @@ export async function loadBos(
   return bosToGroups(bos, (group, index, total) => {
     scene.addGroup(group);
     onProgress?.({ stage: 'convert', loaded: index + 1, total });
-  });
+  }, options);
 }

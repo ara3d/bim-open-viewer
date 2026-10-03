@@ -36,6 +36,25 @@ describe('bosMeshBuffers', () => {
   });
 });
 
+describe('bosToGroups sourceUp', () => {
+  const firstTransform = (sourceUp?: 'Y' | 'Z') => {
+    const bos = sampleBosGeometry({ TransformTX: new Float32Array([1, 5]), TransformTY: new Float32Array([2, 0]), TransformTZ: new Float32Array([3, 0]) });
+    return bosToGroups(bos, undefined, sourceUp ? { sourceUp } : {}).groups[0].transforms.slice(0, 16);
+  };
+
+  it('leaves transforms as stored by default and for Y', () => {
+    for (const t of [firstTransform(), firstTransform('Y')]) expect([...t.slice(12, 15)]).toEqual([1, 2, 3]);
+  });
+
+  it('stands a z-up model upright: (x, y, z) -> (x, z, -y) for translation and axes', () => {
+    const t = firstTransform('Z');
+    expect([...t.slice(12, 15)]).toEqual([1, 3, -2]);
+    // Local z axis (column 2) was (0, 0, 1) and is now (0, 1, 0): the building's up is the scene's up.
+    expect([...t.slice(8, 11)].map(v => v + 0)).toEqual([0, 1, 0]);
+    expect(t[15]).toBe(1);
+  });
+});
+
 describe('bosEntityId', () => {
   const withIds = sampleBosGeometry({
     EntityLocalId: new Int32Array([514, 819, 0, -1]),

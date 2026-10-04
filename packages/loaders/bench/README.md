@@ -147,12 +147,31 @@ separated.
   measured those; this spike stops at decoded typed arrays.
 - Why the Parquet.Net single-page layout decodes slower than pyarrow's paged one with the same codec.
 
+## Done: the decoder swap (2026-10-04)
+
+`src/compressors.ts` now hands hyparquet a `compressors` object whose BROTLI entry is Node's
+built-in zlib when running in Node and `brotli-dec-wasm` 2.3.2 in a browser, falling back to the
+JavaScript port with one console warning if either fails to load. The three hyparquet call sites
+(`readTable`, `readEntityLocalIds`, `readBimTable`) await it. No file-format change.
+
+Measured in Chrome 152 (the desktop app's browser pane) through the Vite gallery, the seven
+geometry tables of the original files, same page, best of 3, JavaScript Brotli against WASM:
+
+| model | JavaScript Brotli | WASM Brotli |
+|---|---:|---:|
+| Snowdon 11.88 MB | 1054 ms | 515 ms |
+| Golden Nugget 11.28 MB | 1126 ms | 647 ms |
+| Schependomlaan 1.11 MB | 51 ms | 29 ms |
+
+In Node, `parseBosGeometry` on Snowdon went from 1217 ms (JavaScript) to 735 ms (zlib), separate
+processes. The remaining time is JSZip's inflate of the entries and hyparquet's own page handling,
+which the writer changes below address.
+
 ## Next
 
-The smallest step with the highest return: add `brotli-dec-wasm` to `@bim-open-viewer/loaders`,
-pass `{ ...compressors, BROTLI: wasmDecompress }` to hyparquet, and rerun `bench-bos-load.mjs` plus
-`scripts/profile-bim-flow-startup.mjs` in the toolkit to see the browser number. The writer changes
-(stored ZIP entries, page size) go to `bim-open-data` as a ticket.
+Writer changes, as a `bim-open-data` ticket: store ZIP entries instead of deflating them, and page
+the geometry columns (or write them with a paged writer), which halves the decode again at the
+same size. Then rerun `bench-bos-load.mjs` and the toolkit's `scripts/profile-bim-flow-startup.mjs`.
 
 ## Should this be a skill?
 

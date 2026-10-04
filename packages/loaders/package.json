@@ -20,6 +20,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "brotli-dec-wasm": "^2.3.2",
     "hyparquet": "^1.23.0",
     "hyparquet-compressors": "^1.1.1",
     "jszip": "^3.10.1"

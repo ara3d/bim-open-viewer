@@ -5,12 +5,12 @@
 
 import JSZip from 'jszip';
 import { parquetMetadataAsync, parquetRead } from 'hyparquet';
-import { compressors } from 'hyparquet-compressors';
 import { ViewerScene } from '@bim-open-viewer/core';
 import { LoadOptions, LoadSource } from './progress.js';
 import { toArrayBuffer } from './fetch-buffer.js';
 import { BosConvertResult, BosConvertOptions, BosGeometry, bosToGroups } from './bos-geometry.js';
 import { readEntityLocalIds } from './bim-data.js';
+import { bosCompressors } from './compressors.js';
 import { isBFast } from './bfast.js';
 import { loadBfast } from './bfast-loader.js';
 
@@ -44,7 +44,7 @@ async function readTable(
   }
   await parquetRead({
     file,
-    compressors,
+    compressors: await bosCompressors(),
     metadata,
     onChunk(chunk) {
       const data = chunk.columnData;

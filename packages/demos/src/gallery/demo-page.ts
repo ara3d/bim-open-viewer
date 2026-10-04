@@ -7,7 +7,7 @@
 
 import { diagnostic, failure, success, type Disposable, type Result } from '@bim-open-viewer/model';
 import type { PropertyRow } from '@bim-open-viewer/ui-gratify';
-import { chapters, type Demo, type DemoFixture, type GalleryViewer } from './contracts.js';
+import { chapters, type Demo, type DemoFixture, type FixtureCredit, type GalleryViewer } from './contracts.js';
 import { button, clear, el, link } from './elements.js';
 import { basisLabel, chosenFixture, fixtureChoices } from './fixtures.js';
 import { routeHref, type Route } from './routes.js';
@@ -160,6 +160,14 @@ const statusText = (mounted: MountedDemo, intervalMs: number): string => {
   );
 };
 
+// The credit an openly licensed model asks for, with its licence linked. It stays on the page for
+// as long as the fixture is open, including when the demo fails to start.
+const creditLine = (credit: FixtureCredit): HTMLElement => {
+  const line = el('p', 'credit-line');
+  line.append(`${credit.text} Licence: `, link('', credit.licenceUrl, credit.licence), '.');
+  return line;
+};
+
 // The demo page, drawn and running. Disposing it stops the viewer and takes the listeners away.
 export type DemoPage = Disposable & { readonly mounted: MountedDemo | undefined };
 
@@ -178,6 +186,7 @@ export const renderDemoPage = async (
   shell.main.append(frame.page);
 
   const fixture = chosenFixture(demo, route.fixtureId);
+  if (fixture?.credit !== undefined) frame.page.append(creditLine(fixture.credit));
   if (fixture === undefined) {
     frame.status.textContent = `${demo.title} lists no fixture, so there is nothing to open.`;
     return failure([diagnostic('gallery/no-fixture', `${demo.id} lists no fixture`, ['fixtures'])]);

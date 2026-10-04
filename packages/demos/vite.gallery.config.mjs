@@ -12,6 +12,7 @@ import { createReadStream, statSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+import { publicSamples } from './scripts/public-samples.mjs';
 
 const demosDir = fileURLToPath(new URL('./', import.meta.url));
 const packagesDir = fileURLToPath(new URL('../', import.meta.url));
@@ -65,7 +66,9 @@ const serveFixtures = () => ({
 
 export default defineConfig({
   root: demosDir,
-  plugins: [serveFixtures()],
+  // The private models from the machine, and the public buildings from bim-open-data; the pages
+  // build keeps the second plugin, which copies the public files into the site.
+  plugins: [serveFixtures(), publicSamples()],
   server: {
     port,
     strictPort: true,

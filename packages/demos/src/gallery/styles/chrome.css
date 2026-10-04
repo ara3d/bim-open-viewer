@@ -156,6 +156,16 @@ a.crumb:hover,
   border-top: 1px solid var(--rule);
 }
 
+/* The credit an openly licensed model asks for, under the status strip. */
+.credit-line {
+  grid-area: credit;
+  margin: 0;
+  padding: 0 var(--gap-wide) 6px;
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  background: var(--panel);
+}
+
 /* The DOM mirror: present for a keyboard and a screen reader, out of the way of a pointer. It is
    not `display: none`, because that would take it out of the accessibility tree as well. */
 .semantics-mirror {

@@ -64,5 +64,10 @@ h2 { font: 600 20px/1.2 var(--font-brand); margin: 0 0 12px; }
 }
 .basis { font: 400 11px/1.4 var(--font-mono); color: var(--dim); }
 
+h2.section { margin-top: 32px; }
+.demos.buildings { margin-top: 0; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+.building-picture { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; background: #1b1d22; }
+.demo .credit { flex: none; font-size: 12px; }
+
 .footnote { margin-top: 32px; font-size: 13px; color: var(--dim); max-width: 80ch; }
 code { font: 400 12.5px var(--font-mono); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 4px; }

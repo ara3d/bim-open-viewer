@@ -3,8 +3,12 @@
 // it lists in a headless browser with software WebGL, and fails if a demo does not draw or any
 // page logs an error or a failed request.
 //
+// Every link on the landing page is visited: each demo on its first fixture, and each public
+// building, which is the public-buildings demo on that building's fixture.
+//
 // It also keeps what it saw: `docs/images/landing.png` (the README's picture) and one thumbnail
-// per demo in `packages/demos/public/thumbnails/static/`, which the static gallery's index shows.
+// per page in `packages/demos/public/thumbnails/static/`: `<demo>.png` for a demo, which the static
+// gallery's index shows, and `<demo>--<fixture>.png` for a building, which the landing page shows.
 // A rebuild is needed for new thumbnails to reach the site.
 //
 // Run from the repository root after `npm run pages`: npm run pages:smoke
@@ -82,24 +86,33 @@ const main = async () => {
     if (framedState.error !== null) failures.push(`landing frame: ${String(framedState.error)}`);
     await page.evaluate(() => document.fonts.ready);
     await page.screenshot({ path: landingShot });
-    const demoIds = await page.$$eval('.demo-actions a', (links) =>
-      links.map((one) => new URL(one.href).searchParams.get('demo')).filter((id) => id !== null),
+    const searches = await page.$$eval('.demo-actions a', (links) => links.map((one) => new URL(one.href).search));
+    const targets = [...new Set(searches)]
+      .map((search) => new URLSearchParams(search))
+      .filter((params) => params.get('demo') !== null)
+      .map((params) => ({ demo: params.get('demo'), fixture: params.get('fixture') }));
+    const buildings = targets.filter((target) => target.fixture !== null).length;
+    console.log(
+      `landing: ${String(targets.length - buildings)} demos and ${String(buildings)} buildings listed, frame ${framedState.error === null ? 'drew' : 'failed'}, ${String(await sizeKb(landingShot))} KB picture`,
     );
-    console.log(`landing: ${String(demoIds.length)} demos listed, frame ${framedState.error === null ? 'drew' : 'failed'}, ${String(await sizeKb(landingShot))} KB picture`);
     for (const message of landingErrors) failures.push(`landing: ${message}`);
     await page.close();
-    if (demoIds.length === 0) failures.push('landing: no demos listed');
+    if (targets.length === 0) failures.push('landing: no demos listed');
 
-    // Each demo on its own page.
-    for (const id of demoIds) {
+    // Each demo, and each building, on its own page.
+    for (const target of targets) {
+      const id = target.fixture === null ? target.demo : `${target.demo}--${target.fixture}`;
+      const query = new URLSearchParams({ demo: target.demo, ...(target.fixture === null ? {} : { fixture: target.fixture }) });
       const one = await browser.newPage({ viewport: { width: 1200, height: 800 } });
       const errors = watch(one);
       const shot = join(thumbnailDir, `${id}.png`);
       try {
-        await one.goto(`${origin}/gallery.html?demo=${encodeURIComponent(id)}`, { waitUntil: 'load' });
+        await one.goto(`${origin}/gallery.html?${query.toString()}`, { waitUntil: 'load' });
         const state = await demoState(one.mainFrame());
         if (state.error !== null) throw new Error(String(state.error));
         await (await one.waitForSelector('.gallery-viewport')).screenshot({ path: shot });
+        // A building's page has to show the credit its licence asks for.
+        if (target.fixture !== null && (await one.$('.credit-line')) === null) throw new Error('no credit line on the page');
         const report = Object.entries(state.report)
           .slice(0, 4)
           .map(([key, value]) => `${key}=${String(value)}`)

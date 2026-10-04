@@ -55,6 +55,16 @@ export type DemoFixture = {
   // (`vite.gallery.config.mjs`, `/fixtures/`). The static site has no such server, so it leaves
   // these fixtures out of the picker rather than offering a model it cannot open.
   readonly servedLocally?: boolean | undefined;
+  // The credit an openly licensed model's licence asks for. The demo page shows it under the
+  // viewport whenever this fixture is open.
+  readonly credit?: FixtureCredit | undefined;
+};
+
+// A credit line and the licence it is given under.
+export type FixtureCredit = {
+  readonly text: string;
+  readonly licence: string;
+  readonly licenceUrl: string;
 };
 
 // What one frame reports to listeners: when it was drawn and how long the previous one took.

@@ -7,10 +7,11 @@
 .demo-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--inspector-width);
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto auto;
   grid-template-areas:
     "viewport inspector"
     "status   status"
+    "credit   credit"
     "mirror   mirror";
   flex: 1;
   min-height: 0;
@@ -25,6 +26,7 @@
   grid-template-areas:
     "viewport"
     "status"
+    "credit"
     "mirror";
 }
 
@@ -157,11 +159,12 @@
 @media (max-width: 750px) {
   .demo-page {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto auto;
+    grid-template-rows: minmax(0, 1fr) auto auto auto;
     grid-template-areas:
       "viewport"
       "inspector"
       "status"
+      "credit"
       "mirror";
   }
 

@@ -58,15 +58,15 @@ describe('the capture demo', () => {
   });
 
   it('opens the real model and lists the generated building behind it', () => {
-    expect(demo.fixtures.map((fixture) => fixture.id)).toEqual(['snowdon', 'building']);
+    expect(demo.fixtures.map((fixture) => fixture.id)).toEqual(['snowdon', 'schependomlaan', 'digitalhub', 'duplex', 'building']);
     expect(demo.fixtures[0]?.basis).toBe('source-backed');
-    expect(demo.fixtures[1]?.basis).toBe('synthetic');
+    expect(demo.fixtures.find((one) => one.basis === 'synthetic')?.basis).toBe('synthetic');
   });
 
   // The real model is a private hundred-megabyte file the dev server hands out, so only the
   // generated fixture is opened here; the other is a URL this test would have to fetch.
   it('builds the generated building without a file', async () => {
-    const built = await demo.fixtures[1]?.source();
+    const built = await demo.fixtures.find((one) => one.basis === 'synthetic')?.source();
     expect(built?.ok).toBe(true);
   });
 

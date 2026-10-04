@@ -19,7 +19,7 @@ describe('the environment demo', () => {
     expect(demo.id).toBe('environment');
     expect(demo.chapter).toBe('cut-and-arrange');
     expect(demo.fixtures[0]?.basis).toBe('source-backed');
-    expect(demo.fixtures[1]?.basis).toBe('synthetic');
+    expect(demo.fixtures.find((one) => one.basis === 'synthetic')?.basis).toBe('synthetic');
     expect(demo.briefIds).toContain('F10');
   });
 
@@ -32,7 +32,7 @@ describe('the environment demo', () => {
     if (real?.ok !== true) return;
     expect(real.value.kind).toBe('url');
 
-    const generated = await demo.fixtures[1]?.source();
+    const generated = await demo.fixtures.find((one) => one.basis === 'synthetic')?.source();
     expect(generated?.ok).toBe(true);
     if (generated?.ok !== true) return;
     expect(generated.value.kind).toBe('data');

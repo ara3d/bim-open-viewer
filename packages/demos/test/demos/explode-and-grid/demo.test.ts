@@ -27,7 +27,7 @@ const session = () => sessionForFeatures(demo.features);
 // The generated building, which is the demo's second fixture and the one every model-independent
 // test runs on.
 const generatedBuilding = async (): Promise<ModelData> => {
-  const source = await demo.fixtures[1]?.source();
+  const source = await demo.fixtures.find((one) => one.basis === 'synthetic')?.source();
   if (source?.ok !== true || source.value.kind !== 'data') throw new Error('the generated building did not open');
   return source.value.data;
 };
@@ -66,8 +66,8 @@ describe('the explode-and-grid demo', () => {
     const real = await demo.fixtures[0]?.source();
     expect(real?.ok).toBe(true);
     if (real?.ok === true) expect(real.value.kind).toBe('url');
-    expect(demo.fixtures[1]?.basis).toBe('synthetic');
-    const generated = await demo.fixtures[1]?.source();
+    expect(demo.fixtures.find((one) => one.basis === 'synthetic')?.basis).toBe('synthetic');
+    const generated = await demo.fixtures.find((one) => one.basis === 'synthetic')?.source();
     if (generated?.ok === true) expect(generated.value.kind).toBe('data');
   });
 });

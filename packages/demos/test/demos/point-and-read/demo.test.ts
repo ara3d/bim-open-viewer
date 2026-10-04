@@ -629,12 +629,11 @@ describe.skipIf(!existsSync(snowdonPath))(`point-and-read on the real model (nee
     useInspectIndex(index);
     const wall = keyOfObjectId(index, 'bos:1165');
 
-    // The file records no parent link at all: every link to another object came from the level that
-    // object records, and the only others are the 92 level objects, each its own storey.
+    // The file's containment relations become parent links when it is read, and a parent link is
+    // taken before the level an object records; the others are the 92 level objects, each its own storey.
     const via = new Map<string, number>();
     for (const each of index.storeyVia.values()) via.set(each, (via.get(each) ?? 0) + 1);
-    expect(via.get('a parent link')).toBeUndefined();
-    expect(via.get('the level it records')).toBe(17_106);
+    expect(Object.fromEntries(via)).toEqual({ 'a parent link': 18_779, 'being a storey itself': 92 });
     expect(via.get('being a storey itself')).toBe(index.storeys.length);
     expect(index.storeyOf.size).toBeLessThan(index.keys.length);
 
@@ -705,7 +704,7 @@ describe.skipIf(!existsSync(snowdonPath))(`point-and-read on the real model (nee
     // The first quantity the file records for this wall, in the unit it recorded it in. A recorded
     // zero is a recorded value and is reported as one; it is a value nobody recorded that is missing.
     expect(report['shownQuantity']).toBe('Base Extension Distance 0 FEET_AND_FRACTIONAL_INCHES');
-    expect(report['shownStoreyVia']).toBe('the level it records');
+    expect(report['shownStoreyVia']).toBe('a parent link');
     // The file records no observations, and the sheet says that rather than showing an empty group
     // beside forty-four properties without saying why it is empty.
     expect(pointAndReadSheet(held).groups.find((group) => group.id === 'facts')?.title).toBe(

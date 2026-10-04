@@ -75,8 +75,9 @@ const heldModelOf = (model: PublicModel, opened: OpenedModel): HeldModel => ({
   index: inspectIndexOf(opened.data, opened.geometry, { properties: opened.properties, documents: opened.documents }),
 });
 
-// How opaque the first model, the architecture, is drawn when other disciplines are drawn inside it.
-export const ghostOpacity = 0.1;
+// How opaque the architecture is drawn when other disciplines are drawn inside it: enough to read
+// the building's shape, little enough that the systems inside it show through.
+export const ghostOpacity = 0.28;
 
 const ruleId = (name: string): string => `public-buildings/${name}`;
 
@@ -292,8 +293,8 @@ export const publicBuildingsReport = (session: Session): DemoReport => {
 export const demo: Demo = {
   id: 'public-buildings',
   chapter: 'inspect',
-  title: 'Public buildings',
-  question: 'What does a real, openly licensed building hold, discipline by discipline?',
+  title: 'Disciplines',
+  question: 'Which systems run through the building? Each discipline model in its own colour.',
   briefIds: ['F06'],
   features: publicBuildingsFeatures,
   fixtures: publicBuildingFixtures,

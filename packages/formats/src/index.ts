@@ -2,6 +2,7 @@
 export * from './diagnostics.js';
 export * from './progress.js';
 export * from './properties.js';
+export * from './relations.js';
 export * from './loaded-model.js';
 export * from './detect.js';
 export * from './resolver.js';

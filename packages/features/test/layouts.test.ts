@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { emptyDocument, getSlice, putSlice, type Vec3 } from '@bim-open-viewer/model';
+import { emptyDocument, getSlice, putSlice, type ModelData, type Vec3 } from '@bim-open-viewer/model';
 import type { Placement } from '../src/layouts.js';
 import { transformOfRow, type InstanceTable } from '@bim-open-viewer/render';
 import {
@@ -18,6 +18,7 @@ import {
   placementElevations,
   placementsOf,
   rowPlacements,
+  storeyElevations,
   storeyExplodeOffsets,
   writeLayout,
 } from '../src/layouts.js';
@@ -392,5 +393,37 @@ describe('through the viewer session', () => {
     expect(translationOfRow(table, 2)).toEqual([2, 0, 7]);
     hook.dispose();
     host.dispose();
+  });
+});
+
+describe('storey elevations taken off what a storey contains', () => {
+  // The real model's shape: storeys at the origin, drawing nothing, and every element linked to its
+  // storey by a containment relation that the reader turned into a parent link.
+  const linked = (): ModelData => {
+    const placed = rowPlacedBuilding();
+    const storeyOf: Readonly<Record<string, string>> = { 'wall-0': 'storey-0', 'door-0': 'storey-0', 'wall-1': 'storey-1', 'door-1': 'storey-1' };
+    return {
+      ...placed,
+      objects: placed.objects.map((record) => {
+        const parent = storeyOf[record.ref.objectId];
+        return parent === undefined ? record : { ...record, parentId: parent };
+      }),
+    };
+  };
+
+  it('gives a storey that places nothing the height of the lowest object it contains', () => {
+    const model = linked();
+    const table = buildingTable(model, buildingGeometry(building()));
+    const found = storeyElevations(model, rowPlacements(table), 'z');
+    expect(found.get(keyOf('storey-0'))).toBe(1);
+    expect(found.get(keyOf('storey-1'))).toBe(4);
+  });
+
+  it('separates the storeys of a model whose rows alone said nothing about them', () => {
+    const model = linked();
+    const table = buildingTable(model, buildingGeometry(building()));
+    const offsets = storeyExplodeOffsets(model, 1, rowPlacements(table));
+    expect([...offsets.keys()]).toEqual([keyOf('wall-1'), keyOf('door-1')]);
+    expect(offsets.get(keyOf('wall-1'))).toEqual([0, 0, 3]);
   });
 });

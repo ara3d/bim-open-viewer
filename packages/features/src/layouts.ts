@@ -62,7 +62,7 @@ import {
   type DirtySets,
   type InstanceTable,
 } from '@bim-open-viewer/render';
-import { levelAt, levelsOf } from './navigation-aids.js';
+import { levelAt, levelsOf, storeyCategories } from './navigation-aids.js';
 
 // What an explode separates: the storeys of a building, or the categories of its objects.
 export type ExplodeBy = 'storey' | 'category';
@@ -246,6 +246,40 @@ export const placementElevations = (
   return new Map(placements.map((placement) => [placement.key, placement.center[axis] ?? 0]));
 };
 
+// The height of each storey that places nothing itself, measured off the lowest object it contains:
+// a storey in a real file draws nothing and sits at the origin, and what it does carry is the
+// containment link of every element on it (`ObjectRecord.parentId`). A storey with a placement of
+// its own keeps that; one with neither is left out, since nothing says how high it is.
+export const storeyElevations = (
+  model: ModelData,
+  placements: readonly Placement[],
+  up: UpAxis,
+): ReadonlyMap<ObjectKey, number> => {
+  const axis = axesFor(up).up;
+  const own = placementElevations(placements, up);
+  const storeyOfObjectId = new Map<string, ObjectKey>();
+  for (const record of model.objects) {
+    const parent = record.parentId;
+    if (parent === undefined) continue;
+    const storey = model.objects.find((one) => one.ref.objectId === parent);
+    if (storey === undefined || !storeyCategories.has((storey.category ?? '').trim().toLowerCase())) continue;
+    storeyOfObjectId.set(record.ref.objectId, objectKey(storey.ref));
+  }
+  const found = new Map<ObjectKey, number>(own);
+  if (storeyOfObjectId.size === 0) return found;
+  const keyToObjectId = new Map(model.objects.map((record) => [objectKey(record.ref), record.ref.objectId]));
+  const lowest = new Map<ObjectKey, number>();
+  for (const placement of placements) {
+    const storey = storeyOfObjectId.get(keyToObjectId.get(placement.key) ?? '');
+    if (storey === undefined || own.has(storey)) continue;
+    const height = placement.center[axis] ?? 0;
+    const held = lowest.get(storey);
+    if (held === undefined || height < held) lowest.set(storey, height);
+  }
+  for (const [storey, height] of lowest) found.set(storey, height);
+  return found;
+};
+
 // Offsets that separate the storeys of a building along the up axis, in storey order.
 //
 // The separation is one average storey height per storey per unit of strength, so strength 1
@@ -266,7 +300,7 @@ export const storeyExplodeOffsets = (
   const levels =
     placements === undefined
       ? levelsOf(model)
-      : levelsOf(model, placementElevations(placements, model.coordinates.up));
+      : levelsOf(model, storeyElevations(model, placements, model.coordinates.up));
   const offsets = new Map<ObjectKey, Vec3>();
   if (levels.length < 2 || strength === 0) return offsets;
   const lowest = levels[0]?.elevation ?? 0;

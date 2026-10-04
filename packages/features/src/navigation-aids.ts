@@ -158,7 +158,7 @@ export const navigationSlice: StateSlice<NavigationState> = stateSlice(
 // Both numbers of each name are listed rather than matched by a rule, because a rule loose enough
 // to turn "Levels" into "level" also turns names that mean something else into names in this set.
 // Revit writes the plural, IFC writes the singular, and both are here as themselves.
-const storeyCategories: ReadonlySet<string> = new Set([
+export const storeyCategories: ReadonlySet<string> = new Set([
   'storey',
   'storeys',
   'story',

@@ -25,6 +25,7 @@ export const formatCode = {
   missingEntityTable: 'formats/missing-entity-table',
   missingPropertyTables: 'formats/missing-property-tables',
   missingDocumentTable: 'formats/missing-document-table',
+  missingRelationTable: 'formats/missing-relation-table',
   droppedProperties: 'formats/dropped-properties',
   noGeometry: 'formats/no-geometry',
   noPreview: 'formats/no-preview',

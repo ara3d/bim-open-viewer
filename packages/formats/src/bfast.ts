@@ -29,6 +29,7 @@ import {
   metallicShift,
   roughnessShift,
 } from './bfast-layout.js';
+import { containersOf, modelRelationsFrom, type ModelRelations } from './relations.js';
 import { fail, formatCode, formatNote, formatWarning } from './diagnostics.js';
 import { loadedModel, type LoadedModel } from './loaded-model.js';
 import { cancellationCheckInterval, reportProgress, throwIfCancelled, type LoadContext } from './progress.js';
@@ -519,23 +520,64 @@ const textOf = parquetText;
 
 const messageOf = (error: unknown): string => (error instanceof Error ? error.message : String(error));
 
-// The object records of a model, one per row, named and categorized from the entity table when it has one.
-export function bfastObjects(ref: ModelRef, rows: EntityRows, facts: EntityFacts, firstDrawn: Int32Array): readonly ObjectRecord[] {
+// The object id a BOS entity index is given.
+const bosObjectId = (entity: number): string => `bos:${entity}`;
+
+/**
+ * The object records of a model, one per row, named and categorized from the entity table when it
+ * has one. `containerOf` is the object row each row is contained in (`containersOf`), which becomes
+ * the record's `parentId`: that is how an IFC file says which storey an element sits on, and it is
+ * the link `levelsOf`, a storey section and the inspector all read.
+ */
+export function bfastObjects(
+  ref: ModelRef,
+  rows: EntityRows,
+  facts: EntityFacts,
+  firstDrawn: Int32Array,
+  containerOf?: Int32Array,
+): readonly ObjectRecord[] {
   const objects: ObjectRecord[] = [];
   for (let row = 0; row < rows.entityOfRow.length; row += 1) {
     const entity = rows.entityOfRow[row] ?? 0;
     const sourceId = facts.localId === null ? 0 : facts.localId[entity] ?? 0;
     const drawn = firstDrawn[row] ?? -1;
+    const container = containerOf?.[row] ?? -1;
+    const parent = container >= 0 ? rows.entityOfRow[container] : undefined;
     objects.push({
-      ref: objectRef(ref, `bos:${entity}`),
+      ref: objectRef(ref, bosObjectId(entity)),
       transform: identityMatrix,
       ...(facts.name === null ? {} : withValue('name', facts.name[entity])),
       ...(facts.category === null ? {} : withValue('category', facts.category[entity])),
       ...(sourceId > 0 ? { sourceId: String(sourceId) } : {}),
+      ...(parent === undefined ? {} : { parentId: bosObjectId(parent) }),
       ...(drawn >= 0 ? { representation: drawn } : {}),
     });
   }
   return objects;
+}
+
+/**
+ * The relations of the model, when the file has a relation table. An absent table is a warning and
+ * no relations, never a failure: a geometry-only export has none to record.
+ */
+export async function readRelations(
+  data: BimData,
+  rows: EntityRows,
+): Promise<{ readonly relations: ModelRelations | null; readonly diagnostics: readonly Diagnostic[] }> {
+  if (data.size === 0) return { relations: null, diagnostics: [] };
+  const table = await readBimTable(data, 'Relations.parquet', ['EntityA', 'EntityB', 'RelationType']).catch(() => null);
+  if (table === null)
+    return {
+      relations: null,
+      diagnostics: [
+        formatWarning(
+          formatCode.missingRelationTable,
+          'This BFAST has no relation table, so objects carry no containment, hosting or connection links',
+          ['Relations.parquet'],
+        ),
+      ],
+    };
+  return { relations: modelRelationsFrom(table, rows.rowOfEntity), diagnostics: [] };
 }
 
 // A single-property object, or nothing at all when the value is absent, so no key is set to undefined.
@@ -573,6 +615,8 @@ export async function readBfastModel(buffer: ArrayBuffer, options: BfastOptions 
 
   const documents = await readDocuments(parsed.bimData, facts, rows);
   throwIfCancelled(options);
+  const relations = await readRelations(parsed.bimData, rows);
+  throwIfCancelled(options);
   const properties =
     options.properties === true
       ? await readProperties(parsed.bimData, facts, rows, options)
@@ -583,7 +627,13 @@ export async function readBfastModel(buffer: ArrayBuffer, options: BfastOptions 
   const data: ModelData = {
     ref,
     coordinates: options.coordinates ?? bfastCoordinates,
-    objects: bfastObjects(ref, rows, facts, built.firstDrawn),
+    objects: bfastObjects(
+      ref,
+      rows,
+      facts,
+      built.firstDrawn,
+      relations.relations === null ? undefined : containersOf(relations.relations, rows.entityOfRow.length),
+    ),
   };
   reportProgress(options, 'convert', 2, 2);
   return loadedModel(
@@ -594,6 +644,7 @@ export async function readBfastModel(buffer: ArrayBuffer, options: BfastOptions 
     [
     ...facts.diagnostics,
     ...documents.diagnostics,
+    ...relations.diagnostics,
     ...properties.diagnostics,
     ...(built.hidden > 0
       ? [
@@ -618,6 +669,7 @@ export async function readBfastModel(buffer: ArrayBuffer, options: BfastOptions 
     {
       ...(properties.properties === null ? {} : { properties: properties.properties }),
       ...(documents.documents === null ? {} : { documents: documents.documents }),
+      ...(relations.relations === null ? {} : { relations: relations.relations }),
     },
   );
 }

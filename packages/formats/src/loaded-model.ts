@@ -18,6 +18,7 @@ import {
 } from '@bim-open-viewer/model';
 import { formatCode, formatDiagnostic } from './diagnostics.js';
 import type { ModelDocuments, ModelProperties } from './properties.js';
+import type { ModelRelations } from './relations.js';
 
 // A file format this package can turn into a `LoadedModel`.
 export type ModelFormat = 'bfast' | 'bos' | 'glb' | 'gltf' | 'obj' | 'stl';
@@ -49,6 +50,11 @@ export type LoadedModel = {
    * A BFAST or BOS load at the default metadata level carries this; other formats have no such thing.
    */
   readonly documents?: ModelDocuments;
+  /**
+   * The relations the file records between its objects (containment, hosting, connection), when
+   * the source carries a relation table. A BFAST or BOS load carries this; other formats have none.
+   */
+  readonly relations?: ModelRelations;
 };
 
 /**
@@ -60,6 +66,7 @@ export type LoadedModel = {
 export type LoadedModelExtras = {
   readonly properties?: ModelProperties;
   readonly documents?: ModelDocuments;
+  readonly relations?: ModelRelations;
 };
 
 // Builds a `LoadedModel`, taking the coordinate frame from the model data so the two cannot disagree.
@@ -79,6 +86,7 @@ export const loadedModel = (
   diagnostics,
   ...(extras.properties === undefined ? {} : { properties: extras.properties }),
   ...(extras.documents === undefined ? {} : { documents: extras.documents }),
+  ...(extras.relations === undefined ? {} : { relations: extras.relations }),
 });
 
 // What a model contains, for reports, demos and the format table.

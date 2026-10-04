@@ -38,6 +38,7 @@ export async function readBosModel(buffer: ArrayBuffer, options: BosOptions = {}
   return loadedModel('bos', model.data, model.geometry, buffer.byteLength, model.diagnostics, {
     ...(model.properties === undefined ? {} : { properties: model.properties }),
     ...(model.documents === undefined ? {} : { documents: model.documents }),
+    ...(model.relations === undefined ? {} : { relations: model.relations }),
   });
 }
 

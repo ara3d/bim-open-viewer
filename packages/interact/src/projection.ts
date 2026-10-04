@@ -1,6 +1,7 @@
 import {
   atDistance,
   boundsCenter,
+  boundsCorners,
   boundsRadius,
   fitDistance,
   isEmptyBounds,
@@ -13,6 +14,7 @@ import {
   viewDistance,
   viewState,
   type Bounds,
+  type CameraPose,
   type Matrix4,
   type Projection,
   type Vec3,
@@ -20,6 +22,7 @@ import {
 } from '@bim-open-viewer/model';
 import { cameraBasis } from './camera.js';
 import { clamp } from './numbers.js';
+import { dot } from './vec.js';
 
 // Which of the two ways of projecting a view uses.
 export type ProjectionKind = Projection['kind'];
@@ -119,14 +122,46 @@ export type FitOptions = {
 // A tight fit in a square viewport, with a little room around the box.
 export const defaultFitOptions: FitOptions = { aspect: 1, padding: 1.05 };
 
-// The near and far planes that bracket a sphere of that radius seen from that distance.
-const depthRange = (distance: number, radius: number): { readonly near: number; readonly far: number } => {
-  const margin = Math.max(radius * 0.1, 0.001);
-  return { near: Math.max(distance - radius - margin, radius * 1.0e-4, 0.001), far: distance + radius + margin };
+// The near and far planes that hold a box seen from a camera, as a pair of depths along the view
+// direction, or undefined for an empty box.
+//
+// The far plane sits just past the furthest corner and the near plane just short of the nearest,
+// so a camera outside the box gets the tightest bracket and the most depth precision. A camera
+// inside, or close to, the box has corners behind it: a perspective near plane can never go behind
+// the camera, so it stops at a floor of one ten-thousandth of the far plane, small enough to walk
+// through a room of a city-sized model and large enough to keep a 24-bit depth buffer from fighting
+// over a wall across the street. An orthographic projection has no such limit, and its near plane
+// follows the corners behind the camera, so dollying through a plan view never cuts it away.
+export const depthRangeFor = (
+  camera: CameraPose,
+  kind: ProjectionKind,
+  bounds: Bounds,
+): { readonly near: number; readonly far: number } | undefined => {
+  const radius = boundsRadius(bounds);
+  if (radius === undefined || isEmptyBounds(bounds)) return undefined;
+  const { forward } = cameraBasis(camera);
+  const depths = boundsCorners(bounds).map((corner) => dot(subVec3(corner, camera.position), forward));
+  const margin = Math.max(radius * 0.05, 0.001);
+  const far = Math.max(...depths) + margin;
+  const nearest = Math.min(...depths) - margin;
+  const near = kind === 'orthographic' ? nearest : Math.max(nearest, far * 1.0e-4, 0.001);
+  return { near, far: Math.max(far, near + margin) };
+};
+
+// The view with its near and far planes re-cut around the box, so a camera that has zoomed, dollied
+// or orbited since it was framed still shows every part of the box. The planes are derived state: a
+// renderer applies this on every frame from the scene's bounds, and nothing else about the view
+// changes. An empty box leaves the view as it is.
+export const withDepthRange = (view: ViewState, bounds: Bounds): ViewState => {
+  const range = depthRangeFor(view.camera, view.projection.kind, bounds);
+  if (range === undefined) return view;
+  const { projection } = view;
+  if (projection.near === range.near && projection.far === range.far) return view;
+  return { ...view, projection: { ...projection, near: range.near, far: range.far } };
 };
 
 // The view moved so the box fills the picture, keeping the projection kind and the up axis.
-// The near and far planes are re-cut around the box so nothing is clipped and depth stays precise.
+// The near and far planes are cut around the box as `depthRangeFor` cuts them.
 // An empty box has nothing to fit, so the result is undefined and the caller keeps its view.
 export const fitBounds = (
   view: ViewState,
@@ -145,11 +180,11 @@ export const fitBounds = (
     view.projection.kind === 'orthographic'
       ? size * 2
       : Math.max(fitDistance(size, view.projection, aspect), Number.EPSILON);
-  const range = depthRange(distance, size);
+  const camera: CameraPose = { position: subVec3(center, scaleVec3(forward, distance)), target: center, up: view.camera.up };
+  const range = depthRangeFor(camera, view.projection.kind, bounds) ?? view.projection;
   const projection =
     view.projection.kind === 'orthographic'
       ? orthographic(size * 2 * Math.max(1, 1 / aspect), range.near, range.far)
       : perspective(view.projection.fieldOfViewDegrees, range.near, range.far);
-  const position = subVec3(center, scaleVec3(forward, distance));
-  return viewState({ position, target: center, up: view.camera.up }, projection, view.coordinates);
+  return viewState(camera, projection, view.coordinates);
 };

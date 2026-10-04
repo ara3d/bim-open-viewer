@@ -184,20 +184,18 @@ export const boundsContain = (bounds: Bounds, point: Vec3): boolean =>
   point[1] >= bounds.min[1] && point[1] <= bounds.max[1] &&
   point[2] >= bounds.min[2] && point[2] <= bounds.max[2];
 
+// The eight corners of a box, in a fixed order: bit 0 of the index picks the x side, bit 1 the y
+// side, bit 2 the z side. An empty box still yields eight points, so callers test for emptiness.
+export const boundsCorners = (bounds: Bounds): readonly Vec3[] =>
+  [0, 1, 2, 3, 4, 5, 6, 7].map((corner): Vec3 => [
+    (corner & 1) === 0 ? bounds.min[0] : bounds.max[0],
+    (corner & 2) === 0 ? bounds.min[1] : bounds.max[1],
+    (corner & 4) === 0 ? bounds.min[2] : bounds.max[2],
+  ]);
+
 // The box containing every corner of the box after the transform.
 export const transformBounds = (matrix: Matrix4, bounds: Bounds): Bounds =>
-  isEmptyBounds(bounds)
-    ? bounds
-    : boundsOf(
-        [0, 1, 2, 3, 4, 5, 6, 7].map((corner): Vec3 => {
-          const source: Vec3 = [
-            (corner & 1) === 0 ? bounds.min[0] : bounds.max[0],
-            (corner & 2) === 0 ? bounds.min[1] : bounds.max[1],
-            (corner & 4) === 0 ? bounds.min[2] : bounds.max[2],
-          ];
-          return transformPoint(matrix, source);
-        }),
-      );
+  isEmptyBounds(bounds) ? bounds : boundsOf(boundsCorners(bounds).map((corner) => transformPoint(matrix, corner)));
 
 // The length of a vector.
 export const vec3Length = (v: Vec3): number => Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);

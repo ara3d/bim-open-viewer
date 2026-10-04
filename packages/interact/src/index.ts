@@ -40,6 +40,8 @@ export { setProjectionKind, defaultFieldOfViewDegrees } from './projection.js';
 export { zoomProjection, defaultZoomLimits, type ZoomLimits } from './projection.js';
 // Place a camera so a box fills the picture, re-cutting the depth planes around it.
 export { fitBounds, defaultFitOptions, type FitOptions } from './projection.js';
+// The near and far planes that hold a box from a camera, and a view with its planes re-cut around one.
+export { depthRangeFor, withDepthRange } from './projection.js';
 
 // The normalised input record the navigation reducers read, and what a pointer looks like in it.
 export { type InputFrame, type PointerSample, type PointerKind, type Viewport } from './input.js';

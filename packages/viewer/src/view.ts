@@ -32,6 +32,7 @@ import {
   type NavElement,
   type NavMode,
   type NavSession,
+  withDepthRange,
 } from '@bim-open-viewer/interact';
 import {
   defaultView,
@@ -61,6 +62,10 @@ export type ViewOptions = {
   readonly schedule?: FrameScheduler | undefined;
   // The most device pixels per CSS pixel. Two is enough to look sharp and cheap enough to draw.
   readonly maxPixelRatio?: number | undefined;
+  // The bounds of what the view draws, read before each frame. The near and far planes are re-cut
+  // around them on every frame, so no zoom, dolly or orbit clips the scene. Without it the view's
+  // own planes are used as they are.
+  readonly bounds?: (() => Bounds) | undefined;
   // Called after the camera moved, however it moved.
   readonly onCamera?: ((id: string, view: ViewState) => void) | undefined;
   // Called with the interval between drawn frames, in milliseconds.
@@ -118,6 +123,10 @@ export const createView = (options: ViewOptions): View => {
 
   const aspect = (): number => (size.height > 0 ? size.width / size.height : 1);
 
+  // The view as the renderer draws it: the navigation state with its depth planes around the scene.
+  const rendered = (): ViewState =>
+    options.bounds === undefined ? session.nav.view : withDepthRange(session.nav.view, options.bounds());
+
   const published = (next: NavSession): void => {
     const moved = next.nav.view !== session.nav.view;
     session = next;
@@ -173,7 +182,7 @@ export const createView = (options: ViewOptions): View => {
     lastStep = nowMs;
     if (!dirty) return;
     dirty = false;
-    renderer.setView(session.nav.view, aspect());
+    renderer.setView(rendered(), aspect());
     renderer.renderFrame();
     const interval = timer.mark(nowMs);
     if (interval !== undefined) options.onFrame?.(id, interval);
@@ -220,7 +229,7 @@ export const createView = (options: ViewOptions): View => {
       dirty = true;
     },
     renderNow: () => {
-      renderer.setView(session.nav.view, aspect());
+      renderer.setView(rendered(), aspect());
       renderer.renderFrame();
     },
     addGroups: (groups) => {

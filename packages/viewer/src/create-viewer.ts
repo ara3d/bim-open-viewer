@@ -397,6 +397,7 @@ export const createViewer = (input?: HTMLCanvasElement | ViewerOptions): Viewer 
       ...(viewOptions.mode === undefined ? {} : { mode: viewOptions.mode }),
       ...(options.schedule === undefined ? {} : { schedule: options.schedule }),
       ...(options.maxPixelRatio === undefined ? {} : { maxPixelRatio: options.maxPixelRatio }),
+      bounds: currentBounds,
       onCamera: (fromId, state) => views.follow(fromId, state),
     });
     const added = views.add(view);

@@ -21,6 +21,22 @@ const started = (): {
 };
 
 describe('createView', () => {
+  it('draws with the depth planes cut around the bounds it is given, not the ones the camera carries', () => {
+    const renderer = fakeRenderer();
+    const clock = testFrames();
+    const bounds = { min: [1000, 2000, 0] as const, max: [1060, 2040, 25] as const };
+    const view = createView({ id: 'main', renderer, schedule: clock.schedule, bounds: () => bounds });
+    view.resize(800, 400);
+    // A camera inside the box, carrying the default planes of 0.1 and 10000.
+    view.setCamera({ ...defaultView, camera: cameraPose([1030, 2020, 2], [1060, 2020, 2], [0, 0, 1]) });
+    clock.tick(16);
+    const drawn = renderer.log.views().at(-1);
+    expect(drawn?.projection.far).toBeLessThan(100);
+    expect(drawn?.projection.near).toBeLessThan(0.1);
+    expect(view.camera().projection.far).toBe(defaultView.projection.far);
+    view.dispose();
+  });
+
   it('draws once the loop runs, and not again until something asks', () => {
     const { renderer, clock } = started();
     clock.tick(16);

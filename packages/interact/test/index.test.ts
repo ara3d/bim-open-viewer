@@ -9,6 +9,7 @@ const published: readonly string[] = [
   'dollyPose', 'panPose', 'walkPose', 'viewMatrix', 'overheadPose', 'screenHeading',
   'projectionMatrix', 'frameHeightAt', 'distanceForHeight', 'setProjectionKind',
   'defaultFieldOfViewDegrees', 'zoomProjection', 'defaultZoomLimits', 'fitBounds', 'defaultFitOptions',
+  'depthRangeFor', 'withDepthRange',
   'emptyFrame', 'restFrame', 'isIdle', 'isDragging', 'hasModifiers', 'isKeyDown', 'normalizeKey',
   'mouseButtons', 'heldButton', 'safeViewport', 'aspectOf', 'normalizedDrag', 'pointersOfKind',
   'dragDelta', 'pinchScale',

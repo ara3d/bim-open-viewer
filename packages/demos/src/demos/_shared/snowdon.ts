@@ -5,10 +5,10 @@
 // (`vite.gallery.config.mjs`, `/fixtures/`), which is why this is a URL and not an import: a demo
 // names a model, and the machine says where its models are.
 //
-// Every demo lists the generated building after it. That fixture is not a fallback that hides a
-// missing file - a missing file is reported as one - it is the second entry in the picker, there
-// because a generated model has deliberate gaps and conflicts a real one does not, and some demos
-// exist to show exactly those.
+// Every demo lists it first in the dev gallery (`_shared/fixtures.ts`). The generated building below
+// is not a fallback that hides a missing file - a missing file is reported as one - it is the last
+// entry in the picker, there because a generated model has deliberate gaps and conflicts a real one
+// does not, and some demos exist to show exactly those.
 
 import { success, type Result } from '@bim-open-viewer/model';
 import { defaultBuildingOptions, generateBuilding, type BuildingOptions } from '@bim-open-viewer/synthetic';
@@ -46,5 +46,3 @@ export const syntheticBuilding = (options: BuildingOptions = defaultBuildingOpti
   },
 });
 
-// What a demo lists when it wants the real model first and the generated one behind it.
-export const snowdonThenSynthetic: readonly DemoFixture[] = [snowdon, syntheticBuilding()];

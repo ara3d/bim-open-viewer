@@ -488,7 +488,13 @@ describe('point-and-read demo', () => {
   it('registers as an Inspect demo over the real model, the generated one behind it', () => {
     expect(demo.id).toBe('point-and-read');
     expect(demo.chapter).toBe('inspect');
-    expect(demo.fixtures.map((fixture) => fixture.basis)).toEqual(['source-backed', 'synthetic']);
+    expect(demo.fixtures.map((fixture) => fixture.basis)).toEqual([
+      'source-backed',
+      'source-backed',
+      'source-backed',
+      'source-backed',
+      'synthetic',
+    ]);
     expect(demo.panels.map((panel) => panel.id)).toEqual(['point-and-read/tag']);
   });
 
@@ -500,7 +506,7 @@ describe('point-and-read demo', () => {
   });
 
   it('opens the generated building as data already in memory', async () => {
-    const source = await demo.fixtures[1]?.source();
+    const source = await demo.fixtures.find((one) => one.basis === 'synthetic')?.source();
     expect(source?.ok).toBe(true);
     if (source === undefined || !source.ok) return;
     expect(source.value.kind).toBe('data');

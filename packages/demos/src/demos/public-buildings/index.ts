@@ -7,7 +7,7 @@
 // source models, told apart by each entity's `Document`; they are drawn and named by document.
 
 import { appearanceFeature, editsFeature, setsFeature, setsSlice } from '@bim-open-viewer/features';
-import { documentOfObject, loadModel } from '@bim-open-viewer/formats';
+import { documentOfObject } from '@bim-open-viewer/formats';
 import {
   diagnostic,
   disposable,
@@ -35,53 +35,22 @@ import {
   type PropertySheet,
 } from '@bim-open-viewer/ui-gratify';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
-import type { Demo, DemoFixture, GalleryViewer, ModelSource, OpenedModel } from '../../gallery/contracts.js';
-import { galleryLoadOptions } from '../../gallery/model-source.js';
+import type { Demo, GalleryViewer, OpenedModel } from '../../gallery/contracts.js';
 import { inspectIndexOf, noModelDocuments, storeyOfObject, type InspectIndex } from '../point-and-read/building.js';
 import { propertyGroupsOf } from '../point-and-read/inspector.js';
 import {
   publicBuildings,
-  publicSamplesCommit,
   publicSamplesNotice,
   publicSamplesPath,
   type DisciplineColour,
   type PublicBuilding,
   type PublicModel,
 } from './buildings.js';
+import { loadPublicModel, publicBuildingFixtures, publicModelId } from './fixtures.js';
+
+export { publicBuildingFixtures, publicModelId };
 
 export const publicBuildingsFeatures: readonly AnyFeature[] = [editsFeature, setsFeature, appearanceFeature];
-
-// The model id one discipline model is opened under.
-export const publicModelId = (building: PublicBuilding, model: PublicModel): string =>
-  `${building.id}/${model.file.replace(/\.bos$/u, '')}`;
-
-// One discipline model, fetched from where the site serves it and loaded under its own id.
-const loadPublicModel = async (building: PublicBuilding, model: PublicModel): Promise<Result<ModelSource>> => {
-  const id = publicModelId(building, model);
-  const url = `${publicSamplesPath}${model.file}`;
-  const loaded = await loadModel(url, {
-    ...galleryLoadOptions,
-    format: 'bos',
-    ref: { id, revision: publicSamplesCommit.slice(0, 7), source: url },
-  });
-  return loaded.ok ? success({ kind: 'loaded', id, model: loaded.value }, loaded.diagnostics) : failure(loaded.diagnostics);
-};
-
-// A building as a fixture: its first model, with the credit its licence asks for.
-const fixtureOf = (building: PublicBuilding): DemoFixture => ({
-  id: building.id,
-  title: building.title,
-  basis: 'source-backed',
-  credit: { text: building.attribution, licence: building.licence.name, licenceUrl: building.licence.url },
-  source: () => {
-    const first = building.models[0];
-    return first === undefined
-      ? Promise.resolve(failure([diagnostic('public-buildings/no-model', `${building.id} lists no model`)]))
-      : loadPublicModel(building, first);
-  },
-});
-
-export const publicBuildingFixtures: readonly DemoFixture[] = publicBuildings.map(fixtureOf);
 
 // One open file and the lookups the sheet reads.
 type HeldModel = { readonly model: PublicModel; readonly opened: OpenedModel; readonly index: InspectIndex };

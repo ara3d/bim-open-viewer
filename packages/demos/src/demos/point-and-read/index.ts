@@ -28,7 +28,7 @@ import {
   type Session,
 } from '@bim-open-viewer/model';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
-import { snowdonThenSynthetic } from '../_shared/snowdon.js';
+import { defaultFixtures } from '../_shared/fixtures.js';
 import type { Demo, GalleryViewer } from '../../gallery/contracts.js';
 import {
   documentOf,
@@ -134,7 +134,7 @@ export const demo: Demo = {
   question: 'What is this object, and what do we actually know about it?',
   briefIds: ['F06', 'F07'],
   features: pointAndReadFeatures,
-  fixtures: snowdonThenSynthetic,
+  fixtures: defaultFixtures,
   panels: pointAndReadPanels,
   inspector: pointAndReadSheet,
   start,

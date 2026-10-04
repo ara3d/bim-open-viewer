@@ -4,10 +4,10 @@ import { hostedDemos } from '../../src/gallery/hosting.js';
 import { demo as placeholder } from '../../src/demos/_shared/placeholder.js';
 import type { Demo, DemoFixture } from '../../src/gallery/contracts.js';
 
-const fixture = (id: string, servedLocally?: boolean): DemoFixture => ({
+const fixture = (id: string, servedLocally?: boolean, basis: DemoFixture['basis'] = 'synthetic'): DemoFixture => ({
   id,
   title: id,
-  basis: 'synthetic',
+  basis,
   servedLocally,
   source: () => Promise.resolve(success({ kind: 'url', id, url: `/fixtures/${id}` })),
 });
@@ -28,5 +28,11 @@ describe('hosted demos', () => {
     const hosted = hostedDemos(demos, true);
     expect(hosted.map((one) => one.id)).toEqual(['both']);
     expect(hosted[0]?.fixtures.map((one) => one.id)).toEqual(['generated']);
+  });
+
+  it('drops a generated fixture on the static site when a real one remains', () => {
+    const demo = withFixtures('mixed', [fixture('private', true), fixture('real', false, 'source-backed'), fixture('generated')]);
+    expect(hostedDemos([demo], true)[0]?.fixtures.map((one) => one.id)).toEqual(['real']);
+    expect(hostedDemos([demo], false)[0]?.fixtures.map((one) => one.id)).toEqual(['private', 'real', 'generated']);
   });
 });

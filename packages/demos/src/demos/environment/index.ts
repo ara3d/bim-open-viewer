@@ -6,7 +6,7 @@
 
 import { environmentFeature, environmentSlice } from '@bim-open-viewer/features';
 import { disposable, failure, success, type Disposable, type Result, type Session } from '@bim-open-viewer/model';
-import { snowdonThenSynthetic } from '../_shared/snowdon.js';
+import { defaultFixtures } from '../_shared/fixtures.js';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo } from '../../gallery/contracts.js';
 import { environmentSheet } from './inspector.js';
@@ -51,7 +51,7 @@ export const demo: Demo = {
   question: 'Make it readable: light, ground, grid.',
   briefIds: ['F10'],
   features: [environmentFeature],
-  fixtures: snowdonThenSynthetic,
+  fixtures: defaultFixtures,
   panels: environmentPanels,
   inspector: environmentSheet,
   start: (viewer) => Promise.resolve(startEnvironment(viewer)),

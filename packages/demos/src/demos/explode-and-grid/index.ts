@@ -23,7 +23,7 @@ import {
 } from '@bim-open-viewer/model';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo } from '../../gallery/contracts.js';
-import { snowdonThenSynthetic } from '../_shared/snowdon.js';
+import { defaultFixtures } from '../_shared/fixtures.js';
 import { explodeSheet } from './inspector.js';
 import { explodePanels } from './panels.js';
 import { heldSurvey, holdSurvey, layoutCaveat, movedBy, openingExplode, surveyExplode } from './survey.js';
@@ -86,7 +86,7 @@ export const demo: Demo = {
   question: 'Pull it apart so I can see every part.',
   briefIds: ['F13'],
   features: [layoutsFeature],
-  fixtures: snowdonThenSynthetic,
+  fixtures: defaultFixtures,
   panels: explodePanels,
   inspector: explodeSheet,
   start: (viewer) => Promise.resolve(startExplode(viewer, viewer.opened()[0]?.data, viewer.placements())),

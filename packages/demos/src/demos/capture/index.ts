@@ -32,7 +32,7 @@ import {
 import { pngFormat } from '@bim-open-viewer/render';
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo, GalleryViewer } from '../../gallery/contracts.js';
-import { snowdonThenSynthetic } from '../_shared/snowdon.js';
+import { defaultFixtures } from '../_shared/fixtures.js';
 import { captureSheet } from './inspector.js';
 import { forgetOpening, openingNote, recordOpening, takenNote } from './opening.js';
 import { capturePanels } from './panels.js';
@@ -132,7 +132,7 @@ export const demo: Demo = {
   question: 'Give me a picture for the report.',
   briefIds: ['F20'],
   features: [navigationAidsFeature, hudFeature, captureFeature],
-  fixtures: snowdonThenSynthetic,
+  fixtures: defaultFixtures,
   panels: capturePanels,
   inspector: captureSheet,
   start: startCapture,

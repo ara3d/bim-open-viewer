@@ -22,9 +22,11 @@ import {
   failure,
   filterRows,
   stringAt,
+  stringColumn,
   stringColumnOf,
   styleRule,
   success,
+  table,
   type Color,
   type ObjectKey,
   type Result,
@@ -58,22 +60,36 @@ export const conflictingColour: Color = [0.85, 0.2, 0.65];
 export const widthLow: Color = [0.9, 0.93, 0.7];
 export const widthHigh: Color = [0.1, 0.35, 0.55];
 
-// The colours the category swatches take, in the order the categories are found.
+// The colours the category swatches take, most common value first. Twelve, so a legend at its
+// limit gives every named entry a colour of its own.
 const categoryColours: readonly Color[] = [
-  [0.6, 0.45, 0.7],
-  [0.55, 0.55, 0.58],
-  [0.72, 0.7, 0.66],
-  [0.3, 0.55, 0.75],
-  [0.8, 0.45, 0.15],
-  [0.45, 0.7, 0.85],
+  [0.12, 0.47, 0.71],
+  [1, 0.5, 0.05],
+  [0.17, 0.63, 0.17],
+  [0.84, 0.15, 0.16],
+  [0.58, 0.4, 0.74],
+  [0.55, 0.34, 0.29],
+  [0.89, 0.47, 0.76],
+  [0.74, 0.74, 0.13],
+  [0.09, 0.75, 0.81],
+  [0.68, 0.78, 0.91],
+  [1, 0.73, 0.47],
+  [0.6, 0.87, 0.54],
 ];
 
-// The colours the storey swatches take.
-const storeyColours: readonly Color[] = [
-  [0.2, 0.4, 0.7],
-  [0.85, 0.55, 0.15],
-  [0.35, 0.6, 0.35],
-];
+// The ends of the storey ramp, which runs from the lowest storey to the highest.
+const storeyLow: Color = [0.2, 0.4, 0.75];
+const storeyHigh: Color = [0.9, 0.55, 0.15];
+
+// The colour of the entry that stands for every value past the named ones.
+export const otherColour: Color = [0.78, 0.78, 0.8];
+
+// The most values a legend names; the rest are folded into one "Other" entry.
+export const maxNamedValues = 12;
+
+// The value and label of that folded entry. The value cannot be a real category or storey name.
+export const otherValue = '(other values)';
+export const otherLabel = 'Other';
 
 // The legend the disputed doors are listed under, which is what tells a class row it is a conflict.
 export const conflictingLegendId = 'colour-by/conflicting';
@@ -91,28 +107,94 @@ export type Colouring = {
   readonly legends: readonly Legend[];
 };
 
-// The distinct values of a string column, in the order they first appear, with the empty value left
-// out: nothing recorded is not a class.
-export const distinctValues = (source: Table, name: string): readonly string[] => {
+// The distinct non-empty values of a string column with how many rows hold each, most common first;
+// values with equal counts keep the order they first appear in.
+export const rankedValues = (
+  source: Table,
+  name: string,
+): readonly { readonly value: string; readonly count: number }[] => {
   const column = stringColumnOf(source, name);
   if (column === undefined) return [];
-  const found: string[] = [];
+  const counts = new Map<string, number>();
   for (let row = 0; row < source.rowCount; row += 1) {
     const value = stringAt(column, row);
-    if (value !== undefined && value !== '' && !found.includes(value)) found.push(value);
+    if (value !== undefined && value !== '') counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+  return [...counts].map(([value, count]) => ({ value, count })).sort((left, right) => right.count - left.count);
+};
+
+// The rows of the object table that draw something. A legend over the whole table would be mostly
+// entries for objects with nothing to colour: 38,947 objects on Schependomlaan, 5,978 drawn.
+export const drawnTable = (index: InspectIndex): Table =>
+  filterRows(objectTable(index), (row) => index.records.get(index.keys[row] ?? '')?.representation !== undefined);
+
+// The lowest point of each storey name along the model's up axis, for the names the index knows it for.
+const elevationsOf = (index: InspectIndex): ReadonlyMap<string, number> => {
+  const axis = index.model.coordinates.up === 'y' ? 1 : 2;
+  const found = new Map<string, number>();
+  for (const storey of index.storeys) {
+    const low = storey.bounds.min[axis];
+    if (low === undefined || !Number.isFinite(low)) continue;
+    found.set(storey.name, Math.min(found.get(storey.name) ?? Infinity, low));
   }
   return found;
 };
 
-const paletteOf = (values: readonly string[], colours: readonly Color[], title: string, absent: string): CategoryPalette => ({
+// Storey names in elevation order where the index knows an elevation, and name order for the rest,
+// which follow the ones with an elevation.
+const inStoreyOrder = (names: readonly string[], elevations: ReadonlyMap<string, number>): readonly string[] =>
+  [...names].sort((left, right) => {
+    const lowLeft = elevations.get(left);
+    const lowRight = elevations.get(right);
+    if (lowLeft !== undefined && lowRight !== undefined && lowLeft !== lowRight) return lowLeft - lowRight;
+    if ((lowLeft === undefined) !== (lowRight === undefined)) return lowLeft === undefined ? 1 : -1;
+    return left.localeCompare(right);
+  });
+
+// The ramp one swatch per storey is drawn from.
+const storeyRamp = (count: number): readonly Color[] =>
+  Array.from({ length: count }, (_unused, step) => {
+    const fraction = count <= 1 ? 0 : step / (count - 1);
+    return [
+      storeyLow[0] + (storeyHigh[0] - storeyLow[0]) * fraction,
+      storeyLow[1] + (storeyHigh[1] - storeyLow[1]) * fraction,
+      storeyLow[2] + (storeyHigh[2] - storeyLow[2]) * fraction,
+    ];
+  });
+
+const paletteOf = (
+  values: readonly string[],
+  colours: readonly Color[],
+  title: string,
+  absent: string,
+  folded: boolean,
+): CategoryPalette => ({
   title,
-  entries: values.map((value, index) => ({
-    value,
-    label: value,
-    color: colours[index % colours.length] ?? missingColour,
-  })),
+  entries: [
+    ...values.map((value, index) => ({
+      value,
+      label: value,
+      color: colours[index % colours.length] ?? missingColour,
+    })),
+    ...(folded ? [{ value: otherValue, label: otherLabel, color: otherColour }] : []),
+  ],
   missing: { value: '', label: absent, color: missingColour },
 });
+
+// The table with the column's values past the named ones replaced by the folded entry's value.
+const foldedTable = (source: Table, name: string, named: ReadonlySet<string>): Table => {
+  const keys = stringColumnOf(source, 'key');
+  const column = stringColumnOf(source, name);
+  if (keys === undefined || column === undefined) return source;
+  const values = Array.from({ length: source.rowCount }, (_unused, row) => {
+    const value = stringAt(column, row);
+    return value === undefined || value === '' || named.has(value) ? (value ?? '') : otherValue;
+  });
+  return table([
+    ['key', keys],
+    [name, stringColumn(values)],
+  ]);
+};
 
 const widthScale: NumericScale = {
   title: 'Door nominal width',
@@ -145,14 +227,19 @@ const disputedStyling = (index: InspectIndex): { readonly rule: StyleRule; reado
 };
 
 const categoryColouring = (index: InspectIndex, column: 'category' | 'storey'): Result<Colouring> => {
-  const source = objectTable(index);
-  const values = distinctValues(source, column);
+  const drawn = drawnTable(index);
+  const ranked = rankedValues(drawn, column);
+  const kept = ranked.slice(0, maxNamedValues).map((one) => one.value);
+  const folded = ranked.length > kept.length;
+  const values = column === 'storey' ? inStoreyOrder(kept, elevationsOf(index)) : kept;
   const palette = paletteOf(
     values,
-    column === 'category' ? categoryColours : storeyColours,
+    column === 'category' ? categoryColours : storeyRamp(values.length),
     column === 'category' ? 'Category' : 'Storey',
     column === 'category' ? 'No category recorded' : 'No storey link recorded',
+    folded,
   );
+  const source = folded ? foldedTable(drawn, column, new Set(kept)) : drawn;
   const styled = categoryStyling(legendIdOf(column), source, 'key', column, palette);
   if (!styled.ok) return failure(styled.diagnostics);
   return success({
@@ -166,7 +253,7 @@ const categoryColouring = (index: InspectIndex, column: 'category' | 'storey'): 
 
 const widthColouring = (index: InspectIndex): Result<Colouring> => {
   const disputed = new Set(disputedWidthDoors(index));
-  const source = objectTable(index);
+  const source = drawnTable(index);
   const keys = stringColumnOf(source, 'key');
   const categories = stringColumnOf(source, 'category');
   if (keys === undefined || categories === undefined)

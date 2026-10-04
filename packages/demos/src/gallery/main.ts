@@ -10,6 +10,7 @@ import './styles/chrome.css';
 import './styles/index-page.css';
 import './styles/viewport.css';
 import './styles/inspector.css';
+import markUrl from '../../../../docs/brand/viewer-mark.svg?url';
 import { demoFailed, describeCause, type DemoWindow } from '../feature-demos/_shared/protocol.js';
 import { renderDemoPage } from './demo-page.js';
 import { discoveredDemos } from './discovery.js';
@@ -17,6 +18,11 @@ import { el } from './elements.js';
 import { renderIndexPage } from './index-page.js';
 import { isIndexRoute, parseRoute } from './routes.js';
 import { mountShell } from './shell.js';
+
+const icon = el('link', '');
+icon.rel = 'icon';
+icon.href = markUrl;
+document.head.append(icon);
 
 const root = document.getElementById('gallery');
 if (!(root instanceof HTMLElement)) throw new Error('gallery.html has no element with id "gallery"');

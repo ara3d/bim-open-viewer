@@ -5,6 +5,7 @@
 // demo has none yet the card shows a neutral placeholder rather than a broken image, so an
 // unfinished demo is visibly unfinished and not visibly broken.
 
+import mark from '../../../../docs/brand/viewer-mark.svg?raw';
 import { chapters, demosInChapter, type Demo, type DemoChapter } from './contracts.js';
 import { button, el, link } from './elements.js';
 import { basisLabel } from './fixtures.js';
@@ -84,10 +85,19 @@ const staticLead =
   'repository running npm run gallery also offers Snowdon Towers, a real model that this site ' +
   'cannot publish.';
 
+// The mark and the two-weight wordmark, linking back to the landing page.
+export const wordmark = (): HTMLElement => {
+  const made = link('wordmark', './', '');
+  const holder = el('span', '');
+  holder.innerHTML = mark;
+  made.append(holder.firstElementChild ?? holder, el('span', 'family', 'BIM Open'), el('span', 'product', 'Viewer'));
+  return made;
+};
+
 // Draws the index into the shell. Returns nothing to dispose: it is only elements.
 export const renderIndexPage = (shell: Shell, demos: readonly Demo[], duplicates: readonly string[]): void => {
   shell.reset();
-  shell.lead.append(el('span', 'wordmark', 'BIM Open Viewer'), el('span', 'wordmark-note', 'Demo gallery'));
+  shell.lead.append(wordmark(), el('span', 'wordmark-note', 'Demos'));
 
   const page = el('div', 'index-page');
   const rail = el('nav', 'chapter-rail');

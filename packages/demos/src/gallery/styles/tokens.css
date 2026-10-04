@@ -1,47 +1,55 @@
-/* The gallery's whole palette and type scale, in one place, so the Gratify theme bridge and the
-   DOM chrome read the same values (GALLERY-PLAN.md section 3).
+/* The gallery's whole palette and type scale, in one place, so the Gratify theme bridge
+   (`ui-gratify/src/theme.ts`) and the DOM chrome read the same values.
+
+   The values are the BIM Open family's (bim-open-toolkit `docs/BRANDING.md`): Instrument Sans for
+   the wordmark and headings, Public Sans for the interface, Fira Code for values and commands, the
+   family neutrals, and the viewer's teal as the one accent. The landing page reads this file too,
+   so the page and the gallery inside its frame are one look.
 
    Two rules hold here and nowhere else:
    - Analytical colours are never tokens. Coverage states, change types, timeline states and heat
      maps come from `workflows` and `features` with fixed values; switching theme or text size
      changes chrome only.
-   - No external font. The browser gate has no network, so every family is one a machine already
-     has, with a stack that degrades rather than falls back to a default the design did not expect. */
+   - The fonts are loaded from Google Fonts by the page head; the browser gate has no network, so
+     every stack ends in a face a machine already has and the layout never depends on the webfont. */
 
 :root {
   color-scheme: light;
 
-  --paper: #f4f1ea;
-  --panel: #fbfaf7;
-  --ink: #17181c;
-  --ink-muted: #6b6a66;
-  --rule: #d9d4c8;
-  --accent: #d1461f;
-  --link: #1f5bd1;
-  --viewport-clear: #1b1d22;
+  --paper: #f4f5f7;
+  --panel: #ffffff;
+  --ink: #171a1f;
+  --ink-muted: #5a606c;
+  --rule: #e3e6ea;
+  --edge: #cfd4db;
+  --accent: #0f8a80;
+  --accent-soft: #e2f3f1;
+  --link: #0f8a80;
+  /* The stage the model is drawn on: a shade below the page, so the model reads as the subject. */
+  --viewport-clear: #e8ebef;
 
   /* Derived, so a surface over the viewport does not need its own colour decision. */
-  --scrim: rgb(20 21 26 / 62%);
-  --on-dark: #ebe8e0;
-  --on-dark-muted: #a5a29a;
+  --scrim: rgb(255 255 255 / 82%);
+  --on-dark: #171a1f;
+  --on-dark-muted: #5a606c;
 
-  --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --body: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --display: "Instrument Sans", "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "Fira Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
 
   /* One multiplier drives the whole scale; big-text mode raises it and nothing is hidden. */
   --text-scale: 1;
-  --size-small: calc(13px * var(--text-scale));
-  --size-body: calc(15px * var(--text-scale));
-  --size-lead: calc(18px * var(--text-scale));
-  --size-title: calc(24px * var(--text-scale));
-  --size-display: calc(34px * var(--text-scale));
+  --size-small: calc(12.5px * var(--text-scale));
+  --size-body: calc(14px * var(--text-scale));
+  --size-lead: calc(17px * var(--text-scale));
+  --size-title: calc(22px * var(--text-scale));
+  --size-display: calc(30px * var(--text-scale));
 
   --gap: 12px;
   --gap-wide: 20px;
-  --radius: 3px;
-  --rail-width: 220px;
-  --inspector-width: 360px;
+  --radius: 6px;
+  --rail-width: 200px;
+  --inspector-width: 340px;
   --bar-height: 48px;
   --motion: 160ms;
 }
@@ -49,15 +57,19 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --paper: #141519;
-  --panel: #1c1e24;
-  --ink: #ebe8e0;
-  --ink-muted: #9a978f;
-  --rule: #2c2f37;
-  --accent: #e8623a;
-  --link: #6b93ff;
-  --viewport-clear: #0e0f12;
-  --scrim: rgb(8 9 12 / 70%);
+  --paper: #141619;
+  --panel: #1d2026;
+  --ink: #e9ebef;
+  --ink-muted: #a3a9b4;
+  --rule: #2c3038;
+  --edge: #434955;
+  --accent: #3cc0b4;
+  --accent-soft: #15302d;
+  --link: #3cc0b4;
+  --viewport-clear: #0f1114;
+  --scrim: rgb(20 22 26 / 82%);
+  --on-dark: #e9ebef;
+  --on-dark-muted: #a3a9b4;
 }
 
 :root[data-text="big"] {

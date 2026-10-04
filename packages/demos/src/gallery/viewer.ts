@@ -66,13 +66,28 @@ import type { FrameInfo, GalleryViewer, ModelSource, OpenedModel } from './contr
 // The material every model is bound with: one shade below opaque, so per-instance opacity works.
 export const blendableMaterial = { ...defaultMaterial, opacity: 0.999 };
 
-// The gallery's viewport: dark, so the light chrome around it reads as paper. Analytical colours
-// are never theme tokens, and this is not one; it is the clear colour behind the model.
-export const galleryEnvironment: EnvironmentSettings = {
-  ...defaultEnvironment,
-  background: [0.106, 0.114, 0.133],
-  grid: { ...defaultEnvironment.grid, color: [0.19, 0.2, 0.23], emphasisColor: [0.27, 0.28, 0.32] },
-};
+// The gallery's stage, one for each theme: a shade below the page in the light theme, so the model
+// reads as the subject, and near-black in the dark one. The values are `--viewport-clear` from
+// `styles/tokens.css`. Analytical colours are never theme tokens, and this is not one; it is the
+// clear colour behind the model.
+export const galleryEnvironmentFor = (theme: 'light' | 'dark'): EnvironmentSettings =>
+  theme === 'dark'
+    ? {
+        ...defaultEnvironment,
+        background: [0.059, 0.067, 0.078],
+        grid: { ...defaultEnvironment.grid, color: [0.16, 0.17, 0.2], emphasisColor: [0.24, 0.25, 0.29] },
+      }
+    : {
+        ...defaultEnvironment,
+        background: [0.91, 0.922, 0.937],
+        grid: { ...defaultEnvironment.grid, color: [0.82, 0.84, 0.87], emphasisColor: [0.72, 0.74, 0.78] },
+      };
+
+// The light stage, for a caller that names none.
+export const galleryEnvironment: EnvironmentSettings = galleryEnvironmentFor('light');
+
+// The theme the page is in, read off the root element the shell writes it to.
+const pageTheme = (): 'light' | 'dark' => (document.documentElement.dataset['theme'] === 'dark' ? 'dark' : 'light');
 
 // How a viewer is composed, for a caller that wants something other than the gallery's own look.
 export type GalleryViewerOptions = {
@@ -114,7 +129,7 @@ export const createGalleryViewer = (
   // request to draw a picture, and nothing later can give it one.
   const canvas = viewportCanvas();
   container.append(canvas);
-  const core = new Viewer({ background: 0x1b1d22 });
+  const core = new Viewer({ background: pageTheme() === 'dark' ? 0x0f1114 : 0xe8ebef });
   const ratio = options.maxPixelRatio ?? 2;
   try {
     core.attach(canvas);
@@ -194,10 +209,17 @@ export const createGalleryViewer = (
     if (environmentIsDemos) return;
     environment?.dispose();
     environment = undefined;
-    const settings = options.environment ?? galleryEnvironment;
+    const settings = options.environment ?? galleryEnvironmentFor(pageTheme());
     const applied = applyEnvironment(environmentTarget(core, upVector(settings.up)), settings, bounds);
     if (applied.ok) environment = applied.value;
   };
+
+  // The stage follows the theme: when the shell rewrites `data-theme`, the gallery's own
+  // environment is applied again. A demo that owns the environment is left alone.
+  const themeFollows = new MutationObserver(() => {
+    if (opened.length > 0) applyEnvironmentTo(framed());
+  });
+  themeFollows.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   const open = async (source: ModelSource): Promise<Result<ModelRef>> => {
     const resolved = await resolveModelSource(source);
@@ -316,6 +338,7 @@ export const createGalleryViewer = (
       window.cancelAnimationFrame(frame);
       listeners.clear();
       sizes.disconnect();
+      themeFollows.disconnect();
       cameraFollowsSlice.dispose();
       drawing?.dispose();
       drawing = undefined;

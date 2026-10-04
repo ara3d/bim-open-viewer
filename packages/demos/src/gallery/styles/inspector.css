@@ -54,13 +54,12 @@
 
 .inspector-title {
   margin: 0;
-  font: var(--size-body) / 1.2 var(--display);
-  font-weight: 600;
+  font: 600 var(--size-body) / 1.2 var(--display);
 }
 
 .inspector-toggle {
   padding: 3px 8px;
-  font: var(--size-small) / 1.2 var(--body);
+  font: 500 var(--size-small) / 1.2 var(--body);
   color: var(--ink);
   background: transparent;
   border: 1px solid var(--rule);
@@ -74,7 +73,8 @@
 
 .sheet-title {
   margin: 0 0 2px;
-  font: var(--size-lead) / 1.2 var(--display);
+  font: 700 var(--size-lead) / 1.2 var(--display);
+  letter-spacing: -0.01em;
 }
 
 .sheet-subtitle {
@@ -85,9 +85,10 @@
 
 .sheet-group-title,
 .sheet-table-title {
-  margin: var(--gap) 0 6px;
-  font: var(--size-small) / 1.2 var(--body);
-  font-weight: 600;
+  margin: var(--gap-wide) 0 6px;
+  font: 600 calc(var(--size-small) * 0.92) / 1.2 var(--body);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink-muted);
 }
 
@@ -106,7 +107,8 @@
 .sheet-value {
   margin: 0;
   font-family: var(--mono);
-  font-size: var(--size-small);
+  font-size: calc(var(--size-small) * 0.95);
+  overflow-wrap: anywhere;
   /* `--state-color` is analytical: it comes from `analytical.ts`, never from a theme token. */
   border-left: 3px solid var(--state-color, transparent);
   padding-left: 6px;

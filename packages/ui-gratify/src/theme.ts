@@ -16,29 +16,31 @@ const hex = (value: number, alpha = 1): Color =>
 // its own surface. `bg` is the only token whose alpha matters.
 const clear: Color = rgb(0, 0, 0, 0);
 
+// The BIM Open family values (bim-open-toolkit `docs/BRANDING.md`), the same ones the gallery's
+// `styles/tokens.css` holds: the viewer's teal as the accent, the family neutrals around it.
 const lightPalette: GalleryPalette = {
   bg: clear,
-  surface: hex(0xfbfaf7),
-  surfaceHi: hex(0xf4f1ea),
-  muted: hex(0xd9d4c8),
-  text: hex(0x17181c),
-  textDim: hex(0x6b6a66),
+  surface: hex(0xffffff),
+  surfaceHi: hex(0xf4f5f7),
+  muted: hex(0xe3e6ea),
+  text: hex(0x171a1f),
+  textDim: hex(0x5a606c),
   textBright: hex(0x08090b),
-  accent: hex(0xd1461f),
-  accent2: hex(0x1f5bd1),
-  danger: hex(0xb3261e),
+  accent: hex(0x0f8a80),
+  accent2: hex(0x0f8a80),
+  danger: hex(0xdc2626),
 };
 
 const darkPalette: GalleryPalette = {
   bg: clear,
-  surface: hex(0x1c1e24),
-  surfaceHi: hex(0x262932),
-  muted: hex(0x2c2f37),
-  text: hex(0xebe8e0),
-  textDim: hex(0x9a978f),
-  textBright: hex(0xfaf8f3),
-  accent: hex(0xe8623a),
-  accent2: hex(0x6b93ff),
+  surface: hex(0x1d2026),
+  surfaceHi: hex(0x262a31),
+  muted: hex(0x2c3038),
+  text: hex(0xe9ebef),
+  textDim: hex(0xa3a9b4),
+  textBright: hex(0xffffff),
+  accent: hex(0x3cc0b4),
+  accent2: hex(0x3cc0b4),
   danger: hex(0xff6b6b),
 };
 

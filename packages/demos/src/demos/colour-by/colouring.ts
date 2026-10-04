@@ -77,10 +77,6 @@ const categoryColours: readonly Color[] = [
   [0.6, 0.87, 0.54],
 ];
 
-// The ends of the storey ramp, which runs from the lowest storey to the highest.
-const storeyLow: Color = [0.2, 0.4, 0.75];
-const storeyHigh: Color = [0.9, 0.55, 0.15];
-
 // The colour of the entry that stands for every value past the named ones.
 export const otherColour: Color = [0.78, 0.78, 0.8];
 
@@ -151,16 +147,16 @@ const inStoreyOrder = (names: readonly string[], elevations: ReadonlyMap<string,
     return left.localeCompare(right);
   });
 
-// The ramp one swatch per storey is drawn from.
-const storeyRamp = (count: number): readonly Color[] =>
-  Array.from({ length: count }, (_unused, step) => {
-    const fraction = count <= 1 ? 0 : step / (count - 1);
-    return [
-      storeyLow[0] + (storeyHigh[0] - storeyLow[0]) * fraction,
-      storeyLow[1] + (storeyHigh[1] - storeyLow[1]) * fraction,
-      storeyLow[2] + (storeyHigh[2] - storeyLow[2]) * fraction,
-    ];
-  });
+// What a swatch calls an IFC category: "IFCWALLSTANDARDCASE" reads as "Wall standard case". A name
+// that is not an IFC class is shown as recorded. The legend's value stays the raw category, so the
+// rule still matches the column; only the label changes.
+export const categoryLabel = (value: string): string => {
+  const match = /^IFC([A-Z0-9]+)$/u.exec(value);
+  if (match === null) return value;
+  const words = (match[1] ?? '').toLowerCase().replace(/(element|standard|case|part|proxy|segment|fitting|terminal|member)/gu, ' $1 ');
+  const text = words.replace(/\s+/gu, ' ').trim();
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};
 
 const paletteOf = (
   values: readonly string[],
@@ -173,7 +169,7 @@ const paletteOf = (
   entries: [
     ...values.map((value, index) => ({
       value,
-      label: value,
+      label: categoryLabel(value),
       color: colours[index % colours.length] ?? missingColour,
     })),
     ...(folded ? [{ value: otherValue, label: otherLabel, color: otherColour }] : []),
@@ -234,7 +230,7 @@ const categoryColouring = (index: InspectIndex, column: 'category' | 'storey'): 
   const values = column === 'storey' ? inStoreyOrder(kept, elevationsOf(index)) : kept;
   const palette = paletteOf(
     values,
-    column === 'category' ? categoryColours : storeyRamp(values.length),
+    categoryColours,
     column === 'category' ? 'Category' : 'Storey',
     column === 'category' ? 'No category recorded' : 'No storey link recorded',
     folded,

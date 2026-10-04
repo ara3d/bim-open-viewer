@@ -104,6 +104,7 @@
 .sheet-label {
   font-size: var(--size-small);
   color: var(--ink-muted);
+  overflow-wrap: anywhere;
 }
 
 .sheet-value {

@@ -24,6 +24,8 @@ export {
   INSTANCE_ALPHA_ATTRIBUTE,
   MIN_VISIBLE_ALPHA,
   patchMaterialForInstanceAlpha,
+  setSectionCap,
+  SECTION_CAP_LINE,
 } from './instance-alpha.js';
 export { SceneObject } from './scene-object.js';
 export { Viewer, type ViewerOptions } from './viewer.js';

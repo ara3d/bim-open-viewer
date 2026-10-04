@@ -18,7 +18,7 @@ import {
   type Ray,
 } from '@bim-open-viewer/render';
 import type { Color, Vec3 } from '@bim-open-viewer/model';
-import type { InstancedGroup, SceneObject, Viewer } from '@bim-open-viewer/core';
+import { setSectionCap, type InstancedGroup, type SceneObject, type Viewer } from '@bim-open-viewer/core';
 import {
   BufferGeometry,
   Color as ThreeColor,
@@ -30,6 +30,7 @@ import {
   LineBasicMaterial,
   LineSegments,
   Mesh,
+  MeshStandardMaterial,
   Plane,
   Raycaster,
   Vector3,
@@ -76,6 +77,9 @@ export const raycastSource = (
 type MaterialHolder = { material: Material | Material[] };
 const carriesMaterial = (node: Object3D): node is Object3D & MaterialHolder => node instanceof Mesh;
 
+// The flat colour a cut solid shows where its inside would be (dark warm grey, output space).
+const SECTION_CAP_COLOR: Vec3 = [0.3, 0.29, 0.28];
+
 // Puts clipping planes on every material of the mirror. viewer-core has no renderer-wide plane
 // list, so each material is set in turn and local clipping is switched on while any plane is held.
 export const clippingTarget = (viewer: Viewer): ClippingTarget => ({
@@ -85,6 +89,7 @@ export const clippingTarget = (viewer: Viewer): ClippingTarget => ({
     );
     const put = (material: Material): void => {
       material.clippingPlanes = held.length === 0 ? null : held;
+      if (material instanceof MeshStandardMaterial) setSectionCap(material, held.length === 0 ? undefined : SECTION_CAP_COLOR);
       material.needsUpdate = true;
     };
     viewer.objects.scene.traverse((node) => {

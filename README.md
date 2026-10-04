@@ -110,7 +110,7 @@ other demos open a generated building from `@bim-open-viewer/synthetic`.
 | Building | Models drawn together | Licence |
 |---|---|---|
 | Schependomlaan, a ten-apartment block | architecture (one Archicad design model) | CC BY 4.0, (C) original owners |
-| DigitalHub, an office building of RWTH Aachen University | architecture, and heating in red | MIT, (c) 2020 RWTH Aachen University, E3D |
+| DigitalHub, an office building of RWTH Aachen University | architecture, heating in red, ventilation in teal, plumbing in violet | MIT, (c) 2020 RWTH Aachen University, E3D |
 | Duplex Apartment, a two-unit house | architecture, MEP in blue, electrical in amber, rooms and heating in red | CC BY 4.0, BSI (2020), buildingSMART International |
 
 Each building is the `public-buildings` demo on one fixture
@@ -120,12 +120,13 @@ three because their volumes enclose the rooms. Clicking an element reads its nam
 model, storey and property sets in the inspector. The page shows each building's credit line under
 the viewport and on its landing-page card.
 
-DigitalHub's ventilation and plumbing models are not drawn: bim-open-data has them only inside a
-federated archive with no geometry. The Duplex's electrical and rooms models repeat 104 and 344
-elements of its MEP model, so those elements are drawn twice.
+DigitalHub and the Duplex are each one federated file (`digitalhub-federated.bos`,
+`duplex-federated.bos`) holding four source models with their geometry. The demo colours each
+object by the `Document` column of `Entities`, which names its source model. In the Duplex, 448
+GlobalIds appear in more than one model, so those elements are drawn twice.
 
 The files are BIM Open Schema archives from
-[ara3d/bim-open-data](https://github.com/ara3d/bim-open-data/tree/main/samples/public), 3.3 MB in
+[ara3d/bim-open-data](https://github.com/ara3d/bim-open-data/tree/main/samples/public), 6.6 MB in
 all, and are not committed here. `packages/demos/src/demos/public-buildings/buildings.ts` lists
 them and pins the bim-open-data commit they are read at; `npm run pages` downloads them from
 raw.githubusercontent.com into `artifacts/public-samples/<commit>/` (git-ignored) and copies them,

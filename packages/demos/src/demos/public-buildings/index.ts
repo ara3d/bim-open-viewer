@@ -1,13 +1,13 @@
 // Public buildings: three openly licensed real buildings, each drawn with every discipline model
 // that has geometry, and an element read back by clicking it.
 //
-// A fixture opens the building's first model; `start` opens the rest into the same scene. Every
-// model is loaded under its own model id, because a BOS load names every model "model" and two
-// models with one id would share object keys, and a click on the heating model would read an
-// architecture object.
+// A fixture opens the building's first file; `start` opens the rest into the same scene. Every
+// file is loaded under its own model id, because a BOS load names every model "model" and two
+// models with one id would share object keys. A federated building is one file holding several
+// source models, told apart by each entity's `Document`; they are drawn and named by document.
 
 import { appearanceFeature, editsFeature, setsFeature, setsSlice } from '@bim-open-viewer/features';
-import { loadModel } from '@bim-open-viewer/formats';
+import { documentOfObject, loadModel } from '@bim-open-viewer/formats';
 import {
   diagnostic,
   disposable,
@@ -37,13 +37,14 @@ import {
 import type { DemoReport } from '../../feature-demos/_shared/protocol.js';
 import type { Demo, DemoFixture, GalleryViewer, ModelSource, OpenedModel } from '../../gallery/contracts.js';
 import { galleryLoadOptions } from '../../gallery/model-source.js';
-import { inspectIndexOf, storeyOfObject, type InspectIndex } from '../point-and-read/building.js';
+import { inspectIndexOf, noModelDocuments, storeyOfObject, type InspectIndex } from '../point-and-read/building.js';
 import { propertyGroupsOf } from '../point-and-read/inspector.js';
 import {
   publicBuildings,
   publicSamplesCommit,
   publicSamplesNotice,
   publicSamplesPath,
+  type DisciplineColour,
   type PublicBuilding,
   type PublicModel,
 } from './buildings.js';
@@ -82,7 +83,7 @@ const fixtureOf = (building: PublicBuilding): DemoFixture => ({
 
 export const publicBuildingFixtures: readonly DemoFixture[] = publicBuildings.map(fixtureOf);
 
-// One open discipline model and the lookups the sheet reads.
+// One open file and the lookups the sheet reads.
 type HeldModel = { readonly model: PublicModel; readonly opened: OpenedModel; readonly index: InspectIndex };
 
 // What the demo has open. Module state, like point-and-read's index, because the sheet is a pure
@@ -114,34 +115,80 @@ const ruleId = (name: string): string => `public-buildings/${name}`;
 const drawnKeys = (one: HeldModel): readonly ObjectKey[] =>
   one.opened.data.objects.flatMap((record, row) => (record.representation === undefined ? [] : [one.opened.keys[row] ?? '']));
 
+// One discipline as drawn: a whole single-discipline file, or one source model of a federated file.
+type Part = {
+  readonly id: string;
+  readonly discipline: string;
+  readonly colour: DisciplineColour | undefined;
+  readonly model: HeldModel;
+  // How many objects the part has, and the keys of those that draw something.
+  readonly objects: number;
+  readonly keys: readonly ObjectKey[];
+};
+
+// The title of the source document an object row came from, when the file names one.
+const documentTitleOf = (one: HeldModel, row: number): string | undefined => {
+  const documents = one.opened.documents ?? noModelDocuments;
+  const document = documentOfObject(documents, row);
+  return document < 0 ? undefined : documents.title[document];
+};
+
+// The parts of one open file. A file with no parts is one part; a federated file is one part per
+// listed document, and an object whose document is not listed belongs to none.
+const partsOfModel = (one: HeldModel): readonly Part[] => {
+  if (one.model.parts === undefined)
+    return [
+      {
+        id: one.model.file,
+        discipline: one.model.discipline,
+        colour: one.model.colour,
+        model: one,
+        objects: one.opened.data.objects.length,
+        keys: drawnKeys(one),
+      },
+    ];
+  return one.model.parts.map((part) => {
+    const rows = one.opened.data.objects.flatMap((_record, row) => (documentTitleOf(one, row) === part.document ? [row] : []));
+    return {
+      id: `${one.model.file}#${part.document}`,
+      discipline: part.discipline,
+      colour: part.colour,
+      model: one,
+      objects: rows.length,
+      keys: rows.flatMap((row) => (one.opened.data.objects[row]?.representation === undefined ? [] : [one.opened.keys[row] ?? ''])),
+    };
+  });
+};
+
+const partsOf = (now: Held): readonly Part[] => now.models.flatMap(partsOfModel);
+
 // How the building is drawn: spaces hidden, because their volumes enclose every room and hide what
-// is in it; each coloured discipline in its colour; and, when there is more than one model, the
-// architecture ghosted so the systems inside it show.
+// is in it; each coloured discipline in its colour; and, when there is more than one discipline,
+// the uncoloured one, the architecture, ghosted so the systems inside it show.
 export const publicBuildingRules = (now: Held): readonly StyleRule[] => {
   const spaces = now.models.flatMap((one) =>
     drawnKeys(one).filter((key) => one.index.records.get(key)?.category === 'IFCSPACE'),
   );
-  const first = now.models[0];
+  const parts = partsOf(now);
   return [
     styleRule(ruleId('spaces'), 'Spaces hidden', spaces, { visible: false }, 10),
-    ...(first !== undefined && now.models.length > 1
-      ? [styleRule(ruleId('ghost'), `${first.model.discipline} ghosted`, drawnKeys(first), { opacity: ghostOpacity }, 5)]
-      : []),
-    ...now.models.flatMap((one) =>
-      one.model.colour === undefined
-        ? []
-        : [styleRule(ruleId(one.model.file), `${one.model.discipline} in ${one.model.colour.name}`, drawnKeys(one), { color: one.model.colour.rgb }, 5)],
-    ),
+    ...parts.flatMap((part) => {
+      if (part.colour !== undefined)
+        return [styleRule(ruleId(part.id), `${part.discipline} in ${part.colour.name}`, part.keys, { color: part.colour.rgb }, 5)];
+      return parts.length > 1
+        ? [styleRule(ruleId(`ghost-${part.id}`), `${part.discipline} ghosted`, part.keys, { opacity: ghostOpacity }, 5)]
+        : [];
+    }),
   ];
 };
 
 // The box the coloured disciplines occupy, which is what the camera frames when there are any: the
 // whole site of a federated building puts its systems too far away to see.
 export const colouredBounds = (now: Held): Bounds | undefined => {
-  const box = now.models
-    .filter((one) => one.model.colour !== undefined)
-    .flatMap((one) => drawnKeys(one).flatMap((key) => {
-      const found = one.index.bounds.get(key);
+  const box = partsOf(now)
+    .filter((part) => part.colour !== undefined)
+    .flatMap((part) => part.keys.flatMap((key) => {
+      const found = part.model.index.bounds.get(key);
       return found === undefined ? [] : [found];
     }))
     .reduce(unionBounds, emptyBounds);
@@ -201,11 +248,11 @@ const pickedOf = (session: Session): { readonly key: ObjectKey; readonly in: Hel
   return key === undefined || found === undefined ? undefined : { key, in: found };
 };
 
-// What the sheet says about one model: its size and how it is drawn.
-const drawnAs = (now: Held, one: HeldModel): string => {
-  const objects = `${String(one.opened.data.objects.length)} objects`;
-  if (one.model.colour !== undefined) return `${objects}, drawn in ${one.model.colour.name}`;
-  return now.models.length > 1 && one === now.models[0] ? `${objects}, ghosted` : objects;
+// What the sheet says about one part: its size and how it is drawn.
+const drawnAs = (parts: readonly Part[], part: Part): string => {
+  const objects = `${String(part.objects)} objects`;
+  if (part.colour !== undefined) return `${objects}, drawn in ${part.colour.name}`;
+  return parts.length > 1 ? `${objects}, ghosted` : objects;
 };
 
 const buildingGroup = (now: Held): PropertyGroup =>
@@ -215,12 +262,19 @@ const buildingGroup = (now: Held): PropertyGroup =>
     propertyRow('licence', 'Licence', knownValue(now.building.licence.name)),
     propertyRow('notice', 'Notice', knownValue(`${publicSamplesPath}${publicSamplesNotice}`)),
     propertyRow('source', 'Source IFC files', knownValue(now.building.upstream)),
-    ...now.models.map((one) =>
-      propertyRow(`model-${one.model.file}`, one.model.discipline, knownValue(drawnAs(now, one), one.model.file)),
+    ...partsOf(now).map((part, _row, parts) =>
+      propertyRow(`model-${part.id}`, part.discipline, knownValue(drawnAs(parts, part), part.model.model.file)),
     ),
     propertyRow('spaces', 'Spaces', knownValue('hidden: their volumes enclose the rooms')),
     ...(now.building.omitted === undefined ? [] : [propertyRow('omitted', 'Not drawn', knownValue(now.building.omitted))]),
   ]);
+
+// The discipline of the picked object: its source model's when the file is federated.
+const disciplineOf = (one: HeldModel, key: ObjectKey): string => {
+  const row = one.index.rowOf.get(key) ?? -1;
+  const title = documentTitleOf(one, row);
+  return one.model.parts?.find((part) => part.document === title)?.discipline ?? one.model.discipline;
+};
 
 const pickedGroups = (session: Session): readonly PropertyGroup[] => {
   const picked = pickedOf(session);
@@ -237,7 +291,7 @@ const pickedGroups = (session: Session): readonly PropertyGroup[] => {
         'Category',
         record?.category === undefined ? missingValue('the file records no category') : knownValue(record.category),
       ),
-      propertyRow('model', 'Model', knownValue(picked.in.model.discipline, picked.in.model.file)),
+      propertyRow('model', 'Model', knownValue(disciplineOf(picked.in, picked.key), picked.in.model.file)),
       propertyRow('storey', 'Storey', storey?.name === undefined ? missingValue('nothing links it to a storey') : knownValue(storey.name)),
     ]),
     ...propertyGroupsOf(index, picked.key),

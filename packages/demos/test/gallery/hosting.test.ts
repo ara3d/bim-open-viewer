@@ -24,13 +24,11 @@ describe('hosted demos', () => {
     expect(hostedDemos(demos, false)).toBe(demos);
   });
 
-  it('drops server-only fixtures, and any demo left without one, on the static site', () => {
-    const hosted = hostedDemos(demos, true);
-    expect(hosted.map((one) => one.id)).toEqual(['both']);
-    expect(hosted[0]?.fixtures.map((one) => one.id)).toEqual(['generated']);
+  it('drops server-only and generated fixtures, and any demo left without one, on the static site', () => {
+    expect(hostedDemos(demos, true)).toEqual([]);
   });
 
-  it('drops a generated fixture on the static site when a real one remains', () => {
+  it('keeps the real fixtures of a demo on the static site', () => {
     const demo = withFixtures('mixed', [fixture('private', true), fixture('real', false, 'source-backed'), fixture('generated')]);
     expect(hostedDemos([demo], true)[0]?.fixtures.map((one) => one.id)).toEqual(['real']);
     expect(hostedDemos([demo], false)[0]?.fixtures.map((one) => one.id)).toEqual(['private', 'real', 'generated']);

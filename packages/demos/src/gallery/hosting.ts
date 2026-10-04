@@ -8,7 +8,8 @@
 //
 // The static site also drops a generated fixture from any demo that still has a real one: a visitor
 // came to see a building, and the generated one exists for the gaps and conflicts the dev gallery
-// studies. A demo whose only fixtures are generated keeps them, so it is shown rather than lost.
+// studies. A demo with no real fixture is left out of the static site altogether: the site shows
+// real buildings, and the dev gallery still has the demo.
 
 import type { Demo, DemoFixture } from './contracts.js';
 
@@ -17,9 +18,7 @@ export const staticSite: boolean = import.meta.env['VITE_GALLERY_STATIC'] === 't
 
 // The fixtures of one demo as the static site offers them.
 export const staticFixtures = (fixtures: readonly DemoFixture[]): readonly DemoFixture[] => {
-  const openable = fixtures.filter((fixture) => fixture.servedLocally !== true);
-  const real = openable.filter((fixture) => fixture.basis !== 'synthetic');
-  return real.length > 0 ? real : openable;
+  return fixtures.filter((fixture) => fixture.servedLocally !== true && fixture.basis !== 'synthetic');
 };
 
 // The demos as this host can run them: each with only the fixtures it can open, and none without one.

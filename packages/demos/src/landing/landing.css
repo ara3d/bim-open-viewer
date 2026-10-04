@@ -1,73 +1,136 @@
-/* The landing page in the BIM Open family look (bim-open-toolkit docs/BRANDING.md): the viewer's
-   teal accent, the family neutrals, Instrument Sans for the wordmark and headings, Public Sans for
-   text, Fira Code for commands. The gallery keeps its own chrome. */
+/* The landing page in the BIM Open family look. The colours and fonts are the gallery's tokens
+   (`../gallery/styles/tokens.css`), so the page and the demo framed inside it are one look; this
+   file holds only the layout. The dark theme follows the machine, as the gallery's does by default. */
 
-:root {
-  color-scheme: light;
-  --accent: #0f8a80;
-  --accent-soft: #e2f3f1;
-  --text: #171a1f;
-  --dim: #5a606c;
-  --surface: #ffffff;
-  --background: #f4f5f7;
-  --border: #e3e6ea;
-  --font-brand: "Instrument Sans", "Public Sans", "Segoe UI", system-ui, sans-serif;
-  --font-ui: "Public Sans", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "Fira Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #141619;
+    --panel: #1d2026;
+    --ink: #e9ebef;
+    --ink-muted: #a3a9b4;
+    --rule: #2c3038;
+    --edge: #434955;
+    --accent: #3cc0b4;
+    --accent-soft: #15302d;
+    --link: #3cc0b4;
+    --viewport-clear: #0f1114;
+  }
 }
 
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--text);
-  font: 400 15px/1.55 var(--font-ui);
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 15px/1.55 var(--body);
+  overflow-wrap: break-word;
 }
 
-a { color: var(--accent); }
+img { max-width: 100%; }
+a { color: var(--accent); text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+code { font: 400 0.9em var(--mono); }
+p code { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
 
-.landing { max-width: 1120px; margin: 0 auto; padding: 28px 16px 48px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; letter-spacing: -0.015em; margin: 0; }
+h2 { font-size: 26px; font-weight: 700; }
+h3 { font-size: 17px; font-weight: 700; }
 
-.lockup { display: flex; align-items: center; gap: 12px; }
-.lockup svg { width: 48px; height: 48px; flex: none; }
-.wordmark { margin: 0; font: 600 28px/1 var(--font-brand); letter-spacing: -0.01em; }
-.wordmark .family { color: var(--dim); }
-.wordmark .product { font-weight: 700; color: var(--text); margin-left: 0.27em; }
+/* The two-weight wordmark, as every BIM Open page sets it. */
+.wordmark {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--display); font-size: 18px; letter-spacing: -0.01em;
+  color: inherit; text-decoration: none; white-space: nowrap;
+}
+.wordmark svg { width: 24px; height: 24px; flex: none; color: var(--accent); }
+.wordmark svg path { fill: currentColor; }
+.wordmark .family { font-weight: 600; color: var(--ink-muted); margin-right: 0.27em; }
+.wordmark .product { font-weight: 700; color: var(--ink); }
 
-.intro { max-width: 70ch; margin: 20px 0 8px; font-size: 16px; }
+/* Top bar */
+.topbar { position: sticky; top: 0; z-index: 2; background: var(--panel); border-bottom: 1px solid var(--rule); }
+.topbar-inner {
+  max-width: 1180px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap;
+}
+.topbar nav { display: flex; gap: 4px 20px; flex-wrap: wrap; font-size: 14px; font-weight: 500; }
+.topbar nav a { color: var(--ink); text-decoration: none; }
+.topbar nav a:hover { color: var(--accent); }
 
-.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 28px; padding: 0; list-style: none; font-weight: 500; }
+.landing { max-width: 1180px; margin: 0 auto; padding: 0 20px 48px; }
 
-h2 { font: 600 20px/1.2 var(--font-brand); margin: 0 0 12px; }
+/* Hero */
+.hero { padding: 56px 0 28px; max-width: 880px; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 46px); font-weight: 700; }
+.lede { margin: 18px 0 0; font-size: 17px; color: var(--ink-muted); max-width: 70ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 22px 0 0; padding: 0; font-size: 13px; font-weight: 500; }
+.facts span { padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); }
 
-.stage { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+/* Sections */
+section { padding: 32px 0 8px; }
+.section-head { margin-bottom: 16px; }
+.section-lede { margin: 6px 0 0; color: var(--ink-muted); max-width: 76ch; }
+
+/* The chips and the stage */
+.chip-rows { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; }
+.chip-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.chip-label { font: 600 11.5px/1 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); min-width: 64px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  padding: 6px 12px; border: 1px solid var(--rule); border-radius: 999px;
+  background: var(--panel); color: var(--ink); font: 500 13.5px/1.2 var(--body); cursor: pointer;
+  transition: border-color var(--motion) ease, background var(--motion) ease, color var(--motion) ease;
+}
+.chip:hover:not(:disabled) { border-color: var(--accent); }
+.chip[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip:disabled { opacity: 0.4; cursor: default; }
+
+.stage {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 1px 2px rgb(23 26 31 / 6%), 0 12px 40px -24px rgb(23 26 31 / 35%);
+}
+.stage iframe { display: block; width: 100%; height: min(74vh, 720px); border: 0; background: var(--viewport-clear); }
 .stage-bar {
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px;
-  padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px;
+  padding: 10px 16px; border-top: 1px solid var(--rule); font-size: 13.5px;
 }
-.stage-title { font-weight: 600; margin-right: 8px; }
-.stage-question { color: var(--dim); }
-.stage iframe { display: block; width: 100%; height: min(72vh, 680px); border: 0; background: #1b1d22; }
+.stage-question { color: var(--ink-muted); }
+.full-page { font-weight: 500; }
 
-.demos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
-.demo {
-  display: flex; flex-direction: column; gap: 6px;
-  padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+/* Buildings */
+.building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px; }
+.building {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 10px;
 }
-.demo[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
-.demo h3 { font: 600 15px/1.3 var(--font-brand); margin: 0; }
-.demo p { margin: 0; font-size: 13px; color: var(--dim); flex: 1; }
-.demo-actions { display: flex; gap: 14px; font-size: 13px; font-weight: 500; }
-.demo-actions button {
-  padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline;
+.building-picture { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--viewport-clear); border-bottom: 1px solid var(--rule); }
+.building-body { display: flex; flex-direction: column; gap: 8px; padding: 16px; flex: 1; }
+.building-body p { margin: 0; }
+.building-body > p:not(.credit):not(.parts) { color: var(--ink-muted); font-size: 14px; flex: 1; }
+.parts { font: 400 12px/1.4 var(--mono); color: var(--accent); }
+.credit { font-size: 12px; color: var(--ink-muted); }
+.demo-actions { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 6px 0 0; font-size: 13.5px; font-weight: 500; }
+
+/* Use it */
+.use-columns { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; align-items: start; }
+.code {
+  margin: 0; padding: 16px 18px; overflow: auto;
+  background: #171a1f; color: #e9ebef; border-radius: 10px;
+  font: 400 13px/1.6 var(--mono); tab-size: 2;
 }
-.basis { font: 400 11px/1.4 var(--font-mono); color: var(--dim); }
+.points { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--ink-muted); }
+.points strong { color: var(--ink); font-weight: 600; }
 
-h2.section { margin-top: 32px; }
-.demos.buildings { margin-top: 0; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
-.building-picture { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; background: #1b1d22; }
-.demo .credit { flex: none; font-size: 12px; }
+/* Footer */
+.site-footer { max-width: 1180px; margin: 0 auto; padding: 24px 20px 56px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-muted); }
+.site-footer p { margin: 0 0 10px; max-width: 90ch; }
+.footnote { font-size: 13px; }
 
-.footnote { margin-top: 32px; font-size: 13px; color: var(--dim); max-width: 80ch; }
-code { font: 400 12.5px var(--font-mono); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 4px; }
+@media (max-width: 760px) {
+  .hero { padding-top: 32px; }
+  .use-columns { grid-template-columns: minmax(0, 1fr); }
+  .chip-label { min-width: 0; }
+}

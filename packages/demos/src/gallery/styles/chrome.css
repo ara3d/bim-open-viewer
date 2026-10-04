@@ -14,7 +14,8 @@
 
 .bar-lead {
   display: flex;
-  gap: var(--gap-wide);
+  flex-wrap: wrap;
+  gap: 6px var(--gap-wide);
   align-items: baseline;
   min-width: 0;
   flex: 1;
@@ -100,13 +101,12 @@
 .breadcrumb,
 .fixture-picker {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 4px 10px;
   align-items: baseline;
   min-width: 0;
   font-size: var(--size-small);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .crumb,
@@ -141,14 +141,26 @@ a.crumb:hover,
   text-decoration: none;
 }
 
+/* Under the status strip: where the demo's source is and how to check it. */
+.meta-line {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--gap-wide);
+  margin: 0;
+  padding: 0 var(--gap-wide) 8px;
+  font-size: calc(var(--size-small) * 0.92);
+  color: var(--ink-muted);
+  background: var(--panel);
+}
+
 .bar-source,
 .bar-verify {
-  display: flex;
+  display: inline-flex;
   gap: 6px;
   align-items: baseline;
   margin: 0;
   min-width: 0;
-  font-size: var(--size-small);
 }
 
 .bar-source .label,
@@ -165,10 +177,19 @@ a.crumb:hover,
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: 1px 5px;
-  max-width: 34ch;
+  max-width: 48ch;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Framed by the landing page, which carries the bar itself. */
+.gallery-embedded .gallery-bar {
+  display: none;
+}
+
+.gallery-embedded .meta-line {
+  display: none;
 }
 
 .gallery-main {

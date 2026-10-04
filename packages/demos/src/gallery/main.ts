@@ -30,6 +30,7 @@ if (!(root instanceof HTMLElement)) throw new Error('gallery.html has no element
 
 const shell = mountShell(root, applyGalleryTheme);
 const route = parseRoute(window.location.search);
+if (route.embed === true) root.classList.add('gallery-embedded');
 const found = discoveredDemos();
 
 // A message where the page would be, for a route that names nothing the gallery has.

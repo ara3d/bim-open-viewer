@@ -95,13 +95,15 @@ const fillLead = (shell: Shell, demo: Demo, route: Route): void => {
   shell.lead.append(crumbs, picker);
 };
 
-// The bar's right: the file this demo is in, and the command that checks it.
-const fillTrail = (shell: Shell, demo: Demo): void => {
-  const source = el('p', 'bar-source');
+// Under the status strip: the file this demo is in, and the command that checks it.
+const metaLine = (demo: Demo): HTMLElement => {
+  const line = el('p', 'meta-line');
+  const source = el('span', 'bar-source');
   source.append(el('span', 'label', 'Source'), el('code', 'value', demo.source));
-  const verify = el('p', 'bar-verify');
+  const verify = el('span', 'bar-verify');
   verify.append(el('span', 'label', 'Verify'), el('code', 'value', demo.verify));
-  shell.trail.append(source, verify);
+  line.append(source, verify);
+  return line;
 };
 
 // Everything under the bar: the viewport, the inspector, the status strip and the mirror.
@@ -181,9 +183,9 @@ export const renderDemoPage = async (
 ): Promise<Result<DemoPage>> => {
   shell.reset();
   fillLead(shell, demo, route);
-  fillTrail(shell, demo);
   const frame = buildFrame(demo);
   shell.main.append(frame.page);
+  frame.page.append(metaLine(demo));
 
   const fixture = chosenFixture(demo, route.fixtureId);
   if (fixture?.credit !== undefined) frame.page.append(creditLine(fixture.credit));

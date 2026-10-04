@@ -7,11 +7,12 @@
 .demo-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--inspector-width);
-  grid-template-rows: minmax(0, 1fr) auto auto;
+  grid-template-rows: minmax(0, 1fr) auto auto auto;
   grid-template-areas:
     "viewport inspector"
     "status   status"
     "credit   credit"
+    "meta     meta"
     "mirror   mirror";
   flex: 1;
   min-height: 0;
@@ -27,6 +28,7 @@
     "viewport"
     "status"
     "credit"
+    "meta"
     "mirror";
 }
 
@@ -167,6 +169,7 @@
       "inspector"
       "status"
       "credit"
+      "meta"
       "mirror";
   }
 

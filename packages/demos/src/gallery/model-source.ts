@@ -7,11 +7,13 @@
 // the input, and forgetting the second fails silently and totally.
 
 import {
+  colorStride,
   defaultAppearance,
   failure,
   objectKey,
   success,
   type Appearance,
+  type Geometry,
   type ModelData,
   type ObjectKey,
   type Result,
@@ -23,9 +25,34 @@ import type { ModelSource, OpenedModel } from './contracts.js';
 export const objectKeysOf = (model: ModelData): readonly ObjectKey[] =>
   model.objects.map((record) => objectKey(record.ref));
 
-// The appearance each object carries in the model, or the grey fallback where it carries none.
-export const baseAppearancesOf = (model: ModelData): ReadonlyMap<ObjectKey, Appearance> =>
-  new Map(model.objects.map((record) => [objectKey(record.ref), record.appearance ?? defaultAppearance]));
+// The appearance each object was loaded with: what its record says, else the colour and opacity of
+// the first instance that draws it, else the grey fallback.
+//
+// A file read through BFAST carries its material colours on the instances and nothing on the
+// records, so without the second source every style rule - hiding the spaces, say - resolved the
+// rest of the model to the fallback and repainted a brick building grey.
+export const baseAppearancesOf = (model: ModelData, geometry?: Geometry): ReadonlyMap<ObjectKey, Appearance> => {
+  const fromInstances = new Map<number, Appearance>();
+  if (geometry !== undefined) {
+    const { count, objectIndex, color, meshIndex } = geometry.instances;
+    for (let row = 0; row < count; row++) {
+      const object = objectIndex[row] ?? -1;
+      if (object < 0 || (meshIndex[row] ?? -1) < 0 || fromInstances.has(object)) continue;
+      const at = row * colorStride;
+      fromInstances.set(object, {
+        color: [color[at] ?? 0.8, color[at + 1] ?? 0.8, color[at + 2] ?? 0.8],
+        opacity: color[at + 3] ?? 1,
+        visible: true,
+      });
+    }
+  }
+  return new Map(
+    model.objects.map((record, row) => [
+      objectKey(record.ref),
+      record.appearance ?? fromInstances.get(row) ?? defaultAppearance,
+    ]),
+  );
+};
 
 // One opened model from its data and geometry, with the derived pieces filled in, and whatever the
 // loader read of what the file records.
@@ -40,7 +67,7 @@ export const openedModel = (
   data,
   geometry,
   keys: objectKeysOf(data),
-  base: baseAppearancesOf(data),
+  base: baseAppearancesOf(data, geometry),
   properties: recorded.properties,
   documents: recorded.documents,
 });

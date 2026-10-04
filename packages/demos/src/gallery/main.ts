@@ -11,6 +11,7 @@ import './styles/index-page.css';
 import './styles/viewport.css';
 import './styles/inspector.css';
 import markUrl from '../../../../docs/brand/viewer-mark.svg?url';
+import { applyGalleryTheme } from '@bim-open-viewer/ui-gratify';
 import { demoFailed, describeCause, type DemoWindow } from '../feature-demos/_shared/protocol.js';
 import { renderDemoPage } from './demo-page.js';
 import { discoveredDemos } from './discovery.js';
@@ -27,7 +28,7 @@ document.head.append(icon);
 const root = document.getElementById('gallery');
 if (!(root instanceof HTMLElement)) throw new Error('gallery.html has no element with id "gallery"');
 
-const shell = mountShell(root);
+const shell = mountShell(root, applyGalleryTheme);
 const route = parseRoute(window.location.search);
 const found = discoveredDemos();
 

@@ -12,7 +12,7 @@ model there. It is the successor to `@ara3d/ara3d-webgl`, and the 3D viewer of t
 features know nothing about any file format; `@bim-open-viewer/formats` and
 `@bim-open-viewer/loaders` adapt each format to the model.
 
-![The landing page, with the explode-and-grid demo running on a generated building](docs/images/landing.png)
+![The landing page, with the Schependomlaan design model open in the viewer](docs/images/landing.png)
 
 The viewer was developed inside [BIM Open Toolkit](https://github.com/ara3d/bim-open-toolkit),
 which consumes this repository through its `deps/` folder, at `deps/bim-open-viewer`; this
@@ -104,9 +104,36 @@ served fixture, normalized geometry and browser behavior. See the
 ## The static site
 
 The live page is the demo gallery built as plain files, with every demo that needs the private
-Snowdon model left out; each remaining demo opens a generated building from
-`@bim-open-viewer/synthetic`. `.github/workflows/pages.yml` builds and publishes it on every push
-to `main`. GitHub Pages has to be switched on once by a repository owner: Settings, Pages,
+Snowdon model left out. It opens three real buildings whose licences allow redistribution, and the
+other demos open a generated building from `@bim-open-viewer/synthetic`.
+
+| Building | Models drawn together | Licence |
+|---|---|---|
+| Schependomlaan, a ten-apartment block | architecture (one Archicad design model) | CC BY 4.0, (C) original owners |
+| DigitalHub, an office building of RWTH Aachen University | architecture, and heating in red | MIT, (c) 2020 RWTH Aachen University, E3D |
+| Duplex Apartment, a two-unit house | architecture, MEP in blue, electrical in amber, rooms and heating in red | CC BY 4.0, BSI (2020), buildingSMART International |
+
+Each building is the `public-buildings` demo on one fixture
+(`gallery.html?demo=public-buildings&fixture=duplex`). When there is more than one model the
+architecture is drawn at 10 % opacity so the systems inside it show, and spaces are hidden in all
+three because their volumes enclose the rooms. Clicking an element reads its name, category,
+model, storey and property sets in the inspector. The page shows each building's credit line under
+the viewport and on its landing-page card.
+
+DigitalHub's ventilation and plumbing models are not drawn: bim-open-data has them only inside a
+federated archive with no geometry. The Duplex's electrical and rooms models repeat 104 and 344
+elements of its MEP model, so those elements are drawn twice.
+
+The files are BIM Open Schema archives from
+[ara3d/bim-open-data](https://github.com/ara3d/bim-open-data/tree/main/samples/public), 3.3 MB in
+all, and are not committed here. `packages/demos/src/demos/public-buildings/buildings.ts` lists
+them and pins the bim-open-data commit they are read at; `npm run pages` downloads them from
+raw.githubusercontent.com into `artifacts/public-samples/<commit>/` (git-ignored) and copies them,
+with bim-open-data's `NOTICE.md`, into `dist-pages/samples/`. The gallery's dev server
+(`npm run gallery`) serves them from the same cache. Moving the pin is how the site picks up newly
+converted files.
+
+`.github/workflows/pages.yml` builds and publishes the site on every push to `main`. GitHub Pages has to be switched on once by a repository owner: Settings, Pages,
 Source: GitHub Actions. Until then the workflow's deploy step fails.
 
 To build and check it locally, after `npm run build`:
@@ -117,8 +144,8 @@ npm run pages:preview  # serves dist-pages/ at http://127.0.0.1:5191/
 npm run pages:smoke    # opens every page headless and fails on a demo that does not draw or any page error
 ```
 
-`pages:smoke` serves the built files, opens the landing page and every demo it lists in Edge with
-software WebGL, and also rewrites `docs/images/landing.png` and the static gallery's thumbnails in
+`pages:smoke` serves the built files, opens the landing page and every demo and building it lists
+in Edge with software WebGL, fails a building page that shows no credit line, and also rewrites `docs/images/landing.png` and the static gallery's thumbnails in
 `packages/demos/public/thumbnails/static/`. The landing page is `packages/demos/index.html`;
 which fixtures a static build drops is decided in `packages/demos/src/gallery/hosting.ts`.
 

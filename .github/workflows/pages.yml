@@ -1,5 +1,6 @@
-# Publishes the static site (landing page and demo gallery, generated buildings only) to GitHub
-# Pages on every push to main. Pages must be switched on once in the repository settings:
+# Publishes the static site (landing page and demo gallery, public and generated buildings) to GitHub
+# Pages on every push to main. `npm run pages` downloads the public buildings from ara3d/bim-open-data.
+# Pages must be switched on once in the repository settings:
 # Settings, Pages, Source: GitHub Actions.
 name: Pages
 

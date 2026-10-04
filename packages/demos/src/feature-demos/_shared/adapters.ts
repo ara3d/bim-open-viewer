@@ -17,7 +17,6 @@ import {
   Light,
   LineBasicMaterial,
   LineSegments,
-  Mesh,
   Plane,
   Raycaster,
   Vector3,
@@ -69,11 +68,10 @@ export const clippingTarget = (viewer: Viewer): ClippingTarget => ({
       material.clippingPlanes = held.length === 0 ? null : held;
       material.needsUpdate = true;
     };
-    viewer.objects.scene.traverse((node) => {
-      if (!(node instanceof Mesh)) return;
-      if (Array.isArray(node.material)) for (const one of node.material) put(one);
-      else put(node.material);
-    });
+    // Through the mirror's material hook rather than a traversal of the scene: the meshes are made
+    // lazily on the next sync, so a plane put on the materials present now would miss the ones
+    // made after it, and a section set before the first frame would never show.
+    viewer.objects.setMaterialHook(put);
     viewer.setLocalClipping(held.length > 0);
   },
 });

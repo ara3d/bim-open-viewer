@@ -28,6 +28,8 @@ export class SceneObject {
   private batchMembers = new Map<InstancedGroup, number>();
   private batched = false;
   private syncedVersion = -1;
+  private materialHook: ((material: Material) => void) | null = null;
+  private hooked = new WeakSet<Material>();
 
   constructor(model: ViewerScene, private readonly batchThreshold = 1000, private readonly packedGeometry = true) {
     this.model = model;
@@ -40,12 +42,39 @@ export class SceneObject {
 
   get objectCount(): number { return this.batched ? this.batchMembers.size : this.objects.size; }
 
+  /**
+   * A function run on every material the mirror holds, now and on every material it creates later:
+   * clipping planes and section caps are material state, and the mirrors are created lazily on
+   * sync, so state put on the materials present at one moment would miss the ones made after it.
+   * Setting the hook again runs it on every material; null removes it without undoing anything.
+   */
+  setMaterialHook(hook: ((material: Material) => void) | null): void {
+    this.materialHook = hook;
+    this.hooked = new WeakSet<Material>();
+    this.applyMaterialHook();
+  }
+
+  private applyMaterialHook(): void {
+    const hook = this.materialHook;
+    if (!hook) return;
+    this.scene.traverse(node => {
+      const holder = node as { material?: Material | Material[] };
+      const materials = Array.isArray(holder.material) ? holder.material : holder.material ? [holder.material] : [];
+      for (const material of materials) {
+        if (this.hooked.has(material)) continue;
+        hook(material);
+        this.hooked.add(material);
+      }
+    });
+  }
+
   /** Brings the THREE.Scene up to date with the model. Returns true if anything changed. */
   sync(): boolean {
     if (this.disposed) throw new Error('SceneObject is disposed');
     const version = this.model.version;
     if (this.syncedVersion === version) return false;
     const changed = this.syncGroups();
+    if (changed) this.applyMaterialHook();
     this.syncedVersion = version;
     return changed;
   }

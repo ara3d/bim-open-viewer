@@ -29,13 +29,12 @@ import {
   Light,
   LineBasicMaterial,
   LineSegments,
-  Mesh,
   MeshStandardMaterial,
   Plane,
   Raycaster,
   Vector3,
   type Material,
-  type Object3D,
+
 } from 'three';
 
 // A linear colour as the 0xRRGGBB integer viewer-core takes for a background.
@@ -72,16 +71,12 @@ export const raycastSource = (
   };
 };
 
-// Anything in the mirror that carries a material. `Mesh` without its type arguments reaches this
-// code with an `any` material, so the shape is named here and the `instanceof` proves it.
-type MaterialHolder = { material: Material | Material[] };
-const carriesMaterial = (node: Object3D): node is Object3D & MaterialHolder => node instanceof Mesh;
-
 // The flat colour a cut solid shows where its inside would be (dark warm grey, output space).
 const SECTION_CAP_COLOR: Vec3 = [0.3, 0.29, 0.28];
 
-// Puts clipping planes on every material of the mirror. viewer-core has no renderer-wide plane
-// list, so each material is set in turn and local clipping is switched on while any plane is held.
+// Puts clipping planes, and the section cap, on every material of the mirror. viewer-core has no
+// renderer-wide plane list, so each material is set in turn and local clipping is switched on while
+// any plane is held.
 export const clippingTarget = (viewer: Viewer): ClippingTarget => ({
   setPlanes: (planes) => {
     const held = planes.map(
@@ -92,11 +87,10 @@ export const clippingTarget = (viewer: Viewer): ClippingTarget => ({
       if (material instanceof MeshStandardMaterial) setSectionCap(material, held.length === 0 ? undefined : SECTION_CAP_COLOR);
       material.needsUpdate = true;
     };
-    viewer.objects.scene.traverse((node) => {
-      if (!carriesMaterial(node)) return;
-      if (Array.isArray(node.material)) for (const one of node.material) put(one);
-      else put(node.material);
-    });
+    // Through the mirror's material hook rather than a traversal of the scene: the meshes are made
+    // lazily on the next sync, so a plane put on the materials present now would miss the ones
+    // made after it, and a section set before the first frame would never show.
+    viewer.objects.setMaterialHook(put);
     viewer.setLocalClipping(held.length > 0);
   },
 });

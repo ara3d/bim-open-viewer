@@ -73,6 +73,15 @@ the three-line facade, the package names, the licence. A footer naming the famil
 | C7 | Landing page | `packages/demos/index.html`, `src/landing/*` | C1, C2 |
 | C8 | Captures, smoke, README, toolkit site tile, dependency pin | `scripts/pages-smoke.mjs`, `README.md`, toolkit `site/`, `deps.json` | all |
 
+## Build log
+
+2026-10-04: C1 to C7 built and committed in this repository (`d3deee6` to `5992ddd`), C4 and C5
+by two builder agents. Two things the plan did not foresee: a style rule repainted a BOS model grey
+because object records carry no appearance (fixed in `model-source.ts`), and no object in a BOS
+file had a storey because the reader dropped `Relations.parquet` (fixed in `formats`, with
+`storeyElevations` in `features` measuring a storey off what it contains). Portfolio is off the
+static site; its three-building estate is a follow-up.
+
 ## Acceptance
 
 - `npm run pages && npm run pages:smoke` passes with every published demo green on Schependomlaan.

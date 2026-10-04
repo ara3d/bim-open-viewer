@@ -3,7 +3,7 @@
 // it lists in a headless browser with software WebGL, and fails if a demo does not draw or any
 // page logs an error or a failed request.
 //
-// Every link on the landing page is visited: each demo on its first fixture, and each public
+// Every chip on the landing page is visited: each demo on its first fixture, and each public
 // building, which is the public-buildings demo on that building's fixture.
 //
 // It also keeps what it saw: `docs/images/landing.png` (the README's picture) and one thumbnail
@@ -85,12 +85,18 @@ const main = async () => {
     const framedState = await demoState(framed);
     if (framedState.error !== null) failures.push(`landing frame: ${String(framedState.error)}`);
     await page.evaluate(() => document.fonts.ready);
-    await page.screenshot({ path: landingShot });
-    const searches = await page.$$eval('.demo-actions a', (links) => links.map((one) => new URL(one.href).search));
-    const targets = [...new Set(searches)]
-      .map((search) => new URLSearchParams(search))
-      .filter((params) => params.get('demo') !== null)
-      .map((params) => ({ demo: params.get('demo'), fixture: params.get('fixture') }));
+    // The picture is the chips and the frame, which is the part of the page that shows the viewer.
+    // The bar is sticky and would overlap the section's heading in a picture of the section alone.
+    await page.addStyleTag({ content: '.topbar { display: none; }' });
+    await (await page.waitForSelector('section.try')).screenshot({ path: landingShot });
+    // The chips drive the frame: every demo on its first fixture, and every building through the
+    // demo that lists the buildings.
+    const demoIds = await page.$$eval('.demo-chips .chip', (chips) => chips.map((one) => one.getAttribute('data-id')));
+    const buildingIds = await page.$$eval('.building-chips .chip', (chips) => chips.map((one) => one.getAttribute('data-id')));
+    const targets = [
+      ...demoIds.map((demo) => ({ demo, fixture: null })),
+      ...buildingIds.map((fixture) => ({ demo: 'public-buildings', fixture })),
+    ].filter((target) => target.demo !== null);
     const buildings = targets.filter((target) => target.fixture !== null).length;
     console.log(
       `landing: ${String(targets.length - buildings)} demos and ${String(buildings)} buildings listed, frame ${framedState.error === null ? 'drew' : 'failed'}, ${String(await sizeKb(landingShot))} KB picture`,

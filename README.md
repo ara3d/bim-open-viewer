@@ -103,9 +103,23 @@ served fixture, normalized geometry and browser behavior. See the
 
 ## The static site
 
-The live page is the demo gallery built as plain files, with every demo that needs the private
-Snowdon model left out. It opens three real buildings whose licences allow redistribution, and the
-other demos open a generated building from `@bim-open-viewer/synthetic`.
+The live page is the demo gallery built as plain files. Every demo opens one of three real
+buildings whose licences allow redistribution; the private Snowdon model and the generated building
+of `@bim-open-viewer/synthetic` stay in the dev gallery (`npm run gallery`). The landing page
+(`packages/demos/index.html`, `src/landing/`) carries the family look of `docs/BRANDING.md` in the
+toolkit, runs one demo in a frame driven by a row of demo chips and a row of building chips, lists
+the buildings with their credit lines, and shows the three-line facade for embedding the viewer.
+The frame opens the gallery with `embed=1`, which hides the gallery's own bar.
+
+| Demo | What it shows |
+|---|---|
+| Inspect (`point-and-read`) | hover and click an element, read its properties and its storey |
+| Colour by (`colour-by`) | the building coloured by category or by storey, with a legend that counts and toggles |
+| Section (`section`) | a plan cut at any storey on a slider, a section box, and cut faces drawn solid |
+| Explode (`explode-and-grid`) | the storeys pulled apart, or the categories fanned out |
+| Disciplines (`public-buildings`) | the federated models drawn together, architecture ghosted, each discipline in its colour |
+| Light and ground (`environment`) | the environment presets |
+| Capture (`capture`) | a picture for a report |
 
 | Building | Models drawn together | Licence |
 |---|---|---|
@@ -113,12 +127,13 @@ other demos open a generated building from `@bim-open-viewer/synthetic`.
 | DigitalHub, an office building of RWTH Aachen University | architecture, heating in red, ventilation in teal, plumbing in violet | MIT, (c) 2020 RWTH Aachen University, E3D |
 | Duplex Apartment, a two-unit house | architecture, MEP in blue, electrical in amber, rooms and heating in red | CC BY 4.0, BSI (2020), buildingSMART International |
 
-Each building is the `public-buildings` demo on one fixture
-(`gallery.html?demo=public-buildings&fixture=duplex`). When there is more than one model the
-architecture is drawn at 10 % opacity so the systems inside it show, and spaces are hidden in all
-three because their volumes enclose the rooms. Clicking an element reads its name, category,
-model, storey and property sets in the inspector. The page shows each building's credit line under
-the viewport and on its landing-page card.
+Each building is a fixture of every demo (`gallery.html?demo=section&fixture=duplex`). In the
+Disciplines demo the architecture is drawn at 28 % opacity so the systems inside it show, and spaces
+are hidden in all three because their volumes enclose the rooms. Clicking an element reads its name,
+category, model, storey and property sets in the inspector. The storey comes from the file's
+containment relations, which the BFAST reader turns into each object's parent link; a storey that
+draws nothing takes its height from the elements it contains. The page shows each building's credit
+line under the viewport and on its landing-page card.
 
 DigitalHub and the Duplex are each one federated file (`digitalhub-federated.bos`,
 `duplex-federated.bos`) holding four source models with their geometry. The demo colours each
@@ -145,7 +160,7 @@ npm run pages:preview  # serves dist-pages/ at http://127.0.0.1:5191/
 npm run pages:smoke    # opens every page headless and fails on a demo that does not draw or any page error
 ```
 
-`pages:smoke` serves the built files, opens the landing page and every demo and building it lists
+`pages:smoke` serves the built files (on port 5191, or `PAGES_PORT` when a preview holds it), opens the landing page and every demo and building it lists
 in Edge with software WebGL, fails a building page that shows no credit line, and also rewrites `docs/images/landing.png` and the static gallery's thumbnails in
 `packages/demos/public/thumbnails/static/`. The landing page is `packages/demos/index.html`;
 which fixtures a static build drops is decided in `packages/demos/src/gallery/hosting.ts`.

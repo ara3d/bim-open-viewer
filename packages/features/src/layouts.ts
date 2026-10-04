@@ -246,10 +246,12 @@ export const placementElevations = (
   return new Map(placements.map((placement) => [placement.key, placement.center[axis] ?? 0]));
 };
 
-// The height of each storey that places nothing itself, measured off the lowest object it contains:
-// a storey in a real file draws nothing and sits at the origin, and what it does carry is the
-// containment link of every element on it (`ObjectRecord.parentId`). A storey with a placement of
-// its own keeps that; one with neither is left out, since nothing says how high it is.
+// The height of each storey that places nothing itself, measured off the objects it contains: a
+// storey in a real file draws nothing and sits at the origin, and what it does carry is the
+// containment link of every element on it (`ObjectRecord.parentId`). The height is the tenth
+// percentile of its elements' centres rather than the lowest one, because a beam or a footing hung
+// under the floor would otherwise put a storey below the one beneath it. A storey with a placement
+// of its own keeps that; one with neither is left out, since nothing says how high it is.
 export const storeyElevations = (
   model: ModelData,
   placements: readonly Placement[],
@@ -268,15 +270,19 @@ export const storeyElevations = (
   const found = new Map<ObjectKey, number>(own);
   if (storeyOfObjectId.size === 0) return found;
   const keyToObjectId = new Map(model.objects.map((record) => [objectKey(record.ref), record.ref.objectId]));
-  const lowest = new Map<ObjectKey, number>();
+  const heights = new Map<ObjectKey, number[]>();
   for (const placement of placements) {
     const storey = storeyOfObjectId.get(keyToObjectId.get(placement.key) ?? '');
     if (storey === undefined || own.has(storey)) continue;
-    const height = placement.center[axis] ?? 0;
-    const held = lowest.get(storey);
-    if (held === undefined || height < held) lowest.set(storey, height);
+    const held = heights.get(storey) ?? [];
+    held.push(placement.center[axis] ?? 0);
+    heights.set(storey, held);
   }
-  for (const [storey, height] of lowest) found.set(storey, height);
+  for (const [storey, list] of heights) {
+    const sorted = [...list].sort((a, b) => a - b);
+    const at = Math.min(sorted.length - 1, Math.floor(sorted.length * 0.1));
+    found.set(storey, sorted[at] ?? 0);
+  }
   return found;
 };
 

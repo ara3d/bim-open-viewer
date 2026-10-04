@@ -91,8 +91,13 @@ export const demo: Demo = {
   fixtures: defaultFixtures,
   panels: sectionPanels,
   inspector: sectionSheet,
-  start: (viewer) =>
-    Promise.resolve(startSection(viewer, viewer.opened()[0]?.data, viewer.placements(), viewer.bounds())),
+  start: (viewer) => {
+    const started = startSection(viewer, viewer.opened()[0]?.data, viewer.placements(), viewer.bounds());
+    // The navigation feature's hook puts its own default view on the camera when it is installed,
+    // which is before the model is framed; framing again shows the cut from where the fit left it.
+    if (started.ok) viewer.fit();
+    return Promise.resolve(started);
+  },
   ready: sectionReady,
   report: sectionReport,
   source: 'packages/demos/src/demos/section',

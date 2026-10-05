@@ -25,4 +25,24 @@ export default tseslint.config(
       ],
     },
   },
+  // One place writes a view onto a three camera: packages/viewer/src/adapters/camera.ts. Four demo
+  // hosts once kept their own copy and missed the depth-plane fix (TKT-164). This flags a fifth copy
+  // in the editor; packages/viewer/test/camera-adapter-only.test.ts is the gate that fails the build.
+  {
+    files: v2Files,
+    ignores: ['packages/viewer/src/adapters/camera.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'AssignmentExpression > MemberExpression.left[property.name=/^(near|far|fov)$/]',
+          message: 'Write the view through applyPerspective or applyOrthographic from @bim-open-viewer/viewer.',
+        },
+        {
+          selector: "CallExpression > MemberExpression.callee[property.name='updateProjectionMatrix']",
+          message: 'Write the view through applyPerspective or applyOrthographic from @bim-open-viewer/viewer.',
+        },
+      ],
+    },
+  },
 )

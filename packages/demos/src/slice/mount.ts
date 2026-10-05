@@ -4,13 +4,14 @@
 // to write by hand today to see any of it, which is why every step is one line with a name: the
 // list is the finding, and `docs/slice.md` counts it.
 
-import { defaultView, upVector, type ObjectKey, type ResolvedStyles } from '@bim-open-viewer/model';
+import { defaultView, upVector, type ObjectKey, type ResolvedStyles, type ViewState } from '@bim-open-viewer/model';
 import {
   attachNavigation,
   fitState,
   navSession,
   navState,
   type NavController,
+  withDepthRange,
 } from '@bim-open-viewer/interact';
 import {
   SceneBinding,
@@ -22,8 +23,9 @@ import {
   FrameTimer,
 } from '@bim-open-viewer/render';
 import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
+import { applyPerspective } from '@bim-open-viewer/viewer';
 import { captureTarget, clippingTarget, environmentTarget, gpuFrameTimer, raycastSource } from './adapters.js';
-import { applyView, rayThroughPoint } from './camera.js';
+import { rayThroughPoint } from './camera.js';
 import { styleChanges } from './changes.js';
 import { sliceData, sliceOptions } from './data.js';
 import { readoutOf, statusLine, type SliceCounts } from './readout.js';
@@ -173,16 +175,20 @@ export const mountSlice = (canvas: HTMLCanvasElement, options: SliceOptions = {}
     readout.textContent = `${found.name} · ${found.category} · fire rating ${found.fireRating} · ${found.coverage}`;
   };
 
-  // Navigation: interact owns the camera state; the viewer's camera is written from it.
-  const aspect = canvas.clientHeight > 0 ? canvas.clientWidth / canvas.clientHeight : 1;
-  const fitted = fitState(navState(defaultView, 'orbit'), bounds, { aspect, padding: 1.05 });
+  // Navigation: interact owns the camera state; the viewer's camera is written from it, with the
+  // depth planes re-cut around the building on every write so no zoom or dolly clips it.
+  const aspect = (): number => (canvas.clientHeight > 0 ? canvas.clientWidth / canvas.clientHeight : 1);
+  const writeCamera = (view: ViewState): void => {
+    applyPerspective(viewer.camera, withDepthRange(view, bounds), aspect());
+  };
+  const fitted = fitState(navState(defaultView, 'orbit'), bounds, { aspect: aspect(), padding: 1.05 });
   const controller: NavController = attachNavigation(canvas, {
     session: navSession(fitted),
     onChange: (session) => {
-      applyView(viewer.camera, session.nav.view);
+      writeCamera(session.nav.view);
     },
   });
-  applyView(viewer.camera, fitted.view);
+  writeCamera(fitted.view);
 
   // Picking: a press and a release near it is a click, and a click is a pick.
   const listeners = new AbortController();

@@ -37,6 +37,7 @@ import {
   startFlight,
   type NavController,
   type NavState,
+  withDepthRange,
 } from '@bim-open-viewer/interact';
 import {
   FrameTimer,
@@ -53,10 +54,10 @@ import {
   type UpdateReport,
 } from '@bim-open-viewer/render';
 import { captureFeatureWith, layoutPlacements, placementsOf, type Placement } from '@bim-open-viewer/features';
-import { createSession, featureHost } from '@bim-open-viewer/viewer';
+import { applyPerspective, createSession, featureHost } from '@bim-open-viewer/viewer';
 import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
 import { captureTarget, clippingTarget, environmentTarget, gpuFrameTimer, raycastSource } from './adapters.js';
-import { applyView, projectPointOnto, rayThroughClientPoint } from './camera.js';
+import { projectPointOnto, rayThroughClientPoint } from './camera.js';
 import { resolveModelSource } from './model-source.js';
 import { framingOf } from './framing.js';
 import { attachRenderHooks } from './render-hooks.js';
@@ -173,8 +174,18 @@ export const createGalleryViewer = (
   // on top of it would undo the demo's opening move on the next model.
   const environmentIsDemos = features.some((one) => one.id === 'environment');
 
+  const size = (): { readonly width: number; readonly height: number } => ({
+    width: canvas.clientWidth,
+    height: canvas.clientHeight,
+  });
+  const aspect = (): number => {
+    const shape = size();
+    return shape.height > 0 ? shape.width / shape.height : 1;
+  };
+
   // Navigation owns the camera; every step is written to the view slice, and the slice is what the
-  // renderer's camera is written from, so nothing reads the camera to know where it is.
+  // renderer's camera is written from, so nothing reads the camera to know where it is. The depth
+  // planes are re-cut around everything drawn on every write, so no zoom or dolly clips the model.
   const controller: NavController = attachNavigation(canvas, {
     session: navSession(navState(session.read(viewSlice), 'orbit')),
     onChange: (moved) => {
@@ -182,7 +193,7 @@ export const createGalleryViewer = (
     },
   });
   const writeCamera = (): void => {
-    applyView(core.camera, session.read(viewSlice));
+    applyPerspective(core.camera, withDepthRange(session.read(viewSlice), binding.bounds()), aspect());
     core.requestRender();
   };
   const cameraFollowsSlice = session.subscribe((event) => {
@@ -194,16 +205,8 @@ export const createGalleryViewer = (
   // the union of everything in it, because a real model carries strays kilometres from its building.
   const framed = (): Bounds => framingOf(binding).bounds;
 
-  const size = (): { readonly width: number; readonly height: number } => ({
-    width: canvas.clientWidth,
-    height: canvas.clientHeight,
-  });
-
-  const fitted = (bounds: Bounds): NavState => {
-    const shape = size();
-    const aspect = shape.height > 0 ? shape.width / shape.height : 1;
-    return fitState(controller.session().nav, bounds, { aspect, padding: 1.05 });
-  };
+  const fitted = (bounds: Bounds): NavState =>
+    fitState(controller.session().nav, bounds, { aspect: aspect(), padding: 1.05 });
 
   const applyEnvironmentTo = (bounds: Bounds): void => {
     if (environmentIsDemos) return;

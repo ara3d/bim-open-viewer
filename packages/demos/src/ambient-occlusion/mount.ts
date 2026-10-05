@@ -1,9 +1,9 @@
 // The impure half of the page: a stage, a scene binding, the settings panel, navigation, a frame
 // loop and a status line. Everything above this file is a pure function of its input.
 
-import { defaultView, emptyBounds, type Bounds, type Result } from '@bim-open-viewer/model';
+import { defaultView, emptyBounds, type Bounds, type Result, type ViewState } from '@bim-open-viewer/model';
 import { diagnostic, failure, success } from '@bim-open-viewer/model';
-import { attachNavigation, fitState, navSession, navState, type NavController } from '@bim-open-viewer/interact';
+import { attachNavigation, fitState, navSession, navState, type NavController, withDepthRange } from '@bim-open-viewer/interact';
 import {
   FrameTimer,
   SceneBinding,
@@ -16,7 +16,8 @@ import { defaultFixtureName, demoFixture, isFixtureName, fixtureNames, type Fixt
 import { buildPanel } from './panel.js';
 import { luminanceStatistics, type LuminanceStatistics } from './pixels.js';
 import { statusLine, type DemoCounts } from './readout.js';
-import { applyView, createStage } from './stage.js';
+import { applyPerspective } from '@bim-open-viewer/viewer';
+import { createStage } from './stage.js';
 
 // What the page reports about itself, for the status line and for a browser test.
 export type DemoReport = DemoCounts & {
@@ -53,10 +54,6 @@ const describeAll = (result: { readonly diagnostics: readonly { readonly message
 // WebGL or the first fixture cannot be bound.
 export const mountDemo = (canvas: HTMLCanvasElement, panelHost: HTMLElement, options: DemoOptions = {}): (() => void) => {
   const stage = createStage(canvas, viewportColor);
-  const applySize = (): void => {
-    stage.resize(canvas.clientWidth, canvas.clientHeight, Math.min(window.devicePixelRatio, 2));
-  };
-  applySize();
   const binding = new SceneBinding(stage.scene);
 
   // Model: one fixture at a time; opening another removes the one before it.
@@ -64,17 +61,29 @@ export const mountDemo = (canvas: HTMLCanvasElement, panelHost: HTMLElement, opt
   let bounds: Bounds = emptyBounds;
   let statistics: SceneStatistics = binding.statistics();
   let controller: NavController | undefined;
+
+  // The camera is written from the navigation state, with the depth planes re-cut around the model
+  // on every write so no zoom or dolly clips it, and again after a resize for the new aspect.
+  const aspect = (): number => (canvas.clientHeight > 0 ? canvas.clientWidth / canvas.clientHeight : 1);
+  const writeCamera = (view: ViewState): void => {
+    applyPerspective(stage.camera, withDepthRange(view, bounds), aspect());
+  };
+  const applySize = (): void => {
+    stage.resize(canvas.clientWidth, canvas.clientHeight, Math.min(window.devicePixelRatio, 2));
+    if (controller !== undefined) writeCamera(controller.session().nav.view);
+  };
+  applySize();
+
   const frame = (): void => {
-    const aspect = canvas.clientHeight > 0 ? canvas.clientWidth / canvas.clientHeight : 1;
-    const fitted = fitState(navState(defaultView, 'orbit'), bounds, { aspect, padding: 1.05 });
+    const fitted = fitState(navState(defaultView, 'orbit'), bounds, { aspect: aspect(), padding: 1.05 });
     controller?.dispose();
     controller = attachNavigation(canvas, {
       session: navSession(fitted),
       onChange: (session) => {
-        applyView(stage.camera, session.nav.view);
+        writeCamera(session.nav.view);
       },
     });
-    applyView(stage.camera, fitted.view);
+    writeCamera(fitted.view);
   };
   const open = (name: string): Result<FixtureName> => {
     if (!isFixtureName(name))

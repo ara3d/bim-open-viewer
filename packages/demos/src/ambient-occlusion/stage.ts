@@ -1,13 +1,14 @@
 // The whole WebGL surface of this page: a three renderer over viewer-core's scene mirror, the
-// render package's ambient-occlusion seam implemented with three's GTAO pass, and a camera written
-// from an interact view. Nothing else in `src/ambient-occlusion` imports three.
+// render package's ambient-occlusion seam implemented with three's GTAO pass, and the camera the
+// viewer package's `applyPerspective` writes a view onto. Nothing else in `src/ambient-occlusion`
+// imports three.
 //
 // The page owns its renderer instead of using viewer-core's `Viewer`, because `Viewer` keeps its
 // `WebGLRenderer` private and draws with `renderer.render` directly, which leaves no place for a
 // pass between the scene and the screen. The checkpoint records that as a request.
 
 import { SceneObject, ViewerScene } from '@bim-open-viewer/core';
-import type { Bounds, ViewState } from '@bim-open-viewer/model';
+import type { Bounds } from '@bim-open-viewer/model';
 import { isEmptyBounds } from '@bim-open-viewer/model';
 import {
   occlusionBufferSize,
@@ -41,7 +42,8 @@ export type Stage = AmbientOcclusionTarget & {
   readonly renderer: string;
   // The pass in force, or undefined when the picture is plain.
   readonly pass: () => AmbientOcclusionPass | undefined;
-  // Sets the drawing-buffer size and the camera aspect, in CSS pixels.
+  // Sets the drawing-buffer size, in CSS pixels. The camera's aspect comes with the next view
+  // written onto it, so the page writes the view again after a resize.
   readonly resize: (width: number, height: number, pixelRatio: number) => void;
   // Brings the mirror up to date and draws one frame.
   readonly render: () => void;
@@ -119,8 +121,6 @@ export const createStage = (canvas: HTMLCanvasElement, background: number): Stag
     resize: (width, height, pixelRatio) => {
       const w = Math.max(1, width);
       const h = Math.max(1, height);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
       renderer.setPixelRatio(pixelRatio);
       renderer.setSize(w, h, false);
       composer.setPixelRatio(pixelRatio);
@@ -157,19 +157,4 @@ export const createStage = (canvas: HTMLCanvasElement, background: number): Stag
       renderer.forceContextLoss();
     },
   };
-};
-
-// Writes an interact view onto the perspective camera. An orthographic view would need a different
-// camera object, which this page does not create, so its projection is left alone.
-export const applyView = (camera: PerspectiveCamera, view: ViewState): void => {
-  camera.up.set(view.camera.up[0], view.camera.up[1], view.camera.up[2]);
-  camera.position.set(view.camera.position[0], view.camera.position[1], view.camera.position[2]);
-  camera.lookAt(new Vector3(view.camera.target[0], view.camera.target[1], view.camera.target[2]));
-  if (view.projection.kind === 'perspective') {
-    camera.fov = view.projection.fieldOfViewDegrees;
-    camera.near = view.projection.near;
-    camera.far = view.projection.far;
-  }
-  camera.updateProjectionMatrix();
-  camera.updateMatrixWorld();
 };

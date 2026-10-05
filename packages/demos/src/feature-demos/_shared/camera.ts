@@ -1,9 +1,10 @@
-// Where three.js and the pure packages meet for the camera: an interact view written onto the
-// viewer's camera, a pointer turned into a ray, and a world point turned into canvas pixels.
+// Where three.js and the pure packages meet for picking and the HUD: a pointer turned into a ray,
+// and a world point turned into canvas pixels. The view is written onto the camera by the viewer
+// package's `applyPerspective`.
 
 import { projectToScreen, rayThroughNdc, type Ray, type ScreenPoint } from '@bim-open-viewer/render';
-import type { Matrix4, Vec3, ViewState } from '@bim-open-viewer/model';
-import { Matrix4 as ThreeMatrix4, Vector3, type PerspectiveCamera } from 'three';
+import type { Matrix4, Vec3 } from '@bim-open-viewer/model';
+import { Matrix4 as ThreeMatrix4, type PerspectiveCamera } from 'three';
 
 // A three matrix as the model package's column-major sixteen.
 export const matrixOf = (source: ThreeMatrix4): Matrix4 => {
@@ -14,21 +15,6 @@ export const matrixOf = (source: ThreeMatrix4): Matrix4 => {
     e[8] ?? 0, e[9] ?? 0, e[10] ?? 0, e[11] ?? 0,
     e[12] ?? 0, e[13] ?? 0, e[14] ?? 0, e[15] ?? 0,
   ];
-};
-
-// Writes an interact view onto a perspective camera. An orthographic view would need a different
-// camera object, which the host does not create, so its projection is left alone.
-export const applyView = (camera: PerspectiveCamera, view: ViewState): void => {
-  camera.up.set(view.camera.up[0], view.camera.up[1], view.camera.up[2]);
-  camera.position.set(view.camera.position[0], view.camera.position[1], view.camera.position[2]);
-  camera.lookAt(new Vector3(view.camera.target[0], view.camera.target[1], view.camera.target[2]));
-  if (view.projection.kind === 'perspective') {
-    camera.fov = view.projection.fieldOfViewDegrees;
-    camera.near = view.projection.near;
-    camera.far = view.projection.far;
-  }
-  camera.updateProjectionMatrix();
-  camera.updateMatrixWorld();
 };
 
 // A point in the canvas's own pixels, measured from its top-left corner.

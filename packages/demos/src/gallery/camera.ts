@@ -1,13 +1,13 @@
-// The only place the interact package and three.js meet: a view state written onto the camera
-// viewer-core owns, the world ray under a pointer, and the world-to-canvas projection a HUD needs.
+// Where three.js and the pure packages meet for the gallery's picking and HUD: the world ray under
+// a pointer, and the world-to-canvas projection a HUD needs. The view itself is written onto the
+// camera by the viewer package's `applyPerspective`, so the host holds no copy of that.
 //
-// The slice wrote these three by hand in `src/slice/camera.ts` and had no projection at all. They
-// are here so `viewer.ts` holds no three.js, and so the sixteen `?? 0`s that
+// They are here so `viewer.ts` holds no three.js, and so the sixteen `?? 0`s that
 // `noUncheckedIndexedAccess` forces on a matrix conversion are written once rather than per caller.
 
 import { projectToScreen, rayThroughNdc, type Ray } from '@bim-open-viewer/render';
-import type { Matrix4, Vec2, Vec3, ViewState } from '@bim-open-viewer/model';
-import { Matrix4 as ThreeMatrix4, Vector3, type PerspectiveCamera } from 'three';
+import type { Matrix4, Vec2, Vec3 } from '@bim-open-viewer/model';
+import { Matrix4 as ThreeMatrix4, type PerspectiveCamera } from 'three';
 
 // A size in CSS pixels. Zero on either axis means the element is not laid out yet.
 export type PixelSize = { readonly width: number; readonly height: number };
@@ -19,21 +19,6 @@ export const matrix4From = (values: ArrayLike<number>): Matrix4 => [
   values[8] ?? 0, values[9] ?? 0, values[10] ?? 0, values[11] ?? 0,
   values[12] ?? 0, values[13] ?? 0, values[14] ?? 0, values[15] ?? 0,
 ];
-
-// Writes a view onto a perspective camera. An orthographic view keeps the camera's own projection,
-// because viewer-core owns one perspective camera and swapping it is not this host's to do.
-export const applyView = (camera: PerspectiveCamera, view: ViewState): void => {
-  camera.up.set(view.camera.up[0], view.camera.up[1], view.camera.up[2]);
-  camera.position.set(view.camera.position[0], view.camera.position[1], view.camera.position[2]);
-  camera.lookAt(new Vector3(view.camera.target[0], view.camera.target[1], view.camera.target[2]));
-  if (view.projection.kind === 'perspective') {
-    camera.fov = view.projection.fieldOfViewDegrees;
-    camera.near = view.projection.near;
-    camera.far = view.projection.far;
-  }
-  camera.updateProjectionMatrix();
-  camera.updateMatrixWorld();
-};
 
 // World to clip: the camera's projection times its inverse world transform.
 export const viewProjectionOf = (camera: PerspectiveCamera): Matrix4 =>

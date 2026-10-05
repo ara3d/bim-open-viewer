@@ -1,14 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { PerspectiveCamera, Matrix4 as ThreeMatrix4 } from 'three';
 import { cameraPose, viewState } from '@bim-open-viewer/model';
-import { applyView, matrixOf, projectToCanvas, rayThroughCanvasPoint, type CanvasSize } from '../../../src/feature-demos/_shared/camera.js';
+import { applyPerspective } from '@bim-open-viewer/viewer';
+import { matrixOf, projectToCanvas, rayThroughCanvasPoint, type CanvasSize } from '../../../src/feature-demos/_shared/camera.js';
 
 // The helpers read only a client size, so no canvas is needed in Node.
 const fakeCanvas = (width: number, height: number): CanvasSize => ({ clientWidth: width, clientHeight: height });
 
+// The view is written the way the host writes it, through the viewer package's adapter.
 const looking = (): PerspectiveCamera => {
   const camera = new PerspectiveCamera(50, 800 / 600, 0.1, 1000);
-  applyView(camera, viewState(cameraPose([0, -10, 0], [0, 0, 0], [0, 0, 1])));
+  applyPerspective(camera, viewState(cameraPose([0, -10, 0], [0, 0, 0], [0, 0, 1])), 800 / 600);
   return camera;
 };
 

@@ -4,12 +4,14 @@
 import { describe, expect, it } from 'vitest';
 import { PerspectiveCamera } from 'three';
 import { cameraPose, viewState } from '@bim-open-viewer/model';
-import { applyView, matrix4From, projectPointOnto } from '../../src/gallery/camera.js';
+import { applyPerspective } from '@bim-open-viewer/viewer';
+import { matrix4From, projectPointOnto } from '../../src/gallery/camera.js';
 
-// A camera ten metres up the x axis looking at the origin, z up, as a z-up model is viewed.
+// A camera ten metres up the x axis looking at the origin, z up, as a z-up model is viewed. The
+// view is written the way the host writes it, through the viewer package's adapter.
 const looking = (): PerspectiveCamera => {
   const camera = new PerspectiveCamera(50, 2, 0.1, 1000);
-  applyView(camera, viewState(cameraPose([10, 0, 0], [0, 0, 0], [0, 0, 1])));
+  applyPerspective(camera, viewState(cameraPose([10, 0, 0], [0, 0, 0], [0, 0, 1])), 2);
   return camera;
 };
 
@@ -17,17 +19,6 @@ describe('the camera bridge', () => {
   it('reads sixteen numbers out of anything that holds them, defaulting what is not there', () => {
     expect(matrix4From([1, 2, 3])).toEqual([1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     expect(matrix4From(new Float32Array(16).fill(2))[15]).toBe(2);
-  });
-
-  it('writes the pose and the projection onto the camera', () => {
-    const view = viewState(cameraPose([10, 0, 0], [0, 0, 0], [0, 0, 1]));
-    const camera = new PerspectiveCamera(50, 2, 0.1, 1000);
-    applyView(camera, view);
-    expect(camera.position.toArray()).toEqual([10, 0, 0]);
-    expect(camera.up.toArray()).toEqual([0, 0, 1]);
-    if (view.projection.kind !== 'perspective') throw new Error('the default view is perspective');
-    expect(camera.fov).toBe(view.projection.fieldOfViewDegrees);
-    expect(camera.near).toBe(view.projection.near);
   });
 
   it('projects the point the camera looks at to the middle of the picture', () => {

@@ -52,11 +52,12 @@ import {
   navState,
   startFlight,
   type NavController,
+  withDepthRange,
 } from '@bim-open-viewer/interact';
-import { createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-viewer/viewer';
+import { applyPerspective, createSession, featureHost, type FeatureHost, type ViewerSession } from '@bim-open-viewer/viewer';
 import { Viewer, defaultMaterial } from '@bim-open-viewer/core';
 import { captureTarget, clippingTarget, environmentTarget, packedColor, raycastSource } from './adapters.js';
-import { applyView, pointInCanvas, projectToCanvas, rayThroughCanvasPoint } from './camera.js';
+import { pointInCanvas, projectToCanvas, rayThroughCanvasPoint } from './camera.js';
 import { gpuFrameTimer } from './gpu-timer.js';
 
 // A model the host has open: what a feature hook is bound to.
@@ -167,18 +168,22 @@ export const createDemoHost = (options: DemoHostOptions): Result<DemoHost> => {
   const capture = captureTarget(viewer, canvas);
 
   const aspect = (): number => (canvas.clientHeight > 0 ? canvas.clientWidth / canvas.clientHeight : 1);
+  // The depth planes are re-cut around everything drawn on every write, so no zoom or dolly clips it.
+  const writeCamera = (view: ViewState): void => {
+    applyPerspective(viewer.camera, withDepthRange(view, binding.bounds()), aspect());
+  };
   const controller: NavController = attachNavigation(canvas, {
     session: navSession(navState(defaultView, 'orbit')),
     onChange: (current) => {
-      applyView(viewer.camera, current.nav.view);
+      writeCamera(current.nav.view);
     },
   });
-  applyView(viewer.camera, defaultView);
+  writeCamera(defaultView);
 
   const setView = (view: ViewState): void => {
     const current = controller.session();
     controller.setSession(navSession({ ...current.nav, view }));
-    applyView(viewer.camera, view);
+    writeCamera(view);
   };
   const flyTo = (view: ViewState): void => {
     controller.setSession(startFlight(controller.session(), view));

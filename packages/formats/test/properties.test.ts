@@ -30,7 +30,7 @@ import {
   type PropertyTables,
 } from '../src/properties.js';
 
-// A string pool with an empty entry, which BOS uses where a label is absent.
+// A string pool with an empty entry, which files written before -1 meant absent use for an unset label.
 const strings = ['Area', 'SQUARE_FEET', 'Dimensions', '', 'Comments', 'Wall', 'Level 1', 'Volume', 'CUBIC_FEET'];
 
 // Two descriptors: a square-foot quantity and an unnamed text field with no unit and no group.
@@ -89,6 +89,12 @@ describe('propertyDescriptorsFrom', () => {
     expect(found.name[0]).toBeUndefined();
     expect(found.units[0]).toBeUndefined();
     expect(found.group[0]).toBeUndefined();
+  });
+
+  it('reads -1, which the specification defines as absent, in every label column as no value', () => {
+    const found = propertyDescriptorsFrom([{ Name: -1, Units: -1, Group: -1, Type: 3 }], strings);
+    expect([found.name[0], found.units[0], found.group[0]]).toEqual([undefined, undefined, undefined]);
+    expect(found.byName.size).toBe(0);
   });
 
   it('indexes a name that repeats across groups and value kinds', () => {
@@ -215,6 +221,27 @@ describe('reading a value', () => {
       descriptors: [{ Name: 4, Units: 3, Group: 3, Type: 2 }],
     });
     expect(propertyNumber(entityDescriptor, 0)).toBeUndefined();
+  });
+
+  it('reads a value of -1, which the specification defines as absent, as no value for every kind but int', () => {
+    const ofKind = (type: number) =>
+      modelPropertiesFrom({
+        ...tables([{ Entity: 0, Descriptor: 0, Value: -1 }]),
+        descriptors: [{ Name: 4, Units: 3, Group: 3, Type: type }],
+      });
+    for (const type of [1, 2, 3]) expect(propertyValue(ofKind(type), 0), `type ${type}`).toBeUndefined();
+    expect(readProperty(ofKind(4), 0).point).toBeUndefined();
+    expect(propertyNumber(ofKind(1), 0)).toBeUndefined();
+  });
+
+  it('reads an empty string value as the empty string, because the file states it', () => {
+    expect(readProperty(withValue(1, 3), 0).value).toBe('');
+  });
+
+  it('reads an empty Value cell as no value, never as index 0 of a pool', () => {
+    const found = modelPropertiesFrom(tables([{ Entity: 0, Descriptor: 0, Value: null }]));
+    expect(found.value[0]).toBe(-1);
+    expect(propertyValue(found, 0)).toBeUndefined();
   });
 });
 

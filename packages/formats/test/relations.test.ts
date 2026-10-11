@@ -34,6 +34,13 @@ describe('modelRelationsFrom', () => {
     expect([...found.kind]).toEqual([2, 2, 2, 2, 7, -1]);
   });
 
+  it('maps an entity index of -1, which the specification defines as absent, to no object row', () => {
+    const found = modelRelationsFrom([{ EntityA: -1, EntityB: 1, RelationType: 2 }, { EntityA: 1, EntityB: -1, RelationType: 2 }], rowOfEntity);
+    expect([...found.from]).toEqual([-1, 1]);
+    expect([...found.to]).toEqual([1, -1]);
+    expect([...containersOf(found, 3)]).toEqual([-1, -1, -1]);
+  });
+
   it('lists the rows of one kind in file order', () => {
     const found = modelRelationsFrom(rows, rowOfEntity);
     expect(relationRowsOfKind(found, 'containedIn')).toEqual([0, 1, 2, 3]);

@@ -342,6 +342,14 @@ describe('entityFactsFrom', () => {
   it('reads an empty or blank string-table entry as no value', () => {
     expect(entityFactsFrom([{ Name: 0 }, { Name: 4 }], strings).name).toEqual([undefined, undefined]);
   });
+
+  it('reads a Name, Category or Document of -1, which the specification defines as absent, as no value', () => {
+    const facts = entityFactsFrom([{ LocalId: -1, Name: -1, Category: -1, Document: -1 }, { LocalId: 3, Name: 2, Category: 0 }], strings);
+    expect(facts.name).toEqual([undefined, 'Level 1 Wall']);
+    expect(facts.category).toEqual([undefined, undefined]);
+    expect([...(facts.document ?? [])]).toEqual([-1, -1]);
+    expect([...(facts.localId ?? [])]).toEqual([-1, 3]);
+  });
 });
 
 // What the loader hands back, which is what the geometry builders above take.

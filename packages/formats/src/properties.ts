@@ -136,9 +136,10 @@ export type PropertyTables = {
 /**
  * The descriptor rows read as labels, without any file access.
  *
- * `Name`, `Units` and `Group` are string-table indices; an index that is absent, out of range or
- * names an empty string reads as no value rather than as a made-up one, which is what the entity
- * reader does with the same encoding.
+ * `Name`, `Units` and `Group` are string-table indices; an index that is absent (-1, as the
+ * specification defines it), out of range or names an empty string (older files' way of saying
+ * absent) reads as no value rather than as a made-up one, which is what the entity reader does with
+ * the same encoding.
  */
 export function propertyDescriptorsFrom(
   rows: readonly Readonly<Record<string, unknown>>[],
@@ -152,10 +153,10 @@ export function propertyDescriptorsFrom(
   const byName = new Map<string, number[]>();
   for (let row = 0; row < count; row += 1) {
     const each = rows[row];
-    const label = poolText(strings, parquetInteger(each?.['Name']));
+    const label = poolLabel(strings, parquetInteger(each?.['Name']));
     name.push(label);
-    units.push(poolText(strings, parquetInteger(each?.['Units'])));
-    group.push(poolText(strings, parquetInteger(each?.['Group'])));
+    units.push(poolLabel(strings, parquetInteger(each?.['Units'])));
+    group.push(poolLabel(strings, parquetInteger(each?.['Group'])));
     kind.push(propertyKindOf(parquetInteger(each?.['Type'])));
     if (label === undefined) continue;
     const found = byName.get(label);
@@ -197,7 +198,8 @@ export function modelPropertiesFrom(tables: PropertyTables): ModelProperties {
     const at = cursor[object] ?? 0;
     cursor[object] = at + 1;
     descriptor[at] = parquetInteger(each?.['Descriptor']) ?? -1;
-    value[at] = parquetInteger(each?.['Value']) ?? 0;
+    // A cell the file left empty is no value (-1), never index 0 of a pool.
+    value[at] = parquetInteger(each?.['Value']) ?? -1;
   }
 
   const numbers = new Float32Array(tables.numbers.length);
@@ -240,8 +242,8 @@ export function modelDocumentsFrom(
   const title: (string | undefined)[] = [];
   const path: (string | undefined)[] = [];
   for (let row = 0; row < count; row += 1) {
-    title.push(poolText(strings, parquetInteger(rows[row]?.['Title'])));
-    path.push(poolText(strings, parquetInteger(rows[row]?.['Path'])));
+    title.push(poolLabel(strings, parquetInteger(rows[row]?.['Title'])));
+    path.push(poolLabel(strings, parquetInteger(rows[row]?.['Path'])));
   }
   const ofObject = new Int32Array(entityOfObject.length);
   for (let object = 0; object < entityOfObject.length; object += 1) {
@@ -315,7 +317,7 @@ export function propertyValue(properties: ModelProperties, row: number): number 
     case 'number':
       return raw >= 0 && raw < properties.numbers.length ? properties.numbers[raw] : undefined;
     case 'string':
-      return poolText(properties.strings, raw);
+      return poolEntry(properties.strings, raw);
     case 'entity': {
       const object = properties.objectOfEntity[raw] ?? -1;
       return object < 0 ? undefined : object;
@@ -382,10 +384,15 @@ export function objectProperties(properties: ModelProperties, objectRow: number)
   return readings;
 }
 
-// A pooled string, empty entries read as absent so nothing fabricates a label.
-const poolText = (strings: readonly (string | undefined)[], index: number | undefined): string | undefined => {
-  if (index === undefined || index < 0) return undefined;
-  const found = strings[index];
+// A pooled string as stored, or undefined for -1 (absent) or an index outside the pool. A String
+// value of "" is a value the file states, so it reads as "".
+const poolEntry = (strings: readonly (string | undefined)[], index: number | undefined): string | undefined =>
+  index === undefined || index < 0 ? undefined : strings[index];
+
+// A pooled label (a name, unit, group, title or path): as poolEntry, and an empty entry also reads as
+// absent, because files written before -1 meant absent store an unset label as "".
+export const poolLabel = (strings: readonly (string | undefined)[], index: number | undefined): string | undefined => {
+  const found = poolEntry(strings, index);
   return found === undefined || found.trim() === '' ? undefined : found;
 };
 

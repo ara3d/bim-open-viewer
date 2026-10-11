@@ -38,6 +38,7 @@ import {
   modelPropertiesFrom,
   parquetInteger,
   parquetText,
+  poolLabel,
   type ModelDocuments,
   type ModelProperties,
 } from './properties.js';
@@ -361,8 +362,9 @@ export async function readEntityFacts(
  * The decoded entity rows read as facts, without any file access.
  *
  * BOS stores both labels as indices: `Name` indexes the string table, and `Category` names another
- * entity row whose own name is the category label. An index that is absent, negative, out of range
- * or names an empty string reads as no value rather than as a made-up one.
+ * entity row whose own name is the category label. An index that is absent, -1 (the specification's
+ * absent), out of range or names an empty string (older files' absent) reads as no value rather
+ * than as a made-up one.
  *
  * `Document` is a document-table index rather than a label, and is decoded whenever the labels are:
  * it is one more integer column on a table already being read, and it is what says which of a
@@ -507,12 +509,8 @@ const missingNames = (strings: unknown, descriptors: unknown, parameters: unknow
     ...(parameters === null ? ['parameter table'] : []),
   ].join(' and ');
 
-// A string-table entry, empty entries read as absent so nothing fabricates a name.
-const labelOf = (strings: readonly (string | undefined)[], index: number | undefined): string | undefined => {
-  if (index === undefined || index < 0) return undefined;
-  const found = strings[index];
-  return found === undefined || found.trim() === '' ? undefined : found;
-};
+// A string-table label, -1 or an empty entry read as absent so nothing fabricates a name.
+const labelOf = poolLabel;
 
 // The Parquet cell readers, shared with the property decode so both read the encoding the same way.
 const integerOf = parquetInteger;

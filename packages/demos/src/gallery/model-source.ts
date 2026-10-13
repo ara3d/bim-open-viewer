@@ -7,9 +7,9 @@
 // the input, and forgetting the second fails silently and totally.
 
 import {
-  colorStride,
   defaultAppearance,
   failure,
+  instanceAppearances,
   objectKey,
   success,
   type Appearance,
@@ -26,26 +26,10 @@ export const objectKeysOf = (model: ModelData): readonly ObjectKey[] =>
   model.objects.map((record) => objectKey(record.ref));
 
 // The appearance each object was loaded with: what its record says, else the colour and opacity of
-// the first instance that draws it, else the grey fallback.
-//
-// A file read through BFAST carries its material colours on the instances and nothing on the
-// records, so without the second source every style rule - hiding the spaces, say - resolved the
-// rest of the model to the fallback and repainted a brick building grey.
+// the first instance that draws it (`instanceAppearances` in the model package, which the formats
+// package already applies to every file it reads), else the grey fallback.
 export const baseAppearancesOf = (model: ModelData, geometry?: Geometry): ReadonlyMap<ObjectKey, Appearance> => {
-  const fromInstances = new Map<number, Appearance>();
-  if (geometry !== undefined) {
-    const { count, objectIndex, color, meshIndex } = geometry.instances;
-    for (let row = 0; row < count; row++) {
-      const object = objectIndex[row] ?? -1;
-      if (object < 0 || (meshIndex[row] ?? -1) < 0 || fromInstances.has(object)) continue;
-      const at = row * colorStride;
-      fromInstances.set(object, {
-        color: [color[at] ?? 0.8, color[at + 1] ?? 0.8, color[at + 2] ?? 0.8],
-        opacity: color[at + 3] ?? 1,
-        visible: true,
-      });
-    }
-  }
+  const fromInstances = geometry === undefined ? new Map<number, Appearance>() : instanceAppearances(geometry);
   return new Map(
     model.objects.map((record, row) => [
       objectKey(record.ref),

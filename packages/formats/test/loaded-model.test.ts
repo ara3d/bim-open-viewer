@@ -16,6 +16,15 @@ import { checkedModel, loadedModel, modelStatistics, validateLoadedModel } from 
 
 const ref: ModelRef = { id: 'sample', revision: '1' };
 
+describe('loadedModel', () => {
+  it('gives each record the appearance of its first drawn instance when the file records none', () => {
+    const model = loadedModel('bos', data(), geometry(), 1);
+    expect(model.data.objects[0]?.appearance).toEqual({ color: [1, 1, 1], opacity: 1, visible: true });
+    expect(model.data.objects[1]?.appearance).toEqual({ color: [1, 0, 0], opacity: 0.5, visible: true });
+    expect(model.data.objects[2]?.appearance).toBeUndefined();
+  });
+});
+
 const geometry = (): Geometry => ({
   meshes: [
     mesh(Float32Array.from([0, 0, 0, 1, 0, 0, 0, 1, 0]), Uint32Array.from([0, 1, 2])),

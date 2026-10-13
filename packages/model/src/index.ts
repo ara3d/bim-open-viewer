@@ -4,6 +4,7 @@ export * from './math.js';
 export * from './identity.js';
 export * from './coordinates.js';
 export * from './style.js';
+export * from './loaded-appearance.js';
 export * from './objects.js';
 export * from './table.js';
 export * from './mesh.js';

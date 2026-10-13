@@ -15,6 +15,7 @@ import {
   type MeshTable,
   type ModelData,
   type Result,
+  withLoadedAppearances,
 } from '@bim-open-viewer/model';
 import { formatCode, formatDiagnostic } from './diagnostics.js';
 import type { ModelDocuments, ModelProperties } from './properties.js';
@@ -79,7 +80,9 @@ export const loadedModel = (
   extras: LoadedModelExtras = {},
 ): LoadedModel => ({
   format,
-  data,
+  // Every reader fills the records' appearance from the instance colours here, so a style pass
+  // never resolves a loaded colour to the grey fallback.
+  data: withLoadedAppearances(data, geometry),
   geometry,
   coordinates: data.coordinates,
   sourceBytes,
